@@ -1,12 +1,28 @@
 {
-  "name": "gatsby-starter-default",
+  "name": "seek",
   "private": true,
-  "description": "A simple starter to get up and developing quickly with Gatsby",
+  "description": "Project seek",
   "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "author": "wuianski",
+  "scripts": {
+    "build": "gatsby build",
+    "develop": "gatsby develop",
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
+    "start": "npm run develop",
+    "serve": "gatsby serve",
+    "clean": "gatsby clean",
+    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1",
+    "build-plugin": "tsc --build ./plugins/gatsby-source-directus/tsconfig.json"
+  },
+  "keywords": [
+    "gatsby"
+  ],
   "dependencies": {
+    "@directus/sdk-js": "^9.0.0-rc.27",
+    "chalk": "^4.1.0",
     "gatsby": "^2.26.1",
     "gatsby-image": "^2.5.0",
+    "gatsby-node-helpers": "^1.0.2",
     "gatsby-plugin-manifest": "^2.6.1",
     "gatsby-plugin-offline": "^3.4.0",
     "gatsby-plugin-react-helmet": "^3.4.0",
@@ -21,24 +37,5 @@
   "devDependencies": {
     "prettier": "2.2.1"
   },
-  "keywords": [
-    "gatsby"
-  ],
-  "license": "0BSD",
-  "scripts": {
-    "build": "gatsby build",
-    "develop": "gatsby develop",
-    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
-    "start": "npm run develop",
-    "serve": "gatsby serve",
-    "clean": "gatsby clean",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/gatsbyjs/gatsby-starter-default"
-  },
-  "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
-  }
+  "license": "0BSD"
 }
