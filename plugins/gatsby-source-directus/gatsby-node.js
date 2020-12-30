@@ -1,19 +1,4 @@
 "use strict";
-var __makeTemplateObject = (this && this.__makeTemplateObject) || function (cooked, raw) {
-    if (Object.defineProperty) { Object.defineProperty(cooked, "raw", { value: raw }); } else { cooked.raw = raw; }
-    return cooked;
-};
-var __assign = (this && this.__assign) || function () {
-    __assign = Object.assign || function(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-                t[p] = s[p];
-        }
-        return t;
-    };
-    return __assign.apply(this, arguments);
-};
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -50,74 +35,63 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
-var chalk_1 = __importDefault(require("chalk"));
+exports.sourceNodes = void 0;
 var directus_service_1 = require("./directus-service");
-exports.sourceNodes = function (_a, _b) {
-    var actions = _a.actions, getNode = _a.getNode, store = _a.store, cache = _a.cache, createNodeId = _a.createNodeId, createContentDigest = _a.createContentDigest, getCache = _a.getCache, reporter = _a.reporter;
-    var url = _b.url, email = _b.email, password = _b.password;
-    return __awaiter(void 0, void 0, void 0, function () {
-        var formatMsg, createNode, touchNode, directus, PAGES_NODE_TYPE_1, ARTWORK_NODE_TYPE_1, pages, i, element, artworksList, error_1;
-        return __generator(this, function (_c) {
-            switch (_c.label) {
-                case 0:
-                    formatMsg = function (msg) { return chalk_1.default(templateObject_1 || (templateObject_1 = __makeTemplateObject(["gatsby-source-directus:: ", ""], ["gatsby-source-directus:: ", ""])), msg); };
-                    createNode = actions.createNode, touchNode = actions.touchNode;
-                    directus = new directus_service_1.DirectusService({
-                        url: url,
-                        auth: {
-                            email: email,
-                            password: password
-                        }
-                    });
-                    _c.label = 1;
-                case 1:
-                    _c.trys.push([1, 5, , 6]);
-                    console.log(formatMsg("Start parsing..."));
-                    return [4 /*yield*/, directus.init()];
-                case 2:
-                    _c.sent();
-                    PAGES_NODE_TYPE_1 = 'pages';
-                    ARTWORK_NODE_TYPE_1 = 'artworks_list';
-                    return [4 /*yield*/, directus.getItems(PAGES_NODE_TYPE_1)];
-                case 3:
-                    pages = _c.sent();
-                    for (i = 0; i < pages.data.length; i++) {
-                        element = pages.data[i];
-                        if (element.artworks_list) {
-                            element.artworks_list___NODE = element.artworks_list.map(function (x) { return createNodeId(ARTWORK_NODE_TYPE_1 + "-" + x); });
-                            delete element.artworks_list;
-                        }
+var process_1 = require("./directus-service/process");
+var sourceNodes = function (gatsbyArgs, pluginOptions) { return __awaiter(void 0, void 0, void 0, function () {
+    var url, email, password, tables, directus, relations, transformedRelations_1, error_1;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0:
+                url = pluginOptions.url, email = pluginOptions.email, password = pluginOptions.password, tables = pluginOptions.tables;
+                directus = new directus_service_1.DirectusService({
+                    url: url,
+                    auth: {
+                        email: email,
+                        password: password
                     }
-                    pages.data.forEach(function (element) {
-                        createNode(__assign(__assign({}, element), { id: createNodeId(PAGES_NODE_TYPE_1 + "-" + element.id), parent: null, children: [], internal: {
-                                type: PAGES_NODE_TYPE_1,
-                                content: JSON.stringify(element),
-                                contentDigest: createContentDigest(element),
-                            } }));
-                    });
-                    return [4 /*yield*/, directus.getItems(ARTWORK_NODE_TYPE_1)];
-                case 4:
-                    artworksList = _c.sent();
-                    artworksList.data.forEach(function (element) {
-                        createNode(__assign(__assign({}, element), { id: createNodeId(ARTWORK_NODE_TYPE_1 + "-" + element.id), parent: null, children: [], internal: {
-                                type: ARTWORK_NODE_TYPE_1,
-                                content: JSON.stringify(element),
-                                contentDigest: createContentDigest(element),
-                            } }));
-                    });
-                    console.log(formatMsg("Success."));
-                    return [3 /*break*/, 6];
-                case 5:
-                    error_1 = _c.sent();
-                    console.error(formatMsg("" + error_1));
-                    return [3 /*break*/, 6];
-                case 6: return [2 /*return*/];
-            }
-        });
+                });
+                _a.label = 1;
+            case 1:
+                _a.trys.push([1, 4, , 5]);
+                console.log("Start parsing...");
+                return [4 /*yield*/, directus.init()];
+            case 2:
+                _a.sent();
+                return [4 /*yield*/, directus.getRelations()];
+            case 3:
+                relations = _a.sent();
+                transformedRelations_1 = process_1.transformRelation(relations.data);
+                if (tables && tables instanceof Array) {
+                    tables.forEach(function (table) { return __awaiter(void 0, void 0, void 0, function () {
+                        var dataset, error_2;
+                        return __generator(this, function (_a) {
+                            switch (_a.label) {
+                                case 0:
+                                    _a.trys.push([0, 2, , 3]);
+                                    return [4 /*yield*/, directus.getItems(table)];
+                                case 1:
+                                    dataset = _a.sent();
+                                    process_1.createAllNodes(table, dataset.data, transformedRelations_1, gatsbyArgs);
+                                    return [3 /*break*/, 3];
+                                case 2:
+                                    error_2 = _a.sent();
+                                    console.error(table + ":: " + error_2);
+                                    return [3 /*break*/, 3];
+                                case 3: return [2 /*return*/];
+                            }
+                        });
+                    }); });
+                }
+                console.log("Success.");
+                return [3 /*break*/, 5];
+            case 4:
+                error_1 = _a.sent();
+                console.error("" + error_1);
+                return [3 /*break*/, 5];
+            case 5: return [2 /*return*/];
+        }
     });
-};
-var templateObject_1;
+}); };
+exports.sourceNodes = sourceNodes;

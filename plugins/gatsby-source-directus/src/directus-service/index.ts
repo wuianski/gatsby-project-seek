@@ -46,4 +46,8 @@ export class DirectusService {
     public async getItems(collection: string): Promise<Item> {
         return await this._api.items(collection).read();
     }
+
+    public async getRelations(): Promise<Item> {
+        return await this._api.relations.read();
+    }
 }

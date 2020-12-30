@@ -1,82 +1,42 @@
-import chalk from 'chalk';
+import * as gatsby from 'gatsby'
 import { DirectusService } from './directus-service';
+import { transformRelation, createAllNodes } from './directus-service/process';
 
-exports.sourceNodes = async (
-    {
-        actions,
-        getNode,
-        store,
-        cache,
-        createNodeId,
-        createContentDigest,
-        getCache,
-        reporter,
-    },
-    {
-        url,
-        email,
-        password
-    }
+export const sourceNodes: gatsby.GatsbyNode['sourceNodes'] = async (
+    gatsbyArgs: gatsby.SourceNodesArgs,
+    pluginOptions: gatsby.PluginOptions,
 ) => {
-    const formatMsg = msg => chalk`gatsby-source-directus:: ${msg}`;
-
-    const { createNode, touchNode } = actions;
+    const { url, email, password, tables } = pluginOptions;
 
     const directus = new DirectusService({
-        url: url,
+        url: url as string,
         auth: {
-            email: email,
-            password: password
+            email: email as string,
+            password: password as string
         }
     });
 
     try {
-        console.log(formatMsg(`Start parsing...`));
+        console.log(`Start parsing...`);
 
         await directus.init();
 
-        let PAGES_NODE_TYPE = 'pages';
-        let ARTWORK_NODE_TYPE = 'artworks_list';
+        let relations = await directus.getRelations();
+        let transformedRelations = transformRelation(relations.data);
 
-        let pages = await directus.getItems(PAGES_NODE_TYPE);
-        for (let i = 0; i < pages.data.length; i++) {
-            let element = pages.data[i];
-            if (element.artworks_list) {
-                element.artworks_list___NODE = element.artworks_list.map(x => createNodeId(`${ARTWORK_NODE_TYPE}-${x}`));
-                delete element.artworks_list;
-            }
+        if (tables && tables instanceof Array) {
+            tables.forEach(async (table) => {
+                try {
+                    let dataset = await directus.getItems(table);
+                    createAllNodes(table, dataset.data, transformedRelations, gatsbyArgs);
+                } catch (error) {
+                    console.error(`${table}:: ${error}`);
+                }
+            });
         }
 
-        pages.data.forEach(element => {
-            createNode({
-                ...element,
-                id: createNodeId(`${PAGES_NODE_TYPE}-${element.id}`),
-                parent: null,
-                children: [],
-                internal: {
-                    type: PAGES_NODE_TYPE,
-                    content: JSON.stringify(element),
-                    contentDigest: createContentDigest(element),
-                }
-            });
-        });
-
-        let artworksList = await directus.getItems(ARTWORK_NODE_TYPE);
-        artworksList.data.forEach(element => {
-            createNode({
-                ...element,
-                id: createNodeId(`${ARTWORK_NODE_TYPE}-${element.id}`),
-                parent: null,
-                children: [],
-                internal: {
-                    type: ARTWORK_NODE_TYPE,
-                    content: JSON.stringify(element),
-                    contentDigest: createContentDigest(element),
-                }
-            });
-        });
-        console.log(formatMsg(`Success.`));
+        console.log(`Success.`);
     } catch (error) {
-        console.error(formatMsg(`${error}`));
+        console.error(`${error}`);
     }
 }
