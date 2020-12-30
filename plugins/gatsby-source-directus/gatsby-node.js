@@ -40,7 +40,7 @@ exports.sourceNodes = void 0;
 var directus_service_1 = require("./directus-service");
 var process_1 = require("./directus-service/process");
 var sourceNodes = function (gatsbyArgs, pluginOptions) { return __awaiter(void 0, void 0, void 0, function () {
-    var url, email, password, tables, directus, relations, transformedRelations_1, error_1;
+    var url, email, password, tables, directus, relations, transformedRelations, index, table, dataset, error_1, error_2;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
@@ -54,7 +54,7 @@ var sourceNodes = function (gatsbyArgs, pluginOptions) { return __awaiter(void 0
                 });
                 _a.label = 1;
             case 1:
-                _a.trys.push([1, 4, , 5]);
+                _a.trys.push([1, 11, , 12]);
                 console.log("Start parsing...");
                 return [4 /*yield*/, directus.init()];
             case 2:
@@ -62,35 +62,40 @@ var sourceNodes = function (gatsbyArgs, pluginOptions) { return __awaiter(void 0
                 return [4 /*yield*/, directus.getRelations()];
             case 3:
                 relations = _a.sent();
-                transformedRelations_1 = process_1.transformRelation(relations.data);
-                if (tables && tables instanceof Array) {
-                    tables.forEach(function (table) { return __awaiter(void 0, void 0, void 0, function () {
-                        var dataset, error_2;
-                        return __generator(this, function (_a) {
-                            switch (_a.label) {
-                                case 0:
-                                    _a.trys.push([0, 2, , 3]);
-                                    return [4 /*yield*/, directus.getItems(table)];
-                                case 1:
-                                    dataset = _a.sent();
-                                    process_1.createAllNodes(table, dataset.data, transformedRelations_1, gatsbyArgs);
-                                    return [3 /*break*/, 3];
-                                case 2:
-                                    error_2 = _a.sent();
-                                    console.error(table + ":: " + error_2);
-                                    return [3 /*break*/, 3];
-                                case 3: return [2 /*return*/];
-                            }
-                        });
-                    }); });
-                }
-                console.log("Success.");
-                return [3 /*break*/, 5];
+                transformedRelations = process_1.transformRelation(relations.data);
+                if (!(tables && tables instanceof Array)) return [3 /*break*/, 10];
+                index = 0;
+                _a.label = 4;
             case 4:
+                if (!(index < tables.length)) return [3 /*break*/, 10];
+                table = tables[index];
+                _a.label = 5;
+            case 5:
+                _a.trys.push([5, 8, , 9]);
+                console.log("start create node:: " + table);
+                return [4 /*yield*/, directus.getItems(table)];
+            case 6:
+                dataset = _a.sent();
+                return [4 /*yield*/, process_1.createAllNodes(table, dataset.data, transformedRelations, gatsbyArgs)];
+            case 7:
+                _a.sent();
+                console.log("create " + table + " finished");
+                return [3 /*break*/, 9];
+            case 8:
                 error_1 = _a.sent();
-                console.error("" + error_1);
-                return [3 /*break*/, 5];
-            case 5: return [2 /*return*/];
+                console.error(table + ":: " + error_1);
+                return [3 /*break*/, 9];
+            case 9:
+                index++;
+                return [3 /*break*/, 4];
+            case 10:
+                console.log("Success.");
+                return [3 /*break*/, 12];
+            case 11:
+                error_2 = _a.sent();
+                console.error("" + error_2);
+                return [3 /*break*/, 12];
+            case 12: return [2 /*return*/];
         }
     });
 }); };

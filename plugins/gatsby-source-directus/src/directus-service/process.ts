@@ -27,10 +27,10 @@ export const transformRelation = (relations: Array<any>): Array<RelationInfo> =>
         return relation;
     });
 }
-const createNodesByObject = (table: string, dataset: object,
+const createNodesByObject = async (table: string, dataset: object,
     oneCollectionRelation: RelationInfo[],
     manyCollectionRelation: RelationInfo[],
-    gatsbyNodesArgs: GatsbyNodesArgs): void => {
+    gatsbyNodesArgs: GatsbyNodesArgs) => {
 
     const { actions, createNodeId, createContentDigest } = gatsbyNodesArgs;
     const { createNode } = actions;
@@ -61,17 +61,18 @@ const createNodesByObject = (table: string, dataset: object,
     });
 };
 
-export const createAllNodes = (table: string, dataset: Array<object> | object, relations: Array<RelationInfo>,
-    gatsbyNodesArgs: GatsbyNodesArgs): void => {
+export const createAllNodes = async (table: string, dataset: Array<object> | object, relations: Array<RelationInfo>,
+    gatsbyNodesArgs: GatsbyNodesArgs) => {
 
     const oneCollectionRelation = relations.filter(x => x.oneCollection == table);
     const manyCollectionRelation = relations.filter(x => x.manyCollection == table);
 
     if (dataset instanceof Array) {
-        dataset.forEach(element => {
-            createNodesByObject(table, element, oneCollectionRelation, manyCollectionRelation, gatsbyNodesArgs);
-        });
+        for (let index = 0; index < dataset.length; index++) {
+            let element = dataset[index];
+            await createNodesByObject(table, element, oneCollectionRelation, manyCollectionRelation, gatsbyNodesArgs);
+        }
     } else {
-        createNodesByObject(table, dataset, oneCollectionRelation, manyCollectionRelation, gatsbyNodesArgs);
+        await createNodesByObject(table, dataset, oneCollectionRelation, manyCollectionRelation, gatsbyNodesArgs);
     }
 }

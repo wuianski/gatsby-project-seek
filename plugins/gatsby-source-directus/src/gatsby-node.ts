@@ -2,7 +2,7 @@ import * as gatsby from 'gatsby'
 import { DirectusService } from './directus-service';
 import { transformRelation, createAllNodes } from './directus-service/process';
 
-export const sourceNodes: gatsby.GatsbyNode['sourceNodes'] = async (
+export const sourceNodes = async (
     gatsbyArgs: gatsby.SourceNodesArgs,
     pluginOptions: gatsby.PluginOptions,
 ) => {
@@ -25,14 +25,15 @@ export const sourceNodes: gatsby.GatsbyNode['sourceNodes'] = async (
         let transformedRelations = transformRelation(relations.data);
 
         if (tables && tables instanceof Array) {
-            tables.forEach(async (table) => {
+            for (let index = 0; index < tables.length; index++) {
+                const table = tables[index];
                 try {
                     let dataset = await directus.getItems(table);
-                    createAllNodes(table, dataset.data, transformedRelations, gatsbyArgs);
+                    await createAllNodes(table, dataset.data, transformedRelations, gatsbyArgs);
                 } catch (error) {
                     console.error(`${table}:: ${error}`);
                 }
-            });
+            }
         }
 
         console.log(`Success.`);
