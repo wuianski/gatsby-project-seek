@@ -1,22 +1,67 @@
+/**
+ * Manually create index page, render query data. 
+ * 
+ * Add link to pages, which created by gatsby-node.js
+ */
+
 import React from "react"
-import { Link } from "gatsby"
-
+import { css } from "@emotion/react"
+import { Link, graphql } from "gatsby"
+import { rhythm } from "../utils/typography"
 import Layout from "../components/layout"
-import Image from "../components/image"
-import SEO from "../components/seo"
 
-const IndexPage = () => (
-  <Layout>
-    <SEO title="Home" />
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
-      <Image />
-    </div>
-    <Link to="/page-2/">Go to page 2</Link> <br />
-    <Link to="/using-typescript/">Go to "Using TypeScript"</Link>
-  </Layout>
-)
+export const query = graphql`
+  query {
+    allPages(filter: { sort: { ne: 5 } }, sort: { order: ASC, fields: sort }) {
+      totalCount
+      edges {
+        node {
+          id
+          slug
+          title_en_us
+          title_zh_hant_tw
+          tag_name
+        }
+      }
+    }
+  }
+`
 
-export default IndexPage
+export default function Home({ data }) {
+  //console.log(data)
+  return (
+    <Layout>
+      <div>
+        <h4>{data.allPages.totalCount} Pages</h4>
+        {data.allPages.edges.map(({ node }) => (
+          <div key={node.id}>
+            <Link
+              to={node.slug}
+              css={css`
+                color: inherit;
+              `}
+            >
+              <h3
+                css={css`
+                  margin-bottom: ${rhythm(1 / 4)};
+                `}
+              >
+                {node.title_zh_hant_tw}{" "}
+                <span
+                  css={css`
+                    color: #bbb;
+                  `}
+                >
+                  — {node.title_en_us}
+                </span>
+              </h3>
+              <p>{node.tag_name}</p>
+            </Link>
+          </div>
+        ))}
+      </div>
+    </Layout>
+  )
+}
+
+

@@ -1,6 +1,6 @@
 # Seek
 
-## Complite gatsby-source-directus with TypeScript
+## Compile gatsby-source-directus with TypeScript
 
 ```sh
 npm run build-plugin

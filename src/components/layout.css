@@ -1,6 +1,6 @@
 html {
-  -ms-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%;
+ /* -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;*/
   font: 112.5%/1.45em georgia, serif, sans-serif;
   box-sizing: border-box;
   overflow-y: scroll;
@@ -53,6 +53,7 @@ template {
 a {
   background-color: transparent;
   -webkit-text-decoration-skip: objects;
+  text-shadow: none;/*by_wuianski*/
 }
 a:active,
 a:hover {

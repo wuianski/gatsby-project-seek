@@ -1,8 +1,8 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
+    title: `project seek`,
+    description: `website by Hong Houndation`,
+    author: `wuianski`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -30,10 +30,24 @@ module.exports = {
     {
       resolve: require.resolve(`./plugins/gatsby-source-directus`),
       options: {
-        url: '',
-        email: '',
-        password: ''
-      }
-    }
+        url: "",
+        email: "",
+        password: "",
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `src`,
+        path: `${__dirname}/src/`,
+      },
+    },
+    `gatsby-plugin-emotion`,
+    {
+      resolve: `gatsby-plugin-typography`,
+      options: {
+        pathToConfigModule: `src/utils/typography`,
+      },
+    },
   ],
 }
