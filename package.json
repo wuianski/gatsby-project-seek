@@ -38,9 +38,11 @@
     "react-helmet": "^6.1.0",
     "react-typography": "^0.16.19",
     "typography": "^0.16.19",
-    "typography-theme-fairy-gates": "^0.16.19"
+    "typography-theme-fairy-gates": "^0.16.19",
+    "urijs": "^1.19.5"
   },
   "devDependencies": {
+    "@types/urijs": "^1.19.13",
     "prettier": "2.2.1"
   },
   "license": "0BSD"

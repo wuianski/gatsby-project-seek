@@ -40,11 +40,12 @@ exports.sourceNodes = void 0;
 var directus_service_1 = require("./directus-service");
 var process_1 = require("./directus-service/process");
 var sourceNodes = function (gatsbyArgs, pluginOptions) { return __awaiter(void 0, void 0, void 0, function () {
-    var url, email, password, tables, directus, relations, transformedRelations, index, table, dataset, error_1, error_2;
+    var reporter, url, email, password, tables, additionalTables, directus, relations, fields, fileInfos, additionalCollections, index, table, dataset, index, table, dataset, error_1, error_2;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
-                url = pluginOptions.url, email = pluginOptions.email, password = pluginOptions.password, tables = pluginOptions.tables;
+                reporter = gatsbyArgs.reporter;
+                url = pluginOptions.url, email = pluginOptions.email, password = pluginOptions.password, tables = pluginOptions.tables, additionalTables = pluginOptions.additionalTables;
                 directus = new directus_service_1.DirectusService({
                     url: url,
                     auth: {
@@ -54,48 +55,76 @@ var sourceNodes = function (gatsbyArgs, pluginOptions) { return __awaiter(void 0
                 });
                 _a.label = 1;
             case 1:
-                _a.trys.push([1, 11, , 12]);
-                console.log("Start parsing...");
+                _a.trys.push([1, 17, , 18]);
+                reporter.info("Start fetch all data from directus...");
                 return [4 /*yield*/, directus.init()];
             case 2:
                 _a.sent();
-                return [4 /*yield*/, directus.getRelations()];
+                return [4 /*yield*/, directus.getRelations(reporter)];
             case 3:
                 relations = _a.sent();
-                transformedRelations = process_1.transformRelation(relations.data);
-                if (!(tables && tables instanceof Array)) return [3 /*break*/, 10];
-                index = 0;
-                _a.label = 4;
+                return [4 /*yield*/, directus.getFields(reporter)];
             case 4:
-                if (!(index < tables.length)) return [3 /*break*/, 10];
-                table = tables[index];
-                _a.label = 5;
+                fields = _a.sent();
+                return [4 /*yield*/, directus.getFileInfos(reporter)];
             case 5:
-                _a.trys.push([5, 8, , 9]);
-                console.log("start create node:: " + table);
-                return [4 /*yield*/, directus.getItems(table)];
+                fileInfos = _a.sent();
+                additionalCollections = {};
+                if (!(additionalTables && additionalTables instanceof Array)) return [3 /*break*/, 9];
+                index = 0;
+                _a.label = 6;
             case 6:
-                dataset = _a.sent();
-                return [4 /*yield*/, process_1.createAllNodes(table, dataset.data, transformedRelations, gatsbyArgs)];
+                if (!(index < additionalTables.length)) return [3 /*break*/, 9];
+                table = additionalTables[index];
+                return [4 /*yield*/, directus.getItems(table)];
             case 7:
-                _a.sent();
-                console.log("create " + table + " finished");
-                return [3 /*break*/, 9];
+                dataset = _a.sent();
+                additionalCollections[table] = dataset.data;
+                _a.label = 8;
             case 8:
-                error_1 = _a.sent();
-                console.error(table + ":: " + error_1);
-                return [3 /*break*/, 9];
-            case 9:
                 index++;
-                return [3 /*break*/, 4];
+                return [3 /*break*/, 6];
+            case 9:
+                if (!(tables && tables instanceof Array)) return [3 /*break*/, 16];
+                index = 0;
+                _a.label = 10;
             case 10:
-                console.log("Success.");
-                return [3 /*break*/, 12];
+                if (!(index < tables.length)) return [3 /*break*/, 16];
+                table = tables[index];
+                _a.label = 11;
             case 11:
+                _a.trys.push([11, 14, , 15]);
+                return [4 /*yield*/, directus.getItems(table)];
+            case 12:
+                dataset = _a.sent();
+                return [4 /*yield*/, process_1.createAllNodes({
+                        directus: directus,
+                        table: table,
+                        dataset: dataset.data,
+                        relations: relations,
+                        fields: fields,
+                        fileInfos: fileInfos,
+                        additionalCollections: additionalCollections,
+                        gatsbyNodesArgs: gatsbyArgs
+                    })];
+            case 13:
+                _a.sent();
+                return [3 /*break*/, 15];
+            case 14:
+                error_1 = _a.sent();
+                reporter.error(table + ":: " + error_1);
+                return [3 /*break*/, 15];
+            case 15:
+                index++;
+                return [3 /*break*/, 10];
+            case 16:
+                reporter.success("All directus data fetched.");
+                return [3 /*break*/, 18];
+            case 17:
                 error_2 = _a.sent();
-                console.error("" + error_2);
-                return [3 /*break*/, 12];
-            case 12: return [2 /*return*/];
+                reporter.error("" + error_2);
+                return [3 /*break*/, 18];
+            case 18: return [2 /*return*/];
         }
     });
 }); };

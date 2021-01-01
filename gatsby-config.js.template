@@ -40,8 +40,8 @@ module.exports = {
         url: '',
         email: '',
         password: '',
-        tables: [
-        ]
+        tables: [],
+        additionalTables: [],
       }
     },
   ]
