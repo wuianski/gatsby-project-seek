@@ -47,63 +47,128 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.createAllNodes = exports.transformRelation = void 0;
-var transformRelation = function (relations) {
-    return relations.map(function (x) {
-        var relation = {
-            oneCollection: x.one_collection,
-            oneField: x.one_field,
-            onePrimary: x.one_primary,
-            manyCollection: x.many_collection,
-            manyField: x.many_field,
-            manyPrimary: x.many_primary,
-        };
-        return relation;
-    });
-};
-exports.transformRelation = transformRelation;
-var createNodesByObject = function (table, dataset, oneCollectionRelation, manyCollectionRelation, gatsbyNodesArgs) { return __awaiter(void 0, void 0, void 0, function () {
-    var actions, createNodeId, createContentDigest, createNode, _loop_1, i, dataId;
-    return __generator(this, function (_a) {
-        actions = gatsbyNodesArgs.actions, createNodeId = gatsbyNodesArgs.createNodeId, createContentDigest = gatsbyNodesArgs.createContentDigest;
-        createNode = actions.createNode;
-        _loop_1 = function (i) {
-            var ocr = oneCollectionRelation[i];
-            if (dataset[ocr.manyCollection] && dataset[ocr.manyCollection] instanceof Array) {
-                dataset[ocr.manyCollection + "___NODE"] = dataset[ocr.manyCollection]
-                    .map(function (v) { return createNodeId(ocr.manyCollection + "-" + v); });
-                delete dataset[ocr.manyCollection];
-            }
-        };
-        // Mapping the id of O2M field
-        for (i = 0; i < oneCollectionRelation.length; i++) {
-            _loop_1(i);
-        }
-        dataId = createNodeId(table + "-" + dataset['id']);
-        // Create the node
-        console.log('create node');
-        createNode(__assign(__assign({}, dataset), { id: dataId, parent: null, children: [], internal: {
-                type: table,
-                content: JSON.stringify(dataset),
-                contentDigest: createContentDigest(dataset)
-            } }));
-        return [2 /*return*/];
-    });
-}); };
-var createAllNodes = function (table, dataset, relations, gatsbyNodesArgs) { return __awaiter(void 0, void 0, void 0, function () {
-    var oneCollectionRelation, manyCollectionRelation, index, element;
+exports.createAllNodes = void 0;
+var gatsby_source_filesystem_1 = require("gatsby-source-filesystem");
+var createNodesByObject = function (directus, table, dataset, relations, fieldInfos, fileInfos, gatsbyNodesArgs) { return __awaiter(void 0, void 0, void 0, function () {
+    var actions, store, cache, createNodeId, createContentDigest, reporter, createNode, fileFields, _loop_1, i, manyFileFields, o2mFieldInfos, _loop_2, i, dataId;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
-                oneCollectionRelation = relations.filter(function (x) { return x.oneCollection == table; });
-                manyCollectionRelation = relations.filter(function (x) { return x.manyCollection == table; });
+                actions = gatsbyNodesArgs.actions, store = gatsbyNodesArgs.store, cache = gatsbyNodesArgs.cache, createNodeId = gatsbyNodesArgs.createNodeId, createContentDigest = gatsbyNodesArgs.createContentDigest, reporter = gatsbyNodesArgs.reporter;
+                createNode = actions.createNode;
+                fileFields = fieldInfos.filter(function (x) { return x.type === 'uuid' && (x.interface === 'image' || x.interface === 'file'); });
+                _loop_1 = function (i) {
+                    var element, val, fileInfo, url, fileNode, error_1;
+                    return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0:
+                                element = fileFields[i];
+                                val = dataset[element.field];
+                                if (!val) {
+                                    return [2 /*return*/, "continue"];
+                                }
+                                fileInfo = fileInfos.find(function (f) { return f.fileId == val; });
+                                if (!fileInfo) {
+                                    return [2 /*return*/, "continue"];
+                                }
+                                url = directus.getAssetUrl(val);
+                                _a.label = 1;
+                            case 1:
+                                _a.trys.push([1, 3, , 4]);
+                                return [4 /*yield*/, gatsby_source_filesystem_1.createRemoteFileNode({
+                                        url: url,
+                                        store: store,
+                                        cache: cache,
+                                        createNode: createNode,
+                                        createNodeId: createNodeId,
+                                        reporter: reporter,
+                                        name: fileInfo.fileId
+                                    })];
+                            case 2:
+                                fileNode = _a.sent();
+                                createNode({
+                                    directus: __assign({}, fileInfo),
+                                    id: createNodeId("fileInfo-" + fileInfo.fileId),
+                                    parent: fileNode.id,
+                                    children: [],
+                                    internal: {
+                                        type: 'fileInfo',
+                                        contentDigest: createContentDigest(fileInfo)
+                                    }
+                                });
+                                dataset[element.field + "___NODE"] = fileNode.id;
+                                delete dataset[element.field];
+                                return [3 /*break*/, 4];
+                            case 3:
+                                error_1 = _a.sent();
+                                reporter.error(error_1);
+                                return [3 /*break*/, 4];
+                            case 4: return [2 /*return*/];
+                        }
+                    });
+                };
+                i = 0;
+                _a.label = 1;
+            case 1:
+                if (!(i < fileFields.length)) return [3 /*break*/, 4];
+                return [5 /*yield**/, _loop_1(i)];
+            case 2:
+                _a.sent();
+                _a.label = 3;
+            case 3:
+                i++;
+                return [3 /*break*/, 1];
+            case 4:
+                manyFileFields = fieldInfos.filter(function (x) { return x.type === 'files'; });
+                o2mFieldInfos = fieldInfos.filter(function (x) { return x.type === 'o2m'; });
+                _loop_2 = function (i) {
+                    var o2mFieldInfo = o2mFieldInfos[i];
+                    var relation = relations.find(function (x) { return x.oneCollection === table && x.oneField === o2mFieldInfo.field; });
+                    if (!relation) {
+                        return "continue";
+                    }
+                    var o2mFieldData = dataset[relation.manyCollection];
+                    if (!o2mFieldData) {
+                        return "continue";
+                    }
+                    dataset[relation.manyCollection + "___NODE"] = o2mFieldData
+                        .map(function (vId) { return createNodeId(relation.manyCollection + "-" + vId); });
+                    delete dataset[relation.manyCollection];
+                };
+                for (i = 0; i < o2mFieldInfos.length; i++) {
+                    _loop_2(i);
+                }
+                dataId = createNodeId(table + "-" + dataset['id']);
+                // Create the node
+                createNode({
+                    directus: __assign({}, dataset),
+                    id: dataId,
+                    parent: null,
+                    children: [],
+                    internal: {
+                        type: table,
+                        content: JSON.stringify(dataset),
+                        contentDigest: createContentDigest(dataset)
+                    }
+                });
+                return [2 /*return*/];
+        }
+    });
+}); };
+var createAllNodes = function (args) { return __awaiter(void 0, void 0, void 0, function () {
+    var directus, table, dataset, relations, fields, fileInfos, gatsbyNodesArgs, collectionFieldInfos, index, element;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0:
+                directus = args.directus, table = args.table, dataset = args.dataset, relations = args.relations, fields = args.fields, fileInfos = args.fileInfos, gatsbyNodesArgs = args.gatsbyNodesArgs;
+                collectionFieldInfos = fields.filter(function (x) { return x.collection == table; });
                 if (!(dataset instanceof Array)) return [3 /*break*/, 5];
                 index = 0;
                 _a.label = 1;
             case 1:
                 if (!(index < dataset.length)) return [3 /*break*/, 4];
                 element = dataset[index];
-                return [4 /*yield*/, createNodesByObject(table, element, oneCollectionRelation, manyCollectionRelation, gatsbyNodesArgs)];
+                return [4 /*yield*/, createNodesByObject(directus, table, element, relations, collectionFieldInfos, fileInfos, gatsbyNodesArgs)];
             case 2:
                 _a.sent();
                 _a.label = 3;
@@ -111,7 +176,7 @@ var createAllNodes = function (table, dataset, relations, gatsbyNodesArgs) { ret
                 index++;
                 return [3 /*break*/, 1];
             case 4: return [3 /*break*/, 7];
-            case 5: return [4 /*yield*/, createNodesByObject(table, dataset, oneCollectionRelation, manyCollectionRelation, gatsbyNodesArgs)];
+            case 5: return [4 /*yield*/, createNodesByObject(directus, table, dataset, relations, collectionFieldInfos, fileInfos, gatsbyNodesArgs)];
             case 6:
                 _a.sent();
                 _a.label = 7;
