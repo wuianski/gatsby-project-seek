@@ -111,19 +111,20 @@ var DirectusService = /** @class */ (function () {
                 switch (_a.label) {
                     case 0:
                         _a.trys.push([0, 2, , 3]);
-                        reporter.info("Start fetching directus relation data...");
+                        reporter.info('Start fetching directus relation data...');
                         return [4 /*yield*/, this._api.relations.read()];
                     case 1:
                         relations = _a.sent();
-                        reporter.success("Directus relations fetched.");
+                        reporter.success('Directus relations fetched.');
                         return [2 /*return*/, relations.data.map(function (x) {
+                                var _a, _b, _c, _d, _e, _f;
                                 var relation = {
-                                    oneCollection: x.one_collection,
-                                    oneField: x.one_field,
-                                    onePrimary: x.one_primary,
-                                    manyCollection: x.many_collection,
-                                    manyField: x.many_field,
-                                    manyPrimary: x.many_primary,
+                                    oneCollection: (_a = x.one_collection) !== null && _a !== void 0 ? _a : '',
+                                    oneField: (_b = x.one_field) !== null && _b !== void 0 ? _b : '',
+                                    onePrimary: (_c = x.one_primary) !== null && _c !== void 0 ? _c : '',
+                                    manyCollection: (_d = x.many_collection) !== null && _d !== void 0 ? _d : '',
+                                    manyField: (_e = x.many_field) !== null && _e !== void 0 ? _e : '',
+                                    manyPrimary: (_f = x.many_primary) !== null && _f !== void 0 ? _f : '',
                                 };
                                 return relation;
                             })];
@@ -143,18 +144,18 @@ var DirectusService = /** @class */ (function () {
                 switch (_a.label) {
                     case 0:
                         _a.trys.push([0, 2, , 3]);
-                        reporter.info("Start fetching directus field data...");
+                        reporter.info('Start fetching directus field data...');
                         return [4 /*yield*/, this._api.fields.read()];
                     case 1:
                         fields = _a.sent();
-                        reporter.success("Directus fields fetched.");
+                        reporter.success('Directus fields fetched.');
                         return [2 /*return*/, fields.data.map(function (x) {
-                                var _a;
+                                var _a, _b, _c, _d, _e;
                                 return ({
-                                    collection: x.collection,
-                                    field: x.field,
-                                    type: x.type,
-                                    interface: (_a = x.meta) === null || _a === void 0 ? void 0 : _a.interface
+                                    collection: (_a = x.collection) !== null && _a !== void 0 ? _a : '',
+                                    field: (_b = x.field) !== null && _b !== void 0 ? _b : '',
+                                    type: (_c = x.type) !== null && _c !== void 0 ? _c : '',
+                                    interface: (_e = (_d = x.meta) === null || _d === void 0 ? void 0 : _d.interface) !== null && _e !== void 0 ? _e : '',
                                 });
                             })];
                     case 2:
@@ -173,19 +174,20 @@ var DirectusService = /** @class */ (function () {
                 switch (_a.label) {
                     case 0:
                         _a.trys.push([0, 2, , 3]);
-                        reporter.info("Start fetching directus file data...");
+                        reporter.info('Start fetching directus file data...');
                         return [4 /*yield*/, this._api.files.read()];
                     case 1:
                         files = _a.sent();
-                        reporter.success("Directus files fetched.");
+                        console.log(files);
+                        reporter.success('Directus files fetched.');
                         return [2 /*return*/, files.data.map(function (x) {
                                 var _a, _b, _c, _d, _e;
                                 return ({
-                                    fileId: (_a = x.id) !== null && _a !== void 0 ? _a : "",
-                                    filename_download: (_b = x.filename_download) !== null && _b !== void 0 ? _b : "",
-                                    title: (_c = x.title) !== null && _c !== void 0 ? _c : "",
-                                    description: (_d = x.description) !== null && _d !== void 0 ? _d : "",
-                                    tags: (_e = x.tags) !== null && _e !== void 0 ? _e : []
+                                    fileId: (_a = x.id) !== null && _a !== void 0 ? _a : '',
+                                    filename_download: (_b = x.filename_download) !== null && _b !== void 0 ? _b : '',
+                                    title: (_c = x.title) !== null && _c !== void 0 ? _c : '',
+                                    description: (_d = x.description) !== null && _d !== void 0 ? _d : '',
+                                    tags: (_e = x.tags) !== null && _e !== void 0 ? _e : [],
                                 });
                             })];
                     case 2:

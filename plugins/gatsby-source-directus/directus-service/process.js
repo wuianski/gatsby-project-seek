@@ -49,8 +49,8 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.createAllNodes = void 0;
 var gatsby_source_filesystem_1 = require("gatsby-source-filesystem");
-var createNodesByObject = function (directus, table, dataset, relations, fieldInfos, fileInfos, gatsbyNodesArgs) { return __awaiter(void 0, void 0, void 0, function () {
-    var actions, store, cache, createNodeId, createContentDigest, reporter, createNode, fileFields, _loop_1, i, manyFileFields, o2mFieldInfos, _loop_2, i, dataId;
+var createNodesByObject = function (directus, table, dataset, relations, fieldInfos, fileInfos, additionalCollections, gatsbyNodesArgs) { return __awaiter(void 0, void 0, void 0, function () {
+    var actions, store, cache, createNodeId, createContentDigest, reporter, createNode, fileFields, _loop_1, i, manyFileFields, projectsDirectusFiles2, i, element, arrayFileId, idSet, _loop_2, k, o2mFieldInfos, _loop_3, i, dataId;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
@@ -120,8 +120,88 @@ var createNodesByObject = function (directus, table, dataset, relations, fieldIn
                 return [3 /*break*/, 1];
             case 4:
                 manyFileFields = fieldInfos.filter(function (x) { return x.type === 'files'; });
+                projectsDirectusFiles2 = additionalCollections['projects_directus_files_2'];
+                i = 0;
+                _a.label = 5;
+            case 5:
+                if (!(i < manyFileFields.length)) return [3 /*break*/, 11];
+                element = manyFileFields[i];
+                arrayFileId = dataset[element.field];
+                if (!arrayFileId || arrayFileId.length === 0) {
+                    return [3 /*break*/, 10];
+                }
+                idSet = [];
+                _loop_2 = function (k) {
+                    var o2mId, pdf2, fileId, fileInfo, url, fileNode, error_2;
+                    return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0:
+                                o2mId = arrayFileId[k];
+                                pdf2 = projectsDirectusFiles2.find(function (x) { return x.id == o2mId; });
+                                if (!pdf2) {
+                                    return [2 /*return*/, "continue"];
+                                }
+                                fileId = pdf2['directus_files_id'];
+                                fileInfo = fileInfos.find(function (f) { return f.fileId == fileId; });
+                                if (!fileInfo) {
+                                    return [2 /*return*/, "continue"];
+                                }
+                                url = directus.getAssetUrl(fileId);
+                                _a.label = 1;
+                            case 1:
+                                _a.trys.push([1, 3, , 4]);
+                                return [4 /*yield*/, gatsby_source_filesystem_1.createRemoteFileNode({
+                                        url: url,
+                                        store: store,
+                                        cache: cache,
+                                        createNode: createNode,
+                                        createNodeId: createNodeId,
+                                        reporter: reporter,
+                                        name: fileInfo.fileId
+                                    })];
+                            case 2:
+                                fileNode = _a.sent();
+                                createNode({
+                                    directus: __assign({}, fileInfo),
+                                    id: createNodeId("fileInfo-" + fileInfo.fileId),
+                                    parent: fileNode.id,
+                                    children: [],
+                                    internal: {
+                                        type: 'fileInfo',
+                                        contentDigest: createContentDigest(fileInfo)
+                                    }
+                                });
+                                idSet.push(fileNode.id);
+                                return [3 /*break*/, 4];
+                            case 3:
+                                error_2 = _a.sent();
+                                reporter.error(error_2);
+                                return [3 /*break*/, 4];
+                            case 4: return [2 /*return*/];
+                        }
+                    });
+                };
+                k = 0;
+                _a.label = 6;
+            case 6:
+                if (!(k < arrayFileId.length)) return [3 /*break*/, 9];
+                return [5 /*yield**/, _loop_2(k)];
+            case 7:
+                _a.sent();
+                _a.label = 8;
+            case 8:
+                k++;
+                return [3 /*break*/, 6];
+            case 9:
+                dataset[element.field + "___NODE"] = idSet;
+                delete dataset[element.field];
+                _a.label = 10;
+            case 10:
+                i++;
+                return [3 /*break*/, 5];
+            case 11:
                 o2mFieldInfos = fieldInfos.filter(function (x) { return x.type === 'o2m'; });
-                _loop_2 = function (i) {
+                _loop_3 = function (i) {
                     var o2mFieldInfo = o2mFieldInfos[i];
                     var relation = relations.find(function (x) { return x.oneCollection === table && x.oneField === o2mFieldInfo.field; });
                     if (!relation) {
@@ -136,7 +216,7 @@ var createNodesByObject = function (directus, table, dataset, relations, fieldIn
                     delete dataset[relation.manyCollection];
                 };
                 for (i = 0; i < o2mFieldInfos.length; i++) {
-                    _loop_2(i);
+                    _loop_3(i);
                 }
                 dataId = createNodeId(table + "-" + dataset['id']);
                 // Create the node
@@ -156,11 +236,11 @@ var createNodesByObject = function (directus, table, dataset, relations, fieldIn
     });
 }); };
 var createAllNodes = function (args) { return __awaiter(void 0, void 0, void 0, function () {
-    var directus, table, dataset, relations, fields, fileInfos, gatsbyNodesArgs, collectionFieldInfos, index, element;
+    var directus, table, dataset, relations, fields, fileInfos, additionalCollections, gatsbyNodesArgs, collectionFieldInfos, index, element;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
-                directus = args.directus, table = args.table, dataset = args.dataset, relations = args.relations, fields = args.fields, fileInfos = args.fileInfos, gatsbyNodesArgs = args.gatsbyNodesArgs;
+                directus = args.directus, table = args.table, dataset = args.dataset, relations = args.relations, fields = args.fields, fileInfos = args.fileInfos, additionalCollections = args.additionalCollections, gatsbyNodesArgs = args.gatsbyNodesArgs;
                 collectionFieldInfos = fields.filter(function (x) { return x.collection == table; });
                 if (!(dataset instanceof Array)) return [3 /*break*/, 5];
                 index = 0;
@@ -168,7 +248,7 @@ var createAllNodes = function (args) { return __awaiter(void 0, void 0, void 0, 
             case 1:
                 if (!(index < dataset.length)) return [3 /*break*/, 4];
                 element = dataset[index];
-                return [4 /*yield*/, createNodesByObject(directus, table, element, relations, collectionFieldInfos, fileInfos, gatsbyNodesArgs)];
+                return [4 /*yield*/, createNodesByObject(directus, table, element, relations, collectionFieldInfos, fileInfos, additionalCollections, gatsbyNodesArgs)];
             case 2:
                 _a.sent();
                 _a.label = 3;
@@ -176,7 +256,7 @@ var createAllNodes = function (args) { return __awaiter(void 0, void 0, void 0, 
                 index++;
                 return [3 /*break*/, 1];
             case 4: return [3 /*break*/, 7];
-            case 5: return [4 /*yield*/, createNodesByObject(directus, table, dataset, relations, collectionFieldInfos, fileInfos, gatsbyNodesArgs)];
+            case 5: return [4 /*yield*/, createNodesByObject(directus, table, dataset, relations, collectionFieldInfos, fileInfos, additionalCollections, gatsbyNodesArgs)];
             case 6:
                 _a.sent();
                 _a.label = 7;

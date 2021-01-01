@@ -7,7 +7,7 @@ export const sourceNodes = async (
     pluginOptions: gatsby.PluginOptions,
 ) => {
     const { reporter } = gatsbyArgs;
-    const { url, email, password, tables } = pluginOptions;
+    const { url, email, password, tables, additionalTables } = pluginOptions;
 
     const directus = new DirectusService({
         url: url as string,
@@ -26,6 +26,15 @@ export const sourceNodes = async (
         let fields = await directus.getFields(reporter);
         let fileInfos = await directus.getFileInfos(reporter);
 
+        let additionalCollections = {};
+        if (additionalTables && additionalTables instanceof Array) {
+            for (let index = 0; index < additionalTables.length; index++) {
+                const table = additionalTables[index];
+                let dataset = await directus.getItems(table);
+                additionalCollections[table] = dataset.data;
+            }
+        }
+
         if (tables && tables instanceof Array) {
             for (let index = 0; index < tables.length; index++) {
                 const table = tables[index];
@@ -38,6 +47,7 @@ export const sourceNodes = async (
                         relations: relations,
                         fields: fields,
                         fileInfos: fileInfos,
+                        additionalCollections: additionalCollections,
                         gatsbyNodesArgs: gatsbyArgs
                     });
                 } catch (error) {
