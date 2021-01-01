@@ -12,15 +12,21 @@ import Layout from "../components/layout"
 
 export const query = graphql`
   query {
-    allPages(filter: { sort: { ne: 5 } }, sort: { order: ASC, fields: sort }) {
+    allPages(
+      filter: { directus: { sort: { ne: 5 } } } 
+      sort: { order: ASC, fields: directus___sort }
+    ) {
       totalCount
       edges {
         node {
-          id
-          slug
-          title_en_us
-          title_zh_hant_tw
-          tag_name
+          directus {
+            id
+            slug
+            title_en_us
+            title_zh_hant_tw
+            tag_name
+            sort
+          }
         }
       }
     }
@@ -34,9 +40,9 @@ export default function Home({ data }) {
       <div>
         <h4>{data.allPages.totalCount} Pages</h4>
         {data.allPages.edges.map(({ node }) => (
-          <div key={node.id}>
+          <div key={node.directus.id}>
             <Link
-              to={node.slug}
+              to={node.directus.slug}
               css={css`
                 color: inherit;
               `}
@@ -46,16 +52,16 @@ export default function Home({ data }) {
                   margin-bottom: ${rhythm(1 / 4)};
                 `}
               >
-                {node.title_zh_hant_tw}{" "}
+                {node.directus.title_zh_hant_tw}{" "}
                 <span
                   css={css`
                     color: #bbb;
                   `}
                 >
-                  — {node.title_en_us}
+                  — {node.directus.title_en_us}
                 </span>
               </h3>
-              <p>{node.tag_name}</p>
+              <p>{node.directus.tag_name}</p>
             </Link>
           </div>
         ))}

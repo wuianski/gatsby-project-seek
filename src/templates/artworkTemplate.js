@@ -5,6 +5,7 @@
 import { graphql } from "gatsby"
 import React from "react"
 import Layout from "../components/layout"
+import ArtworksList from "../components/artworksList"
 
 // A static query, the results from which
 // will be passed to our component. Uses the 'id' property
@@ -28,10 +29,11 @@ export const query = graphql`
 const PageIntro = ({ data: { pages: contents } }) => {
   return (
     <Layout>
-      <p>{contents.directus.title_zh_hant_tw}</p>
-      <p>{contents.directus.title_en_us}</p>
       <p>{contents.directus.content_zh_hant_tw}</p>
       <p>{contents.directus.content_en_us}</p>
+      <p>{contents.directus.title_zh_hant_tw}</p>
+      <p>{contents.directus.title_en_us}</p>
+      <ArtworksList />
     </Layout>
   )
 }
