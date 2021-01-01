@@ -178,7 +178,6 @@ var DirectusService = /** @class */ (function () {
                         return [4 /*yield*/, this._api.files.read()];
                     case 1:
                         files = _a.sent();
-                        console.log(files);
                         reporter.success('Directus files fetched.');
                         return [2 /*return*/, files.data.map(function (x) {
                                 var _a, _b, _c, _d, _e;
