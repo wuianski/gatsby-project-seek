@@ -1,5 +1,5 @@
 /**
- * Programmatically create pages from data
+ * Programmatically create projects' pages from query data.
  */
 
 const path = require("path")
@@ -7,16 +7,44 @@ const path = require("path")
 module.exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
 
-  // Sample query for all pages which kind equal "1".
-  const response1 = await graphql(`
+  // Sample query for all projects.
+  const response = await graphql(`
     query {
-      allPages(filter: { directus: { kind: { eq: "1" } } }) {
+      qprojectsQuery: allProjects(
+        filter: { directus: { pages_id: { eq: 1 } } }
+      ) {
         edges {
           node {
             directus {
               id
-              slug
-              kind
+              year
+              title_en_us
+            }
+          }
+        }
+      }
+      tprojectsQuery: allProjects(
+        filter: { directus: { pages_id: { eq: 5 } } }
+      ) {
+        edges {
+          node {
+            directus {
+              id
+              year
+              title_en_us
+            }
+          }
+        }
+      }
+      eprojectsQuery: allProjects(
+        filter: { directus: { pages_id: { eq: 2 } } }
+      ) {
+        edges {
+          node {
+            directus {
+              id
+              year
+              title_en_us
             }
           }
         }
@@ -24,56 +52,39 @@ module.exports.createPages = async ({ graphql, actions }) => {
     }
   `)
 
-  // Destructure response1 to get page IDs
+  // Destructure response to get project IDs
   const {
     data: {
-      allPages: { edges: pages1 = [] },
+      qprojectsQuery: { edges: projectQs = [] },
+      tprojectsQuery: { edges: projectTs = [] },
+      eprojectsQuery: { edges: projectEs = [] },
     },
-  } = response1
+  } = response
 
-  // Build a new page for each page by using projectTemplate, passing the id
+  // Build a new page for each project by using its own projectTemplate, passing the id
   // via `context` for the static query
-  pages1.forEach(({ node: page1 }) => {
+  projectQs.forEach(({ node: projectQ }) => {
     createPage({
-      path: `${page1.directus.slug}`,
-      component: path.resolve("./src/templates/projectTemplate.js"),
-      context: page1.directus,
+      path: `/the-question/${projectQ.directus.year}`,
+      component: path.resolve("./src/templates/projectQTemplate.js"),
+      context: projectQ.directus,
     })
   })
 
-  
-  // Sample query for all pages which kind equal "2".
-  const response2 = await graphql(`
-    query {
-      allPages(filter: { directus: { kind: { eq: "2" } } }) {
-        edges {
-          node {
-            directus {
-              id
-              slug
-              kind
-            }
-          }
-        }
-      }
-    }
-  `)
-
-  // Destructure response2 to get page IDs
-  const {
-    data: {
-      allPages: { edges: pages2 = [] },
-    },
-  } = response2
-
-  // Build a new page for each page by using artworkTemplate, passing the id
-  // via `context` for the static query
-  pages2.forEach(({ node: page2 }) => {
+  projectTs.forEach(({ node: projectT }) => {
     createPage({
-      path: `${page2.directus.slug}`,
-      component: path.resolve("./src/templates/artworkTemplate.js"),
-      context: page2.directus,
-
+      path: `/tcaa/${projectT.directus.year}`,
+      component: path.resolve("./src/templates/projectTTemplate.js"),
+      context: projectT.directus,
     })
   })
+
+  projectEs.forEach(({ node: projectE }) => {
+    createPage({
+      path: `/extension/${projectE.directus.year}`,
+      component: path.resolve("./src/templates/projectETemplate.js"),
+      context: projectE.directus,
+    })
+  })
+
 }
