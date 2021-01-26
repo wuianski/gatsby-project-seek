@@ -137,14 +137,15 @@ const createNodesByObject = async (directus: DirectusService, table: string, dat
             continue;
         }
 
-        let o2mFieldData = dataset[relation.manyCollection] as Array<any>;
+        let o2mFieldData = dataset[o2mFieldInfo.field] as Array<any>;
         if (!o2mFieldData) {
             continue;
         }
 
-        dataset[`${relation.manyCollection}___NODE`] = o2mFieldData
+        dataset[`${o2mFieldInfo.field}___NODE`] = o2mFieldData
             .map(vId => createNodeId(`${relation.manyCollection}-${vId}`));
 
+        delete dataset[o2mFieldInfo.field];
         delete dataset[relation.manyCollection];
     }
 

@@ -207,12 +207,13 @@ var createNodesByObject = function (directus, table, dataset, relations, fieldIn
                     if (!relation) {
                         return "continue";
                     }
-                    var o2mFieldData = dataset[relation.manyCollection];
+                    var o2mFieldData = dataset[o2mFieldInfo.field];
                     if (!o2mFieldData) {
                         return "continue";
                     }
-                    dataset[relation.manyCollection + "___NODE"] = o2mFieldData
+                    dataset[o2mFieldInfo.field + "___NODE"] = o2mFieldData
                         .map(function (vId) { return createNodeId(relation.manyCollection + "-" + vId); });
+                    delete dataset[o2mFieldInfo.field];
                     delete dataset[relation.manyCollection];
                 };
                 for (i = 0; i < o2mFieldInfos.length; i++) {

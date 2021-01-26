@@ -32,6 +32,7 @@ export const sourceNodes = async (
                 const table = additionalTables[index];
                 let dataset = await directus.getItems(table);
                 additionalCollections[table] = dataset.data;
+                
             }
         }
 
