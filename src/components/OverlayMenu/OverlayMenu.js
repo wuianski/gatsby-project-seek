@@ -29,6 +29,17 @@ const OverlayMenu = ({ menuOpen, callback }) => {
             </li>
           ))}
         </ul>
+        <div className="overlayMenu">
+          <Link to="/about">
+            <div>About</div>
+          </Link>
+          <Link to="/hong-x-panasonic">
+            <div>HONG X PANASONIC</div>
+          </Link>
+          <Link to="/press">
+            <div>Press</div>
+          </Link>
+        </div>
         <div
           className="closeButton"
           onClick={callback}

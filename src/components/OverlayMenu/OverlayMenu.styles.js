@@ -46,6 +46,7 @@ export const Overlay = styled.div`
         color: #000;
         transition: all 0.3s ease;
         text-decoration: none;
+        text-transform: uppercase;
         :hover {
           color: #ee2562;
         }

@@ -19,6 +19,13 @@ module.exports.createPages = async ({ graphql, actions }) => {
               id
               year
               title_en_us
+              reviews {
+                directus {
+                  id
+                  date(formatString: "")
+                  title
+                }
+              }
             }
           }
         }
@@ -84,6 +91,16 @@ module.exports.createPages = async ({ graphql, actions }) => {
       path: `/extension/${projectE.directus.year}`,
       component: path.resolve("./src/templates/projectETemplate.js"),
       context: projectE.directus,
+    })
+  })
+
+  projectQs.forEach(({ node: projectQ }) => {
+    projectQ.directus.reviews.forEach(({ directus: reviewQ }) => {
+      createPage({
+        path: `/the-question/${projectQ.directus.year}/reviews/${reviewQ.date}`,
+        component: path.resolve("./src/templates/projectQTemplateReview.js"),
+        context: reviewQ,
+      })
     })
   })
 
