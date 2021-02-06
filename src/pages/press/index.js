@@ -10,6 +10,7 @@ import { graphql } from "gatsby"
 //import { rhythm } from "../utils/typography"
 //import Layout from "../../components/layout"
 import Layout from "../../components/Layout/Layout"
+import { Content } from "../../components/Layout/Content.styles"
 
 export const query = graphql`
   query {
@@ -32,9 +33,11 @@ export const query = graphql`
             }
             file_pdf {
               publicURL
+              name
             }
             file_zip {
               publicURL
+              name
             }
           }
         }
@@ -46,39 +49,41 @@ export const query = graphql`
 export default function Press({ data }) {
   return (
     <Layout>
-      <div>
-        {data.press.edges.map(({ node }) => (
-          <div key={node.directus.id}>
-            <p>
-              {node.directus.pages_id === 1 && <p>THE QUESTION</p>}
-              {node.directus.pages_id === 5 && <p>TUNG CHUNG ART AWARD</p>}
-            </p>
-            <p>{node.directus.year}</p>
-            <p>
-              {node.directus.pages_id === 1 && <p>問問題計畫</p>}
-              {node.directus.pages_id === 5 && <p>銅鐘藝術賞</p>}
-            </p>
-            <img
-              src={node.directus.cover.publicURL}
-              alt={node.directus.cover.name}
-            />
-            <a
-              href={node.directus.file_zip.publicURL}
-              target="_blank"
-              rel="noreferrer"
-            >
-              <p>Press Pachage</p>
-            </a>
-            <a
-              href={node.directus.file_pdf.publicURL}
-              target="_blank"
-              rel="noreferrer"
-            >
-              <p>Press Release</p>
-            </a>
-          </div>
-        ))}
-      </div>
+      <Content>
+        <div>
+          {data.press.edges.map(({ node }) => (
+            <div key={node.directus.id}>
+              <p>
+                {node.directus.pages_id === 1 && <p>THE QUESTION</p>}
+                {node.directus.pages_id === 5 && <p>TUNG CHUNG ART AWARD</p>}
+              </p>
+              <p>{node.directus.year}</p>
+              <p>
+                {node.directus.pages_id === 1 && <p>問問題計畫</p>}
+                {node.directus.pages_id === 5 && <p>銅鐘藝術賞</p>}
+              </p>
+              <img
+                src={node.directus.cover.publicURL}
+                alt={node.directus.cover.name}
+              />
+              <a
+                href={node.directus.file_zip.publicURL}
+                target="_blank"
+                rel="noreferrer"
+              >
+                <p>Press Pachage</p>
+              </a>
+              <a
+                href={node.directus.file_pdf.publicURL}
+                target="_blank"
+                rel="noreferrer"
+              >
+                <p>Press Release</p>
+              </a>
+            </div>
+          ))}
+        </div>
+      </Content>
     </Layout>
   )
 }

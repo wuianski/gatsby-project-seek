@@ -8,6 +8,10 @@ import React from "react"
 import Layout from "../components/Layout/Layout"
 import Video from "../components/video"
 import Img from "gatsby-image"
+import { Content } from "../components/Layout/Content.styles"
+import BackgroundImage from "gatsby-background-image"
+import { FullscreenImg } from "../components/Layout/FullscreenImg.styles"
+import ArrowDown from "../images/ArrowDown.png"
 
 // A static query, the results from which
 // will be passed to our component. Uses the 'id' property
@@ -20,6 +24,11 @@ export const query = graphql`
         cover {
           publicURL
           name
+          childImageSharp {
+            fluid(quality: 90, maxWidth: 1920) {
+              ...GatsbyImageSharpFluid_withWebp
+            }
+          }
         }
         year
         title_en_us
@@ -46,6 +55,22 @@ export const query = graphql`
         }
         artist_introduction_zh_hant_tw
         artist_introduction_en_us
+        events {
+          directus {
+            title_zh_hant_tw
+            title_en_us
+            image {
+              childImageSharp {
+                fluid(maxWidth: 800) {
+                  ...GatsbyImageSharpFluid
+                }
+              }
+            }
+            video_url
+            introduction_zh_hant_tw
+            introduction_en_us
+          }
+        }
         reviews {
           directus {
             id
@@ -82,6 +107,7 @@ const ProjectQ = props => {
     images,
     artist_introduction_zh_hant_tw,
     artist_introduction_en_us,
+    events,
     reviews,
   } = data.cat.directus || {}
 
@@ -96,62 +122,129 @@ const ProjectQ = props => {
   return (
     <Layout>
       {!data.cat && <p>No category data</p>}
-      <div>
-        <div>
-          <Img
-            fluid={childImageSharp.fluid}
-            key={childImageSharp.id}
+      <FullscreenImg>
+        <BackgroundImage
+          Tag="section"
+          className="bgSection"
+          fluid={cover.childImageSharp.fluid}
+          backgroundColor={`#040e18`}
+        >
+          <div className="blcCtr">
+            <p className="txtCtr">{year}</p>
+            <p className="txtCtr">{title_en_us}</p>
+            <p className="txtCtr">{artist_name_zh_hant_tw}</p>
+            <p className="txtCtr">{artist_name_en_us}</p>
+          </div>
+          <div className="arrowDown">
+            <img src={ArrowDown} alt="arrow-down" />
+          </div>
+        </BackgroundImage>
+      </FullscreenImg>
+      <Content>
+        <div className="summaryBlock">
+          <div
+            dangerouslySetInnerHTML={{ __html: summary_zh_hant_tw }}
+            className="summaryTW"
+          />
+          <div
+            dangerouslySetInnerHTML={{ __html: summary_en_us }}
+            className="summaryEN"
           />
         </div>
-        <div>
-          <button onClick={() => handlePrevious()}>Previous</button>
-          <button onClick={() => handleNext()}>Next</button>
+        <div className="contentBlock">
+          <div className="contentTW">{content_zh_hant_tw}</div>
+          <div className="contentEN">{content_en_us}</div>
         </div>
-      </div>
-
-      <img src={cover.publicURL} alt={cover.name} />
-      <p>{year}</p>
-      <p>{title_en_us}</p>
-      <p>{artist_name_zh_hant_tw}</p>
-      <p>{artist_name_en_us}</p>
-      <div dangerouslySetInnerHTML={{ __html: summary_zh_hant_tw }} />
-      <div dangerouslySetInnerHTML={{ __html: summary_en_us }} />
-      <p>{content_zh_hant_tw}</p>
-      <p>{content_en_us}</p>
-      <Video videoSrcURL={main_video_url} videoTitle={main_video_title_en_us} />
-      <p>{main_video_info}</p>
-      <p>{main_video_title_zh_hant_tw}</p>
-      <p>{main_video_title_en_us}</p>
-      <p>{main_video_description_zh_hant_tw}</p>
-      <p>{main_video_description_en_us}</p>
-      {images && (
-        <ul>
-          {images.map(image => (
-            <li key={image.id}>
-              <Img fluid={image.childImageSharp.fluid} />
-            </li>
-          ))}
-        </ul>
-      )}
-      <p>{artist_name_zh_hant_tw}</p>
-      <p>{artist_name_en_us}</p>
-      <p>{artist_introduction_zh_hant_tw}</p>
-      <p>{artist_introduction_en_us}</p>
-      {reviews && (
-        <ul>
-          {reviews.map(review => (
-            <li key={review.directus.id}>
-              <Link
-                to={`/the-question/${data.cat.directus.year}/reviews/${review.directus.date}`}
-              >
-                <div>{review.directus.date}</div>
-                <div>{review.directus.title}</div>
-                <div>{review.directus.from}</div>
-              </Link>
-            </li>
-          ))}
-        </ul>
-      )}
+        <div>
+          <Video
+            videoSrcURL={main_video_url}
+            videoTitle={main_video_title_en_us}
+          />
+        </div>
+        <div className="mainVidInfo">{main_video_info}</div>
+        <div className="titleBlock">
+          <div className="titleTW">{main_video_title_zh_hant_tw}</div>
+          <div className="titleEN">{main_video_title_en_us}</div>
+        </div>
+        <div className="textBlock">
+          <div className="textTW">{main_video_description_zh_hant_tw}</div>
+          <div className="textEN">{main_video_description_en_us}</div>
+        </div>
+        <div>
+          <div>
+            <Img fluid={childImageSharp.fluid} key={childImageSharp.id} />
+          </div>
+          <div>
+            <button onClick={() => handlePrevious()}>Previous</button>
+            <button onClick={() => handleNext()}>Next</button>
+          </div>
+        </div>
+        <div className="fr w80">
+          <div className="titleBlock fr">
+            <span className="titleTW">{artist_name_zh_hant_tw}</span>
+            <span className="titleTW">{artist_name_en_us}</span>
+          </div>
+          <div className="textBlock">
+            <div className="textTW">{artist_introduction_zh_hant_tw}</div>
+            <div className="textEN">{artist_introduction_en_us}</div>
+          </div>
+        </div>
+        {events && (
+          <div className="twoGrid55">
+            {events.map(event => (
+              <div key={event.directus.id}>
+                <div className="eventCover">
+                  {event.directus.video_url && (
+                    <Video
+                      videoSrcURL={event.directus.video_url}
+                      videoTitle={event.directus.title_en_us}
+                    />
+                  )}
+                  {event.directus.image && (
+                    <Img
+                      className="eventCoverImg"
+                      fluid={event.directus.image.childImageSharp.fluid}
+                    />
+                  )}
+                </div>
+                <div className="titleBlock">
+                  <div className="titleTW">
+                    {event.directus.title_zh_hant_tw}
+                  </div>
+                  <div className="titleEN">{event.directus.title_en_us}</div>
+                </div>
+                <div className="textBlock">
+                  <div className="textTW">
+                    {event.directus.introduction_zh_hant_tw}
+                  </div>
+                  <div className="textEN">
+                    {event.directus.introduction_en_us}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+        {reviews && (
+          <div>
+            {reviews.map(review => (
+              <div key={review.directus.id}>
+                <Link
+                  to={`/the-question/${data.cat.directus.year}/reviews/${review.directus.date}`}
+                >
+                  <div className="twoGrid37">
+                    <div className="reviewDate">{review.directus.date}</div>
+                    <div>
+                      <div className="reviewTW">{review.directus.title}</div>
+                      <div className="reviewEN">{review.directus.from}</div>
+                    </div>
+                  </div>
+                </Link>
+              </div>
+            ))}
+          </div>
+        )}
+      </Content>
     </Layout>
   )
 }

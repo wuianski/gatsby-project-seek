@@ -11,21 +11,7 @@ import { graphql } from "gatsby"
 //import Layout from "../../components/layout"
 import Layout from "../../components/Layout/Layout"
 import ArtworkCList from "../../components/artworkCList.js"
-
-// The component we'll render for a given page
-const PageEIntro = ({ data: { pages: contents } }) => {
-  return (
-    <Layout>
-      <p>{contents.directus.title_zh_hant_tw}</p>
-      <p>{contents.directus.title_en_us}</p>
-      <p>{contents.directus.content_zh_hant_tw}</p>
-      <p>{contents.directus.content_en_us}</p>
-      <ArtworkCList />
-    </Layout>
-  )
-}
-
-export default PageEIntro
+import { Content } from "../../components/Layout/Content.styles"
 
 export const query = graphql`
   query canopyQuery($eq: Int = 3) {
@@ -45,3 +31,20 @@ export const query = graphql`
     }
   }
 `
+
+// The component we'll render for a given page
+const PageEIntro = ({ data: { pages: contents } }) => {
+  return (
+    <Layout>
+      <Content>
+        <p>{contents.directus.title_zh_hant_tw}</p>
+        <p>{contents.directus.title_en_us}</p>
+        <p>{contents.directus.content_zh_hant_tw}</p>
+        <p>{contents.directus.content_en_us}</p>
+        <ArtworkCList />
+      </Content>
+    </Layout>
+  )
+}
+
+export default PageEIntro

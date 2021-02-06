@@ -4,6 +4,7 @@
 
 import React from "react"
 import { StaticQuery, Link, graphql } from "gatsby"
+import { ProjectList } from "./projectList.styles"
 
 export default function questionList() {
   return (
@@ -29,18 +30,25 @@ export default function questionList() {
         }
       `}
       render={data => (
-        <div>
-          {data.allProjects.edges.map(({ node }) => (
-            <div key={node.directus.id}>
-              <Link to={`/the-question/${node.directus.year}`}>
-                <div>{node.directus.title_en_us}</div>
-                <div>{node.directus.artist_name_zh_hant_tw}</div>
-                <div>{node.directus.artist_name_en_us}</div>
-                <div>{node.directus.year}</div>
-              </Link>
-            </div>
-          ))}
-        </div>
+        <ProjectList>
+          <div>
+            {data.allProjects.edges.map(({ node }) => (
+              <div key={node.directus.id} className="pList">
+                <Link
+                  to={`/the-question/${node.directus.year}`}
+                  className="pList_link"
+                >
+                  <div className="pList_year">{node.directus.year}</div>
+                  <div className="pList_title">{node.directus.title_en_us}</div>
+                  <div className="pList_aName">
+                    <div>{node.directus.artist_name_zh_hant_tw}</div>
+                    <div>{node.directus.artist_name_en_us}</div>
+                  </div>
+                </Link>
+              </div>
+            ))}
+          </div>
+        </ProjectList>
       )}
     />
   )

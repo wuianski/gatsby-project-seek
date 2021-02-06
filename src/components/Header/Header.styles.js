@@ -6,7 +6,8 @@ export const HeaderLogo = styled.div`
     display: block;
     max-width: 50px;
     left: 32px;
-    top: 38px;
+    top: 44px;
+    z-index: 999;
     cursor: pointer;
     transition: all 0.2s ease;
     :hover {

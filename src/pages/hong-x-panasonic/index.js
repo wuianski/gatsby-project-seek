@@ -10,6 +10,7 @@ import { graphql } from "gatsby"
 //import { rhythm } from "../utils/typography"
 //import Layout from "../../components/layout"
 import Layout from "../../components/Layout/Layout"
+import { Content } from "../../components/Layout/Content.styles"
 import ArtworkHList from "../../components/artworkHList.js"
 import Img from "gatsby-image"
 
@@ -56,27 +57,29 @@ const PageHIntro = props => {
     data.pages.directus || {}
   return (
     <Layout>
-      <p>{title_en_us}</p>
-      <img src={cover.publicURL} alt={cover.name} />
-      <Img fluid={cover.childImageSharp.fluid.src} />
-      <p>{content_zh_hant_tw}</p>
-      <p>{content_en_us}</p>
-      {equipment && (
-        <ul>
-          {equipment.map(myEquipment => (
-            <li key={myEquipment.directus.id}>
-              <p>{myEquipment.directus.name_zh_hant_tw}</p>
-              <p>{myEquipment.directus.name_en_us}</p>
-              <div
-                dangerouslySetInnerHTML={{
-                  __html: myEquipment.directus.detial,
-                }}
-              />
-            </li>
-          ))}
-        </ul>
-      )}
-      <ArtworkHList />
+      <Content>
+        <p>{title_en_us}</p>
+        <img src={cover.publicURL} alt={cover.name} />
+        <Img fluid={cover.childImageSharp.fluid.src} />
+        <p>{content_zh_hant_tw}</p>
+        <p>{content_en_us}</p>
+        {equipment && (
+          <ul>
+            {equipment.map(myEquipment => (
+              <li key={myEquipment.directus.id}>
+                <p>{myEquipment.directus.name_zh_hant_tw}</p>
+                <p>{myEquipment.directus.name_en_us}</p>
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html: myEquipment.directus.detial,
+                  }}
+                />
+              </li>
+            ))}
+          </ul>
+        )}
+        <ArtworkHList />
+      </Content>
     </Layout>
   )
 }

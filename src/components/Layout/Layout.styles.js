@@ -1,7 +1,7 @@
 import styled, { createGlobalStyle } from "styled-components"
 
 export const Primary = styled.main`
-  padding: 38px 0 0 200px;
+  padding: 0;
 `
 
 export const GlobalStyles = createGlobalStyle`
@@ -54,6 +54,8 @@ export const GlobalStyles = createGlobalStyle`
   a {
     background-color: transparent;
     -webkit-text-decoration-skip: objects;
+    text-shadow: none;
+    background-image: none;
   }
   a:active,
   a:hover {
@@ -237,6 +239,8 @@ export const GlobalStyles = createGlobalStyle`
   a {
     text-decoration: none;
     color: #000;
+    text-shadow: none;
+    background-image: none;
   }
   p {
     font-family: Arial, Helvetica, sans-serif;
