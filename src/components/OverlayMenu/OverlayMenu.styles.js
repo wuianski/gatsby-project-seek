@@ -1,14 +1,15 @@
 import styled from "styled-components"
 
 export const Overlay = styled.div`
-  width: 33.3%;
+  width: 33%;
   height: 100%;
   position: fixed;
-  opacity: ${props => (props.menuOpen ? "1" : "0")};
+  opacity: ${props => (props.menuOpen ? "0.9" : "0")};
   transform: ${props =>
     props.menuOpen ? "translateX(0%)" : "translateX(-100%)"};
   z-index: 100000;
   background: #fff;
+  top: 0px;
   left: 0px;
   padding: 0px;
   transition: all 0.3s ease;
@@ -26,19 +27,22 @@ export const Overlay = styled.div`
       max-width: 50px;
       position: absolute;
       left: 32px;
-      top: 38px;
+      top: 44px;
     }
     .overlayMenu {
-      width: 100%;
+      //width: 100%;
       text-align: left;
       list-style-type: none;
       padding-left: 32px;
       margin-left: 0px;
+      position: absolute;
+      left: 0px;
+      top: 30%;
       li {
         margin: 0 0 20px 0;
       }
       li.overlayActive {
-        color: #ee2562;
+        color: #e77832;
       }
       a {
         font-family: "Teko", Arial, Helvetica, sans-serif;
@@ -48,7 +52,7 @@ export const Overlay = styled.div`
         text-decoration: none;
         text-transform: uppercase;
         :hover {
-          color: #ee2562;
+          color: #e77832;
         }
       }
     }
@@ -56,14 +60,32 @@ export const Overlay = styled.div`
   .closeButton {
     position: absolute;
     right: 32px;
-    top: 50vh;
+    top: calc(50vh - 20px);
     width: 40px;
     height: 40px;
     cursor: pointer;
     transition: all 1s ease;
     outline: none;
     :hover {
-      transform: rotate(180deg);
+      transform: scale(1.2);
     }
+  }
+  .menuTitleBlock {
+    margin-bottom: 16px;
+  }
+  .menuTitleBlock2 {
+    margin-top: 36px;
+  }
+  .menuTitle {
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    line-height: 24px;
+  }
+  .menuTitle2 {
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    line-height: 52px;
   }
 `

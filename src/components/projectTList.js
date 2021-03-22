@@ -4,6 +4,7 @@
 
 import React from "react"
 import { StaticQuery, Link, graphql } from "gatsby"
+import { ProjectList } from "./projectList.styles"
 
 export default function tcaaList() {
   return (
@@ -18,6 +19,7 @@ export default function tcaaList() {
               node {
                 directus {
                   id
+                  title_zh_hant_tw
                   title_en_us
                   artist_name_zh_hant_tw
                   artist_name_en_us
@@ -29,18 +31,33 @@ export default function tcaaList() {
         }
       `}
       render={data => (
-        <div>
-          {data.allProjects.edges.map(({ node }) => (
-            <div key={node.directus.id}>
-              <Link to={`/tcaa/${node.directus.year}`}>
-                <div>{node.directus.title_en_us}</div>
-                <div>{node.directus.artist_name_zh_hant_tw}</div>
-                <div>{node.directus.artist_name_en_us}</div>
-                <div>{node.directus.year}</div>
-              </Link>
-            </div>
-          ))}
-        </div>
+        <ProjectList>
+          <div id="pTList">
+            {data.allProjects.edges.map(({ node }) => (
+              <div key={node.directus.id} className="pList">
+                <Link to={`/tcaa/${node.directus.year}`} className="pList_link">
+                  <div className="pList_year">{node.directus.year}</div>
+                  <div className="pList_title">
+                    <div className="pList_titleTW">
+                      {node.directus.title_zh_hant_tw}
+                    </div>
+                    <div className="pList_titleEN">
+                      {node.directus.title_en_us}
+                    </div>
+                  </div>
+                  <div className="pList_aName">
+                    <div className="pList_aNameTW">
+                      {node.directus.artist_name_zh_hant_tw}
+                    </div>
+                    <div className="pList_aNameEN">
+                      {node.directus.artist_name_en_us}
+                    </div>
+                  </div>
+                </Link>
+              </div>
+            ))}
+          </div>
+        </ProjectList>
       )}
     />
   )

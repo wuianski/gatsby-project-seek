@@ -16,30 +16,34 @@ const OverlayMenu = ({ menuOpen, callback }) => {
         <Link to="/">
           <img className="invertedLogo" src={InvertedLogo} alt="white-logo" />
         </Link>
-        <ul className="overlayMenu">
+
+        <div className="overlayMenu">
           {menu.nodes.map(item => (
-            <li key={item.directus.id}>
+            <div key={item.directus.id} className="menuTitleBlock">
               <Link
                 to={`/${item.directus.slug}`}
                 activeClassName="overlayActive"
               >
-                <div>{item.directus.menu_text_en_us}</div>
-                <div>{item.directus.menu_text_zh_hant_tw}</div>
+                <div className="menuTitle">{item.directus.menu_text_en_us}</div>
+                <div className="menuTitle">
+                  {item.directus.menu_text_zh_hant_tw}
+                </div>
               </Link>
-            </li>
+            </div>
           ))}
-        </ul>
-        <div className="overlayMenu">
-          <Link to="/about">
-            <div>About</div>
-          </Link>
-          <Link to="/hong-x-panasonic">
-            <div>HONG X PANASONIC</div>
-          </Link>
-          <Link to="/press">
-            <div>Press</div>
-          </Link>
+          <div className="menuTitleBlock2">
+            <Link to="/about">
+              <div className="menuTitle2">About</div>
+            </Link>
+            <Link to="/hong-x-panasonic">
+              <div className="menuTitle2">HONG X PANASONIC</div>
+            </Link>
+            <Link to="/press">
+              <div className="menuTitle2">Press</div>
+            </Link>
+          </div>
         </div>
+
         <div
           className="closeButton"
           onClick={callback}

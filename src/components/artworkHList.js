@@ -4,6 +4,7 @@
 
 import React from "react"
 import { StaticQuery, graphql } from "gatsby"
+import { ArtworkList } from "./artworkList.styles"
 
 export default function hongList() {
   return (
@@ -18,6 +19,7 @@ export default function hongList() {
               node {
                 directus {
                   id
+                  title_zh_hant_tw
                   title_en_us
                   artist_name_zh_hant_tw
                   artist_name_en_us
@@ -29,16 +31,33 @@ export default function hongList() {
         }
       `}
       render={data => (
-        <div>
-          {data.allArtworksList.edges.map(({ node }) => (
-            <div key={node.directus.id}>
-              <div>{node.directus.title_en_us}</div>
-              <div>{node.directus.artist_name_zh_hant_tw}</div>
-              <div>{node.directus.artist_name_en_us}</div>
-              <div>{node.directus.year}</div>
-            </div>
-          ))}
-        </div>
+        <ArtworkList>
+          <div id="aHList">
+            {data.allArtworksList.edges.map(({ node }) => (
+              <div key={node.directus.id} className="aList">
+                <div className="aList_title">
+                  <div className="aList_titleTW">
+                    {node.directus.title_zh_hant_tw}
+                  </div>
+                  <div className="aList_titleEN">
+                    {node.directus.title_en_us}
+                  </div>
+                </div>
+                <div className="aList_yearBlk">
+                  <div className="aList_year">{node.directus.year}</div>
+                </div>
+                <div className="aList_aName">
+                  <div className="aList_aNameTW">
+                    {node.directus.artist_name_zh_hant_tw}
+                  </div>
+                  <div className="aList_aNameEN">
+                    {node.directus.artist_name_en_us}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </ArtworkList>
       )}
     />
   )

@@ -13,6 +13,9 @@ import Layout from "../../components/Layout/Layout"
 import { Content } from "../../components/Layout/Content.styles"
 import ArtworkHList from "../../components/artworkHList.js"
 import Img from "gatsby-image"
+import DownloadBtn from "../../images/download.png"
+import ArrowDownBlk from "../../images/ArrowDownBlk.png"
+import scrollTo from "gatsby-plugin-smoothscroll"
 
 export const query = graphql`
   query hongQuery($eq: Int = 4) {
@@ -21,10 +24,9 @@ export const query = graphql`
         title_en_us
         cover {
           publicURL
-          name
           childImageSharp {
-            fluid {
-              src
+            fluid(quality: 90, maxWidth: 1920) {
+              ...GatsbyImageSharpFluid_withWebp
             }
           }
         }
@@ -58,26 +60,68 @@ const PageHIntro = props => {
   return (
     <Layout>
       <Content>
-        <p>{title_en_us}</p>
-        <img src={cover.publicURL} alt={cover.name} />
-        <Img fluid={cover.childImageSharp.fluid.src} />
-        <p>{content_zh_hant_tw}</p>
-        <p>{content_en_us}</p>
-        {equipment && (
-          <ul>
-            {equipment.map(myEquipment => (
-              <li key={myEquipment.directus.id}>
-                <p>{myEquipment.directus.name_zh_hant_tw}</p>
-                <p>{myEquipment.directus.name_en_us}</p>
-                <div
-                  dangerouslySetInnerHTML={{
-                    __html: myEquipment.directus.detial,
-                  }}
+        <div className="pageTitle">
+          <p>{title_en_us}</p>
+        </div>
+        <div className="mt20">
+          <Img fluid={cover.childImageSharp.fluid} />
+        </div>
+        <div className="twoGrid73 mt60">
+          <div>
+            <div className="textTW">{content_zh_hant_tw}</div>
+            <div className="textEN">{content_en_us}</div>
+          </div>
+          <div>
+            <div className="fr">
+              <span className="downloadBtnText">申請辦法</span>
+              <span className="downloadBtn" role="button" tabIndex="0">
+                <img
+                  className="downloadBtnImg"
+                  src={DownloadBtn}
+                  alt="download button"
                 />
-              </li>
-            ))}
-          </ul>
-        )}
+              </span>
+            </div>
+          </div>
+        </div>
+        <div className="w70">
+          {equipment && (
+            <div>
+              <div className="twoGrid55">
+                {equipment.map(myEquipment => (
+                  <div key={myEquipment.directus.id}>
+                    <div className="equipName">
+                      {myEquipment.directus.name_zh_hant_tw}
+                    </div>
+                    <div className="equipName">
+                      {myEquipment.directus.name_en_us}
+                    </div>
+                    <div
+                      className="equipDetailText mt20"
+                      dangerouslySetInnerHTML={{
+                        __html: myEquipment.directus.detial,
+                      }}
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
+        <div
+          className="mt80"
+          onClick={() => scrollTo("#aHList")}
+          onKeyDown={() => scrollTo("#aHList")}
+          role="button"
+          tabIndex="0"
+        >
+          <img
+            className="arrowDown"
+            src={ArrowDownBlk}
+            alt="arrow-down"
+            height="37px"
+          />
+        </div>
         <ArtworkHList />
       </Content>
     </Layout>

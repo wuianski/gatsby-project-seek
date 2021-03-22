@@ -4,6 +4,8 @@ import Hamburger from "../Hamburger/Hamburger"
 import OverlayMenu from "../OverlayMenu/OverlayMenu"
 //import Footer from "../Footer/Footer"
 import { GlobalStyles, Primary } from "./Layout.styles"
+//import "./bt.styles.js"
+//import "bootstrap/dist/css/bootstrap.min.css"
 
 const Layout = ({ children }) => {
   const [menuOpen, setMenuOpen] = useState(false)

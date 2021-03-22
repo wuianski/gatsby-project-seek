@@ -11,8 +11,10 @@ import Layout from "../../components/Layout/Layout"
 import ProjectQList from "../../components/projectQList.js"
 import { FullscreenImg } from "../../components/Layout/FullscreenImg.styles"
 import BackgroundImage from "gatsby-background-image"
-import ArrowDown from "../../images/ArrowDown.png"
+import ArrowDown from "../../images/ArrowDown.svg"
+import ArrowUp from "../../images/ArrowUp.svg"
 //import Footer from "../Footer/Footer"
+import scrollTo from "gatsby-plugin-smoothscroll"
 
 export const query = graphql`
   query questionQuery($eq: Int = 1) {
@@ -52,22 +54,41 @@ const PageQIntro = ({ data: { pages: contents } }) => {
             className="bgSection"
             fluid={contents.directus.cover.childImageSharp.fluid}
             backgroundColor={`#040e18`}
+            id="bgQ"
           >
             <div className="blcCtr">
-              <p className="txtCtr">{contents.directus.title_en_us}</p>
-              <p className="txtCtr">{contents.directus.title_zh_hant_tw}</p>
+              <p className="txtCtr fullPName">
+                {contents.directus.title_en_us}
+              </p>
+              <p className="txtCtr fullPName">
+                {contents.directus.title_zh_hant_tw}
+              </p>
               <div className="pageIntro">
                 <p>{contents.directus.content_zh_hant_tw}</p>
                 <p>{contents.directus.content_en_us}</p>
               </div>
             </div>
-            <div className="arrowDown">
+            <div
+              className="arrowDown"
+              onClick={() => scrollTo("#pQList")}
+              onKeyDown={() => scrollTo("#pQList")}
+              role="button"
+              tabIndex="0"
+            >
               <img src={ArrowDown} alt="arrow-down" />
             </div>
           </BackgroundImage>
+          <ProjectQList />
+          <div
+            className="arrowUp"
+            onClick={() => scrollTo("#bgQ")}
+            onKeyDown={() => scrollTo("#bgQ")}
+            role="button"
+            tabIndex="0"
+          >
+            <img src={ArrowUp} alt="arrow-up" />
+          </div>
         </FullscreenImg>
-
-        <ProjectQList />
       </Layout>
     </div>
   )

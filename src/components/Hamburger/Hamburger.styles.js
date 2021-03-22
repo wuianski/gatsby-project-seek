@@ -6,7 +6,7 @@ export const HamburgerButton = styled.div`
     display: block;
     z-index: 100000;
     left: 30px;
-    top: 50vh;
+    top: calc(50vh - 20px);
     width: 40px;
     height: 40px;
     cursor: pointer;

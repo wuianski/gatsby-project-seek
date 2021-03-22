@@ -32,8 +32,27 @@ export const ProjectList = styled.div`
       width: 65%;
       display: inline-block;
       text-align: center;
+      vertical-align: middle;
+    }
+    .pList_titleQEN {
       font-size: 20px;
-      letter-spacing: 6px;
+      font-weight: 600;
+      letter-spacing: 0.3rem;
+      line-height: 20px;
+      text-transform: uppercase;
+    }
+    .pList_titleTW {
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: 0.2rem;
+      line-height: 30px;
+    }
+    .pList_titleEN {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.2rem;
+      line-height: 20px;
+      text-transform: uppercase;
     }
     .pList_aName {
       width: 35%;
@@ -44,6 +63,21 @@ export const ProjectList = styled.div`
       border-left: 1px #e77832 solid;
       font-size: 18px;
       letter-spacing: 2px;
+    }
+    .pList_aNameTW {
+      text-align: center;
+      line-height: 30px; //26.64px
+      font-size: 18px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+    }
+    .pList_aNameEN {
+      text-align: center;
+      line-height: 20px; //17.76px
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
     }
   }
 `
