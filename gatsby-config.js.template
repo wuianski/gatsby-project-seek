@@ -68,5 +68,8 @@ module.exports = {
     },
     "gatsby-transformer-javascript-frontmatter",
     `gatsby-plugin-styled-components`,
+    `gatsby-plugin-sass`,
+    `gatsby-plugin-anchor-links`,
+    `gatsby-plugin-smoothscroll`,
   ],
 }
