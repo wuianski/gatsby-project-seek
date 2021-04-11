@@ -2,13 +2,16 @@ import styled from "styled-components"
 
 export const ArtworkList = styled.div`
   padding: 0;
-  min-height: 100vh;
+  min-height: calc(100vh + 30px);
+  padding-bottom: 30px;
   .aList {
     display: block;
-    background: #fafafa;
+    //background: #fafafa;
     height: 72px;
-    cursor: pointer;
+    //cursor: pointer;
     border-top: 1px #e77832 solid;
+    padding-top: 10px;
+    margin-bottom: 13px;
     .aList_link {
       line-height: 100%;
     }
@@ -43,10 +46,10 @@ export const ArtworkList = styled.div`
       text-transform: capitalize;
     }
     .aList_aName {
-      width: 30%;
+      width: 28%;
       display: inline-block;
       line-height: 1.6;
-      //vertical-align: middle;
+      vertical-align: top;
       font-size: 18px;
       letter-spacing: 2px;
     }
@@ -62,6 +65,14 @@ export const ArtworkList = styled.div`
       font-weight: 400;
       letter-spacing: 0.1rem;
       text-transform: capitalize;
+    }
+    .aList_linkBlk {
+      width: 2%;
+      display: inline-block;
+      cursor: pointer;
+    }
+    .hyperlinkBtnImg {
+      width: 14px;
     }
   }
 `

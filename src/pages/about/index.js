@@ -4,14 +4,14 @@
 
 import React from "react"
 //import { css } from "@emotion/react"
-import { graphql } from "gatsby"
+import { graphql, Link } from "gatsby"
 //import { rhythm } from "../utils/typography"
 import Layout from "../../components/Layout/Layout"
 import { FullscreenImg } from "../../components/Layout/FullscreenImg.styles"
 import BackgroundImage from "gatsby-background-image"
 import { About } from "../../components/Layout/About.styles"
-
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs"
+import GoTo from "../../images/goTo.png"
 
 export const query = graphql`
   query aboutQuery {
@@ -145,14 +145,28 @@ const PageAbout = ({ data: { aboutPage: contents } }) => {
                         <div>
                           {contents.directus.reviews.map(review => (
                             <div key={review.directus.id}>
-                              <div className="reviewTitle">
-                                {review.directus.title}
-                              </div>
-                              <div className="reviewFD">
-                                <span>{review.directus.from}</span>
-                                <span>|</span>
-                                <span>{review.directus.date}</span>
-                              </div>
+                              <Link
+                                to={`/about/reviews/${review.directus.date}`}
+                              >
+                                <div
+                                  className="reviewTitle"
+                                  dangerouslySetInnerHTML={{
+                                    __html: review.directus.title,
+                                  }}
+                                />
+                                <div className="reviewFD">
+                                  <span>{review.directus.from}</span>
+                                  <span> | </span>
+                                  <span>{review.directus.date}</span>
+                                </div>
+                                <div
+                                  className="arrowGoTo"
+                                  role="button"
+                                  tabIndex="0"
+                                >
+                                  <img src={GoTo} alt="internal link button" />
+                                </div>
+                              </Link>
                             </div>
                           ))}
                         </div>

@@ -1,21 +1,24 @@
 /**
- * Manually create index page inside "hong-x-panasonic" folder, query data of intro.
+ * listing images and attached files from pages (the-question, TCAA) into PRESS page.
+ * 
  *
- * Add projects list by import artworkHList.js
  */
 
 import React from "react"
 //import { css } from "@emotion/react"
-import { graphql } from "gatsby"
+import { graphql, Link } from "gatsby"
 //import { rhythm } from "../utils/typography"
 //import Layout from "../../components/layout"
 import Layout from "../../components/Layout/Layout"
 import { Content } from "../../components/Layout/Content.styles"
+import Img from "gatsby-image"
+import DownloadBtn from "../../images/download.png"
+import PressGoTo from "../../images/pressGoto.png"
 
 export const query = graphql`
   query {
     press: allProjects(
-      filter: { directus: { pages_id: { in: [1, 5] } } }
+      filter: { directus: { pages_id: { in: [1, 5] }, status: {eq: "published"} } }
       sort: { order: DESC, fields: directus___year }
     ) {
       totalCount
@@ -29,6 +32,11 @@ export const query = graphql`
             year
             cover {
               publicURL
+              childImageSharp {
+                fixed(quality: 90, width: 223, height: 158) {
+                  ...GatsbyImageSharpFixed
+                }
+              }
               name
             }
             file_pdf {
@@ -50,36 +58,89 @@ export default function Press({ data }) {
   return (
     <Layout>
       <Content>
+        <div className="pressTitle">press pachage</div>
         <div>
           {data.press.edges.map(({ node }) => (
             <div key={node.directus.id}>
-              <p>
-                {node.directus.pages_id === 1 && <p>THE QUESTION</p>}
-                {node.directus.pages_id === 5 && <p>TUNG CHUNG ART AWARD</p>}
-              </p>
-              <p>{node.directus.year}</p>
-              <p>
-                {node.directus.pages_id === 1 && <p>問問題計畫</p>}
-                {node.directus.pages_id === 5 && <p>銅鐘藝術賞</p>}
-              </p>
-              <img
-                src={node.directus.cover.publicURL}
-                alt={node.directus.cover.name}
-              />
-              <a
-                href={node.directus.file_zip.publicURL}
-                target="_blank"
-                rel="noreferrer"
-              >
-                <p>Press Pachage</p>
-              </a>
-              <a
-                href={node.directus.file_pdf.publicURL}
-                target="_blank"
-                rel="noreferrer"
-              >
-                <p>Press Release</p>
-              </a>
+              <div className="twoGrid37_press">
+                <div className="pressImg">
+                  <Img
+                    className="pressCoverImg"
+                    fixed={node.directus.cover.childImageSharp.fixed}
+                  />
+                </div>
+                <div>
+                  <div className="pressTextBlk">
+                    <span className="pressText">
+                      {node.directus.pages_id === 1 && (
+                        <span>THE QUESTION</span>
+                      )}
+                      {node.directus.pages_id === 5 && (
+                        <span>TUNG CHUNG ART AWARD</span>
+                      )}
+                    </span>
+                    <span className="pressText">
+                      <span>{node.directus.year}</span>
+                    </span>
+                    <span className="pressText">
+                      {node.directus.pages_id === 1 && <span>問問題計畫</span>}
+                      {node.directus.pages_id === 5 && <span>銅鐘藝術賞</span>}
+                    </span>
+                  </div>
+                  
+                  <div className="pressLinkBlk">
+                    <a
+                      href={node.directus.file_zip.publicURL}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      <span className="">Press Package</span>
+                      <span
+                        className="downloadBtn pressLink"
+                        role="button"
+                        tabIndex="0"
+                      >
+                        <img
+                          className="downloadBtnImg"
+                          src={DownloadBtn}
+                          alt="download button"
+                        />
+                      </span>
+                    </a>
+                    <a
+                      href={node.directus.file_pdf.publicURL}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      <span className="">Press Release</span>
+                      <span
+                        className="downloadBtn pressLink"
+                        role="button"
+                        tabIndex="0"
+                      >
+                        <img
+                          className="downloadBtnImg"
+                          src={DownloadBtn}
+                          alt="download button"
+                        />
+                      </span>
+                    </a>
+                    <Link
+                      to={`/press/${node.directus.year}/${node.directus.pages_id}`}
+                    >
+                      <span className="">Press Images</span>
+                      <span
+                        className="arrowGoTo pressLink"
+                        role="button"
+                        tabIndex="0"
+                      >
+                        <img src={PressGoTo} alt="internal link button" />
+                      </span>
+                    </Link>
+                  </div>
+                  
+                </div>
+              </div>
             </div>
           ))}
         </div>

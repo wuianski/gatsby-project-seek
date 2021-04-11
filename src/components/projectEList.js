@@ -49,12 +49,18 @@ export default function extensionList() {
                     </div>
                   </div>
                   <div className="pList_aName">
-                    <div className="pList_aNameTW">
-                      {node.directus.artist_name_zh_hant_tw}
-                    </div>
-                    <div className="pList_aNameEN">
-                      {node.directus.artist_name_en_us}
-                    </div>
+                    <div
+                      className="pList_aNameTW"
+                      dangerouslySetInnerHTML={{
+                        __html: node.directus.artist_name_zh_hant_tw,
+                      }}
+                    />
+                    <div
+                      className="pList_aNameEN"
+                      dangerouslySetInnerHTML={{
+                        __html: node.directus.artist_name_en_us,
+                      }}
+                    />
                   </div>
                 </Link>
               </div>

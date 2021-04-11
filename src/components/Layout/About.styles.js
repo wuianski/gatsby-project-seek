@@ -4,7 +4,7 @@ export const About = styled.div`
   .aboutMenuBlock {
     width: 50%;
     margin-top: 44px;
-    padding-right: 5%;
+    //padding-right: 5%;
   }
   .aboutMenu {
     display: inline-block;
@@ -49,6 +49,7 @@ export const About = styled.div`
   .timelineAllBlock {
     display: inline-flex;
     margin-bottom: 20px;
+    width: 100%;
   }
   .timelineYear {
     font-weight: 600;
@@ -82,12 +83,18 @@ export const About = styled.div`
     font-size: 16px;
     line-height: 25px;
     letter-spacing: 0.05em;
+    color: #fff;
   }
   .reviewFD {
     font-weight: 300;
     font-size: 14px;
-    line-height: 22px;
+    line-height: 28px;
     letter-spacing: 0.05em;
+    color: #fff;
+  }
+  .arrowGoTo {
+    padding-top: 30px;
+    cursor: pointer;
   }
   .infoContent {
     font-weight: 300;
@@ -160,5 +167,25 @@ export const About = styled.div`
   .react-tabs__tab-panel--selected {
     display: block;
     padding-right: 20%;
+  }
+  .tabContainer {
+    scrollbar-width: thin;
+    scrollbar-color: blue orange;
+  }
+  ::-webkit-scrollbar {
+    width: 120px; /* width of the entire scrollbar */
+  }
+
+  ::-webkit-scrollbar-track {
+    background: orange; /* color of the tracking area */
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: blue; /* color of the scroll thumb */
+    border-radius: 20px; /* roundness of the scroll thumb */
+    border: 3px solid orange; /* creates padding around scroll thumb */
+  }
+  ::-webkit-scrollbar-thumb:window-inactive {
+    background: rgba(255, 0, 0, 1);
   }
 `

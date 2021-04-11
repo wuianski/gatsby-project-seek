@@ -6,6 +6,8 @@ import OverlayMenu from "../OverlayMenu/OverlayMenu"
 import { GlobalStyles, Primary } from "./Layout.styles"
 //import "./bt.styles.js"
 //import "bootstrap/dist/css/bootstrap.min.css"
+import "@fontsource/noto-sans-jp"
+import "@fontsource/metropolis"
 
 const Layout = ({ children }) => {
   const [menuOpen, setMenuOpen] = useState(false)

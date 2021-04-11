@@ -18,9 +18,12 @@
     "gatsby"
   ],
   "dependencies": {
-    "@directus/sdk-js": "^9.0.0-rc.27",
+    "@directus/sdk-js": "^9.0.0-rc.51",
     "@emotion/react": "^11.1.4",
     "@emotion/styled": "^11.0.0",
+    "@fontsource/metropolis": "^4.2.4",
+    "@fontsource/noto-sans-jp": "^4.2.2",
+    "@fontsource/noto-sans-tc": "^4.2.2",
     "@popperjs/core": "^2.6.0",
     "babel-plugin-styled-components": "^1.12.0",
     "bootstrap": "^5.0.0-beta1",

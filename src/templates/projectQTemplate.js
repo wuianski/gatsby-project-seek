@@ -1,5 +1,5 @@
 /**
- * Create template for pages that created by gatsby-node.js
+ * Create template (the-question) for pages that created by gatsby-node.js
  */
 
 import { graphql, Link } from "gatsby"
@@ -21,13 +21,6 @@ import { Swiper, SwiperSlide } from "swiper/react"
 import "swiper/swiper.scss"
 import "swiper/components/pagination/pagination.scss"
 SwiperCore.use(Pagination)
-
-//import "react-responsive-carousel/lib/styles/carousel.min.css" // requires a loader
-//import { Carousel } from "react-responsive-carousel"
-
-//import Slider from "react-slick"
-//import "slick-carousel/slick/slick.css"
-//import "slick-carousel/slick/slick-theme.css"
 
 // A static query, the results from which
 // will be passed to our component. Uses the 'id' property
@@ -65,7 +58,7 @@ export const query = graphql`
           publicURL
           name
           childImageSharp {
-            fixed(width: 1280, height:  700) {
+            fixed(width: 1280, height: 700) {
               ...GatsbyImageSharpFixed
             }
           }
@@ -127,15 +120,7 @@ const ProjectQ = props => {
     events,
     reviews,
   } = data.cat.directus || {}
-  //image carousel
-  const [index, setIndex] = React.useState(0)
-  const length = images.length - 1
-  const handleNext = () =>
-    index === length ? setIndex(0) : setIndex(index + 1)
-  const handlePrevious = () =>
-    index === 0 ? setIndex(length) : setIndex(index - 1)
-  const { childImageSharp } = images[index]
-  console.log(length)
+
   //show block
   const [isVisible, setIsVisible] = React.useState(false)
   const toggleVisibility = () => setIsVisible(!isVisible)
@@ -143,7 +128,7 @@ const ProjectQ = props => {
   const toggleVisibilityV = () => setIsVisibleV(!isVisibleV)
   const [isVisibleA, setIsVisibleA] = React.useState(false)
   const toggleVisibilityA = () => setIsVisibleA(!isVisibleA)
-  
+
   return (
     <Layout>
       {!data.cat && <p>No category data</p>}
@@ -157,8 +142,14 @@ const ProjectQ = props => {
           <div className="blcCtr">
             <div className="txtCtr fullPYear">{year}</div>
             <div className="txtCtr fullPTitleEN">{title_en_us}</div>
-            <div className="txtCtr fullPNameTW">{artist_name_zh_hant_tw}</div>
-            <div className="txtCtr fullPNameEN">{artist_name_en_us}</div>
+            <div
+              className="txtCtr fullPNameTW"
+              dangerouslySetInnerHTML={{ __html: artist_name_zh_hant_tw }}
+            />
+            <div
+              className="txtCtr fullPNameEN"
+              dangerouslySetInnerHTML={{ __html: artist_name_en_us }}
+            />
           </div>
           <div
             className="arrowDown"
@@ -201,8 +192,14 @@ const ProjectQ = props => {
           {isVisible && (
             <div>
               <div className="contentBlock fr">
-                <div className="contentTW">{content_zh_hant_tw}</div>
-                <div className="contentEN">{content_en_us}</div>
+                <div
+                  className="contentTW"
+                  dangerouslySetInnerHTML={{ __html: content_zh_hant_tw }}
+                />
+                <div
+                  className="contentEN"
+                  dangerouslySetInnerHTML={{ __html: content_en_us }}
+                />
               </div>
               <div
                 className="closeBlock"
@@ -271,11 +268,6 @@ const ProjectQ = props => {
 
         <div className="imgSec mt80">
           <div>
-            <div>
-              <Img fluid={childImageSharp.fluid} key={childImageSharp.id} />
-            </div>
-          </div>
-          <div>
             {images && (
               <Swiper pagination={{ clickable: true }}>
                 <div>
@@ -298,8 +290,14 @@ const ProjectQ = props => {
         <div className="artistSec mt80">
           <div className="secName">artist</div>
           <div className="titleBlock fr">
-            <span className="titleTW">{artist_name_zh_hant_tw}</span>
-            <span className="titleTW">{artist_name_en_us}</span>
+            <span
+              className="titleTW"
+              dangerouslySetInnerHTML={{ __html: artist_name_zh_hant_tw }}
+            />
+            <span
+              className="titleTW"
+              dangerouslySetInnerHTML={{ __html: artist_name_en_us }}
+            />
           </div>
           <div className="mt20">
             <div
@@ -317,8 +315,18 @@ const ProjectQ = props => {
           {isVisibleA && (
             <div>
               <div className="textBlock w80 fr">
-                <div className="textTW">{artist_introduction_zh_hant_tw}</div>
-                <div className="textEN">{artist_introduction_en_us}</div>
+                <div
+                  className="textTW"
+                  dangerouslySetInnerHTML={{
+                    __html: artist_introduction_zh_hant_tw,
+                  }}
+                />
+                <div
+                  className="textEN"
+                  dangerouslySetInnerHTML={{
+                    __html: artist_introduction_en_us,
+                  }}
+                />
               </div>
               <div
                 className="closeBlock"
@@ -337,7 +345,7 @@ const ProjectQ = props => {
           )}
         </div>
 
-        <div className="eventSec mt120">
+        <div className="eventSec mt80">
           {events && (
             <div>
               <div className="secName">event</div>
@@ -394,7 +402,12 @@ const ProjectQ = props => {
                     <div className="twoGrid37">
                       <div className="reviewDate">{review.directus.date}</div>
                       <div>
-                        <div className="reviewTW">{review.directus.title}</div>
+                        <div
+                          className="reviewTW"
+                          dangerouslySetInnerHTML={{
+                            __html: review.directus.title,
+                          }}
+                        />
                         <div className="reviewEN">{review.directus.from}</div>
                       </div>
                     </div>

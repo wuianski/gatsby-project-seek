@@ -89,6 +89,9 @@ export const Content = styled.div`
     font-weight: 500;
     letter-spacing: 0.23em;
   }
+  .titleTW p {
+    display: inline;
+  }
   .titleEN {
     font-size: 13px;
     font-weight: 600;
@@ -119,6 +122,9 @@ export const Content = styled.div`
   }
   .swiper-pagination {
     text-align: right !important;
+  }
+  .eventSec {
+    display: inline-block;
   }
   .topMinus20 {
     position: relative;
@@ -214,12 +220,67 @@ export const Content = styled.div`
   .mt20 {
     margin-top: 20px;
   }
+  .mt40 {
+    margin-top: 40px;
+  }
   .mtvh {
     margin-top: 100vh;
   }
   .pd30 {
     padding-bottom: 30px;
   }
+  .mt-80 {
+    margin-top: -80px;
+  }
+
+  // reviews
+  .reviewTag {
+    color: #e77832;
+    display: inline-block;
+    transform: rotate(90deg);
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    position: fixed;
+    left: 0px;
+    top: 68px;
+    width: 150px;
+    height: 100px;
+  }
+  .twoGrid28 {
+    width: 100%;
+    display: inline-grid;
+    grid-template-columns: 17% 77%;
+    column-gap: 6%;
+    margin: 30px 0;
+    padding-top: 10px;
+  }
+  .reviewPostSideInfo div {
+    font-size: 11px;
+    font-weight: 500;
+    //line-height: 13px;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+  }
+  .reviewPostTitle {
+    font-size: 18px;
+    font-weight: 500;
+    //line-height: 24px;
+    letter-spacing: 0.23em;
+  }
+  .reviewPostContent p {
+    margin-bottom: 1.45rem;
+    font-size: 14px;
+    font-weight: 300;
+    //line-height: 23px;
+    //letter-spacing: 0.23em;
+    text-align: justify;
+  }
+  .reviewPostContent p img {
+    margin-bottom: 0px;
+  }
+
   // canopy
   .pageTitle {
     font-size: 24.5px;
@@ -227,10 +288,11 @@ export const Content = styled.div`
     line-height: 45.5px;
     letter-spacing: 0.13em;
     text-transform: uppercase;
+    margin-top: -4px;
   }
   .arrowDown {
     position: relative;
-    left: 50%;
+    left: calc(50vw - 200px);
     cursor: pointer;
   }
   .arrowUp {
@@ -270,5 +332,155 @@ export const Content = styled.div`
     font-weight: 400;
     line-height: 18px;
     letter-spacing: 0.1em;
+  }
+  .projectTag {
+    color: #e77832;
+    //width: 10%;
+    //height: 100%;
+    display: inline-block;
+    transform: rotate(90deg);
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    position: absolute;
+    left: 0px;
+    top: 68px;
+    width: 150px;
+    height: 100px;
+  }
+  .paginationNum {
+    padding-top: 30px;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 19px;
+    letter-spacing: 0.2em;
+  }
+  .paginationNum a {
+    margin-right: 15px;
+  }
+  .paginationNum a:hover {
+    cursor: pointer;
+  }
+  .paginationNum [aria-current]:not([aria-current="false"]) {
+    color: #e77832;
+  }
+  #aCList {
+    padding-top: 44px;
+  }
+  #aHList {
+    padding-top: 44px;
+  }
+
+  //press
+  .pressTitle {
+    font-size: 24.5px;
+    font-weight: 900;
+    line-height: 45px;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    margin-top: -5px;
+  }
+  .twoGrid37_press {
+    width: 100%;
+    display: inline-grid;
+    grid-template-columns: 27% 67%;
+    column-gap: 6%;
+    margin: 25px 0;
+    padding-top: 28px;
+    border-top: 1px #e77832 solid;
+  }
+  .pressTextBlk {
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 18px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    height: 36px;
+  }
+  .pressText span {
+    margin-right: 20%;
+    max-width: 114px;
+    display: inline-flex;
+    text-align: initial;
+  }
+  .pressLinkBlk {
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 0.1em;
+    text-decoration-line: underline;
+    text-transform: capitalize;
+    position: relative;
+    top: 65%;
+  }
+  .pressLink {
+    margin-left: 6px;
+    margin-right: 3%;
+  }
+  .arrowGoTo {
+    //padding-top: 30px;
+    cursor: pointer;
+  }
+  .arrowGoTo img {
+    margin-bottom: 0;
+  }
+
+  //press images
+  .pressImgTitleBlk {
+    border-bottom: 1px solid #e77832;
+    display: inline-flex;
+    padding-bottom: 25px;
+    width: 100%;
+  }
+  .pressImgTitle {
+    font-size: 24.5px;
+    font-weight: 900;
+    line-height: 45px;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    margin-top: -5px;
+    margin-right: 100px;
+  }
+  .pressImgTextBlk {
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 18px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    height: 36px;
+    margin-top: 5px;
+    width: 600px;
+  }
+  .pressImgText span {
+    margin-right: 10%;
+    max-width: 114px;
+    display: inline-flex;
+    text-align: initial;
+  }
+  .twoGrid64_pressImg {
+    width: 100%;
+    display: inline-grid;
+    grid-template-columns: 57% 37%;
+    column-gap: 6%;
+    margin: 0;
+    padding: 28px 0px;
+  }
+  .pressSingleImg div {
+    float: right;
+  }
+  .backBtn {
+    cursor: pointer;
+  }
+  .backBtn img {
+    margin-bottom: 0;
+  }
+  .backText {
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 20px;
+    text-decoration: underline;
+    margin-left: 8px;
+    text-transform: lowercase;
   }
 `

@@ -1,7 +1,7 @@
 import styled from "styled-components"
 
 export const ProjectList = styled.div`
-  padding: 38px 32px 38px 200px;
+  //padding: 38px 32px 38px 200px;
   min-height: 100vh;
   .pList {
     display: block;
@@ -51,7 +51,7 @@ export const ProjectList = styled.div`
       font-size: 13px;
       font-weight: 600;
       letter-spacing: 0.2rem;
-      line-height: 20px;
+      line-height: 30px;
       text-transform: uppercase;
     }
     .pList_aName {
@@ -73,7 +73,7 @@ export const ProjectList = styled.div`
     }
     .pList_aNameEN {
       text-align: center;
-      line-height: 20px; //17.76px
+      line-height: 30px; //17.76px
       font-size: 13px;
       font-weight: 600;
       letter-spacing: 0.1em;

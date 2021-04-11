@@ -4,6 +4,12 @@ module.exports = {
     description: `website by Hong Houndation`,
     author: `wuianski`,
   },
+  flags: {
+    PRESERVE_WEBPACK_CACHE: true,
+    FAST_DEV: true,
+    PARALLEL_SOURCING: true,
+    FAST_REFRESH: true,
+  },
   plugins: [
     `gatsby-plugin-react-helmet`,
     {
@@ -41,6 +47,7 @@ module.exports = {
           "artworks_list",
           "about_page",
           "pages",
+          "timeline",
         ],
         additionalTables: ["projects_directus_files_2"],
       },

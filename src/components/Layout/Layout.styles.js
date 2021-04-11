@@ -216,7 +216,7 @@ export const GlobalStyles = createGlobalStyle`
   }
   body {
     color: hsla(0, 0%, 0%, 0.8);
-    font-family: 'arial', georgia, serif;
+    font-family: "Metropolis", "Noto Sans JP", georgia, serif;
     font-weight: normal;
     word-wrap: break-word;
     font-kerning: normal;
@@ -234,7 +234,7 @@ export const GlobalStyles = createGlobalStyle`
     padding-left: 0;
     padding-right: 0;
     padding-top: 0;
-    margin-bottom: 1.45rem;
+    //margin-bottom: 1.45rem;
   }
   a {
     text-decoration: none;
@@ -243,9 +243,9 @@ export const GlobalStyles = createGlobalStyle`
     background-image: none;
   }
   p {
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 1.1rem;
-    line-height: 1.7rem;
+    //font-family: Arial, Helvetica, sans-serif;
+    //font-size: 1.1rem;
+    //line-height: 1.7rem;
   }
   h1 {
     font-size: 2.2rem;
@@ -377,7 +377,7 @@ export const GlobalStyles = createGlobalStyle`
     padding-left: 0;
     padding-right: 0;
     padding-top: 0;
-    margin-bottom: 1.45rem;
+    margin-bottom: 0;
   }
   figure {
     margin-left: 0;
