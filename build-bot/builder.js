@@ -5,6 +5,7 @@ const exec = util.promisify(require('child_process').exec);
 
 async function build(projectPath) {
     try {
+        console.info('Start building gatsby website...');
         await fsPromises.access(projectPath);
 
         if (!projectPath) {
@@ -16,6 +17,12 @@ async function build(projectPath) {
             await exec('gatsby build', {
                 cwd: projectPath
             });
+
+        if (stderr) {
+            console.error(`error: ${stderr}`);
+        }
+
+        console.info('Building gatsby website done.');
     } catch (error) {
         throw error;
     }
