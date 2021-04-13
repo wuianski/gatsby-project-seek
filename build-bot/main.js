@@ -8,6 +8,7 @@ const app = express();
 
 const port = config.port;
 const projectPath = config.projectPath;
+const hostname = config.host;
 
 // support json encoded bodies
 app.use(express.json());
@@ -27,8 +28,6 @@ app.post('/', async (req, res) => {
         });
 });
 
-let server = app.listen(port);
-let serHost = server.address().address
-let serPort = server.address().port
-console.info(colors.green(`Start listening at http://${serHost}:${serPort}`));
+app.listen(port, hostname);
+console.info(colors.green(`Start listening at http://${hostname}:${port}`));
 console.info(colors.green(`Project Path: ${config.projectPath}`));
