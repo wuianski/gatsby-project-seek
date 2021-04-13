@@ -1,10 +1,10 @@
 const express = require('express');
 const builder = require('./builder');
+const colors = require('colors/safe');
+
 const config = require('./config.js');
 
 const app = express();
-
-console.info(config);
 
 const port = config.port;
 const projectPath = config.projectPath;
@@ -18,18 +18,17 @@ app.get('/', function (req, res) {
     res.json({ status: 'ok' });
 });
 
-app.post('/', (req, res) => {
-    // console.log(req.body);
-    builder(projectPath)
+app.post('/', async (req, res) => {
+    res.json({ status: 'ok' });
+
+    await builder(projectPath)
         .catch(output => {
             if (output) console.log(output);
-        })
-        .finally(() => {
-            res.json({ status: 'ok' });
         });
 });
 
 let server = app.listen(port);
 let serHost = server.address().address
 let serPort = server.address().port
-console.log(`Start listening at http://${serHost}:${serPort}`);
+console.info(colors.green(`Start listening at http://${serHost}:${serPort}`));
+console.info(colors.green(`Project Path: ${config.projectPath}`));
