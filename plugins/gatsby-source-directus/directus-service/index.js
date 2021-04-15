@@ -35,12 +35,9 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.DirectusService = void 0;
-var sdk_js_1 = __importDefault(require("@directus/sdk-js"));
+var sdk_1 = require("@directus/sdk");
 var utils_1 = require("./utils");
 var DirectusService = /** @class */ (function () {
     function DirectusService(config) {
@@ -53,7 +50,7 @@ var DirectusService = /** @class */ (function () {
         }
     }
     DirectusService.prototype._initSDK = function (host) {
-        return new sdk_js_1.default(host);
+        return new sdk_1.Directus(host);
     };
     DirectusService.prototype._login = function (credentials) {
         return __awaiter(this, void 0, void 0, function () {
@@ -66,7 +63,7 @@ var DirectusService = /** @class */ (function () {
                         return [4 /*yield*/, this._api.auth.login(credentials)];
                     case 1:
                         response = _a.sent();
-                        if (!response || !response.data.access_token) {
+                        if (!response || !response.access_token) {
                             throw new Error('Invalid response returned.');
                         }
                         _a.label = 2;
@@ -92,13 +89,15 @@ var DirectusService = /** @class */ (function () {
         });
     };
     DirectusService.prototype.getAssetUrl = function (id) {
-        return utils_1.joinUrl(this._api.url, 'assets', id);
+        return utils_1.joinUrl(this._api.transport.url, 'assets', id);
     };
     DirectusService.prototype.getItems = function (collection) {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, this._api.items(collection).read()];
+                    case 0: return [4 /*yield*/, this._api.items(collection).readMany({
+                            limit: -1
+                        })];
                     case 1: return [2 /*return*/, _a.sent()];
                 }
             });
@@ -112,10 +111,12 @@ var DirectusService = /** @class */ (function () {
                     case 0:
                         _a.trys.push([0, 2, , 3]);
                         reporter.info('Start fetching directus relation data...');
-                        return [4 /*yield*/, this._api.relations.read()];
+                        return [4 /*yield*/, this._api.relations.readMany({
+                                limit: -1
+                            })];
                     case 1:
                         relations = _a.sent();
-                        reporter.success('Directus relations fetched.');
+                        reporter.success("Directus relations fetched.");
                         return [2 /*return*/, relations.data.map(function (x) {
                                 var _a, _b, _c, _d, _e, _f;
                                 var relation = {
@@ -145,10 +146,10 @@ var DirectusService = /** @class */ (function () {
                     case 0:
                         _a.trys.push([0, 2, , 3]);
                         reporter.info('Start fetching directus field data...');
-                        return [4 /*yield*/, this._api.fields.read()];
+                        return [4 /*yield*/, this._api.fields.readMany()];
                     case 1:
                         fields = _a.sent();
-                        reporter.success('Directus fields fetched.');
+                        reporter.success("Directus fields fetched.");
                         return [2 /*return*/, fields.data.map(function (x) {
                                 var _a, _b, _c, _d, _e;
                                 return ({
@@ -169,16 +170,19 @@ var DirectusService = /** @class */ (function () {
     };
     DirectusService.prototype.getFileInfos = function (reporter) {
         return __awaiter(this, void 0, void 0, function () {
-            var files, error_4;
+            var files, cnt, error_4;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         _a.trys.push([0, 2, , 3]);
                         reporter.info('Start fetching directus file data...');
-                        return [4 /*yield*/, this._api.files.read()];
+                        return [4 /*yield*/, this._api.files.readMany({
+                                limit: -1
+                            })];
                     case 1:
                         files = _a.sent();
-                        reporter.success('Directus files fetched.');
+                        cnt = files.data.length;
+                        reporter.success("Directus files fetched.(" + cnt + ")");
                         return [2 /*return*/, files.data.map(function (x) {
                                 var _a, _b, _c, _d, _e;
                                 return ({
