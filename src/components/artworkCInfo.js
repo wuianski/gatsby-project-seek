@@ -5,10 +5,14 @@
 import React from "react"
 import { StaticQuery, graphql } from "gatsby"
 
-import Img from "gatsby-image"
+//import Img from "gatsby-image"
 import ArrowDownBlk from "../images/ArrowDownBlk.png"
 import scrollTo from "gatsby-plugin-smoothscroll"
 import DownloadBtn from "../images/download.png"
+import Fade from "react-reveal/Fade"
+import cCover from "../images/cCover.jpg"
+
+
 
 export default function hongList() {
   return (
@@ -47,14 +51,21 @@ export default function hongList() {
       render={data => (
         <div>
           {data.allPages.edges.map(({ node }) => (
-            <div key={node.directus.id} className="aList">
-              <div className="projectTag">open call</div>
-              <div className="pageTitle">
-                <span>{node.directus.title_en_us}</span>
-                <span>{node.directus.title_zh_hant_tw}</span>
-              </div>
+            <div key={node.directus.id} className="aCInfo">
+              <div className="projectTagFixed">open call</div>
+              <Fade top>
+                <div className="pageTitle">
+                  <span>{node.directus.title_en_us}</span>
+                  <span>{node.directus.title_zh_hant_tw}</span>
+                </div>
+              </Fade>
               <div className="mt20">
-                <Img fluid={node.directus.cover.childImageSharp.fluid} />
+                <img
+                  className=""
+                  src={cCover}
+                  alt="cover"
+                  width="100%"
+                />
               </div>
               <div className="twoGrid73 mt40">
                 <div>
@@ -107,7 +118,6 @@ export default function hongList() {
                   </div>
                 </div>
               </div>
-
               <div
                 className=""
                 onClick={() => scrollTo("#aCList")}

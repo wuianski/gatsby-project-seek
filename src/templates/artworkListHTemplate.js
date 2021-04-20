@@ -12,6 +12,8 @@ import scrollTo from "gatsby-plugin-smoothscroll"
 import { ArtworkList } from "../components/artworkList.styles"
 import Hyperlink from "../images/hyperlink.png"
 import ArtworkHInfo from "../components/artworkHInfo.js"
+import Header from "../components/Header/Header"
+import Footer from "../components/Footer/Footer"
 
 export const artworksListHQuery = graphql`
   query artworksListHQuery($skip: Int!, $limit: Int!) {
@@ -44,6 +46,7 @@ export default class ArtworkListH extends React.Component {
     return (
       <Layout>
         <Content id="pageTopH">
+          <Header />
           <ArtworkHInfo />
           <ArtworkList>
             <div id="aHList">
@@ -92,16 +95,16 @@ export default class ArtworkListH extends React.Component {
               {Array.from({ length: numHPages }, (_, j) => (
                 <Link
                   key={`pagination-number${j + 1}`}
-                  to={`/hong-x-panasonic/${j === 0 ? "" : j + 1}`}
+                  to={`/hong-x-panasonic/${j === 0 ? "" : j + 1}#aHList`}
                 >
                   {j + 1}
                 </Link>
               ))}
             </div>
           </ArtworkList>
-          <div className="mt-80">
+          <div className="">
             <div
-              className="arrowUp"
+              className="arrowUp mt-30"
               onClick={() => scrollTo("#pageTopH")}
               onKeyDown={() => scrollTo("#pageTopH")}
               role="button"
@@ -109,8 +112,8 @@ export default class ArtworkListH extends React.Component {
             >
               <img src={ArrowUp} alt="arrow-up" />
             </div>
-            <div className="cc">project seek©2010-2020</div>
           </div>
+          <Footer />
         </Content>
       </Layout>
     )

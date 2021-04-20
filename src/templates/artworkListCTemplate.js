@@ -12,6 +12,9 @@ import scrollTo from "gatsby-plugin-smoothscroll"
 import { ArtworkList } from "../components/artworkList.styles"
 import Hyperlink from "../images/hyperlink.png"
 import ArtworkCInfo from "../components/artworkCInfo.js"
+import Header from "../components/Header/Header"
+import Footer from "../components/Footer/Footer"
+
 
 export const artworksListCQuery = graphql`
   query artworksListCQuery($skip: Int!, $limit: Int!) {
@@ -44,11 +47,17 @@ export default class ArtworkListC extends React.Component {
     return (
       <Layout>
         <Content id="pageTopC">
+          <Header />
           <ArtworkCInfo />
           <ArtworkList>
             <div id="aCList">
               {postsC.map(({ node }) => (
-                <div key={node.directus.id} className="aList">
+                <div
+                  key={node.directus.id}
+                  className="aList"
+                  ref={this.myRef}
+                  onScroll={this.onScroll}
+                >
                   <div className="aList_title">
                     <div className="aList_titleTW">
                       {node.directus.title_zh_hant_tw}
@@ -92,25 +101,23 @@ export default class ArtworkListC extends React.Component {
               {Array.from({ length: numCPages }, (_, i) => (
                 <Link
                   key={`pagination-number${i + 1}`}
-                  to={`/canopy/${i === 0 ? "" : i + 1}`}
+                  to={`/canopy/${i === 0 ? "" : i + 1}#aCList`}
                 >
                   {i + 1}
                 </Link>
               ))}
             </div>
           </ArtworkList>
-          <div className="mt-80">
-            <div
-              className="arrowUp"
-              onClick={() => scrollTo("#pageTopC")}
-              onKeyDown={() => scrollTo("#pageTopC")}
-              role="button"
-              tabIndex="0"
-            >
-              <img src={ArrowUp} alt="arrow-up" />
-            </div>
-            <div className="cc">project seek©2010-2020</div>
+          <div
+            className="arrowUp mt-30"
+            onClick={() => scrollTo("#pageTopC")}
+            onKeyDown={() => scrollTo("#pageTopC")}
+            role="button"
+            tabIndex="0"
+          >
+            <img src={ArrowUp} alt="arrow-up" />
           </div>
+          <Footer />
         </Content>
       </Layout>
     )

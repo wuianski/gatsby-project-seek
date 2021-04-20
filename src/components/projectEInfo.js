@@ -9,6 +9,9 @@ import Layout from "./Layout/Layout"
 import BackgroundImage from "gatsby-background-image"
 import { FullscreenImg } from "./Layout/FullscreenImg.styles"
 import ArrowDown from "../images/ArrowDown.svg"
+import Headerw from "../components/Headerw/Headerw"
+import Fade from "react-reveal/Fade"
+import Zoom from "react-reveal/Zoom"
 
 export default function EList() {
   return (
@@ -48,6 +51,7 @@ export default function EList() {
           {data.allPages.edges.map(({ node }) => (
             <Layout>
               <FullscreenImg>
+                <Headerw />
                 <BackgroundImage
                   Tag="section"
                   className="bgSection"
@@ -57,25 +61,29 @@ export default function EList() {
                 >
                   <div className="projectTag">sponsorship</div>
                   <div className="blcCtr">
-                    <p className="txtCtr fullPName">
-                      {node.directus.title_en_us}
-                    </p>
-                    <p className="txtCtr fullPName">
-                      {node.directus.title_zh_hant_tw}
-                    </p>
-                    <div className="pageIntro">
-                      <p className="pageIntroTW">
-                        {node.directus.content_zh_hant_tw}
+                    <Zoom>
+                      <p className="txtCtr fullPName">
+                        {node.directus.title_en_us}
                       </p>
-                      <p className="pageIntroEN">
-                        {node.directus.content_en_us}
+                      <p className="txtCtr fullPName">
+                        {node.directus.title_zh_hant_tw}
                       </p>
-                    </div>
+                    </Zoom>
+                    <Fade bottom>
+                      <div className="pageIntro">
+                        <p className="pageIntroTW">
+                          {node.directus.content_zh_hant_tw}
+                        </p>
+                        <p className="pageIntroEN">
+                          {node.directus.content_en_us}
+                        </p>
+                      </div>
+                    </Fade>
                   </div>
                   <div
                     className="arrowDown"
-                    onClick={() => scrollTo("#pEList")}
-                    onKeyDown={() => scrollTo("#pEList")}
+                    onClick={() => scrollTo("#pageTopE")}
+                    onKeyDown={() => scrollTo("#pageTopE")}
                     role="button"
                     tabIndex="0"
                   >

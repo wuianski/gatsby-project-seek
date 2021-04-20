@@ -66,21 +66,23 @@ export default function Home({ data }) {
                     </div>
                     <div className="h100">
                       <Link to={node.directus.slug}>
-                        <BackgroundImage
-                          Tag="section"
-                          className="bgCoverImg"
-                          fluid={node.directus.cover.childImageSharp.fluid}
-                          backgroundColor={`#040e18`}
-                        >
-                          <div className="blcCtr">
-                            <p className="txtCtr fullPName">
-                              {node.directus.title_en_us}
-                            </p>
-                            <p className="txtCtr fullPName">
-                              {node.directus.title_zh_hant_tw}
-                            </p>
-                          </div>
-                        </BackgroundImage>
+                        {node.directus.cover && (
+                          <BackgroundImage
+                            Tag="section"
+                            className="bgCoverImg"
+                            fluid={node.directus.cover.childImageSharp.fluid}
+                            backgroundColor={`#040e18`}
+                          >
+                            <div className="blcCtr">
+                              <p className="txtCtr fullPName">
+                                {node.directus.title_en_us}
+                              </p>
+                              <p className="txtCtr fullPName">
+                                {node.directus.title_zh_hant_tw}
+                              </p>
+                            </div>
+                          </BackgroundImage>
+                        )}
                       </Link>
                     </div>
                   </div>

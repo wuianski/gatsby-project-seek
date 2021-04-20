@@ -2,7 +2,7 @@ import styled from "styled-components"
 
 export const ProjectList = styled.div`
   //padding: 38px 32px 38px 200px;
-  min-height: 100vh;
+  min-height: calc(100vh - 72px);
   .pList {
     display: block;
     background: #fafafa;

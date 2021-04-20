@@ -15,6 +15,7 @@ export const GlobalStyles = createGlobalStyle`
     margin: 0;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    position:static;
   }
   .whiteText {
     color: #fff;

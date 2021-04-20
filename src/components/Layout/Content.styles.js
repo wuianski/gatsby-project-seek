@@ -188,7 +188,7 @@ export const Content = styled.div`
     line-height: 14.3px;
     letter-spacing: 0.1em;
     color: #c4c4c4;
-    margin: 30px 0px;
+    //margin: 30px 0px;
   }
   .fr {
     float: right;
@@ -211,6 +211,9 @@ export const Content = styled.div`
   .mt80 {
     margin-top: 80px;
   }
+  .mb80 {
+    margin-bottom: 80px;
+  }
   .mt120 {
     margin-top: 120px;
   }
@@ -226,11 +229,20 @@ export const Content = styled.div`
   .mtvh {
     margin-top: 100vh;
   }
+  .pd10 {
+    padding-bottom: 10px;
+  }
   .pd30 {
     padding-bottom: 30px;
   }
   .mt-80 {
     margin-top: -80px;
+  }
+  .mt-60 {
+    margin-top: -60px;
+  }
+  .mt-30 {
+    margin-top: -30px;
   }
 
   // reviews
@@ -349,6 +361,22 @@ export const Content = styled.div`
     width: 150px;
     height: 100px;
   }
+  .projectTagFixed {
+    color: #e77832;
+    //width: 10%;
+    //height: 100%;
+    display: inline-block;
+    transform: rotate(90deg);
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    position: fixed;
+    left: 0px;
+    top: 68px;
+    width: 150px;
+    height: 100px;
+  }
   .paginationNum {
     padding-top: 30px;
     font-size: 13px;
@@ -367,9 +395,11 @@ export const Content = styled.div`
   }
   #aCList {
     padding-top: 44px;
+    min-height: 78vh;
   }
   #aHList {
     padding-top: 44px;
+    min-height: 78vh;
   }
 
   //press

@@ -6,9 +6,11 @@ import React from "react"
 import { StaticQuery, graphql } from "gatsby"
 
 import Img from "gatsby-image"
+//import { GatsbyImage } from "gatsby-plugin-image"
 import ArrowDownBlk from "../images/ArrowDownBlk.png"
 import scrollTo from "gatsby-plugin-smoothscroll"
 import DownloadBtn from "../images/download.png"
+import Fade from "react-reveal/Fade"
 
 export default function hongList() {
   return (
@@ -47,11 +49,13 @@ export default function hongList() {
       render={data => (
         <div>
           {data.allPages.edges.map(({ node }) => (
-            <div key={node.directus.id} className="aList">
-              <div className="projectTag">sponsorship</div>
-              <div className="pageTitle" id="pageTopH">
-                <p>{node.directus.title_en_us}</p>
-              </div>
+            <div key={node.directus.id} className="aHInfo">
+              <div className="projectTagFixed">sponsorship</div>
+              <Fade top>
+                <div className="pageTitle" id="pageTopH">
+                  <p>{node.directus.title_en_us}</p>
+                </div>
+              </Fade>
               <div className="mt20">
                 <Img fluid={node.directus.cover.childImageSharp.fluid} />
               </div>

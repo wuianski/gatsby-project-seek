@@ -11,7 +11,7 @@ export const FullscreenImg = styled.div`
   }
   .blcCtr {
     color: #ffffff;
-    width: 55vw;
+    width: 73vw;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -42,7 +42,7 @@ export const FullscreenImg = styled.div`
     margin: 32px 0;
   }
   .pageIntro {
-    margin-top: 80px;
+    margin-top: 65px;
   }
   .pageIntroTW {
     font-size: 15px;
@@ -54,7 +54,7 @@ export const FullscreenImg = styled.div`
     font-size: 14px;
     font-weight: 500;
     line-height: 20px;
-    letter-spacing: 0.005em;
+    letter-spacing: 0.02em;
     margin-top: 14px;
   }
   .projectTag {
@@ -87,7 +87,7 @@ export const FullscreenImg = styled.div`
     line-height: 14.3px;
     letter-spacing: 0.1em;
     color: #c4c4c4;
-    margin: 30px 0px;
+    //margin: 30px 0px;
   }
   .mt80 {
     margin-top: 80px;

@@ -9,6 +9,7 @@ import Layout from "../components/Layout/Layout"
 import { Content } from "../components/Layout/Content.styles"
 import Back from "../images/back.png"
 import { Review } from "../components/Layout/Review.styles"
+//import { navigate } from "gatsby"
 
 // A static query, the results from which
 // will be passed to our component. Uses the 'id' property
@@ -35,6 +36,7 @@ const ProjectQreview = ({ data: { reviews: contents } }) => {
       <Review>
         <div className="btmLine">
           <a
+            //href="/#"
             onClick={() => window.history.back()}
             onKeyDown={() => window.history.back()}
             role="button"

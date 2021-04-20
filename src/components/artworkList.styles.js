@@ -2,13 +2,12 @@ import styled from "styled-components"
 
 export const ArtworkList = styled.div`
   padding: 0;
-  min-height: calc(100vh + 30px);
+  min-height: calc(100vh - 38px);
   padding-bottom: 30px;
   .aList {
     display: block;
-    //background: #fafafa;
-    height: 72px;
-    //cursor: pointer;
+    height: 10vh;
+    //height: 72px;
     border-top: 1px #e77832 solid;
     padding-top: 10px;
     margin-bottom: 13px;

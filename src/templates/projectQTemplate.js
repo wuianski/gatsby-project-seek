@@ -15,6 +15,9 @@ import ArrowUp from "../images/ArrowUp.svg"
 import scrollTo from "gatsby-plugin-smoothscroll"
 import plus from "../images/plus.png"
 import minus from "../images/minus.png"
+import Headerw from "../components/Headerw/Headerw"
+import Header from "../components/Header/Header"
+import Footer from "../components/Footer/Footer"
 
 import SwiperCore, { Pagination } from "swiper"
 import { Swiper, SwiperSlide } from "swiper/react"
@@ -120,7 +123,6 @@ const ProjectQ = props => {
     events,
     reviews,
   } = data.cat.directus || {}
-
   //show block
   const [isVisible, setIsVisible] = React.useState(false)
   const toggleVisibility = () => setIsVisible(!isVisible)
@@ -133,6 +135,7 @@ const ProjectQ = props => {
     <Layout>
       {!data.cat && <p>No category data</p>}
       <FullscreenImg id="top">
+        <Headerw />
         <BackgroundImage
           Tag="section"
           className="bgSection"
@@ -164,6 +167,7 @@ const ProjectQ = props => {
       </FullscreenImg>
 
       <Content id="content">
+        <Header />
         <div className="firstSec">
           <div className="secName">essay</div>
           <div className="summaryBlock">
@@ -391,7 +395,7 @@ const ProjectQ = props => {
           )}
         </div>
 
-        <div className="reviewSec mt80">
+        <div className="reviewSec mt80 mb80">
           {reviews && (
             <div>
               {reviews.map(review => (
@@ -417,9 +421,9 @@ const ProjectQ = props => {
             </div>
           )}
         </div>
-        <div className="mt80 pd30">
+        <div className="">
           <div
-            className="arrowUp"
+            className="arrowUp mt-30"
             onClick={() => scrollTo("#top")}
             onKeyDown={() => scrollTo("#top")}
             role="button"
@@ -427,8 +431,8 @@ const ProjectQ = props => {
           >
             <img src={ArrowUp} alt="arrow-up" />
           </div>
-          <div className="cc">project seek©2010-2020</div>
         </div>
+        <Footer />
       </Content>
     </Layout>
   )

@@ -49,6 +49,7 @@
     "react-dom": "^16.14.0",
     "react-helmet": "^6.1.0",
     "react-responsive-carousel": "^3.2.18",
+    "react-reveal": "^1.2.2",
     "react-slick": "^0.28.1",
     "react-tabs": "^3.2.2",
     "react-typography": "^0.16.19",
