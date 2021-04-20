@@ -49,6 +49,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.createAllNodes = void 0;
 var gatsby_source_filesystem_1 = require("gatsby-source-filesystem");
+var createdFileNodes = [];
 var createNodesByObject = function (directus, table, dataset, relations, fieldInfos, fileInfos, additionalCollections, gatsbyNodesArgs) { return __awaiter(void 0, void 0, void 0, function () {
     var actions, store, cache, createNodeId, createContentDigest, reporter, createNode, fileFields, _loop_1, i, manyFileFields, projectsDirectusFiles2, i, element, arrayFileId, idSet, _loop_2, k, o2mFieldInfos, _loop_3, i, dataId;
     return __generator(this, function (_a) {
@@ -56,9 +57,9 @@ var createNodesByObject = function (directus, table, dataset, relations, fieldIn
             case 0:
                 actions = gatsbyNodesArgs.actions, store = gatsbyNodesArgs.store, cache = gatsbyNodesArgs.cache, createNodeId = gatsbyNodesArgs.createNodeId, createContentDigest = gatsbyNodesArgs.createContentDigest, reporter = gatsbyNodesArgs.reporter;
                 createNode = actions.createNode;
-                fileFields = fieldInfos.filter(function (x) { return x.type === 'uuid' && (x.interface === 'image' || x.interface === 'file'); });
+                fileFields = fieldInfos.filter(function (x) { return x.field !== '' && x.type === 'uuid' && (x.interface === 'image' || x.interface === 'file'); });
                 _loop_1 = function (i) {
-                    var element, val, fileInfo, url, fileNode, error_1;
+                    var element, val, fileInfo, url, fileInfoNodeId, fileNode, error_1;
                     return __generator(this, function (_b) {
                         switch (_b.label) {
                             case 0:
@@ -71,25 +72,30 @@ var createNodesByObject = function (directus, table, dataset, relations, fieldIn
                                 if (!fileInfo) {
                                     return [2 /*return*/, "continue"];
                                 }
+                                if (createdFileNodes.includes(fileInfo.fileId)) {
+                                    return [2 /*return*/, "continue"];
+                                }
+                                createdFileNodes.push(fileInfo.fileId);
                                 url = directus.getAssetUrl(val);
                                 _b.label = 1;
                             case 1:
                                 _b.trys.push([1, 3, , 4]);
+                                fileInfoNodeId = createNodeId("fileInfo-" + fileInfo.fileId);
                                 return [4 /*yield*/, gatsby_source_filesystem_1.createRemoteFileNode({
                                         url: url,
                                         store: store,
                                         cache: cache,
                                         createNode: createNode,
                                         createNodeId: createNodeId,
-                                        reporter: reporter,
-                                        name: fileInfo.fileId
+                                        reporter: reporter
                                     })];
                             case 2:
                                 fileNode = _b.sent();
+                                fileNode['directus'] = __assign({ fileInfoId: fileInfoNodeId }, fileInfo);
                                 createNode({
                                     directus: __assign({}, fileInfo),
-                                    id: createNodeId("fileInfo-" + fileInfo.fileId),
-                                    parent: fileNode.id,
+                                    id: fileInfoNodeId,
+                                    parent: null,
                                     children: [],
                                     internal: {
                                         type: 'fileInfo',
@@ -132,7 +138,7 @@ var createNodesByObject = function (directus, table, dataset, relations, fieldIn
                 }
                 idSet = [];
                 _loop_2 = function (k) {
-                    var o2mId, pdf2, fileId, fileInfo, url, fileNode, error_2;
+                    var o2mId, pdf2, fileId, fileInfo, url, fileInfoNodeId, fileNode, error_2;
                     return __generator(this, function (_c) {
                         switch (_c.label) {
                             case 0:
@@ -146,10 +152,15 @@ var createNodesByObject = function (directus, table, dataset, relations, fieldIn
                                 if (!fileInfo) {
                                     return [2 /*return*/, "continue"];
                                 }
+                                if (createdFileNodes.includes(fileInfo.fileId)) {
+                                    return [2 /*return*/, "continue"];
+                                }
+                                createdFileNodes.push(fileInfo.fileId);
                                 url = directus.getAssetUrl(fileId);
                                 _c.label = 1;
                             case 1:
                                 _c.trys.push([1, 3, , 4]);
+                                fileInfoNodeId = createNodeId("fileInfo-" + fileInfo.fileId);
                                 return [4 /*yield*/, gatsby_source_filesystem_1.createRemoteFileNode({
                                         url: url,
                                         store: store,
@@ -157,14 +168,14 @@ var createNodesByObject = function (directus, table, dataset, relations, fieldIn
                                         createNode: createNode,
                                         createNodeId: createNodeId,
                                         reporter: reporter,
-                                        name: fileInfo.fileId
                                     })];
                             case 2:
                                 fileNode = _c.sent();
+                                fileNode['directus'] = __assign({ fileInfoId: fileInfoNodeId }, fileInfo);
                                 createNode({
                                     directus: __assign({}, fileInfo),
-                                    id: createNodeId("fileInfo-" + fileInfo.fileId),
-                                    parent: fileNode.id,
+                                    id: fileInfoNodeId,
+                                    parent: null,
                                     children: [],
                                     internal: {
                                         type: 'fileInfo',
