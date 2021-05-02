@@ -10,7 +10,15 @@ module.exports.createPages = async ({ graphql, actions }) => {
   // Sample query for all projects.
   const response = await graphql(`
     query {
-      aboutpageQuery: allAboutPage {
+      aboutpagereviewQuery: allAboutPage(
+        filter: {
+          directus: {
+            reviews: {
+              elemMatch: { directus: { status: { eq: "published" } } }
+            }
+          }
+        }
+      ) {
         edges {
           node {
             directus {
@@ -25,9 +33,33 @@ module.exports.createPages = async ({ graphql, actions }) => {
           }
         }
       }
+
       qprojectsQuery: allProjects(
         filter: {
           directus: { pages_id: { eq: 1 }, status: { eq: "published" } }
+        }
+      ) {
+        totalCount
+        edges {
+          node {
+            directus {
+              id
+              year
+              title_en_us
+            }
+          }
+        }
+      }
+
+      qprojectsreviewQuery: allProjects(
+        filter: {
+          directus: {
+            pages_id: { eq: 1 }
+            status: { eq: "published" }
+            reviews: {
+              elemMatch: { directus: { status: { eq: "published" } } }
+            }
+          }
         }
       ) {
         totalCount
@@ -48,6 +80,7 @@ module.exports.createPages = async ({ graphql, actions }) => {
           }
         }
       }
+
       tprojectsQuery: allProjects(
         filter: {
           directus: { pages_id: { eq: 5 }, status: { eq: "published" } }
@@ -63,6 +96,37 @@ module.exports.createPages = async ({ graphql, actions }) => {
           }
         }
       }
+
+      tprojectsreviewQuery: allProjects(
+        filter: {
+          directus: {
+            pages_id: { eq: 5 }
+            status: { eq: "published" }
+            reviews: {
+              elemMatch: { directus: { status: { eq: "published" } } }
+            }
+          }
+        }
+      ) {
+        totalCount
+        edges {
+          node {
+            directus {
+              id
+              year
+              title_en_us
+              reviews {
+                directus {
+                  id
+                  date(formatString: "")
+                  title
+                }
+              }
+            }
+          }
+        }
+      }
+
       eprojectsQuery: allProjects(
         filter: {
           directus: { pages_id: { eq: 2 }, status: { eq: "published" } }
@@ -78,6 +142,37 @@ module.exports.createPages = async ({ graphql, actions }) => {
           }
         }
       }
+
+      eprojectsreviewQuery: allProjects(
+        filter: {
+          directus: {
+            pages_id: { eq: 2 }
+            status: { eq: "published" }
+            reviews: {
+              elemMatch: { directus: { status: { eq: "published" } } }
+            }
+          }
+        }
+      ) {
+        totalCount
+        edges {
+          node {
+            directus {
+              id
+              year
+              title_en_us
+              reviews {
+                directus {
+                  id
+                  date(formatString: "")
+                  title
+                }
+              }
+            }
+          }
+        }
+      }
+
       pressimageQuery: allProjects(
         filter: {
           directus: { pages_id: { in: [1, 5] }, status: { eq: "published" } }
@@ -93,6 +188,7 @@ module.exports.createPages = async ({ graphql, actions }) => {
           }
         }
       }
+
       cartworklistQuery: allArtworksList(
         filter: {
           directus: { pages_id: { eq: 3 }, status: { eq: "published" } }
@@ -110,6 +206,7 @@ module.exports.createPages = async ({ graphql, actions }) => {
           }
         }
       }
+
       hartworklistQuery: allArtworksList(
         filter: {
           directus: { pages_id: { eq: 4 }, status: { eq: "published" } }
@@ -127,6 +224,7 @@ module.exports.createPages = async ({ graphql, actions }) => {
           }
         }
       }
+
       qprojectlistQuery: allProjects(
         filter: {
           directus: { pages_id: { eq: 1 }, status: { eq: "published" } }
@@ -144,6 +242,7 @@ module.exports.createPages = async ({ graphql, actions }) => {
           }
         }
       }
+
       tprojectlistQuery: allProjects(
         filter: {
           directus: { pages_id: { eq: 5 }, status: { eq: "published" } }
@@ -161,6 +260,7 @@ module.exports.createPages = async ({ graphql, actions }) => {
           }
         }
       }
+
       eprojectlistQuery: allProjects(
         filter: {
           directus: { pages_id: { eq: 2 }, status: { eq: "published" } }
@@ -185,9 +285,12 @@ module.exports.createPages = async ({ graphql, actions }) => {
   const {
     data: {
       qprojectsQuery: { edges: projectQs = [] },
+      qprojectsreviewQuery: { edges: projectQreviews = [] },
       tprojectsQuery: { edges: projectTs = [] },
+      tprojectsreviewQuery: { edges: projectTreviews = [] },
       eprojectsQuery: { edges: projectEs = [] },
-      aboutpageQuery: { edges: aboutPageReviews = [] },
+      eprojectsreviewQuery: { edges: projectEreviews = [] },
+      aboutpagereviewQuery: { edges: aboutPageReviews = [] },
       pressimageQuery: { edges: pressImages = [] },
       cartworklistQuery,
       hartworklistQuery,
@@ -209,12 +312,34 @@ module.exports.createPages = async ({ graphql, actions }) => {
     })
   })
 
+  // Create review page of THE QUESTION
+  projectQreviews.forEach(({ node: projectQreview }) => {
+    projectQreview.directus.reviews.forEach(({ directus: reviewQ }) => {
+      createPage({
+        path: `/the-question/${projectQreview.directus.year}/reviews/${reviewQ.date}`,
+        component: path.resolve("./src/templates/projectQTemplateReview.js"),
+        context: reviewQ,
+      })
+    })
+  })
+
   // Create the content page of TCAA
   projectTs.forEach(({ node: projectT }) => {
     createPage({
       path: `/tcaa/${projectT.directus.year}`,
       component: path.resolve("./src/templates/projectTTemplate.js"),
       context: projectT.directus,
+    })
+  })
+
+  // Create review page of THE TCAA
+  projectTreviews.forEach(({ node: projectTreview }) => {
+    projectTreview.directus.reviews.forEach(({ directus: reviewT }) => {
+      createPage({
+        path: `/tcaa/${projectTreview.directus.year}/reviews/${reviewT.date}`,
+        component: path.resolve("./src/templates/projectTTemplateReview.js"),
+        context: reviewT,
+      })
     })
   })
 
@@ -227,13 +352,13 @@ module.exports.createPages = async ({ graphql, actions }) => {
     })
   })
 
-  // Create review page of THE QUESTION
-  projectQs.forEach(({ node: projectQ }) => {
-    projectQ.directus.reviews.forEach(({ directus: reviewQ }) => {
+  // Create review page of THE EXTENSION
+  projectEreviews.forEach(({ node: projectEreview }) => {
+    projectEreview.directus.reviews.forEach(({ directus: reviewE }) => {
       createPage({
-        path: `/the-question/${projectQ.directus.year}/reviews/${reviewQ.date}`,
-        component: path.resolve("./src/templates/projectQTemplateReview.js"),
-        context: reviewQ,
+        path: `/extension/${projectEreview.directus.year}/reviews/${reviewE.date}`,
+        component: path.resolve("./src/templates/projectETemplateReview.js"),
+        context: reviewE,
       })
     })
   })

@@ -12,6 +12,7 @@ import BackgroundImage from "gatsby-background-image"
 import { About } from "../../components/Layout/About.styles"
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs"
 import GoTo from "../../images/goTo.png"
+import Headerw from "../../components/Headerw/Headerw"
 
 export const query = graphql`
   query aboutQuery {
@@ -37,6 +38,7 @@ export const query = graphql`
             from
             date
             content
+            status
           }
         }
         info
@@ -60,6 +62,7 @@ const PageAbout = ({ data: { aboutPage: contents } }) => {
       <Layout>
         <About>
           <FullscreenImg>
+            <Headerw />
             <BackgroundImage
               Tag="section"
               className="bgSection"
@@ -145,28 +148,32 @@ const PageAbout = ({ data: { aboutPage: contents } }) => {
                         <div>
                           {contents.directus.reviews.map(review => (
                             <div key={review.directus.id}>
-                              <Link
-                                to={`/about/reviews/${review.directus.date}`}
-                              >
-                                <div
-                                  className="reviewTitle"
-                                  dangerouslySetInnerHTML={{
-                                    __html: review.directus.title,
-                                  }}
-                                />
-                                <div className="reviewFD">
-                                  <span>{review.directus.from}</span>
-                                  <span> | </span>
-                                  <span>{review.directus.date}</span>
-                                </div>
-                                <div
-                                  className="arrowGoTo"
-                                  role="button"
-                                  tabIndex="0"
+
+                              {review.directus.status === "draft" && <span></span>}
+                              {review.directus.status === "published" && (
+                                <Link
+                                  to={`/about/reviews/${review.directus.date}`}
                                 >
-                                  <img src={GoTo} alt="internal link button" />
-                                </div>
-                              </Link>
+                                  <div
+                                    className="reviewTitle"
+                                    dangerouslySetInnerHTML={{
+                                      __html: review.directus.title,
+                                    }}
+                                  />
+                                  <div className="reviewFD">
+                                    <span>{review.directus.from}</span>
+                                    <span> | </span>
+                                    <span>{review.directus.date}</span>
+                                  </div>
+                                  <div
+                                    className="arrowGoTo"
+                                    role="button"
+                                    tabIndex="0"
+                                  >
+                                    <img src={GoTo} alt="internal link button" />
+                                  </div>
+                                </Link>
+                              )}
                             </div>
                           ))}
                         </div>

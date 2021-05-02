@@ -88,6 +88,7 @@ export const query = graphql`
           directus {
             id
             title
+            status
             date(formatString: "")
             from
           }
@@ -400,22 +401,31 @@ const ProjectQ = props => {
             <div>
               {reviews.map(review => (
                 <div key={review.directus.id}>
-                  <Link
-                    to={`/the-question/${data.cat.directus.year}/reviews/${review.directus.date}`}
-                  >
-                    <div className="twoGrid37">
-                      <div className="reviewDate">{review.directus.date}</div>
-                      <div>
-                        <div
-                          className="reviewTW"
-                          dangerouslySetInnerHTML={{
-                            __html: review.directus.title,
-                          }}
-                        />
-                        <div className="reviewEN">{review.directus.from}</div>
-                      </div>
-                    </div>
-                  </Link>
+                  
+                    {review.directus.status === "draft" && <span></span>}
+                    {review.directus.status === "published" && (
+                      <Link
+                        to={`/the-question/${data.cat.directus.year}/reviews/${review.directus.date}`}
+                      >
+                        <div className="twoGrid37">
+                          <div className="reviewDate">
+                            {review.directus.date}
+                          </div>
+                          <div>
+                            <div
+                              className="reviewTW"
+                              dangerouslySetInnerHTML={{
+                                __html: review.directus.title,
+                              }}
+                            />
+                            <div className="reviewEN">
+                              {review.directus.from}
+                            </div>
+                          </div>
+                        </div>
+                      </Link>
+                    )}
+                  
                 </div>
               ))}
             </div>

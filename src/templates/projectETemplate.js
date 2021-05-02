@@ -88,6 +88,7 @@ export const query = graphql`
           directus {
             id
             title
+            status
             date(formatString: "")
             from
           }
@@ -405,22 +406,25 @@ const ProjectE = props => {
             <div>
               {reviews.map(review => (
                 <div key={review.directus.id}>
-                  <Link
-                    to={`/the-question/${data.cat.directus.year}/reviews/${review.directus.date}`}
-                  >
-                    <div className="twoGrid37">
-                      <div className="reviewDate">{review.directus.date}</div>
-                      <div>
-                        <div
-                          className="reviewTW"
-                          dangerouslySetInnerHTML={{
-                            __html: review.directus.title,
-                          }}
-                        />
-                        <div className="reviewEN">{review.directus.from}</div>
+                  {review.directus.status === "draft" && <span></span>}
+                  {review.directus.status === "published" && (
+                    <Link
+                      to={`/extension/${data.cat.directus.year}/reviews/${review.directus.date}`}
+                    >
+                      <div className="twoGrid37">
+                        <div className="reviewDate">{review.directus.date}</div>
+                        <div>
+                          <div
+                            className="reviewTW"
+                            dangerouslySetInnerHTML={{
+                              __html: review.directus.title,
+                            }}
+                          />
+                          <div className="reviewEN">{review.directus.from}</div>
+                        </div>
                       </div>
-                    </div>
-                  </Link>
+                    </Link>
+                  )}
                 </div>
               ))}
             </div>

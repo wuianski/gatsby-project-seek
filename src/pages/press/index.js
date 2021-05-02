@@ -14,6 +14,7 @@ import { Content } from "../../components/Layout/Content.styles"
 import Img from "gatsby-image"
 import DownloadBtn from "../../images/download.png"
 import PressGoTo from "../../images/pressGoto.png"
+import Header from "../../components/Header/Header"
 
 export const query = graphql`
   query {
@@ -58,6 +59,7 @@ export default function Press({ data }) {
   return (
     <Layout>
       <Content>
+        <Header />
         <div className="pressTitle">press pachage</div>
         <div>
           {data.press.edges.map(({ node }) => (
@@ -87,7 +89,7 @@ export default function Press({ data }) {
                       {node.directus.pages_id === 5 && <span>銅鐘藝術賞</span>}
                     </span>
                   </div>
-                  
+
                   <div className="pressLinkBlk">
                     <a
                       href={node.directus.file_zip.publicURL}
@@ -138,7 +140,6 @@ export default function Press({ data }) {
                       </span>
                     </Link>
                   </div>
-                  
                 </div>
               </div>
             </div>

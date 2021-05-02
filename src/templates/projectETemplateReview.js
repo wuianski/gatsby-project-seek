@@ -31,7 +31,7 @@ export const query = graphql`
 `
 
 // The component we'll render for a given page
-const ProjectQreview = ({ data: { reviews: contents } }) => {
+const ProjectEreview = ({ data: { reviews: contents } }) => {
   return (
     <Layout>
       <Header />
@@ -75,4 +75,4 @@ const ProjectQreview = ({ data: { reviews: contents } }) => {
   )
 }
 
-export default ProjectQreview
+export default ProjectEreview
