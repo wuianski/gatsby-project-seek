@@ -49,14 +49,14 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.createAllNodes = void 0;
 var gatsby_source_filesystem_1 = require("gatsby-source-filesystem");
-var createdFileNodes = [];
 var createNodesByObject = function (directus, table, dataset, relations, fieldInfos, fileInfos, additionalCollections, gatsbyNodesArgs) { return __awaiter(void 0, void 0, void 0, function () {
-    var actions, store, cache, createNodeId, createContentDigest, reporter, createNode, fileFields, _loop_1, i, manyFileFields, projectsDirectusFiles2, i, element, arrayFileId, idSet, _loop_2, k, o2mFieldInfos, _loop_3, i, dataId;
+    var actions, store, cache, createNodeId, createContentDigest, reporter, createNode, thisNodeId, fileFields, _loop_1, i, manyFileFields, projectsDirectusFiles2, i, element, arrayFileId, idSet, _loop_2, k, o2mFieldInfos, _loop_3, i;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
                 actions = gatsbyNodesArgs.actions, store = gatsbyNodesArgs.store, cache = gatsbyNodesArgs.cache, createNodeId = gatsbyNodesArgs.createNodeId, createContentDigest = gatsbyNodesArgs.createContentDigest, reporter = gatsbyNodesArgs.reporter;
                 createNode = actions.createNode;
+                thisNodeId = createNodeId(table + "-" + dataset['id']);
                 fileFields = fieldInfos.filter(function (x) { return x.field !== '' && x.type === 'uuid' && (x.interface === 'image' || x.interface === 'file'); });
                 _loop_1 = function (i) {
                     var element, val, fileInfo, url, fileInfoNodeId, fileNode, error_1;
@@ -72,11 +72,10 @@ var createNodesByObject = function (directus, table, dataset, relations, fieldIn
                                 if (!fileInfo) {
                                     return [2 /*return*/, "continue"];
                                 }
-                                if (createdFileNodes.includes(fileInfo.fileId)) {
-                                    return [2 /*return*/, "continue"];
-                                }
-                                createdFileNodes.push(fileInfo.fileId);
                                 url = directus.getAssetUrl(val);
+                                if (element.field === 'planimetric_map' || element.field === 'apply_for') {
+                                    reporter.info(url);
+                                }
                                 _b.label = 1;
                             case 1:
                                 _b.trys.push([1, 3, , 4]);
@@ -85,6 +84,7 @@ var createNodesByObject = function (directus, table, dataset, relations, fieldIn
                                         url: url,
                                         store: store,
                                         cache: cache,
+                                        parentNodeId: thisNodeId,
                                         createNode: createNode,
                                         createNodeId: createNodeId,
                                         reporter: reporter
@@ -95,7 +95,7 @@ var createNodesByObject = function (directus, table, dataset, relations, fieldIn
                                 createNode({
                                     directus: __assign({}, fileInfo),
                                     id: fileInfoNodeId,
-                                    parent: null,
+                                    parent: thisNodeId,
                                     children: [],
                                     internal: {
                                         type: 'fileInfo',
@@ -152,10 +152,6 @@ var createNodesByObject = function (directus, table, dataset, relations, fieldIn
                                 if (!fileInfo) {
                                     return [2 /*return*/, "continue"];
                                 }
-                                if (createdFileNodes.includes(fileInfo.fileId)) {
-                                    return [2 /*return*/, "continue"];
-                                }
-                                createdFileNodes.push(fileInfo.fileId);
                                 url = directus.getAssetUrl(fileId);
                                 _c.label = 1;
                             case 1:
@@ -165,6 +161,7 @@ var createNodesByObject = function (directus, table, dataset, relations, fieldIn
                                         url: url,
                                         store: store,
                                         cache: cache,
+                                        parentNodeId: thisNodeId,
                                         createNode: createNode,
                                         createNodeId: createNodeId,
                                         reporter: reporter,
@@ -175,7 +172,7 @@ var createNodesByObject = function (directus, table, dataset, relations, fieldIn
                                 createNode({
                                     directus: __assign({}, fileInfo),
                                     id: fileInfoNodeId,
-                                    parent: null,
+                                    parent: thisNodeId,
                                     children: [],
                                     internal: {
                                         type: 'fileInfo',
@@ -230,11 +227,10 @@ var createNodesByObject = function (directus, table, dataset, relations, fieldIn
                 for (i = 0; i < o2mFieldInfos.length; i++) {
                     _loop_3(i);
                 }
-                dataId = createNodeId(table + "-" + dataset['id']);
                 // Create the node
                 createNode({
                     directus: __assign({}, dataset),
-                    id: dataId,
+                    id: thisNodeId,
                     parent: null,
                     children: [],
                     internal: {

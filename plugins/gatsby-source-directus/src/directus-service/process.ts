@@ -3,7 +3,7 @@ import { createRemoteFileNode } from "gatsby-source-filesystem";
 import { DirectusService } from '.';
 import { FieldInfos, FileInfo, RelationInfo } from './interfaces';
 
-let createdFileNodes: Array<any> = [];
+// let createdFileNodes: Array<any> = [];
 
 export interface CreateNodeArgs {
     directus: DirectusService,
@@ -29,6 +29,8 @@ const createNodesByObject = async (directus: DirectusService, table: string, dat
     const { actions, store, cache, createNodeId, createContentDigest, reporter } = gatsbyNodesArgs;
     const { createNode } = actions;
 
+    let thisNodeId = createNodeId(`${table}-${dataset['id']}`);
+
     // Process file and image, download and create the node
     let fileFields = fieldInfos.filter(x => x.field !== '' && x.type === 'uuid' && (x.interface === 'image' || x.interface === 'file'));
     for (let i = 0; i < fileFields.length; i++) {
@@ -43,12 +45,15 @@ const createNodesByObject = async (directus: DirectusService, table: string, dat
             continue;
         }
 
-        if (createdFileNodes.includes(fileInfo.fileId)) {
-            continue;
-        }
-        createdFileNodes.push(fileInfo.fileId);
+        // if (createdFileNodes.includes(fileInfo.fileId)) {
+        //     continue;
+        // }
+        // createdFileNodes.push(fileInfo.fileId);
 
         let url = directus.getAssetUrl(val);
+        if (element.field === 'planimetric_map' || element.field === 'apply_for') {
+            reporter.info(url);
+        }
         try {
 
             let fileInfoNodeId = createNodeId(`fileInfo-${fileInfo.fileId}`)
@@ -57,6 +62,7 @@ const createNodesByObject = async (directus: DirectusService, table: string, dat
                 url: url,
                 store: store,
                 cache: cache,
+                parentNodeId: thisNodeId,
                 createNode: createNode,
                 createNodeId: createNodeId,
                 reporter: reporter
@@ -69,7 +75,7 @@ const createNodesByObject = async (directus: DirectusService, table: string, dat
             createNode({
                 directus: { ...fileInfo },
                 id: fileInfoNodeId,
-                parent: null,
+                parent: thisNodeId,
                 children: [],
                 internal: {
                     type: 'fileInfo',
@@ -108,10 +114,10 @@ const createNodesByObject = async (directus: DirectusService, table: string, dat
                 continue;
             }
 
-            if (createdFileNodes.includes(fileInfo.fileId)) {
-                continue;
-            }
-            createdFileNodes.push(fileInfo.fileId);
+            // if (createdFileNodes.includes(fileInfo.fileId)) {
+            //     continue;
+            // }
+            // createdFileNodes.push(fileInfo.fileId);
 
             let url = directus.getAssetUrl(fileId);
             try {
@@ -122,6 +128,7 @@ const createNodesByObject = async (directus: DirectusService, table: string, dat
                     url: url,
                     store: store,
                     cache: cache,
+                    parentNodeId: thisNodeId,
                     createNode: createNode,
                     createNodeId: createNodeId,
                     reporter: reporter,
@@ -135,7 +142,7 @@ const createNodesByObject = async (directus: DirectusService, table: string, dat
                 createNode({
                     directus: { ...fileInfo },
                     id: fileInfoNodeId,
-                    parent: null,
+                    parent: thisNodeId,
                     children: [],
                     internal: {
                         type: 'fileInfo',
@@ -174,11 +181,10 @@ const createNodesByObject = async (directus: DirectusService, table: string, dat
         delete dataset[relation.manyCollection];
     }
 
-    let dataId = createNodeId(`${table}-${dataset['id']}`);
     // Create the node
     createNode({
         directus: { ...dataset },
-        id: dataId,
+        id: thisNodeId,
         parent: null,
         children: [],
         internal: {
