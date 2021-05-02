@@ -21,7 +21,7 @@ async function privateBuild() {
         }
 
         const { err, stdout, stderr } =
-            await exec('gatsby build', {
+            await exec('gatsby clean && gatsby build', {
                 cwd: projectPath
             });
 

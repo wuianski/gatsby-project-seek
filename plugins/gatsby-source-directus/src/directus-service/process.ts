@@ -3,6 +3,8 @@ import { createRemoteFileNode } from "gatsby-source-filesystem";
 import { DirectusService } from '.';
 import { FieldInfos, FileInfo, RelationInfo } from './interfaces';
 
+let createdFileNodes: Array<any> = [];
+
 export interface CreateNodeArgs {
     directus: DirectusService,
     table: string,
@@ -28,7 +30,7 @@ const createNodesByObject = async (directus: DirectusService, table: string, dat
     const { createNode } = actions;
 
     // Process file and image, download and create the node
-    let fileFields = fieldInfos.filter(x => x.type === 'uuid' && (x.interface === 'image' || x.interface === 'file'));
+    let fileFields = fieldInfos.filter(x => x.field !== '' && x.type === 'uuid' && (x.interface === 'image' || x.interface === 'file'));
     for (let i = 0; i < fileFields.length; i++) {
         const element = fileFields[i];
         let val = dataset[element.field];
@@ -41,22 +43,33 @@ const createNodesByObject = async (directus: DirectusService, table: string, dat
             continue;
         }
 
+        if (createdFileNodes.includes(fileInfo.fileId)) {
+            continue;
+        }
+        createdFileNodes.push(fileInfo.fileId);
+
         let url = directus.getAssetUrl(val);
         try {
+
+            let fileInfoNodeId = createNodeId(`fileInfo-${fileInfo.fileId}`)
+
             let fileNode = await createRemoteFileNode({
                 url: url,
                 store: store,
                 cache: cache,
                 createNode: createNode,
                 createNodeId: createNodeId,
-                reporter: reporter,
-                name: fileInfo.fileId
+                reporter: reporter
             });
+            fileNode['directus'] = {
+                fileInfoId: fileInfoNodeId,
+                ...fileInfo
+            };
 
             createNode({
                 directus: { ...fileInfo },
-                id: createNodeId(`fileInfo-${fileInfo.fileId}`),
-                parent: fileNode.id,
+                id: fileInfoNodeId,
+                parent: null,
                 children: [],
                 internal: {
                     type: 'fileInfo',
@@ -95,8 +108,16 @@ const createNodesByObject = async (directus: DirectusService, table: string, dat
                 continue;
             }
 
+            if (createdFileNodes.includes(fileInfo.fileId)) {
+                continue;
+            }
+            createdFileNodes.push(fileInfo.fileId);
+
             let url = directus.getAssetUrl(fileId);
             try {
+
+                let fileInfoNodeId = createNodeId(`fileInfo-${fileInfo.fileId}`)
+
                 let fileNode = await createRemoteFileNode({
                     url: url,
                     store: store,
@@ -104,13 +125,17 @@ const createNodesByObject = async (directus: DirectusService, table: string, dat
                     createNode: createNode,
                     createNodeId: createNodeId,
                     reporter: reporter,
-                    name: fileInfo.fileId
                 });
+                fileNode['directus'] = {
+                    fileInfoId: fileInfoNodeId,
+                    ...fileInfo
+                };
+
 
                 createNode({
                     directus: { ...fileInfo },
-                    id: createNodeId(`fileInfo-${fileInfo.fileId}`),
-                    parent: fileNode.id,
+                    id: fileInfoNodeId,
+                    parent: null,
                     children: [],
                     internal: {
                         type: 'fileInfo',
