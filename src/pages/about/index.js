@@ -15,8 +15,8 @@ import GoTo from "../../images/goTo.png"
 import Headerw from "../../components/Headerw/Headerw"
 
 export const query = graphql`
-  query aboutQuery {
-    aboutPage {
+  query {
+    aboutquery: aboutPage {
       directus {
         title_zh_hant_tw
         title_en_us
@@ -52,11 +52,21 @@ export const query = graphql`
         }
       }
     }
+    timelinequery: allTimeline(sort: { fields: directus___year, order: ASC }) {
+      nodes {
+        directus {
+          year(formatString: "yyyy")
+          title_zh_hant_tw
+          title_en_us
+          status
+        }
+      }
+    }
   }
 `
 
 // The component we'll render for a given page
-const PageAbout = ({ data: { aboutPage: contents } }) => {
+const PageAbout = ({ data }) => {
   return (
     <div>
       <Layout>
@@ -66,7 +76,7 @@ const PageAbout = ({ data: { aboutPage: contents } }) => {
             <BackgroundImage
               Tag="section"
               className="bgSection"
-              fluid={contents.directus.cover.childImageSharp.fluid}
+              fluid={data.aboutquery.directus.cover.childImageSharp.fluid}
               backgroundColor={`#040e18`}
               id="bgA"
             >
@@ -84,24 +94,24 @@ const PageAbout = ({ data: { aboutPage: contents } }) => {
                       <div className="aboutTitle">
                         <div
                           dangerouslySetInnerHTML={{
-                            __html: contents.directus.title_zh_hant_tw,
+                            __html: data.aboutquery.directus.title_zh_hant_tw,
                           }}
                         />
                         <div
                           dangerouslySetInnerHTML={{
-                            __html: contents.directus.title_en_us,
+                            __html: data.aboutquery.directus.title_en_us,
                           }}
                         />
                       </div>
                       <div className="aboutContent">
                         <div
                           dangerouslySetInnerHTML={{
-                            __html: contents.directus.content_zh_hant_tw,
+                            __html: data.aboutquery.directus.content_zh_hant_tw,
                           }}
                         />
                         <div
                           dangerouslySetInnerHTML={{
-                            __html: contents.directus.content_en_us,
+                            __html: data.aboutquery.directus.content_en_us,
                           }}
                         />
                       </div>
@@ -110,31 +120,38 @@ const PageAbout = ({ data: { aboutPage: contents } }) => {
                   <TabPanel>
                     <div className="tabContainer">
                       <div>
-                        {contents.directus.timelines && (
+                        {data.timelinequery.nodes && (
                           <div>
-                            {contents.directus.timelines.map(timeline => (
+                            {data.timelinequery.nodes.map(node => (
                               <div
-                                key={timeline.directus.id}
+                                key={node.directus.year}
                                 className="timelineAllBlock"
                               >
-                                <div className="timelineYear">
-                                  {timeline.directus.year}
-                                </div>
-                                <div className="timelineContentBlock">
-                                  <div
-                                    dangerouslySetInnerHTML={{
-                                      __html:
-                                        timeline.directus.title_zh_hant_tw,
-                                    }}
-                                    className="timelineContentTW"
-                                  />
-                                  <div
-                                    dangerouslySetInnerHTML={{
-                                      __html: timeline.directus.title_en_us,
-                                    }}
-                                    className="timelineContentEN"
-                                  />
-                                </div>
+                                {node.directus.status === "draft" && (
+                                  <span></span>
+                                )}
+                                {node.directus.status === "published" && (
+                                  <div>
+                                    <div className="timelineYear">
+                                      {node.directus.year}
+                                    </div>
+                                    <div className="timelineContentBlock">
+                                      <div
+                                        dangerouslySetInnerHTML={{
+                                          __html:
+                                            node.directus.title_zh_hant_tw,
+                                        }}
+                                        className="timelineContentTW"
+                                      />
+                                      <div
+                                        dangerouslySetInnerHTML={{
+                                          __html: node.directus.title_en_us,
+                                        }}
+                                        className="timelineContentEN"
+                                      />
+                                    </div>
+                                  </div>
+                                )}
                               </div>
                             ))}
                           </div>
@@ -144,12 +161,13 @@ const PageAbout = ({ data: { aboutPage: contents } }) => {
                   </TabPanel>
                   <TabPanel>
                     <div className="tabContainer">
-                      {contents.directus.reviews && (
+                      {data.aboutquery.directus.reviews && (
                         <div>
-                          {contents.directus.reviews.map(review => (
+                          {data.aboutquery.directus.reviews.map(review => (
                             <div key={review.directus.id}>
-
-                              {review.directus.status === "draft" && <span></span>}
+                              {review.directus.status === "draft" && (
+                                <span></span>
+                              )}
                               {review.directus.status === "published" && (
                                 <Link
                                   to={`/about/reviews/${review.directus.date}`}
@@ -170,7 +188,10 @@ const PageAbout = ({ data: { aboutPage: contents } }) => {
                                     role="button"
                                     tabIndex="0"
                                   >
-                                    <img src={GoTo} alt="internal link button" />
+                                    <img
+                                      src={GoTo}
+                                      alt="internal link button"
+                                    />
                                   </div>
                                 </Link>
                               )}
@@ -185,7 +206,7 @@ const PageAbout = ({ data: { aboutPage: contents } }) => {
                       <div
                         className="infoContent"
                         dangerouslySetInnerHTML={{
-                          __html: contents.directus.info,
+                          __html: data.aboutquery.directus.info,
                         }}
                       />
                     </div>

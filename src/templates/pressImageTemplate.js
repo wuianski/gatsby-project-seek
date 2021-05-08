@@ -8,6 +8,7 @@ import Layout from "../components/Layout/Layout"
 import { Content } from "../components/Layout/Content.styles"
 import Img from "gatsby-image"
 import Back from "../images/back.png"
+import Header from "../components/Header/Header"
 
 // A static query, the results from which
 // will be passed to our component. Uses the 'id' property
@@ -34,10 +35,12 @@ export const query = graphql`
         artist_name_en_us
       }
     }
-    iquery: fileInfo(id: { eq: "$id" }) {
-      directus {
-        description
-        fileId
+    iquery: allFileInfo {
+      nodes {
+        directus {
+          description
+          fileId
+        }
       }
     }
   }
@@ -47,6 +50,7 @@ export const query = graphql`
 const ProjectQreview = ({ data }) => {
   return (
     <Layout>
+      <Header />
       <Content>
         <div className="pressImgTitleBlk">
           <span className="pressImgTitle">press images</span>
@@ -94,7 +98,16 @@ const ProjectQreview = ({ data }) => {
                         __html: data.pquery.directus.artist_name_en_us,
                       }}
                     />
-                    <div>{image.name}</div>
+                    <div>
+                      {data.iquery.nodes.map(node => (
+                        <div>
+                          {image.name === node.directus.fileId && (
+                            <span>{node.directus.description}</span>
+                          )}
+                        </div>
+                      ))}
+                    </div>
+                    <div>{data.pquery.directus.year}</div>
                   </div>
                   <div className="pressSingleImg">
                     <Img

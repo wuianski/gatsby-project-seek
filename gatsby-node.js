@@ -346,7 +346,7 @@ module.exports.createPages = async ({ graphql, actions }) => {
   // Create the content page of EXTENSION
   projectEs.forEach(({ node: projectE }) => {
     createPage({
-      path: `/extension/${projectE.directus.year}`,
+      path: `/extension/${projectE.directus.id}`,
       component: path.resolve("./src/templates/projectETemplate.js"),
       context: projectE.directus,
     })

@@ -229,48 +229,62 @@ const ProjectE = props => {
         </div>
 
         <div className="vidSec mt80">
-          <Video
-            videoSrcURL={main_video_url}
-            videoTitle={main_video_title_en_us}
-          />
-          <div className="mainVidInfo">{main_video_info}</div>
-          <div className="titleBlock">
-            <div className="titleTW">{main_video_title_zh_hant_tw}</div>
-            <div className="titleEN">{main_video_title_en_us}</div>
-          </div>
-          <div className="openBlock">
-            <div
-              className="fr"
-              onClick={toggleVisibilityV}
-              onKeyDown={toggleVisibilityV}
-              role="button"
-              tabIndex="0"
-            >
-              {!isVisibleV && (
-                <img className="openImg" src={plus} alt="open content block" />
-              )}
-            </div>
-          </div>
-          {isVisibleV && (
+          {main_video_url && (
             <div>
-              <div className="textBlock">
-                <div className="textTW">
-                  {main_video_description_zh_hant_tw}
-                </div>
-                <div className="textEN">{main_video_description_en_us}</div>
-              </div>
-              <div
-                className="closeBlock"
-                onClick={toggleVisibilityV}
-                onKeyDown={toggleVisibilityV}
-                role="button"
-                tabIndex="0"
-              >
-                <img
-                  className="closeImg"
-                  src={minus}
-                  alt="close content block"
+              <div>
+                <Video
+                  videoSrcURL={main_video_url}
+                  videoTitle={main_video_title_en_us}
                 />
+                <div className="mainVidInfo">{main_video_info}</div>
+                <div className="titleBlock">
+                  <div className="titleTW">{main_video_title_zh_hant_tw}</div>
+                  <div className="titleEN">{main_video_title_en_us}</div>
+                </div>
+                <div className="openBlock">
+                  <div
+                    className="fr"
+                    onClick={toggleVisibilityV}
+                    onKeyDown={toggleVisibilityV}
+                    role="button"
+                    tabIndex="0"
+                  >
+                    {!isVisibleV && (
+                      <img
+                        className="openImg"
+                        src={plus}
+                        alt="open content block"
+                      />
+                    )}
+                  </div>
+                </div>
+              </div>
+              <div>
+                {isVisibleV && (
+                  <div>
+                    <div className="textBlock">
+                      <div className="textTW">
+                        {main_video_description_zh_hant_tw}
+                      </div>
+                      <div className="textEN">
+                        {main_video_description_en_us}
+                      </div>
+                    </div>
+                    <div
+                      className="closeBlock"
+                      onClick={toggleVisibilityV}
+                      onKeyDown={toggleVisibilityV}
+                      role="button"
+                      tabIndex="0"
+                    >
+                      <img
+                        className="closeImg"
+                        src={minus}
+                        alt="close content block"
+                      />
+                    </div>
+                  </div>
+                )}
               </div>
             </div>
           )}
@@ -358,45 +372,47 @@ const ProjectE = props => {
         <div className="eventSec mt80">
           {events && (
             <div>
-              <div className="secName">event</div>
-              <div className="topMinus20">
-                <div className="twoGrid55">
-                  {events.map(event => (
-                    <div key={event.directus.id}>
-                      <div className="eventCover">
-                        {event.directus.video_url && (
-                          <Video
-                            videoSrcURL={event.directus.video_url}
-                            videoTitle={event.directus.title_en_us}
-                          />
-                        )}
-                        {event.directus.image && (
-                          <Img
-                            className="eventCoverImg"
-                            fluid={event.directus.image.childImageSharp.fluid}
-                          />
-                        )}
-                      </div>
-                      <div className="titleBlock mb20">
-                        <div className="titleTW">
-                          {event.directus.title_zh_hant_tw}
+              {events.map(event => (
+                <div>
+                  <div className="secName">event</div>
+                  <div className="topMinus20">
+                    <div className="twoGrid55">
+                      <div key={event.directus.id}>
+                        <div className="eventCover">
+                          {event.directus.video_url && (
+                            <Video
+                              videoSrcURL={event.directus.video_url}
+                              videoTitle={event.directus.title_en_us}
+                            />
+                          )}
+                          {event.directus.image && (
+                            <Img
+                              className="eventCoverImg"
+                              fluid={event.directus.image.childImageSharp.fluid}
+                            />
+                          )}
                         </div>
-                        <div className="titleEN">
-                          {event.directus.title_en_us}
+                        <div className="titleBlock mb20">
+                          <div className="titleTW">
+                            {event.directus.title_zh_hant_tw}
+                          </div>
+                          <div className="titleEN">
+                            {event.directus.title_en_us}
+                          </div>
                         </div>
-                      </div>
-                      <div className="textBlock">
-                        <div className="textTW">
-                          {event.directus.introduction_zh_hant_tw}
-                        </div>
-                        <div className="textEN">
-                          {event.directus.introduction_en_us}
+                        <div className="textBlock">
+                          <div className="textTW">
+                            {event.directus.introduction_zh_hant_tw}
+                          </div>
+                          <div className="textEN">
+                            {event.directus.introduction_en_us}
+                          </div>
                         </div>
                       </div>
                     </div>
-                  ))}
+                  </div>
                 </div>
-              </div>
+              ))}
             </div>
           )}
         </div>
@@ -430,7 +446,7 @@ const ProjectE = props => {
             </div>
           )}
         </div>
-        <div className="">
+        <div className="mt120">
           <div
             className="arrowUp mt-30"
             onClick={() => scrollTo("#top")}

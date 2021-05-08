@@ -7,19 +7,19 @@ export const Content = styled.div`
   letter-spacing: 0.05em;
   .secName {
     color: #e77832;
-    width: 10%;
+    width: 200px; 
     height: 100%;
     display: inline-block;
     transform: rotate(90deg);
     vertical-align: middle;
     text-align: center;
-    margin-left: -11%;
+    margin-left: -180px;
     font-size: 15px;
     font-weight: 700;
     letter-spacing: 0.2em;
     text-transform: uppercase;
     position: relative;
-    top: 20px;
+    top: 24px;
   }
   .firstSec {
     display: inline-block;

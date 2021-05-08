@@ -52,7 +52,7 @@ export default class projectListE extends React.Component {
                 <Fade bottom big>
                   <div key={node.directus.id}>
                     <Link
-                      to={`/extension/${node.directus.year}`}
+                      to={`/extension/${node.directus.id}`}
                       className="pList_link"
                     >
                       <div className="pList">
