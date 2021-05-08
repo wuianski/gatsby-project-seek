@@ -7,7 +7,7 @@ export const Content = styled.div`
   letter-spacing: 0.05em;
   .secName {
     color: #e77832;
-    width: 200px; 
+    width: 200px;
     height: 100%;
     display: inline-block;
     transform: rotate(90deg);
@@ -459,9 +459,11 @@ export const Content = styled.div`
   //press images
   .pressImgTitleBlk {
     border-bottom: 1px solid #e77832;
-    display: inline-flex;
     padding-bottom: 25px;
     width: 100%;
+    display: inline-grid;
+    grid-template-columns: 27% 67%;
+    column-gap: 6%;
   }
   .pressImgTitle {
     font-size: 24.5px;
@@ -471,6 +473,8 @@ export const Content = styled.div`
     text-transform: uppercase;
     margin-top: -5px;
     margin-right: 100px;
+    display: inline-block;
+    min-width: 220px;
   }
   .pressImgTextBlk {
     font-size: 13px;
@@ -482,11 +486,11 @@ export const Content = styled.div`
     margin-top: 5px;
     width: 600px;
   }
+  .pressImgText {
+  }
   .pressImgText span {
     margin-right: 10%;
-    max-width: 114px;
-    display: inline-flex;
-    text-align: initial;
+    letter-spacing: 0.23em;
   }
   .twoGrid64_pressImg {
     width: 100%;
@@ -495,6 +499,31 @@ export const Content = styled.div`
     column-gap: 6%;
     margin: 0;
     padding: 28px 0px;
+  }
+  .pressImgContentTxt {
+    color: #4f4f4f;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 21px;
+    letter-spacing: 0.05em;
+  }
+  .pressImgContentTxtCC {
+    color: #4f4f4f;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 21px;
+    letter-spacing: 0.05em;
+    margin-top: 21px;
+  }
+  .pressImgContentTxtDownload {
+    color: #000000;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 0.05em;
+    text-decoration-line: underline;
+    position: relative;
+    top: 30%;
   }
   .pressSingleImg div {
     float: right;
