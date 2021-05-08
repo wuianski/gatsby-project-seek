@@ -22,9 +22,19 @@ app.get('/', function (req, res) {
 app.post('/', async (req, res) => {
     res.json({ status: 'ok' });
 
-    await builder(projectPath)
+    await builder.build(projectPath)
+        .then(async () => {
+            console.info(colors.green('build success.'));
+            await builder.moveOutput()
+                .then(() => {
+                    console.info(colors.green('copy the build file success.'));
+                })
+                .catch(output => {
+                    if (output) console.info(colors.red(output));
+                });
+        })
         .catch(output => {
-            if (output) console.log(output);
+            if (output) console.info(colors.red(output));
         });
 });
 
