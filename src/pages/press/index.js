@@ -91,42 +91,47 @@ export default function Press({ data }) {
                   </div>
 
                   <div className="pressLinkBlk">
-                    <a
-                      href={node.directus.file_zip.publicURL}
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      <span className="">Press Package</span>
-                      <span
-                        className="downloadBtn pressLink"
-                        role="button"
-                        tabIndex="0"
+                    {node.directus.file_zip && (
+                      <a
+                        href={node.directus.file_zip.publicURL}
+                        target="_blank"
+                        rel="noreferrer"
+                        download
                       >
-                        <img
-                          className="downloadBtnImg"
-                          src={DownloadBtn}
-                          alt="download button"
-                        />
-                      </span>
-                    </a>
-                    <a
-                      href={node.directus.file_pdf.publicURL}
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      <span className="">Press Release</span>
-                      <span
-                        className="downloadBtn pressLink"
-                        role="button"
-                        tabIndex="0"
+                        <span className="">Press Package</span>
+                        <span
+                          className="downloadBtn pressLink"
+                          role="button"
+                          tabIndex="0"
+                        >
+                          <img
+                            className="downloadBtnImg"
+                            src={DownloadBtn}
+                            alt="download button"
+                          />
+                        </span>
+                      </a>
+                    )}
+                    {node.directus.file_pdf && (
+                      <a
+                        href={node.directus.file_pdf.publicURL}
+                        target="_blank"
+                        rel="noreferrer"
                       >
-                        <img
-                          className="downloadBtnImg"
-                          src={DownloadBtn}
-                          alt="download button"
-                        />
-                      </span>
-                    </a>
+                        <span className="">Press Release</span>
+                        <span
+                          className="downloadBtn pressLink"
+                          role="button"
+                          tabIndex="0"
+                        >
+                          <img
+                            className="downloadBtnImg"
+                            src={DownloadBtn}
+                            alt="download button"
+                          />
+                        </span>
+                      </a>
+                    )}
                     <Link
                       to={`/press/${node.directus.year}/${node.directus.pages_id}`}
                     >
