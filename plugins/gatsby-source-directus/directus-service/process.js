@@ -57,7 +57,7 @@ var createNodesByObject = function (directus, table, dataset, relations, fieldIn
                 actions = gatsbyNodesArgs.actions, store = gatsbyNodesArgs.store, cache = gatsbyNodesArgs.cache, createNodeId = gatsbyNodesArgs.createNodeId, createContentDigest = gatsbyNodesArgs.createContentDigest, reporter = gatsbyNodesArgs.reporter;
                 createNode = actions.createNode;
                 thisNodeId = createNodeId(table + "-" + dataset['id']);
-                fileFields = fieldInfos.filter(function (x) { return x.field !== '' && x.type === 'uuid' && (x.interface === 'image' || x.interface === 'file'); });
+                fileFields = fieldInfos.filter(function (x) { return x.field !== '' && x.type === 'uuid' && (x.interface === 'file-image' || x.interface === 'file'); });
                 _loop_1 = function (i) {
                     var element, val, fileInfo, url, fileInfoNodeId, fileNode, error_1;
                     return __generator(this, function (_b) {

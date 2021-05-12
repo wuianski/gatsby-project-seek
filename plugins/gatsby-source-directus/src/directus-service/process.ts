@@ -32,7 +32,7 @@ const createNodesByObject = async (directus: DirectusService, table: string, dat
     let thisNodeId = createNodeId(`${table}-${dataset['id']}`);
 
     // Process file and image, download and create the node
-    let fileFields = fieldInfos.filter(x => x.field !== '' && x.type === 'uuid' && (x.interface === 'image' || x.interface === 'file'));
+    let fileFields = fieldInfos.filter(x => x.field !== '' && x.type === 'uuid' && (x.interface === 'file-image' || x.interface === 'file'));
     for (let i = 0; i < fileFields.length; i++) {
         const element = fileFields[i];
         let val = dataset[element.field];
