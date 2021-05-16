@@ -7,7 +7,6 @@ export const ArtworkList = styled.div`
   .aList {
     display: block;
     height: 10vh;
-    //height: 72px;
     border-top: 1px #e77832 solid;
     padding-top: 10px;
     margin-bottom: 13px;
@@ -18,6 +17,9 @@ export const ArtworkList = styled.div`
       width: 8%;
       display: inline-block;
       vertical-align: top;
+    }
+    .aList_yearBlk_m {
+      display: none;
     }
     .aList_year {
       color: #e77832;
@@ -72,6 +74,35 @@ export const ArtworkList = styled.div`
     }
     .hyperlinkBtnImg {
       width: 14px;
+    }
+  }
+  /* phones tablets */
+  @media (max-width: 768px) {
+    //hong x panasonic
+    padding: 0 27px 120px 66px;
+    .aList {
+      height: 33%;
+      .aList_title,
+      .aList_aName,
+      .aList_linkBlk {
+        width: 100%;
+      }
+      .aList_titleTW {
+        font-size: 16px;
+      }
+      .aList_yearBlk {
+        display: none;
+      }
+      .aList_aNameTW {
+        margin-top: 30px;
+      }
+      .aList_yearBlk_m {
+        display: block;
+        width: 100%;
+      }
+      .paginationNum {
+        padding-top: 80px;
+      }
     }
   }
 `

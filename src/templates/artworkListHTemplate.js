@@ -88,6 +88,9 @@ export default class ArtworkListH extends React.Component {
                       </div>
                     )}
                   </div>
+                  <div className="aList_yearBlk_m">
+                    <div className="aList_year">{node.directus.year}</div>
+                  </div>
                 </div>
               ))}
             </div>

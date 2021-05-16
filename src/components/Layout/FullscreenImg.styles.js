@@ -17,6 +17,23 @@ export const FullscreenImg = styled.div`
     left: 50%;
     transform: translate(-50%, -50%);
   }
+  .blcCtrTitle {
+    color: #ffffff;
+    width: 73vw;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .blcCtrIntro {
+    color: #ffffff;
+    width: 73vw;
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    min-height: 210px;
+  }
   .txtCtr {
     text-align: center;
     text-transform: uppercase;
@@ -42,13 +59,14 @@ export const FullscreenImg = styled.div`
     margin: 32px 0;
   }
   .pageIntro {
-    margin-top: 65px;
+    //margin-top: 65px;
   }
   .pageIntroTW {
     font-size: 15px;
     font-weight: 500;
     line-height: 24px;
     letter-spacing: 0.05em;
+    text-align: justify;
   }
   .pageIntroEN {
     font-size: 14px;
@@ -56,6 +74,7 @@ export const FullscreenImg = styled.div`
     line-height: 20px;
     letter-spacing: 0.02em;
     margin-top: 14px;
+    text-align: justify;
   }
   .projectTag {
     color: #e77832;
@@ -107,7 +126,7 @@ export const FullscreenImg = styled.div`
   }
   .fullPTitleEN {
     font-size: 40px;
-    font-weight: bold;
+    font-weight: 600;
     line-height: 55px;
     letter-spacing: 0.19em;
     margin: 36px 0;
@@ -117,12 +136,55 @@ export const FullscreenImg = styled.div`
     font-weight: 500;
     line-height: 27px;
     letter-spacing: 0.2em;
-    margin: 9px 0;
+    margin-top: 120px;
   }
   .fullPNameEN {
     font-size: 13px;
     font-weight: 600;
     letter-spacing: 0.1em;
   }
-  //
+
+  /* phones tablets */
+  @media (max-width: 768px) {
+    .blcCtrTitle {
+      top: 150px;
+    }
+    .blcCtrIntro {
+      width: 84vw;
+      height: 52vh;
+      overflow-y: scroll;
+    }
+    .projectTag {
+      transform: none;
+      top: 80px;
+      width: 100%;
+      text-align: center;
+    }
+    .fullPName {
+      font-size: 24.5px;
+      line-height: 45px;
+      letter-spacing: 0.13em;
+      margin: 0px;
+    }
+    .pageIntro {
+      margin-top: 00px;
+    }
+    .pageIntroTW {
+      font-size: 18px;
+      line-height: 29px;
+      letter-spacing: 0.015em;
+    }
+    .pageIntroEN {
+      font-size: 16px;
+      line-height: 23px;
+      letter-spacing: 0.005em;
+    }
+    .arrowDown {
+      top: 93%;
+    }
+    .fullPTitleEN {
+      font-size: 30px;
+      line-height: 41px;
+    }
+  }
 `

@@ -67,7 +67,7 @@ export default function hongList() {
                   <div className="textEN">{node.directus.content_en_us}</div>
                 </div>
                 <div>
-                  <div className="fr">
+                  <div className="apply fr">
                     <span className="downloadBtnText">申請辦法</span>
                     <span className="downloadBtn" role="button" tabIndex="0">
                       <img
@@ -84,11 +84,11 @@ export default function hongList() {
                   <div>
                     <div className="twoGrid55">
                       {node.directus.equipment.map(myEquipment => (
-                        <div key={myEquipment.directus.id}>
-                          <div className="equipName">
+                        <div key={myEquipment.directus.id} className="equipBlk">
+                          <div className="equipNameTW">
                             {myEquipment.directus.name_zh_hant_tw}
                           </div>
-                          <div className="equipName">
+                          <div className="equipNameEN">
                             {myEquipment.directus.name_en_us}
                           </div>
                           <div
@@ -103,9 +103,19 @@ export default function hongList() {
                   </div>
                 )}
               </div>
+              <div className="apply_m fr">
+                <span className="downloadBtnText">申請辦法</span>
+                <span className="downloadBtn" role="button" tabIndex="0">
+                  <img
+                    className="downloadBtnImg"
+                    src={DownloadBtn}
+                    alt="download button"
+                  />
+                </span>
+              </div>
 
               <div
-                className="mt80"
+                className="pdTB80"
                 onClick={() => scrollTo("#aHList")}
                 onKeyDown={() => scrollTo("#aHList")}
                 role="button"

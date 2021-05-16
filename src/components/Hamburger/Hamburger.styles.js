@@ -13,8 +13,11 @@ export const HamburgerButton = styled.div`
     transition: all 0.2s ease;
     :hover {
     }
-    @media (min-width: 992px) {
-      display: block;
+    /* phones tablets */
+    @media (max-width: 768px) {
+      left: unset;
+      right: 14px;
+      top: 14px;
     }
   }
 `

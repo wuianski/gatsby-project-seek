@@ -63,6 +63,7 @@ export default class projectListQ extends React.Component {
                             {node.directus.title_en_us}
                           </div>
                         </div>
+                        <div className="line"></div>
                         <div className="pList_aName">
                           <div
                             className="pList_aNameTW"

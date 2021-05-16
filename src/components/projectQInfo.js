@@ -52,46 +52,49 @@ export default function QList() {
             <Layout>
               <FullscreenImg>
                 <Headerw />
-                            <BackgroundImage
-                              Tag="section"
-                              className="bgSection"
-                              fluid={node.directus.cover.childImageSharp.fluid}
-                              backgroundColor={`#040e18`}
-                              id="bgQ"
-                            >
-                              <div className="projectTag">commission</div>
-                              <div className="blcCtr">
-                                <Zoom>
-                                  <p className="txtCtr fullPName">
-                                    {node.directus.title_en_us}
-                                  </p>
-                                  <p className="txtCtr fullPName">
-                                    {node.directus.title_zh_hant_tw}
-                                  </p>
-                                </Zoom>
-                                <Fade bottom>
-                                  <div className="pageIntro">
-                                    <p className="pageIntroTW">
-                                      {node.directus.content_zh_hant_tw}
-                                    </p>
-                                    <p className="pageIntroEN">
-                                      {node.directus.content_en_us}
-                                    </p>
-                                  </div>
-                                </Fade>
-                              </div>
-                              <div
-                                className="arrowDown"
-                                onClick={() => {
-                                  scrollTo("#pageTopQ")
-                                }}
-                                onKeyDown={() => scrollTo("#pageTopQ")}
-                                role="button"
-                                tabIndex="0"
-                              >
-                                <img src={ArrowDown} alt="arrow-down" />
-                              </div>
-                            </BackgroundImage>
+                <BackgroundImage
+                  Tag="section"
+                  className="bgSection"
+                  fluid={node.directus.cover.childImageSharp.fluid}
+                  backgroundColor={`#040e18`}
+                  id="bgQ"
+                  style={{ overflow: "hidden" }}
+                >
+                  <div className="projectTag">commission</div>
+                  <div className="blcCtrTitle">
+                    <Zoom>
+                      <p className="txtCtr fullPName">
+                        {node.directus.title_en_us}
+                      </p>
+                      <p className="txtCtr fullPName">
+                        {node.directus.title_zh_hant_tw}
+                      </p>
+                    </Zoom>
+                  </div>
+                  <div className="blcCtrIntro">
+                    <Fade bottom>
+                      <div className="pageIntro">
+                        <p className="pageIntroTW">
+                          {node.directus.content_zh_hant_tw}
+                        </p>
+                        <p className="pageIntroEN">
+                          {node.directus.content_en_us}
+                        </p>
+                      </div>
+                    </Fade>
+                  </div>
+                  <div
+                    className="arrowDown"
+                    onClick={() => {
+                      scrollTo("#pageTopQ")
+                    }}
+                    onKeyDown={() => scrollTo("#pageTopQ")}
+                    role="button"
+                    tabIndex="0"
+                  >
+                    <img src={ArrowDown} alt="arrow-down" />
+                  </div>
+                </BackgroundImage>
               </FullscreenImg>
             </Layout>
           ))}

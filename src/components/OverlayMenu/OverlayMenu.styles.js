@@ -89,4 +89,24 @@ export const Overlay = styled.div`
     letter-spacing: 0.2em;
     line-height: 52px;
   }
+  /* phones tablets */
+  @media (max-width: 768px) {
+    width: 100%;
+    max-width: unset;
+    .closeButton {
+      right: 28px;
+      top: 14px;
+    }
+    .inner {
+      .invertedLogo {
+        max-width: 50px;
+        position: absolute;
+        left: 24px;
+        top: 23px;
+      }
+      .overlayMenu {
+        padding-left: 24px;
+      }
+    }
+  }
 `

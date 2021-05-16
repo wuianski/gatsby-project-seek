@@ -60,12 +60,7 @@ export default function hongList() {
                 </div>
               </Fade>
               <div className="mt20">
-                <img
-                  className=""
-                  src={cCover}
-                  alt="cover"
-                  width="100%"
-                />
+                <img className="" src={cCover} alt="cover" width="100%" />
               </div>
               <div className="twoGrid73 mt40">
                 <div>
@@ -119,7 +114,7 @@ export default function hongList() {
                 </div>
               </div>
               <div
-                className=""
+                className="pdTB80"
                 onClick={() => scrollTo("#aCList")}
                 onKeyDown={() => scrollTo("#aCList")}
                 role="button"

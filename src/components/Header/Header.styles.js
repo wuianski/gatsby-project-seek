@@ -9,8 +9,13 @@ export const HeaderLogo = styled.div`
     top: 44px;
     z-index: 99;
     cursor: pointer;
-    @media (min-width: 992px) {
+    /* desktop */
+    @media (max-width: 992px) {
       display: block;
+    }
+    /* phones tablets */
+    @media (max-width: 768px) {
+      display: none;
     }
   }
 `

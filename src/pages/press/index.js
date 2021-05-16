@@ -19,7 +19,9 @@ import Header from "../../components/Header/Header"
 export const query = graphql`
   query {
     press: allProjects(
-      filter: { directus: { pages_id: { in: [1, 5] }, status: {eq: "published"} } }
+      filter: {
+        directus: { pages_id: { in: [1, 5] }, status: { eq: "published" } }
+      }
       sort: { order: DESC, fields: directus___year }
     ) {
       totalCount
@@ -34,8 +36,8 @@ export const query = graphql`
             cover {
               publicURL
               childImageSharp {
-                fixed(quality: 90, width: 223, height: 158) {
-                  ...GatsbyImageSharpFixed
+                fluid(quality:  95, maxWidth: 672, maxHeight: 425) {
+                  ...GatsbyImageSharpFluid
                 }
               }
               name
@@ -60,95 +62,101 @@ export default function Press({ data }) {
     <Layout>
       <Content>
         <Header />
-        <div className="pressTitle">press pachage</div>
-        <div>
-          {data.press.edges.map(({ node }) => (
-            <div key={node.directus.id}>
-              <div className="twoGrid37_press">
-                <div className="pressImg">
-                  <Img
-                    className="pressCoverImg"
-                    fixed={node.directus.cover.childImageSharp.fixed}
-                  />
-                </div>
-                <div>
-                  <div className="pressTextBlk">
-                    <span className="pressText">
-                      {node.directus.pages_id === 1 && (
-                        <span>THE QUESTION</span>
-                      )}
-                      {node.directus.pages_id === 5 && (
-                        <span>TUNG CHUNG ART AWARD</span>
-                      )}
-                    </span>
-                    <span className="pressText">
-                      <span>{node.directus.year}</span>
-                    </span>
-                    <span className="pressText">
-                      {node.directus.pages_id === 1 && <span>問問題計畫</span>}
-                      {node.directus.pages_id === 5 && <span>銅鐘藝術賞</span>}
-                    </span>
+        <div className="press_m">
+          <div className="pressTitle">press pachage</div>
+          <div>
+            {data.press.edges.map(({ node }) => (
+              <div key={node.directus.id}>
+                <div className="twoGrid37_press">
+                  <div className="pressImg">
+                    <Img
+                      className="pressCoverImg"
+                      fluid={node.directus.cover.childImageSharp.fluid}
+                    />
                   </div>
-
-                  <div className="pressLinkBlk">
-                    {node.directus.file_zip && (
-                      <a
-                        href={node.directus.file_zip.publicURL}
-                        target="_blank"
-                        rel="noreferrer"
-                        download
-                      >
-                        <span className="">Press Package</span>
-                        <span
-                          className="downloadBtn pressLink"
-                          role="button"
-                          tabIndex="0"
-                        >
-                          <img
-                            className="downloadBtnImg"
-                            src={DownloadBtn}
-                            alt="download button"
-                          />
-                        </span>
-                      </a>
-                    )}
-                    {node.directus.file_pdf && (
-                      <a
-                        href={node.directus.file_pdf.publicURL}
-                        target="_blank"
-                        rel="noreferrer"
-                      >
-                        <span className="">Press Release</span>
-                        <span
-                          className="downloadBtn pressLink"
-                          role="button"
-                          tabIndex="0"
-                        >
-                          <img
-                            className="downloadBtnImg"
-                            src={DownloadBtn}
-                            alt="download button"
-                          />
-                        </span>
-                      </a>
-                    )}
-                    <Link
-                      to={`/press/${node.directus.year}/${node.directus.pages_id}`}
-                    >
-                      <span className="">Press Images</span>
-                      <span
-                        className="arrowGoTo pressLink"
-                        role="button"
-                        tabIndex="0"
-                      >
-                        <img src={PressGoTo} alt="internal link button" />
+                  <div>
+                    <div className="pressTextBlk">
+                      <span className="pressTextEN">
+                        {node.directus.pages_id === 1 && (
+                          <span>THE QUESTION</span>
+                        )}
+                        {node.directus.pages_id === 5 && (
+                          <span>TUNG CHUNG ART AWARD</span>
+                        )}
                       </span>
-                    </Link>
+                      <span className="pressTextYear">
+                        <span>{node.directus.year}</span>
+                      </span>
+                      <span className="pressTextTW">
+                        {node.directus.pages_id === 1 && (
+                          <span>問問題計畫</span>
+                        )}
+                        {node.directus.pages_id === 5 && (
+                          <span>銅鐘藝術賞</span>
+                        )}
+                      </span>
+                    </div>
+
+                    <div className="pressLinkBlk">
+                      {node.directus.file_zip && (
+                        <a
+                          href={node.directus.file_zip.publicURL}
+                          target="_blank"
+                          rel="noreferrer"
+                          download
+                        >
+                          <span className="">Press Package</span>
+                          <span
+                            className="downloadBtn pressLink"
+                            role="button"
+                            tabIndex="0"
+                          >
+                            <img
+                              className="downloadBtnImg"
+                              src={DownloadBtn}
+                              alt="download button"
+                            />
+                          </span>
+                        </a>
+                      )}
+                      {node.directus.file_pdf && (
+                        <a
+                          href={node.directus.file_pdf.publicURL}
+                          target="_blank"
+                          rel="noreferrer"
+                        >
+                          <span className="">Press Release</span>
+                          <span
+                            className="downloadBtn pressLink"
+                            role="button"
+                            tabIndex="0"
+                          >
+                            <img
+                              className="downloadBtnImg"
+                              src={DownloadBtn}
+                              alt="download button"
+                            />
+                          </span>
+                        </a>
+                      )}
+                      <Link
+                        to={`/press/${node.directus.year}/${node.directus.pages_id}`}
+                      >
+                        <span className="">Press Images</span>
+                        <span
+                          className="arrowGoTo pressLink"
+                          role="button"
+                          tabIndex="0"
+                        >
+                          <img src={PressGoTo} alt="internal link button" />
+                        </span>
+                      </Link>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </Content>
     </Layout>

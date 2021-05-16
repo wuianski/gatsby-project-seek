@@ -60,7 +60,7 @@ export default function EList() {
                   id="bgE"
                 >
                   <div className="projectTag">sponsorship</div>
-                  <div className="blcCtr">
+                  <div className="blcCtrTitle">
                     <Zoom>
                       <p className="txtCtr fullPName">
                         {node.directus.title_en_us}
@@ -69,6 +69,8 @@ export default function EList() {
                         {node.directus.title_zh_hant_tw}
                       </p>
                     </Zoom>
+                  </div>
+                  <div className="blcCtrIntro">
                     <Fade bottom>
                       <div className="pageIntro">
                         <p className="pageIntroTW">

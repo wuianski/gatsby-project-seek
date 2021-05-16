@@ -99,15 +99,30 @@ export const Content = styled.div`
     text-transform: uppercase;
   }
   .textBlock {
-    color: #4f4f4f;
     display: inline-block;
   }
   .textTW {
     font-size: 13px;
+    text-align: justify;
+    line-height: 21px;
+    letter-spacing: 0.05em;
+    color: #4f4f4f;
   }
   .textEN {
-    font-size: 13px;
+    font-size: 15px;
+    text-align: justify;
+    line-height: 21px;
+    letter-spacing: 0.005em;
+    color: #4f4f4f;
     margin: 15px 0px;
+  }
+  .apply {
+    display: block;
+    color: #000;
+  }
+  .apply_m {
+    display: none;
+    color: #000;
   }
   .swiper-pagination-bullet-active {
     background: var(--swiper-pagination-color, #e77832) !important;
@@ -135,6 +150,11 @@ export const Content = styled.div`
     display: inline-grid;
     grid-template-columns: 47% 47%;
     column-gap: 6%;
+  }
+  @media (max-width: 768px) {
+    .twoGrid55 {
+      display: block;
+    }
   }
   .video {
     position: relative;
@@ -195,9 +215,6 @@ export const Content = styled.div`
   }
   .w80 {
     width: 80%;
-  }
-  .w70 {
-    width: 70%;
   }
   .w70 {
     width: 70%;
@@ -302,9 +319,17 @@ export const Content = styled.div`
     text-transform: uppercase;
     margin-top: -4px;
   }
+  @media (max-width: 768px) {
+    .pageTitle {
+      letter-spacing: 0.08em;
+      font-size: 23px;
+    }
+  }
+
   .arrowDown {
-    position: relative;
-    left: calc(50vw - 200px);
+    position: absolute;
+    transform: translate(-50%, -50%);
+    left: 50%;
     cursor: pointer;
   }
   .arrowUp {
@@ -319,6 +344,11 @@ export const Content = styled.div`
     grid-template-columns: 67% 27%;
     column-gap: 6%;
   }
+  @media (max-width: 768px) {
+    .twoGrid73 {
+      display: block;
+    }
+  }
   .downloadBtnText {
     font-size: 13px;
     font-weight: 500;
@@ -332,11 +362,22 @@ export const Content = styled.div`
     width: 15px;
     margin: -2px 2px;
   }
-  .equipName {
+  .equipBlk {
+    margin: 30px 0px;
+    color: #000000;
+  }
+  .equipNameTW {
     font-size: 13px;
     font-weight: 500;
     line-height: 21px;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.065em;
+    text-decoration-line: underline;
+  }
+  .equipNameEN {
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 21px;
+    letter-spacing: 0.065em;
     text-decoration-line: underline;
   }
   .equipDetailText {
@@ -344,6 +385,9 @@ export const Content = styled.div`
     font-weight: 400;
     line-height: 18px;
     letter-spacing: 0.1em;
+  }
+  .pdTB80 {
+    padding: 80px 0px;
   }
   .projectTag {
     color: #e77832;
@@ -377,6 +421,12 @@ export const Content = styled.div`
     width: 150px;
     height: 100px;
   }
+  @media (max-width: 768px) {
+    .projectTagFixed {
+      left: -85px;
+      top: 82px;
+    }
+  }
   .paginationNum {
     padding-top: 30px;
     font-size: 13px;
@@ -403,6 +453,9 @@ export const Content = styled.div`
   }
 
   //press
+  .press_m {
+    padding: 0px;
+  }
   .pressTitle {
     font-size: 24.5px;
     font-weight: 900;
@@ -428,7 +481,19 @@ export const Content = styled.div`
     text-transform: uppercase;
     height: 36px;
   }
-  .pressText span {
+  .pressTextEN span {
+    margin-right: 20%;
+    max-width: 114px;
+    display: inline-flex;
+    text-align: initial;
+  }
+  .pressTextYear span {
+    margin-right: 20%;
+    max-width: 114px;
+    display: inline-flex;
+    text-align: initial;
+  }
+  .pressTextTW span {
     margin-right: 20%;
     max-width: 114px;
     display: inline-flex;
@@ -541,5 +606,84 @@ export const Content = styled.div`
     text-decoration: underline;
     margin-left: 8px;
     text-transform: lowercase;
+  }
+
+  /* phones tablets */
+  @media (max-width: 768px) {
+    padding: 49px 0px 38px 0px;
+    .textTW {
+      font-size: 18px;
+      line-height: 29px;
+      letter-spacing: 0.015em;
+      text-align: initial;
+    }
+    .textEN {
+      font-size: 17px;
+      line-height: 24px;
+      letter-spacing: 0.005em;
+      margin: 15px 0px;
+    }
+    .apply {
+      display: none;
+    }
+    .apply_m {
+      display: block;
+      margin-top: 10px;
+    }
+    .mt80 {
+      margin-top: 120px;
+    }
+    .w70 {
+      width: 90%;
+      margin-top: 50px;
+    }
+    .equipNameTW {
+      font-size: 16px;
+    }
+    #aHList,
+    #aCList {
+      padding-top: 58px;
+    }
+    .aHInfo,
+    .aCInfo {
+      padding: 0 27px 0 66px;
+    }
+    .press_m {
+      padding: 0 27px 120px 66px;
+    }
+    .twoGrid37_press {
+      display: inline-block;
+      margin: 15px 0;
+    }
+    .pressTextBlk {
+      height: unset;
+      margin-top: 8px;
+    }
+    .pressTextEN span {
+      max-width: unset;
+      display: inline-block;
+      width: 80%;
+      margin-right: 4%;
+      font-size: 13px;
+      line-height: 23px;
+    }
+    .pressTextYear span {
+      display: inline-block;
+      text-align: right;
+      width: 16%;
+      margin-right: unset;
+      font-size: 13px;
+    }
+    .pressTextTW span {
+      max-width: unset;
+      display: block;
+      font-size: 16px;
+      line-height: 23px;
+    }
+    .pressLinkBlk {
+      width: 120px;
+      text-align: left;
+      margin-top: 30px;
+    }
   }
 `

@@ -28,7 +28,7 @@ export const About = styled.div`
     color: #fff;
   }
   .aboutTitle {
-    font-weight: 500;
+    font-weight: 600;
     font-size: 18px;
     line-height: 29px;
     letter-spacing: 0.05em;
@@ -45,6 +45,7 @@ export const About = styled.div`
     font-size: 13px;
     line-height: 21px;
     letter-spacing: 0.05em;
+    text-align: justify;
   }
   .timelineAllBlock {
     display: inline-flex;
@@ -187,5 +188,30 @@ export const About = styled.div`
   }
   ::-webkit-scrollbar-thumb:window-inactive {
     background: rgba(255, 0, 0, 1);
+  }
+
+  @media (max-width: 768px) {
+    .aboutMenuBlock {
+      width: 100%;
+    }
+    .react-tabs__tab-list {
+      transform: rotate(90deg);
+      width: 100vh;
+      position: fixed;
+      top: 60vh;
+      left: -82vw;
+    }
+    .react-tabs__tab-panel--selected {
+      display: block;
+      padding: 39px 27px 0px 66px;
+    }
+    .tabContainer {
+      height: 86vh;
+    }
+    .aboutContent p {
+      font-size: 18px;
+      line-height: 29px;
+      letter-spacing: 0.015em;
+    }
   }
 `
