@@ -84,6 +84,9 @@ export const Content = styled.div`
   .titleBlock {
     color: #000;
   }
+  .fr_m {
+    float: right;
+  }
   .titleTW {
     font-size: 18px;
     font-weight: 500;
@@ -344,9 +347,13 @@ export const Content = styled.div`
     grid-template-columns: 67% 27%;
     column-gap: 6%;
   }
+  .cCover {
+    margin-bottom: 0px;
+  }
   @media (max-width: 768px) {
     .twoGrid73 {
       display: block;
+      margin-top: 30px;
     }
   }
   .downloadBtnText {
@@ -590,8 +597,16 @@ export const Content = styled.div`
     position: relative;
     top: 30%;
   }
-  .pressSingleImg div {
+  .pressSingleImg {
+    display: block;
+  }
+  .pressSingleImg_m {
+    display: none;
+  }
+  .pressSingleImg_d {
     float: right;
+    height: 212.5px;
+    width: 336px;
   }
   .backBtn {
     cursor: pointer;
@@ -611,6 +626,7 @@ export const Content = styled.div`
   /* phones tablets */
   @media (max-width: 768px) {
     padding: 49px 0px 38px 0px;
+    text-align: initial;
     .textTW {
       font-size: 18px;
       line-height: 29px;
@@ -631,7 +647,7 @@ export const Content = styled.div`
       margin-top: 10px;
     }
     .mt80 {
-      margin-top: 120px;
+      margin-top: 80px;
     }
     .w70 {
       width: 90%;
@@ -650,6 +666,7 @@ export const Content = styled.div`
     }
     .press_m {
       padding: 0 27px 120px 66px;
+      overflow-x: hidden;
     }
     .twoGrid37_press {
       display: inline-block;
@@ -684,6 +701,108 @@ export const Content = styled.div`
       width: 120px;
       text-align: left;
       margin-top: 30px;
+    }
+    /* press images */
+    .backBtn {
+      position: absolute;
+      left: 14px;
+      top: 14px;
+    }
+    .pressImgTitleBlk {
+      display: block;
+    }
+    .pressImgText span {
+      margin-right: 3%;
+      letter-spacing: 0.1em;
+    }
+    .twoGrid64_pressImg {
+      display: inline-block;
+      border-bottom: 1px solid #e77832;
+    }
+    .pressSingleImg {
+      display: none;
+    }
+    .pressSingleImg_m {
+      display: block;
+      margin-bottom: 30px;
+    }
+    .pressImgContentTxtCC {
+      margin-bottom: 50px;
+    }
+    /* project Template */
+    .secName {
+      margin-left: -135px;
+    }
+    .firstSec {
+      padding: 0px 27px 0px 66px;
+    }
+    .contentBlock {
+      display: block;
+      width: 100%;
+    }
+    .contentTW {
+      width: 100%;
+      margin-left: unset;
+    }
+    .contentEN {
+      width: 100%;
+      margin-left: unset;
+    }
+    .vidText_m {
+      padding: 0px 27px 0px 66px;
+    }
+    .swiper-pagination-fraction,
+    .swiper-pagination-custom,
+    .swiper-container-horizontal > .swiper-pagination-bullets {
+      padding-right: 27px;
+    }
+    .artistSec {
+      padding: 0px 27px 0px 66px;
+    }
+    .artistSec .titleBlock {
+      width: 100%;
+      margin-bottom: 10px;
+    }
+    .artistSec .titleTW {
+      display: block;
+    }
+    .artistSec .titleTW p {
+      display: block;
+      text-align: right;
+    }
+    .artistSec .w80 {
+      width: 100%;
+    }
+    .fr_m {
+      float: unset;
+    }
+    .eventSec {
+      padding: 0px 27px 0px 66px;
+    }
+    .eventCover {
+      height: unset;
+      padding-bottom: 20px;
+      padding-top: 40px;
+    }
+    .reviewSec {
+      padding: 0px 27px 0px 66px;
+      margin-top: 60px;
+    }
+    .twoGrid37 {
+      display: inline-block;
+    }
+    .reviewDate {
+      margin-bottom: 8px;
+    }
+    /* review template */
+    .twoGrid28 {
+      display: inline-block;
+      margin: 0px;
+      padding: 0px 27px 0px 66px;
+    }
+    .reviewTag {
+      left: -80px;
+      top: 115px;
     }
   }
 `

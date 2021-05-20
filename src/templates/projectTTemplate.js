@@ -43,7 +43,10 @@ export const query = graphql`
           }
         }
         year
+        title_zh_hant_tw
         title_en_us
+        begin_exhibition (formatString: "YYYY.MM.DD")
+        end_exhibition (formatString: "MM.DD")
         artist_name_zh_hant_tw
         artist_name_en_us
         summary_zh_hant_tw
@@ -61,8 +64,8 @@ export const query = graphql`
           publicURL
           name
           childImageSharp {
-            fixed(width: 1280, height: 700) {
-              ...GatsbyImageSharpFixed
+            fluid(quality: 95, maxWidth: 1920, maxHeight: 1080) {
+              ...GatsbyImageSharpFluid
             }
           }
         }
@@ -105,7 +108,10 @@ const ProjectT = props => {
   const {
     cover,
     year,
+    title_zh_hant_tw,
     title_en_us,
+    begin_exhibition,
+    end_exhibition,
     artist_name_zh_hant_tw,
     artist_name_en_us,
     summary_zh_hant_tw,
@@ -133,6 +139,14 @@ const ProjectT = props => {
   const [isVisibleA, setIsVisibleA] = React.useState(false)
   const toggleVisibilityA = () => setIsVisibleA(!isVisibleA)
 
+  const [shownComments, setShownComments] = React.useState({})
+  const toggleComment = id => {
+    setShownComments(prevShownComments => ({
+      ...prevShownComments,
+      [id]: !prevShownComments[id],
+    }))
+  }
+
   return (
     <Layout>
       {!data.cat && <p>No category data</p>}
@@ -146,7 +160,12 @@ const ProjectT = props => {
         >
           <div className="blcCtr">
             <div className="txtCtr fullPYear">{year}</div>
+            <div className="txtCtr fullPTitleTW">{title_zh_hant_tw}</div>
             <div className="txtCtr fullPTitleEN">{title_en_us}</div>
+            <div className="txtCtr fullPDate">
+              <span>{begin_exhibition}</span>
+              <span> - {end_exhibition}</span>
+            </div>
             <div
               className="txtCtr fullPNameTW"
               dangerouslySetInnerHTML={{ __html: artist_name_zh_hant_tw }}
@@ -232,32 +251,36 @@ const ProjectT = props => {
                   videoSrcURL={main_video_url}
                   videoTitle={main_video_title_en_us}
                 />
-                <div className="mainVidInfo">{main_video_info}</div>
-                <div className="titleBlock">
-                  <div className="titleTW">{main_video_title_zh_hant_tw}</div>
-                  <div className="titleEN">{main_video_title_en_us}</div>
-                </div>
-                <div className="openBlock">
-                  <div
-                    className="fr"
-                    onClick={toggleVisibilityV}
-                    onKeyDown={toggleVisibilityV}
-                    role="button"
-                    tabIndex="0"
-                  >
-                    {!isVisibleV && (
-                      <img
-                        className="openImg"
-                        src={plus}
-                        alt="open content block"
-                      />
-                    )}
+                <div className="vidText_m">
+                  <div className="mainVidInfo">{main_video_info}</div>
+                  <div className="titleBlock">
+                    <div className="titleTW">{main_video_title_zh_hant_tw}</div>
+                    <div className="titleEN">{main_video_title_en_us}</div>
                   </div>
+                  {main_video_description_zh_hant_tw && (
+                    <div className="openBlock">
+                      <div
+                        className="fr"
+                        onClick={toggleVisibilityV}
+                        onKeyDown={toggleVisibilityV}
+                        role="button"
+                        tabIndex="0"
+                      >
+                        {!isVisibleV && (
+                          <img
+                            className="openImg"
+                            src={plus}
+                            alt="open content block"
+                          />
+                        )}
+                      </div>
+                    </div>
+                  )}
                 </div>
               </div>
               <div>
                 {isVisibleV && (
-                  <div>
+                  <div className="vidText_m">
                     <div className="textBlock">
                       <div className="textTW">
                         {main_video_description_zh_hant_tw}
@@ -295,7 +318,7 @@ const ProjectT = props => {
                     <SwiperSlide>
                       <div>
                         <Img
-                          fixed={image.childImageSharp.fixed}
+                          fluid={image.childImageSharp.fluid}
                           key={image.childImageSharp.id}
                         />
                       </div>
@@ -309,7 +332,7 @@ const ProjectT = props => {
 
         <div className="artistSec mt80">
           <div className="secName">artist</div>
-          <div className="titleBlock fr">
+          <div className="titleBlock fr_m">
             <span
               className="titleTW"
               dangerouslySetInnerHTML={{ __html: artist_name_zh_hant_tw }}
@@ -368,47 +391,85 @@ const ProjectT = props => {
         <div className="eventSec mt80">
           {events && (
             <div>
-              {events.map(event => (
-                <div>
-                  <div className="secName">event</div>
-                  <div className="topMinus20">
-                    <div className="twoGrid55">
-                      <div key={event.directus.id}>
-                        <div className="eventCover">
-                          {event.directus.video_url && (
-                            <Video
-                              videoSrcURL={event.directus.video_url}
-                              videoTitle={event.directus.title_en_us}
-                            />
-                          )}
-                          {event.directus.image && (
-                            <Img
-                              className="eventCoverImg"
-                              fluid={event.directus.image.childImageSharp.fluid}
-                            />
-                          )}
+              <div className="topMinus20">
+                <div className="twoGrid55">
+                  {events.map(event => (
+                    <div key={event.directus.id}>
+                      {event.directus.status === "draft" && <span></span>}
+                      {event.directus.status === "published" && (
+                        <div>
+                          <div className="eventCover">
+                            {event.directus.video_url && (
+                              <Video
+                                videoSrcURL={event.directus.video_url}
+                                videoTitle={event.directus.title_en_us}
+                              />
+                            )}
+                            {event.directus.image && (
+                              <Img
+                                className="eventCoverImg"
+                                fluid={
+                                  event.directus.image.childImageSharp.fluid
+                                }
+                              />
+                            )}
+                          </div>
+                          <div className="titleBlock mb20">
+                            <div className="titleTW">
+                              {event.directus.title_zh_hant_tw}
+                            </div>
+                            <div className="titleEN">
+                              {event.directus.title_en_us}
+                            </div>
+                          </div>
+                          <div className="openBlock">
+                            <div
+                              className="fr"
+                              onClick={() => toggleComment(event.directus.id)}
+                              onKeyDown={() => toggleComment(event.directus.id)}
+                              role="button"
+                              tabIndex="0"
+                            >
+                              {!shownComments[event.directus.id] ? (
+                                <img
+                                  className="openImg"
+                                  src={plus}
+                                  alt="open content block"
+                                />
+                              ) : null}
+                            </div>
+                          </div>
+                          {shownComments[event.directus.id] ? (
+                            <div className="textBlock">
+                              <div className="textTW">
+                                {event.directus.introduction_zh_hant_tw}
+                              </div>
+                              <div className="textEN">
+                                {event.directus.introduction_en_us}
+                              </div>
+                              <div
+                                className="closeBlock"
+                                onClick={() => toggleComment(event.directus.id)}
+                                onKeyDown={() =>
+                                  toggleComment(event.directus.id)
+                                }
+                                role="button"
+                                tabIndex="0"
+                              >
+                                <img
+                                  className="closeImg"
+                                  src={minus}
+                                  alt="close content block"
+                                />
+                              </div>
+                            </div>
+                          ) : null}
                         </div>
-                        <div className="titleBlock mb20">
-                          <div className="titleTW">
-                            {event.directus.title_zh_hant_tw}
-                          </div>
-                          <div className="titleEN">
-                            {event.directus.title_en_us}
-                          </div>
-                        </div>
-                        <div className="textBlock">
-                          <div className="textTW">
-                            {event.directus.introduction_zh_hant_tw}
-                          </div>
-                          <div className="textEN">
-                            {event.directus.introduction_en_us}
-                          </div>
-                        </div>
-                      </div>
+                      )}
                     </div>
-                  </div>
+                  ))}
                 </div>
-              ))}
+              </div>
             </div>
           )}
         </div>

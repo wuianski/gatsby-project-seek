@@ -13,6 +13,7 @@ export const Review = styled.div`
   }
   .backBtn {
     cursor: pointer;
+    float: right;
   }
   .backBtn img {
     margin-bottom: 0px;
@@ -26,5 +27,12 @@ export const Review = styled.div`
   }
   .fr {
     float: right;
+  }
+  @media (max-width: 768px) {
+    padding: 39px 27px 0px 66px;
+    .backBtn {
+      margin-top: -17px;
+      float: left;
+    }
   }
 `

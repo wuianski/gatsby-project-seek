@@ -44,7 +44,7 @@ const ProjectQreview = ({ data: { reviews: contents } }) => {
             role="button"
             tabIndex="0"
           >
-            <div className="backBtn fr">
+            <div className="backBtn">
               <img src={Back} alt="back button" />
               <span className="backText">back</span>
             </div>

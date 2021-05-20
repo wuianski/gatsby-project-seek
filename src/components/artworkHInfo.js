@@ -66,6 +66,7 @@ export default function hongList() {
                   </div>
                   <div className="textEN">{node.directus.content_en_us}</div>
                 </div>
+
                 <div>
                   <div className="apply fr">
                     <span className="downloadBtnText">申請辦法</span>

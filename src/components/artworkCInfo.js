@@ -60,7 +60,7 @@ export default function hongList() {
                 </div>
               </Fade>
               <div className="mt20">
-                <img className="" src={cCover} alt="cover" width="100%" />
+                <img className="cCover" src={cCover} alt="cover" width="100%" />
               </div>
               <div className="twoGrid73 mt40">
                 <div>
