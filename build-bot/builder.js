@@ -7,8 +7,9 @@ const copydir = require('copy-dir');
 
 const config = require('./config.js');
 
-let isBuilding = false;
-let requestBuildCount = 0;
+let _isBuilding = false;
+let _isCopying = false;
+let _requestBuildCount = 0;
 
 async function privateBuild() {
     let projectPath = config.projectPath;
@@ -44,37 +45,56 @@ async function privateBuild() {
 }
 
 async function build() {
-    if (isBuilding) {
-        requestBuildCount++;
-        console.warn(colors.yellow(`Is building...${requestBuildCount}`));
+    if (isBusy()) {
+        _requestBuildCount++;
+        console.warn(colors.yellow(`Is building...${_requestBuildCount}`));
         return;
     }
 
-    requestBuildCount = 0;
-    isBuilding = true;
+    _requestBuildCount = 0;
+    _isBuilding = true;
 
     await privateBuild();
-    if (requestBuildCount > 0) {
-        isBuilding = false;
+    if (_requestBuildCount > 0) {
+        _isBuilding = false;
         await build();
         return;
     }
 
-    isBuilding = false;
+    _isBuilding = false;
 }
 
 async function moveOutput() {
     let srcPath = config.projectOutputPath;
     let destPath = config.websitePath;
-    console.warn(colors.green(`${srcPath} >>> ${destPath}`));
+    console.info(colors.green(`${srcPath} >>> ${destPath}`));
+
+    if (isBusy()) {
+        console.warn(colors.yellow(`Is copying..`));
+        return;
+    }
+
+    _isCopying = true;
+
     copydir.sync(srcPath, destPath, {
         utimes: true,
         mode: true,
         cover: true
     });
+
+    _isCopying = false;
+
+    if (_requestBuildCount > 0) {
+        await build();
+    }
+}
+
+function isBusy() {
+    return _isBuilding || _isCopying;
 }
 
 module.exports = {
     build,
-    moveOutput
+    moveOutput,
+    isBusy
 };
