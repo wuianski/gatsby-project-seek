@@ -67,6 +67,7 @@ export const FullscreenImg = styled.div`
     line-height: 24px;
     letter-spacing: 0.05em;
     text-align: justify;
+    text-justify: distribute;
   }
   .pageIntroEN {
     font-size: 14px;
@@ -75,6 +76,7 @@ export const FullscreenImg = styled.div`
     letter-spacing: 0.02em;
     margin-top: 14px;
     text-align: justify;
+    text-justify: distribute;
   }
   .projectTag {
     color: #e77832;

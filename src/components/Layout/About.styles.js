@@ -59,11 +59,13 @@ export const About = styled.div`
     letter-spacing: 0.05em;
     width: 120px;
     display: inline-block;
-    padding-top: 2px;
+    top: 5px;
+    position: relative;
   }
   .timelineContentBlock {
-    display: inline-block;
-    height: 42px;
+    display: inline-grid;
+    //height: 42px;
+    margin-top: 12px;
   }
   .timelineContentTW p {
     font-weight: 300;

@@ -3,6 +3,7 @@ import styled from "styled-components"
 export const Content = styled.div`
   padding: 38px 32px 38px 200px;
   text-align: justify;
+  text-justify: distribute;
   line-height: 1.6;
   letter-spacing: 0.05em;
   .secName {
@@ -109,6 +110,7 @@ export const Content = styled.div`
   .textTW {
     font-size: 13px;
     text-align: justify;
+    text-justify: distribute;
     line-height: 21px;
     letter-spacing: 0.05em;
     color: #4f4f4f;
@@ -116,6 +118,7 @@ export const Content = styled.div`
   .textEN {
     font-size: 15px;
     text-align: justify;
+    text-justify: distribute;
     line-height: 21px;
     letter-spacing: 0.005em;
     color: #4f4f4f;
@@ -313,6 +316,7 @@ export const Content = styled.div`
     //line-height: 23px;
     //letter-spacing: 0.23em;
     text-align: justify;
+    text-justify: distribute;
   }
   .reviewPostContent p img {
     margin-bottom: 0px;
