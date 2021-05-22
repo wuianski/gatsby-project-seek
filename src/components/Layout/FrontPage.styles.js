@@ -16,6 +16,9 @@ export const FrontPage = styled.div`
     top: 44px;
     right: 44px;
   }
+  #project_container_m {
+    display: none;
+  }
   .tagName {
     color: #ffffff;
     font-size: 10px;
@@ -329,6 +332,52 @@ export const FrontPage = styled.div`
     }
     100% {
       opacity: 0;
+    }
+  }
+
+  /* phones tablets */
+  @media (max-width: 768px) {
+    #project_container {
+      display: none;
+    }
+    #project_container_m {
+      display: block;
+    }
+    .bgCoverImg {
+      height: 100vh;
+      width: 100%;
+      background-position: bottom center;
+      background-repeat: repeat-y;
+      background-size: cover;
+      line-height: 100%;
+    }
+    .fullPName {
+      line-height: 45px;
+      letter-spacing: 0.13em;
+      font-size: 24.5px;
+      width: 80vw;
+      height: 45px;
+    }
+    .tagName {
+      color: #e77832;
+      font-size: 15px;
+      line-height: 25px;
+      letter-spacing: 0.21em;
+      position: relative;
+    }
+    .logoFrontPage {
+      max-width: 50px;
+      position: absolute;
+      left: 24px;
+      top: 23px;
+      display: block;
+    }
+    .swiper-pagination-bullet {
+      background: #fff;
+      opacity: 1;
+    }
+    .swiper-pagination-bullet-active {
+      background: var(--swiper-pagination-color, #e77832) !important;
     }
   }
 `

@@ -12,6 +12,13 @@ import BackgroundImage from "gatsby-background-image"
 import { HeaderLogo } from "../components/Header/Header.styles"
 import LogoLight from "../images/logo-light.png"
 
+
+import SwiperCore, { Pagination } from "swiper"
+import { Swiper, SwiperSlide } from "swiper/react"
+import "swiper/swiper.scss"
+import "swiper/components/pagination/pagination.scss"
+SwiperCore.use(Pagination)
+
 export const query = graphql`
   query {
     allPages(
@@ -31,7 +38,7 @@ export const query = graphql`
             cover {
               publicURL
               childImageSharp {
-                fluid(quality: 90, maxWidth: 1920) {
+                fluid(quality: 95, maxWidth: 1920, maxHeight: 1080) {
                   ...GatsbyImageSharpFluid_withWebp
                 }
               }
@@ -52,7 +59,11 @@ export default function Home({ data }) {
           <div id="fullpage_container">
             <HeaderLogo>
               <Link to="/">
-                <img src={LogoLight} alt="logo-dark" />
+                <img
+                  className="logoFrontPage"
+                  src={LogoLight}
+                  alt="logo-light"
+                />
               </Link>
             </HeaderLogo>
             <div id="project_container">
@@ -88,6 +99,43 @@ export default function Home({ data }) {
                   </div>
                 ))}
               </div>
+            </div>
+            <div id="project_container_m">
+              <Swiper pagination={{ clickable: true }}>
+                <div>
+                  {data.allPages.edges.map(({ node }) => (
+                    <div
+                      key={node.directus.id}
+                      id={"item" + node.directus.sort}
+                    >
+                      <SwiperSlide>
+                        <div>
+                          <Link to={node.directus.slug}>
+                            <BackgroundImage
+                              Tag="section"
+                              className="bgCoverImg"
+                              fluid={node.directus.cover.childImageSharp.fluid}
+                              backgroundColor={`#040e18`}
+                            >
+                              <div className="blcCtr">
+                                <p className="txtCtr tagName">
+                                  {node.directus.tag_name}
+                                </p>
+                                <p className="txtCtr fullPName">
+                                  {node.directus.title_en_us}
+                                </p>
+                                <p className="txtCtr fullPName">
+                                  {node.directus.title_zh_hant_tw}
+                                </p>
+                              </div>
+                            </BackgroundImage>
+                          </Link>
+                        </div>
+                      </SwiperSlide>
+                    </div>
+                  ))}
+                </div>
+              </Swiper>
             </div>
           </div>
         </FrontPage>

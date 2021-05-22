@@ -142,7 +142,7 @@ export const Content = styled.div`
     text-align: right !important;
   }
   .eventSec {
-    display: inline-block;
+    display: block;
   }
   .topMinus20 {
     position: relative;

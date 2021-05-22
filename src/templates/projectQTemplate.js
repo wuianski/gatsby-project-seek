@@ -21,8 +21,8 @@ import Footer from "../components/Footer/Footer"
 
 import SwiperCore, { Pagination } from "swiper"
 import { Swiper, SwiperSlide } from "swiper/react"
-import "swiper/swiper.scss"
-import "swiper/components/pagination/pagination.scss"
+import "../swiper_scss/swiper.scss"
+import "../swiper_scss/pagination.scss"
 SwiperCore.use(Pagination)
 
 // A static query, the results from which
