@@ -24,6 +24,10 @@ app.post('/', async (req, res) => {
 
     await builder.build(projectPath)
         .then(async () => {
+            if (builder.isBusy()) {
+                return;
+            }
+
             console.info(colors.green('build success.'));
             await builder.moveOutput()
                 .then(() => {
