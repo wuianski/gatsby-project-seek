@@ -59,6 +59,8 @@ export const Content = styled.div`
     margin: 0px;
     float: right;
     cursor: pointer;
+    z-index: 99;
+    position: relative;
   }
   .contentBlock {
     color: #4f4f4f;
@@ -101,8 +103,8 @@ export const Content = styled.div`
     letter-spacing: 0.1em;
     text-transform: uppercase;
   }
-  .textBlock {
-    display: inline-block;
+  .textBlockArtist {
+    padding-bottom: 80px;
   }
   .textTW {
     font-size: 13px;
@@ -131,7 +133,7 @@ export const Content = styled.div`
     background: var(--swiper-pagination-color, #e77832) !important;
   }
   .swiper-container {
-    padding: 20px 0 !important;
+    padding: 30px 0 !important;
   }
   .swiper-pagination-fraction,
   .swiper-pagination-custom,
@@ -170,6 +172,9 @@ export const Content = styled.div`
     left: 0;
     width: 100%;
     height: 100%;
+  }
+  .artistSec {
+    padding-bottom: 80px;
   }
   .eventCover {
     height: 24vw;
@@ -747,6 +752,7 @@ export const Content = styled.div`
     .contentEN {
       width: 100%;
       margin-left: unset;
+      margin-top: 20px;
     }
     .vidText_m {
       padding: 0px 27px 0px 66px;

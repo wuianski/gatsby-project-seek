@@ -346,8 +346,7 @@ const ProjectQ = props => {
             </div>
           </div>
           {isVisibleA && (
-            <div>
-              <div className="textBlock w80 fr">
+              <div className="textBlockArtist w80 fr">
                 <div
                   className="textTW"
                   dangerouslySetInnerHTML={{
@@ -360,21 +359,20 @@ const ProjectQ = props => {
                     __html: artist_introduction_en_us,
                   }}
                 />
+                <div
+                  className="closeBlock"
+                  onClick={toggleVisibilityA}
+                  onKeyDown={toggleVisibilityA}
+                  role="button"
+                  tabIndex="0"
+                >
+                  <img
+                    className="closeImg"
+                    src={minus}
+                    alt="close content block"
+                  />
+                </div>
               </div>
-              <div
-                className="closeBlock"
-                onClick={toggleVisibilityA}
-                onKeyDown={toggleVisibilityA}
-                role="button"
-                tabIndex="0"
-              >
-                <img
-                  className="closeImg"
-                  src={minus}
-                  alt="close content block"
-                />
-              </div>
-            </div>
           )}
         </div>
 

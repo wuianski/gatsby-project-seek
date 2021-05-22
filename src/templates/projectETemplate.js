@@ -360,21 +360,19 @@ const ProjectE = props => {
             </div>
           </div>
           {isVisibleA && (
-            <div>
-              <div className="textBlock w80 fr">
-                <div
-                  className="textTW"
-                  dangerouslySetInnerHTML={{
-                    __html: artist_introduction_zh_hant_tw,
-                  }}
-                />
-                <div
-                  className="textEN"
-                  dangerouslySetInnerHTML={{
-                    __html: artist_introduction_en_us,
-                  }}
-                />
-              </div>
+            <div className="textBlockArtist w80 fr">
+              <div
+                className="textTW"
+                dangerouslySetInnerHTML={{
+                  __html: artist_introduction_zh_hant_tw,
+                }}
+              />
+              <div
+                className="textEN"
+                dangerouslySetInnerHTML={{
+                  __html: artist_introduction_en_us,
+                }}
+              />
               <div
                 className="closeBlock"
                 onClick={toggleVisibilityA}
