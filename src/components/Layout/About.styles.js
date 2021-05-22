@@ -46,6 +46,7 @@ export const About = styled.div`
     line-height: 21px;
     letter-spacing: 0.05em;
     text-align: justify;
+    text-justify: distribute;
   }
   .timelineAllBlock {
     display: inline-flex;
