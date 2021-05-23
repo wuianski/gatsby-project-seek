@@ -47,8 +47,8 @@ export const query = graphql`
         year
         title_zh_hant_tw
         title_en_us
-        begin_exhibition (formatString: "YYYY.MM.DD")
-        end_exhibition (formatString: "MM.DD")
+        begin_exhibition(formatString: "YYYY.MM.DD")
+        end_exhibition(formatString: "MM.DD")
         artist_name_zh_hant_tw
         artist_name_en_us
         summary_zh_hant_tw
@@ -75,6 +75,8 @@ export const query = graphql`
         artist_introduction_en_us
         events {
           directus {
+            id
+            status
             title_zh_hant_tw
             title_en_us
             image {

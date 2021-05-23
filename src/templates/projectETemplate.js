@@ -75,6 +75,8 @@ export const query = graphql`
         artist_introduction_en_us
         events {
           directus {
+            id
+            status
             title_zh_hant_tw
             title_en_us
             image {
