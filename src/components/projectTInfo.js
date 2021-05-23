@@ -61,7 +61,7 @@ export default function TList() {
                 >
                   <div className="projectTag">award</div>
                   <div className="blcCtrTitle">
-                    <Zoom>
+                    <Zoom cascade>
                       <p className="txtCtr fullPName">
                         {node.directus.title_en_us}
                       </p>
@@ -71,7 +71,7 @@ export default function TList() {
                     </Zoom>
                   </div>
                   <div className="blcCtrIntro">
-                    <Fade bottom>
+                    <Fade cascade>
                       <div className="pageIntro">
                         <p className="pageIntroTW">
                           {node.directus.content_zh_hant_tw}

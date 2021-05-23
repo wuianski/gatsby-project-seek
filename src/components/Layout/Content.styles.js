@@ -321,6 +321,9 @@ export const Content = styled.div`
   .reviewPostContent p img {
     margin-bottom: 0px;
   }
+  .reviewPostContent p iframe {
+    width: 100%;
+  }
 
   // canopy
   .pageTitle {
@@ -401,6 +404,7 @@ export const Content = styled.div`
     font-weight: 400;
     line-height: 18px;
     letter-spacing: 0.1em;
+    margin-bottom: 10px;
   }
   .pdTB80 {
     padding: 80px 0px;
@@ -672,6 +676,23 @@ export const Content = styled.div`
     .aHInfo,
     .aCInfo {
       padding: 0 27px 0 66px;
+    }
+    .artworkCover {
+      margin-right: -27px;
+      margin-top: -80px;
+      margin-bottom: -30px;
+    }
+    .artworkCover picture img {
+      position: relative !important;
+      height: 183px !important;
+    }
+    .artworkCCover {
+      margin-right: -27px;
+    }
+    .artworkCCover img {
+      position: relative !important;
+      height: 183px !important;
+      object-fit: cover;
     }
     .press_m {
       padding: 0 27px 120px 66px;

@@ -48,6 +48,8 @@ export const FrontPage = styled.div`
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    //mix-blend-mode: difference;
+    filter: drop-shadow(0.02em 0.02em black);
   }
   .txtCtr {
     text-align: center;
@@ -59,6 +61,35 @@ export const FrontPage = styled.div`
     letter-spacing: 0.19em;
     margin: 0px;
   }
+  .fullPNameTW {
+    font-size: 20px;
+    font-weight: bold;
+    letter-spacing: 0.19em;
+    margin: 0px;
+  }
+  
+  /*effect-underline*/
+  .fullPName:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    display: inline-block;
+    height: 1.1em;
+    width: 97%;
+    border-bottom: 1px solid #fff;
+    margin-top: 0px;
+    opacity: 0;
+    -webkit-transition: opacity 0.8s, -webkit-transform 0.8s;
+    transition: opacity 0.8s, transform 0.8s;
+    -webkit-transform: scale(0, 1);
+    transform: scale(0, 1);
+  }
+  .bgCoverImg:hover .fullPName:after {
+    opacity: 1;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+
   #project_container div:nth-of-type(1) {
     flex-grow: 2;
   }
@@ -363,7 +394,10 @@ export const FrontPage = styled.div`
       font-size: 15px;
       line-height: 25px;
       letter-spacing: 0.21em;
-      position: relative;
+      text-align: center;
+      text-transform: uppercase;
+      position: absolute;
+      top: 39%;
     }
     .logoFrontPage {
       max-width: 50px;

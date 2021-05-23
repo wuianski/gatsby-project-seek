@@ -16,6 +16,8 @@ export const FullscreenImg = styled.div`
     top: 55%;
     left: 50%;
     transform: translate(-50%, -50%);
+    //mix-blend-mode: difference;
+    filter: drop-shadow(0.02em 0.02em black);
   }
   .blcCtrTitle {
     color: #ffffff;
@@ -24,6 +26,7 @@ export const FullscreenImg = styled.div`
     top: 40%;
     left: 50%;
     transform: translate(-50%, -50%);
+    filter: drop-shadow(0.02em 0.02em black);
   }
   .blcCtrIntro {
     color: #ffffff;
@@ -33,6 +36,7 @@ export const FullscreenImg = styled.div`
     left: 50%;
     transform: translate(-50%, -50%);
     min-height: 210px;
+    filter: drop-shadow(0.02em 0.02em black);
   }
   .txtCtr {
     text-align: center;

@@ -19,6 +19,8 @@ import Headerw from "../components/Headerw/Headerw"
 import Header from "../components/Header/Header"
 import Footer from "../components/Footer/Footer"
 
+import Zoom from "react-reveal/Zoom"
+
 import SwiperCore, { Pagination } from "swiper"
 import { Swiper, SwiperSlide } from "swiper/react"
 import "swiper/swiper.scss"
@@ -159,21 +161,23 @@ const ProjectT = props => {
           backgroundColor={`#040e18`}
         >
           <div className="blcCtr">
-            <div className="txtCtr fullPYear">{year}</div>
-            <div className="txtCtr fullPTitleTW">{title_zh_hant_tw}</div>
-            <div className="txtCtr fullPTitleEN">{title_en_us}</div>
-            <div className="txtCtr fullPDate">
-              <span>{begin_exhibition}</span>
-              <span> - {end_exhibition}</span>
-            </div>
-            <div
-              className="txtCtr fullPNameTW"
-              dangerouslySetInnerHTML={{ __html: artist_name_zh_hant_tw }}
-            />
-            <div
-              className="txtCtr fullPNameEN"
-              dangerouslySetInnerHTML={{ __html: artist_name_en_us }}
-            />
+            <Zoom cascade>
+              <div className="txtCtr fullPYear">{year}</div>
+              <div className="txtCtr fullPTitleTW">{title_zh_hant_tw}</div>
+              <div className="txtCtr fullPTitleEN">{title_en_us}</div>
+              <div className="txtCtr fullPDate">
+                <span>{begin_exhibition}</span>
+                <span> - {end_exhibition}</span>
+              </div>
+              <div
+                className="txtCtr fullPNameTW"
+                dangerouslySetInnerHTML={{ __html: artist_name_zh_hant_tw }}
+              />
+              <div
+                className="txtCtr fullPNameEN"
+                dangerouslySetInnerHTML={{ __html: artist_name_en_us }}
+              />
+            </Zoom>
           </div>
           <div
             className="arrowDown"

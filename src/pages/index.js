@@ -11,7 +11,7 @@ import { FrontPage } from "../components/Layout/FrontPage.styles"
 import BackgroundImage from "gatsby-background-image"
 import { HeaderLogo } from "../components/Header/Header.styles"
 import LogoLight from "../images/logo-light.png"
-
+import Zoom from "react-reveal/Zoom"
 
 import SwiperCore, { Pagination } from "swiper"
 import { Swiper, SwiperSlide } from "swiper/react"
@@ -85,12 +85,14 @@ export default function Home({ data }) {
                             backgroundColor={`#040e18`}
                           >
                             <div className="blcCtr">
-                              <p className="txtCtr fullPName">
-                                {node.directus.title_en_us}
-                              </p>
-                              <p className="txtCtr fullPName">
-                                {node.directus.title_zh_hant_tw}
-                              </p>
+                              <Zoom cascade>
+                                <p className="txtCtr fullPName">
+                                  {node.directus.title_en_us}
+                                </p>
+                                <p className="txtCtr fullPNameTW">
+                                  {node.directus.title_zh_hant_tw}
+                                </p>
+                              </Zoom>
                             </div>
                           </BackgroundImage>
                         )}
@@ -117,16 +119,18 @@ export default function Home({ data }) {
                               fluid={node.directus.cover.childImageSharp.fluid}
                               backgroundColor={`#040e18`}
                             >
+                              <p className="tagName">
+                                {node.directus.tag_name}
+                              </p>
                               <div className="blcCtr">
-                                <p className="txtCtr tagName">
-                                  {node.directus.tag_name}
-                                </p>
-                                <p className="txtCtr fullPName">
-                                  {node.directus.title_en_us}
-                                </p>
-                                <p className="txtCtr fullPName">
-                                  {node.directus.title_zh_hant_tw}
-                                </p>
+                                <Zoom cascade>
+                                  <p className="txtCtr fullPName">
+                                    {node.directus.title_en_us}
+                                  </p>
+                                  <p className="txtCtr fullPNameTW">
+                                    {node.directus.title_zh_hant_tw}
+                                  </p>
+                                </Zoom>
                               </div>
                             </BackgroundImage>
                           </Link>

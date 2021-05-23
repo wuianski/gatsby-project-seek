@@ -59,7 +59,7 @@ export default function hongList() {
                   <span>{node.directus.title_zh_hant_tw}</span>
                 </div>
               </Fade>
-              <div className="mt20">
+              <div className="mt20 artworkCCover">
                 <img className="cCover" src={cCover} alt="cover" width="100%" />
               </div>
               <div className="twoGrid73 mt40">

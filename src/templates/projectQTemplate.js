@@ -19,6 +19,9 @@ import Headerw from "../components/Headerw/Headerw"
 import Header from "../components/Header/Header"
 import Footer from "../components/Footer/Footer"
 
+import Zoom from "react-reveal/Zoom"
+import Fade from "react-reveal/Fade"
+
 import SwiperCore, { Pagination } from "swiper"
 import { Swiper, SwiperSlide } from "swiper/react"
 import "../swiper_scss/swiper.scss"
@@ -154,16 +157,18 @@ const ProjectQ = props => {
           backgroundColor={`#040e18`}
         >
           <div className="blcCtr">
-            <div className="txtCtr fullPYear">{year}</div>
-            <div className="txtCtr fullPTitleTW">{title_en_us}</div>
-            <div
-              className="txtCtr fullPNameTW"
-              dangerouslySetInnerHTML={{ __html: artist_name_zh_hant_tw }}
-            />
-            <div
-              className="txtCtr fullPNameEN"
-              dangerouslySetInnerHTML={{ __html: artist_name_en_us }}
-            />
+            <Zoom cascade>
+              <div className="txtCtr fullPYear">{year}</div>
+              <div className="txtCtr fullPTitleTW">{title_en_us}</div>
+              <div
+                className="txtCtr fullPNameTW"
+                dangerouslySetInnerHTML={{ __html: artist_name_zh_hant_tw }}
+              />
+              <div
+                className="txtCtr fullPNameEN"
+                dangerouslySetInnerHTML={{ __html: artist_name_en_us }}
+              />
+            </Zoom>
           </div>
           <div
             className="arrowDown"
@@ -346,33 +351,33 @@ const ProjectQ = props => {
             </div>
           </div>
           {isVisibleA && (
-              <div className="textBlockArtist w80 fr">
-                <div
-                  className="textTW"
-                  dangerouslySetInnerHTML={{
-                    __html: artist_introduction_zh_hant_tw,
-                  }}
+            <div className="textBlockArtist w80 fr">
+              <div
+                className="textTW"
+                dangerouslySetInnerHTML={{
+                  __html: artist_introduction_zh_hant_tw,
+                }}
+              />
+              <div
+                className="textEN"
+                dangerouslySetInnerHTML={{
+                  __html: artist_introduction_en_us,
+                }}
+              />
+              <div
+                className="closeBlock"
+                onClick={toggleVisibilityA}
+                onKeyDown={toggleVisibilityA}
+                role="button"
+                tabIndex="0"
+              >
+                <img
+                  className="closeImg"
+                  src={minus}
+                  alt="close content block"
                 />
-                <div
-                  className="textEN"
-                  dangerouslySetInnerHTML={{
-                    __html: artist_introduction_en_us,
-                  }}
-                />
-                <div
-                  className="closeBlock"
-                  onClick={toggleVisibilityA}
-                  onKeyDown={toggleVisibilityA}
-                  role="button"
-                  tabIndex="0"
-                >
-                  <img
-                    className="closeImg"
-                    src={minus}
-                    alt="close content block"
-                  />
-                </div>
               </div>
+            </div>
           )}
         </div>
 

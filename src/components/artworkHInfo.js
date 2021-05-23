@@ -25,7 +25,7 @@ export default function hongList() {
                   cover {
                     publicURL
                     childImageSharp {
-                      fluid(quality: 90, maxWidth: 1920) {
+                      fluid(quality: 90, maxWidth: 1920, maxHeight: 568) {
                         ...GatsbyImageSharpFluid_withWebp
                       }
                     }
@@ -38,7 +38,14 @@ export default function hongList() {
                       name_zh_hant_tw
                       name_en_us
                       detial
+                      document {
+                        publicURL
+                      }
+                      status
                     }
+                  }
+                  apply_for {
+                    publicURL
                   }
                 }
               }
@@ -56,7 +63,7 @@ export default function hongList() {
                   <p>{node.directus.title_en_us}</p>
                 </div>
               </Fade>
-              <div className="mt20">
+              <div className="mt20 artworkCover">
                 <Img fluid={node.directus.cover.childImageSharp.fluid} />
               </div>
               <div className="twoGrid73 mt40">
@@ -69,14 +76,19 @@ export default function hongList() {
 
                 <div>
                   <div className="apply fr">
-                    <span className="downloadBtnText">申請辦法</span>
-                    <span className="downloadBtn" role="button" tabIndex="0">
-                      <img
-                        className="downloadBtnImg"
-                        src={DownloadBtn}
-                        alt="download button"
-                      />
-                    </span>
+                    <a
+                      href={node.directus.apply_for.publicURL}
+                      download="申請辦法"
+                    >
+                      <span className="downloadBtnText">申請辦法</span>
+                      <span className="downloadBtn" role="button" tabIndex="0">
+                        <img
+                          className="downloadBtnImg"
+                          src={DownloadBtn}
+                          alt="download button"
+                        />
+                      </span>
+                    </a>
                   </div>
                 </div>
               </div>
@@ -86,18 +98,42 @@ export default function hongList() {
                     <div className="twoGrid55">
                       {node.directus.equipment.map(myEquipment => (
                         <div key={myEquipment.directus.id} className="equipBlk">
-                          <div className="equipNameTW">
-                            {myEquipment.directus.name_zh_hant_tw}
-                          </div>
-                          <div className="equipNameEN">
-                            {myEquipment.directus.name_en_us}
-                          </div>
-                          <div
-                            className="equipDetailText mt20"
-                            dangerouslySetInnerHTML={{
-                              __html: myEquipment.directus.detial,
-                            }}
-                          />
+                          {myEquipment.directus.status === "draft" && (
+                            <span></span>
+                          )}
+                          {myEquipment.directus.status === "published" && (
+                            <div>
+                              <div className="equipNameTW">
+                                {myEquipment.directus.name_zh_hant_tw}
+                              </div>
+                              <div className="equipNameEN">
+                                {myEquipment.directus.name_en_us}
+                              </div>
+                              <div
+                                className="equipDetailText mt20"
+                                dangerouslySetInnerHTML={{
+                                  __html: myEquipment.directus.detial,
+                                }}
+                              />
+
+                              <a
+                                href={myEquipment.directus.document.publicURL}
+                                download="spec"
+                              >
+                                <div
+                                  className="downloadBtn"
+                                  role="button"
+                                  tabIndex="0"
+                                >
+                                  <img
+                                    className="downloadBtnImg"
+                                    src={DownloadBtn}
+                                    alt="download button"
+                                  />
+                                </div>
+                              </a>
+                            </div>
+                          )}
                         </div>
                       ))}
                     </div>
@@ -105,14 +141,16 @@ export default function hongList() {
                 )}
               </div>
               <div className="apply_m fr">
-                <span className="downloadBtnText">申請辦法</span>
-                <span className="downloadBtn" role="button" tabIndex="0">
-                  <img
-                    className="downloadBtnImg"
-                    src={DownloadBtn}
-                    alt="download button"
-                  />
-                </span>
+                <a href={node.directus.apply_for.publicURL} download="申請辦法">
+                  <span className="downloadBtnText">申請辦法</span>
+                  <span className="downloadBtn" role="button" tabIndex="0">
+                    <img
+                      className="downloadBtnImg"
+                      src={DownloadBtn}
+                      alt="download button"
+                    />
+                  </span>
+                </a>
               </div>
 
               <div

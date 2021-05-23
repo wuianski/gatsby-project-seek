@@ -9,6 +9,7 @@ export const HeaderLogo = styled.div`
     top: 44px;
     z-index: 99;
     cursor: pointer;
+    //filter: drop-shadow(0.02em 0.02em black);
     /* desktop */
     @media (max-width: 992px) {
       display: block;
