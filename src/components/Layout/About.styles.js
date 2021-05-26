@@ -192,6 +192,8 @@ export const About = styled.div`
   ::-webkit-scrollbar-thumb:window-inactive {
     background: rgba(255, 0, 0, 1);
   }
+  @media (max-width: 768px) {
+  }
 
   @media (max-width: 768px) {
     .aboutMenuBlock {
@@ -199,10 +201,17 @@ export const About = styled.div`
     }
     .react-tabs__tab-list {
       transform: rotate(90deg);
-      width: 100vh;
       position: fixed;
-      top: 60vh;
-      left: -82vw;
+      //width: 100vh;
+      //width: calc(200px + 100vw);
+      //top: 60vh;
+      //top: calc(-20px + 100vw);
+      //left: -82vw;
+      //right: 60px;
+      transform: rotate(90deg) translateY(-100%);
+      transform-origin: top left;
+      width: 600px;
+      top: 88px;
     }
     .react-tabs__tab-panel--selected {
       display: block;
