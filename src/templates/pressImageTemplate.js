@@ -41,6 +41,7 @@ export const query = graphql`
         directus {
           description
           fileId
+          title
         }
       }
     }
@@ -123,7 +124,7 @@ const ProjectQreview = ({ data }) => {
                         {data.iquery.nodes.map(node => (
                           <div className="pressImgContentTxt">
                             {image.name === node.directus.fileId && (
-                              <span>{node.directus.description}</span>
+                              <span>{node.directus.title}</span>
                             )}
                           </div>
                         ))}
@@ -131,7 +132,15 @@ const ProjectQreview = ({ data }) => {
                       <div className="pressImgContentTxt">
                         {data.pquery.directus.year}
                       </div>
-                      <div className="pressImgContentTxtCC">ⒸPROJECT SEEK</div>
+                      <div>
+                        {data.iquery.nodes.map(node => (
+                          <div className="pressImgContentTxt">
+                            {image.name === node.directus.fileId && (
+                              <span>{node.directus.description}</span>
+                            )}
+                          </div>
+                        ))}
+                      </div>
                       <div className="pressImgContentTxtDownload">
                         <a
                           href={image.publicURL}

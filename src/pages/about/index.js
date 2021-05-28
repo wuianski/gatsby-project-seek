@@ -45,7 +45,15 @@ export const query = graphql`
         cover {
           publicURL
           childImageSharp {
-            fluid(quality: 90, maxWidth: 1920) {
+            fluid(quality: 95, maxWidth: 1920) {
+              ...GatsbyImageSharpFluid_withWebp
+            }
+          }
+        }
+        cover_small {
+          publicURL
+          childImageSharp {
+            fluid(quality: 95, maxWidth: 768) {
               ...GatsbyImageSharpFluid_withWebp
             }
           }
@@ -73,6 +81,154 @@ const PageAbout = ({ data }) => {
         <About>
           <FullscreenImg>
             <Headerw />
+            <BackgroundImage
+              Tag="section"
+              className="bgSection"
+              fluid={data.aboutquery.directus.cover_small.childImageSharp.fluid}
+              backgroundColor={`#040e18`}
+              id="bgA_m"
+            >
+              <div className="aboutMenuBlock fr">
+                <Tabs>
+                  <TabList>
+                    <Tab className="aboutMenu">about</Tab>
+                    <Tab className="aboutMenu">timeline</Tab>
+                    <Tab className="aboutMenu">review</Tab>
+                    <Tab className="aboutMenu">info</Tab>
+                  </TabList>
+
+                  <TabPanel>
+                    <div className="tabContainer">
+                      <div className="aboutTitle">
+                        <div
+                          dangerouslySetInnerHTML={{
+                            __html: data.aboutquery.directus.title_zh_hant_tw.replace(
+                              "，",
+                              "，<br />"
+                            ),
+                          }}
+                        ></div>
+                        <div
+                          dangerouslySetInnerHTML={{
+                            __html: data.aboutquery.directus.title_en_us.replace(
+                              "/",
+                              "/<br />"
+                            ),
+                          }}
+                        />
+                      </div>
+                      <div className="aboutContent">
+                        <div
+                          dangerouslySetInnerHTML={{
+                            __html: data.aboutquery.directus.content_zh_hant_tw,
+                          }}
+                        />
+                        <div
+                          dangerouslySetInnerHTML={{
+                            __html: data.aboutquery.directus.content_en_us,
+                          }}
+                        />
+                      </div>
+                    </div>
+                  </TabPanel>
+                  <TabPanel>
+                    <div className="tabContainer">
+                      <div>
+                        {data.timelinequery.nodes && (
+                          <div>
+                            {data.timelinequery.nodes.map(node => (
+                              <div
+                                key={node.directus.year}
+                                className="timelineAllBlock"
+                              >
+                                {node.directus.status === "draft" && (
+                                  <span></span>
+                                )}
+                                {node.directus.status === "published" && (
+                                  <div>
+                                    <div className="timelineYear">
+                                      {node.directus.year}
+                                    </div>
+                                    <div className="timelineContentBlock">
+                                      <div
+                                        dangerouslySetInnerHTML={{
+                                          __html:
+                                            node.directus.title_zh_hant_tw,
+                                        }}
+                                        className="timelineContentTW"
+                                      />
+                                      <div
+                                        dangerouslySetInnerHTML={{
+                                          __html: node.directus.title_en_us,
+                                        }}
+                                        className="timelineContentEN"
+                                      />
+                                    </div>
+                                  </div>
+                                )}
+                              </div>
+                            ))}
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  </TabPanel>
+                  <TabPanel>
+                    <div className="tabContainer">
+                      {data.aboutquery.directus.reviews && (
+                        <div>
+                          {data.aboutquery.directus.reviews.map(review => (
+                            <div key={review.directus.id}>
+                              {review.directus.status === "draft" && (
+                                <span></span>
+                              )}
+                              {review.directus.status === "published" && (
+                                <Link
+                                  to={`/about/reviews/${review.directus.date}`}
+                                >
+                                  <div
+                                    className="reviewTitle"
+                                    dangerouslySetInnerHTML={{
+                                      __html: review.directus.title,
+                                    }}
+                                  />
+                                  <div className="reviewFD">
+                                    <span>{review.directus.from}</span>
+                                    <span> | </span>
+                                    <span>{review.directus.date}</span>
+                                  </div>
+                                  <div
+                                    className="arrowGoTo"
+                                    role="button"
+                                    tabIndex="0"
+                                  >
+                                    <img
+                                      src={GoTo}
+                                      alt="internal link button"
+                                    />
+                                  </div>
+                                </Link>
+                              )}
+                            </div>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  </TabPanel>
+                  <TabPanel>
+                    <div className="tabContainer">
+                      <div
+                        className="infoContent"
+                        dangerouslySetInnerHTML={{
+                          __html: data.aboutquery.directus.info,
+                        }}
+                      />
+                    </div>
+                  </TabPanel>
+                </Tabs>
+              </div>
+            </BackgroundImage>
+
             <BackgroundImage
               Tag="section"
               className="bgSection"

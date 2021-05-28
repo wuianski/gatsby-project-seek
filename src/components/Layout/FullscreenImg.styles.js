@@ -9,6 +9,12 @@ export const FullscreenImg = styled.div`
     background-size: cover;
     line-height: 100%;
   }
+  #bgA {
+    display: block;
+  }
+  #bgA_m {
+    display: none;
+  }
   .blcCtr {
     color: #ffffff;
     width: 73vw;
@@ -17,26 +23,26 @@ export const FullscreenImg = styled.div`
     left: 50%;
     transform: translate(-50%, -50%);
     //mix-blend-mode: difference;
-    filter: drop-shadow(0.02em 0.02em black);
+    filter: drop-shadow(0.05em 0.05em black);
   }
   .blcCtrTitle {
     color: #ffffff;
     width: 73vw;
     position: absolute;
-    top: 40%;
+    top: 38%;
     left: 50%;
     transform: translate(-50%, -50%);
-    filter: drop-shadow(0.02em 0.02em black);
+    filter: drop-shadow(0.05em 0.05em black);
   }
   .blcCtrIntro {
     color: #ffffff;
     width: 73vw;
     position: absolute;
-    top: 60%;
+    top: 65%;
     left: 50%;
     transform: translate(-50%, -50%);
     min-height: 210px;
-    filter: drop-shadow(0.02em 0.02em black);
+    filter: drop-shadow(0.05em 0.05em black);
   }
   .txtCtr {
     text-align: center;
@@ -142,7 +148,7 @@ export const FullscreenImg = styled.div`
     font-size: 25px;
     font-weight: 600;
     line-height: 34px;
-    letter-spacing: 0.15em;
+    letter-spacing: 0.13em;
   }
   .fullPDate {
     font-size: 13px;
@@ -166,6 +172,12 @@ export const FullscreenImg = styled.div`
 
   /* phones tablets */
   @media (max-width: 768px) {
+    #bgA {
+      display: none;
+    }
+    #bgA_m {
+      display: block;
+    }
     .blcCtr {
       top: 50%;
     }
@@ -173,6 +185,7 @@ export const FullscreenImg = styled.div`
       top: 150px;
     }
     .blcCtrIntro {
+      top: 60%;
       width: 84vw;
       height: 52vh;
       overflow-y: scroll;

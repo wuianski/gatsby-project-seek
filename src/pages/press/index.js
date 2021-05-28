@@ -63,7 +63,7 @@ export default function Press({ data }) {
       <Content>
         <Header />
         <div className="press_m">
-          <div className="pressTitle">press pachage</div>
+          <div className="pressTitle">press package</div>
           <div>
             {data.press.edges.map(({ node }) => (
               <div key={node.directus.id}>

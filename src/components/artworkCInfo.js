@@ -5,12 +5,12 @@
 import React from "react"
 import { StaticQuery, graphql } from "gatsby"
 
-//import Img from "gatsby-image"
+import Img from "gatsby-image"
 import ArrowDownBlk from "../images/ArrowDownBlk.png"
 import scrollTo from "gatsby-plugin-smoothscroll"
 import DownloadBtn from "../images/download.png"
 import Fade from "react-reveal/Fade"
-import cCover from "../images/cCover.jpg"
+
 
 
 
@@ -28,12 +28,16 @@ export default function hongList() {
                   title_en_us
                   content_zh_hant_tw
                   content_en_us
-                  cover {
+                  cover_inside {
                     publicURL
                     childImageSharp {
-                      fluid(quality: 90, maxWidth: 1920) {
+                      fluid(quality: 95, maxWidth: 1920) {
                         ...GatsbyImageSharpFluid_withWebp
                       }
+                    }
+                    directus {
+                      title
+                      description
                     }
                   }
                   planimetric_map {
@@ -59,10 +63,14 @@ export default function hongList() {
                   <span>{node.directus.title_zh_hant_tw}</span>
                 </div>
               </Fade>
-              <div className="mt20 artworkCCover">
-                <img className="cCover" src={cCover} alt="cover" width="100%" />
+              <div className="mt20 artworkCover">
+                <Img fluid={node.directus.cover_inside.childImageSharp.fluid} />
               </div>
-              <div className="twoGrid73 mt40">
+              <div className="imageInfo_c">
+                <span>{node.directus.cover_inside.directus.title}</span>
+                <span>{node.directus.cover_inside.directus.description}</span>
+              </div>
+              <div className="twoGrid73 mt20">
                 <div>
                   <div className="textTW">
                     {node.directus.content_zh_hant_tw}

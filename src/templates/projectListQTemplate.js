@@ -41,6 +41,9 @@ export default class projectListQ extends React.Component {
   render() {
     const postsQ = this.props.data.allProjects.edges
     const { numQPages } = this.props.pageContext
+    const activeStyles = {
+      background: "green",
+    }
 
     return (
       <Layout>
@@ -88,7 +91,8 @@ export default class projectListQ extends React.Component {
                 {Array.from({ length: numQPages }, (_, k) => (
                   <Link
                     key={`pagination-number${k + 1}`}
-                    to={`/the-question/${k === 0 ? "" : k + 1}/#pageTopQ`}
+                    to={`/the-question/${k === 0 ? "" : k + 1}#pageTopQ`}
+                    activeStyle={activeStyles}
                   >
                     {k + 1}
                   </Link>

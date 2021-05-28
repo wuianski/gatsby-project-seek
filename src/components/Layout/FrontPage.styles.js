@@ -49,7 +49,7 @@ export const FrontPage = styled.div`
     left: 50%;
     transform: translate(-50%, -50%);
     //mix-blend-mode: difference;
-    filter: drop-shadow(0.02em 0.02em black);
+    filter: drop-shadow(0.03em 0.03em black);
   }
   .txtCtr {
     text-align: center;
@@ -67,7 +67,7 @@ export const FrontPage = styled.div`
     letter-spacing: 0.19em;
     margin: 0px;
   }
-  
+
   /*effect-underline*/
   .fullPName:after {
     content: "";

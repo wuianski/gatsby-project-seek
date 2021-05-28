@@ -179,10 +179,12 @@ const ProjectE = props => {
                 className="txtCtr fullPNameTW"
                 dangerouslySetInnerHTML={{ __html: artist_name_zh_hant_tw }}
               />
-              <div
-                className="txtCtr fullPNameEN"
-                dangerouslySetInnerHTML={{ __html: artist_name_en_us }}
-              />
+              {artist_name_en_us && (
+                <div
+                  className="txtCtr fullPNameEN"
+                  dangerouslySetInnerHTML={{ __html: artist_name_en_us }}
+                />
+              )}
             </Zoom>
           </div>
           <div
@@ -211,17 +213,23 @@ const ProjectE = props => {
               className="summaryEN"
             />
           </div>
-          <div className="openBlock">
-            <div
-              className="fr"
-              onClick={toggleVisibility}
-              onKeyDown={toggleVisibility}
-              role="button"
-              tabIndex="0"
-            >
-              {!isVisible && (
-                <img className="openImg" src={plus} alt="open content block" />
-              )}
+          <div className="mt20">
+            <div className="openBlock">
+              <div
+                className="fr"
+                onClick={toggleVisibility}
+                onKeyDown={toggleVisibility}
+                role="button"
+                tabIndex="0"
+              >
+                {!isVisible && (
+                  <img
+                    className="openImg"
+                    src={plus}
+                    alt="open content block"
+                  />
+                )}
+              </div>
             </div>
           </div>
           {isVisible && (

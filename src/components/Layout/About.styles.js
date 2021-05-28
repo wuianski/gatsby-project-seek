@@ -225,5 +225,8 @@ export const About = styled.div`
       line-height: 29px;
       letter-spacing: 0.015em;
     }
+    .aboutTitle p {
+      margin-bottom: 12px;
+    }
   }
 `

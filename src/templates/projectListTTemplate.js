@@ -58,7 +58,16 @@ export default class projectListT extends React.Component {
                       <div className="pList">
                         <div className="pList_year">{node.directus.year}</div>
                         <div className="pList_title">
-                          <div className="pList_titleTW">
+                          <div
+                            className="pList_titleTW_T_m"
+                            dangerouslySetInnerHTML={{
+                              __html: node.directus.title_zh_hant_tw.replace(
+                                "與",
+                                "與<br />"
+                              ),
+                            }}
+                          />
+                          <div className="pList_titleTW_T">
                             {node.directus.title_zh_hant_tw}
                           </div>
                           <div className="pList_titleEN">
@@ -90,7 +99,7 @@ export default class projectListT extends React.Component {
               {Array.from({ length: numTPages }, (_, l) => (
                 <Link
                   key={`pagination-number${l + 1}`}
-                  to={`/tcaa/${l === 0 ? "" : l + 1}/#pageTopT`}
+                  to={`/tcaa/${l === 0 ? "" : l + 1}#pageTopT`}
                 >
                   {l + 1}
                 </Link>

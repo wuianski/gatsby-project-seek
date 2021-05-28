@@ -196,17 +196,23 @@ const ProjectQ = props => {
               className="summaryEN"
             />
           </div>
-          <div className="openBlock">
-            <div
-              className="fr"
-              onClick={toggleVisibility}
-              onKeyDown={toggleVisibility}
-              role="button"
-              tabIndex="0"
-            >
-              {!isVisible && (
-                <img className="openImg" src={plus} alt="open content block" />
-              )}
+          <div className="mt20">
+            <div className="openBlock">
+              <div
+                className="fr"
+                onClick={toggleVisibility}
+                onKeyDown={toggleVisibility}
+                role="button"
+                tabIndex="0"
+              >
+                {!isVisible && (
+                  <img
+                    className="openImg"
+                    src={plus}
+                    alt="open content block"
+                  />
+                )}
+              </div>
             </div>
           </div>
           {isVisible && (

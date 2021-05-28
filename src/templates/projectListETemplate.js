@@ -73,12 +73,14 @@ export default class projectListE extends React.Component {
                               __html: node.directus.artist_name_zh_hant_tw,
                             }}
                           />
-                          <div
-                            className="pList_aNameEN"
-                            dangerouslySetInnerHTML={{
-                              __html: node.directus.artist_name_en_us,
-                            }}
-                          />
+                          {node.directus.artist_name_en_us && (
+                            <div
+                              className="pList_aNameEN"
+                              dangerouslySetInnerHTML={{
+                                __html: node.directus.artist_name_en_us,
+                              }}
+                            />
+                          )}
                         </div>
                       </div>
                     </Link>
@@ -90,7 +92,7 @@ export default class projectListE extends React.Component {
               {Array.from({ length: numEPages }, (_, m) => (
                 <Link
                   key={`pagination-number${m + 1}`}
-                  to={`/extension/${m === 0 ? "" : m + 1}/#pageTopE`}
+                  to={`/extension/${m === 0 ? "" : m + 1}#pageTopE`}
                 >
                   {m + 1}
                 </Link>

@@ -50,6 +50,20 @@ export const ProjectList = styled.div`
       letter-spacing: 0.2rem;
       line-height: 40px;
     }
+    .pList_titleTW_T {
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: 0.2rem;
+      line-height: 40px;
+      display: block;
+    }
+    .pList_titleTW_T_m {
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: 0.2rem;
+      line-height: 40px;
+      display: none;
+    }
     .pList_titleEN {
       font-size: 13px;
       font-weight: 600;
@@ -91,7 +105,7 @@ export const ProjectList = styled.div`
   /* phones tablets */
   @media (max-width: 768px) {
     .pList {
-      height: 218px;
+      //height: 218px;
       .pList_year {
         margin-left: -100px;
         font-size: 15px;
@@ -105,8 +119,8 @@ export const ProjectList = styled.div`
         letter-spacing: 0.1em;
         left: 30px;
         top: -50px;
-        padding-left: 40px;
-        padding-right: 40px;
+        padding-left: 50px;
+        padding-right: 50px;
       }
       .pList_titleQEN {
         font-size: 18px;
@@ -117,6 +131,15 @@ export const ProjectList = styled.div`
         font-size: 18px;
         line-height: 27px;
         letter-spacing: 0.15em;
+      }
+      .pList_titleTW_T {
+        display: none;
+      }
+      .pList_titleTW_T_m {
+        font-size: 18px;
+        line-height: 27px;
+        letter-spacing: 0.15em;
+        display: block;
       }
       .pList_titleEN {
         font-size: 12px;

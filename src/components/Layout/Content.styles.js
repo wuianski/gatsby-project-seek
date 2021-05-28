@@ -30,7 +30,7 @@ export const Content = styled.div`
     margin-top: -24px;
   }
   .summaryTW {
-    font-size: 15px;
+    font-size: 16px;
     font-weight: 500;
   }
   .summaryEN {
@@ -65,7 +65,7 @@ export const Content = styled.div`
   }
   .contentBlock {
     color: #4f4f4f;
-    font-size: 13px;
+    font-size: 14px;
     width: 80%;
     display: flex;
     margin-bottom: 30px;
@@ -297,21 +297,21 @@ export const Content = styled.div`
     padding-top: 10px;
   }
   .reviewPostSideInfo div {
-    font-size: 11px;
+    font-size: 12px;
     font-weight: 500;
     //line-height: 13px;
     letter-spacing: 0.03em;
     text-transform: uppercase;
   }
   .reviewPostTitle {
-    font-size: 18px;
+    font-size: 19px;
     font-weight: 500;
     //line-height: 24px;
     letter-spacing: 0.23em;
   }
   .reviewPostContent p {
     margin-bottom: 1.45rem;
-    font-size: 14px;
+    font-size: 15px;
     font-weight: 300;
     //line-height: 23px;
     //letter-spacing: 0.23em;
@@ -447,6 +447,16 @@ export const Content = styled.div`
       top: 82px;
     }
   }
+  .imageInfo_c {
+    font-weight: 300;
+    font-size: 10px;
+    line-height: 18px;
+    letter-spacing: 0.05em;
+    margin: 10px 0px;
+  }
+  .imageInfo_c span {
+    margin-right: 8px;
+  }
   .paginationNum {
     padding-top: 30px;
     font-size: 13px;
@@ -494,7 +504,7 @@ export const Content = styled.div`
     border-top: 1px #e77832 solid;
   }
   .pressTextBlk {
-    font-size: 13px;
+    font-size: 14px;
     font-weight: 600;
     line-height: 18px;
     letter-spacing: 0.1em;
@@ -503,7 +513,7 @@ export const Content = styled.div`
   }
   .pressTextEN span {
     margin-right: 20%;
-    max-width: 114px;
+    max-width: 124px;
     display: inline-flex;
     text-align: initial;
   }
@@ -693,6 +703,8 @@ export const Content = styled.div`
       position: relative !important;
       height: 183px !important;
       object-fit: cover;
+    }
+    .imageInfo_c {
     }
     .press_m {
       padding: 0 27px 120px 66px;
