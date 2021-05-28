@@ -54,18 +54,20 @@ export const FrontPage = styled.div`
   .txtCtr {
     text-align: center;
     text-transform: uppercase;
+    width: max-content;
   }
   .fullPName {
-    font-size: 20px;
-    font-weight: bold;
-    letter-spacing: 0.19em;
-    margin: 0px;
+    font-size: 24px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    margin: 0;
+    margin-bottom: 10px;
   }
   .fullPNameTW {
-    font-size: 20px;
-    font-weight: bold;
+    font-size: 23px;
+    font-weight: 600;
     letter-spacing: 0.19em;
-    margin: 0px;
+    margin: auto;
   }
 
   /*effect-underline*/

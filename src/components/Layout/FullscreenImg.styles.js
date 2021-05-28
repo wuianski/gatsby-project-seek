@@ -63,8 +63,8 @@ export const FullscreenImg = styled.div`
   }
   //project's index.js
   .fullPName {
-    font-size: 28px;
-    font-weight: bold;
+    font-size: 32px;
+    font-weight: 600;
     letter-spacing: 0.1em;
     margin: 32px 0;
   }
@@ -72,15 +72,15 @@ export const FullscreenImg = styled.div`
     //margin-top: 65px;
   }
   .pageIntroTW {
-    font-size: 15px;
+    font-size: 16px;
     font-weight: 600;
-    line-height: 24px;
+    line-height: 27px;
     letter-spacing: 0.05em;
     text-align: justify;
     text-justify: distribute;
   }
   .pageIntroEN {
-    font-size: 14px;
+    font-size: 15px;
     font-weight: 600;
     line-height: 20px;
     letter-spacing: 0.02em;
