@@ -54,6 +54,7 @@ export const FullscreenImg = styled.div`
     left: 50%;
     transform: translate(-90%, -50%);
     cursor: pointer;
+    filter: drop-shadow(0em 0.03em #fff);
   }
   .arrowUp {
     position: absolute;
@@ -103,6 +104,7 @@ export const FullscreenImg = styled.div`
     top: 68px;
     width: 150px;
     height: 100px;
+    filter: drop-shadow(0.03em 0.03em #e77832);
   }
   .arrowUp {
     position: absolute;

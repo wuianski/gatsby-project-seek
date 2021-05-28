@@ -424,6 +424,7 @@ export const Content = styled.div`
     top: 68px;
     width: 150px;
     height: 100px;
+    filter: drop-shadow(0.03em 0.03em #e77832);
   }
   .projectTagFixed {
     color: #e77832;
@@ -440,6 +441,7 @@ export const Content = styled.div`
     top: 68px;
     width: 150px;
     height: 100px;
+    filter: drop-shadow(0.03em 0.03em #e77832);
   }
   @media (max-width: 768px) {
     .projectTagFixed {
