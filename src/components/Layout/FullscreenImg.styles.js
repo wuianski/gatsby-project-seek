@@ -32,7 +32,7 @@ export const FullscreenImg = styled.div`
     top: 38%;
     left: 50%;
     transform: translate(-50%, -50%);
-    filter: drop-shadow(0.05em 0.05em black);
+    filter: drop-shadow(0.03em 0.03em black);
   }
   .blcCtrIntro {
     color: #ffffff;
@@ -42,7 +42,7 @@ export const FullscreenImg = styled.div`
     left: 50%;
     transform: translate(-50%, -50%);
     min-height: 210px;
-    filter: drop-shadow(0.05em 0.05em black);
+    filter: drop-shadow(0.03em 0.03em black);
   }
   .txtCtr {
     text-align: center;
@@ -73,7 +73,7 @@ export const FullscreenImg = styled.div`
   }
   .pageIntroTW {
     font-size: 15px;
-    font-weight: 500;
+    font-weight: 600;
     line-height: 24px;
     letter-spacing: 0.05em;
     text-align: justify;
@@ -81,7 +81,7 @@ export const FullscreenImg = styled.div`
   }
   .pageIntroEN {
     font-size: 14px;
-    font-weight: 500;
+    font-weight: 600;
     line-height: 20px;
     letter-spacing: 0.02em;
     margin-top: 14px;
