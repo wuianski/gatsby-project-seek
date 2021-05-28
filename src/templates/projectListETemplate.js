@@ -58,9 +58,12 @@ export default class projectListE extends React.Component {
                       <div className="pList">
                         <div className="pList_year">{node.directus.year}</div>
                         <div className="pList_title">
-                          <div className="pList_titleTW">
-                            {node.directus.title_zh_hant_tw}
-                          </div>
+                          <div
+                            className="pList_titleTW"
+                            dangerouslySetInnerHTML={{
+                              __html: node.directus.title_zh_hant_tw,
+                            }}
+                          ></div>
                           <div className="pList_titleEN">
                             {node.directus.title_en_us}
                           </div>

@@ -67,9 +67,12 @@ export default class projectListT extends React.Component {
                               ),
                             }}
                           />
-                          <div className="pList_titleTW_T">
-                            {node.directus.title_zh_hant_tw}
-                          </div>
+                          <div
+                            className="pList_titleTW_T"
+                            dangerouslySetInnerHTML={{
+                              __html: node.directus.title_zh_hant_tw,
+                            }}
+                          ></div>
                           <div className="pList_titleEN">
                             {node.directus.title_en_us}
                           </div>
