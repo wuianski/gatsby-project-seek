@@ -150,7 +150,7 @@ export const FullscreenImg = styled.div`
     font-size: 25px;
     font-weight: 600;
     line-height: 34px;
-    letter-spacing: 0.13em;
+    letter-spacing: 0.08em;
   }
   .fullPDate {
     font-size: 13px;

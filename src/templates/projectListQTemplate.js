@@ -56,7 +56,7 @@ export default class projectListQ extends React.Component {
                 {postsQ.map(({ node }) => (
                   <div key={node.directus.id}>
                     <Link
-                      to={`/the-question/${node.directus.year}`}
+                      to={`/the-question/${node.directus.year}/${node.directus.id}`}
                       className="pList_link"
                     >
                       <div className="pList">

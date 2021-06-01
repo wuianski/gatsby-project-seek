@@ -306,7 +306,7 @@ module.exports.createPages = async ({ graphql, actions }) => {
   // Create the content page of THE QUESTION
   projectQs.forEach(({ node: projectQ }) => {
     createPage({
-      path: `/the-question/${projectQ.directus.year}`,
+      path: `/the-question/${projectQ.directus.year}/${projectQ.directus.id}`,
       component: path.resolve("./src/templates/projectQTemplate.js"),
       context: projectQ.directus,
     })

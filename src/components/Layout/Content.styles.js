@@ -10,6 +10,38 @@ export const Content = styled.div`
     color: #e77832;
     width: 200px;
     height: 100%;
+    display: grid;
+    transform: rotate(90deg);
+    vertical-align: middle;
+    text-align: center;
+    margin-left: -180px;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    position: relative;
+    top: 24px;
+  }
+  .secNameReview {
+    color: #e77832;
+    width: 200px;
+    height: 100%;
+    display: inline-block;
+    transform: rotate(90deg);
+    vertical-align: middle;
+    text-align: center;
+    margin-left: -180px;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    position: relative;
+    top: 83px;
+  }
+  .secNameArtist {
+    color: #e77832;
+    width: 200px;
+    height: 100%;
     display: inline-block;
     transform: rotate(90deg);
     vertical-align: middle;
@@ -158,6 +190,7 @@ export const Content = styled.div`
     display: inline-grid;
     grid-template-columns: 47% 47%;
     column-gap: 6%;
+    row-gap: 6%;
   }
   @media (max-width: 768px) {
     .twoGrid55 {
@@ -177,7 +210,7 @@ export const Content = styled.div`
     height: 100%;
   }
   .artistSec {
-    padding-bottom: 80px;
+    padding-bottom: 40px;
   }
   .eventCover {
     height: 24vw;
@@ -651,12 +684,10 @@ export const Content = styled.div`
   /* phones tablets */
   @media (max-width: 768px) {
     padding: 49px 0px 38px 0px;
-    text-align: initial;
     .textTW {
       font-size: 18px;
       line-height: 29px;
       letter-spacing: 0.015em;
-      text-align: initial;
     }
     .textEN {
       font-size: 17px;
@@ -777,6 +808,13 @@ export const Content = styled.div`
     .secName {
       margin-left: -135px;
     }
+    .secNameReview {
+      margin-left: -135px;
+    }
+    .secNameArtist {
+      margin-left: -135px;
+      top: 54px;
+    }
     .firstSec {
       padding: 0px 27px 0px 66px;
     }
@@ -822,16 +860,19 @@ export const Content = styled.div`
       float: unset;
     }
     .eventSec {
-      padding: 0px 27px 0px 66px;
+      padding: 60px 27px 0px 66px;
     }
     .eventCover {
       height: unset;
       padding-bottom: 20px;
-      padding-top: 40px;
     }
+    .openBlock {
+      padding-bottom: 60px;
+    }
+
     .reviewSec {
       padding: 0px 27px 0px 66px;
-      margin-top: 60px;
+      margin-top: -20px;
     }
     .twoGrid37 {
       display: inline-block;

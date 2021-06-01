@@ -169,7 +169,10 @@ const ProjectE = props => {
           <div className="blcCtr">
             <Zoom cascade>
               <div className="txtCtr fullPYear">{year}</div>
-              <div className="txtCtr fullPTitleTW">{title_zh_hant_tw}</div>
+              <div
+                className="txtCtr fullPTitleTW"
+                dangerouslySetInnerHTML={{ __html: title_zh_hant_tw }}
+              />
               <div className="txtCtr fullPTitleEN">{title_en_us}</div>
               <div className="txtCtr fullPDate">
                 <span>{begin_exhibition}</span>
@@ -349,7 +352,7 @@ const ProjectE = props => {
         </div>
 
         <div className="artistSec mt80">
-          <div className="secName">artist</div>
+          <div className="secNameArtist">artist</div>
           <div className="titleBlock fr_m">
             <span
               className="titleTW"
@@ -405,6 +408,8 @@ const ProjectE = props => {
         </div>
 
         <div className="eventSec mt80">
+          {events.length > 0 && <div className="secName">event</div>}
+
           {events && (
             <div>
               <div className="topMinus20">
@@ -490,7 +495,8 @@ const ProjectE = props => {
           )}
         </div>
 
-        <div className="reviewSec mt80 mb80">
+        <div className="reviewSec mt40 mb80">
+          {reviews.length > 0 && <div className="secNameReview">review</div>}
           {reviews && (
             <div>
               {reviews.map(review => (

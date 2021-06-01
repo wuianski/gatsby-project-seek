@@ -72,6 +72,7 @@ export const query = graphql`
         artist_introduction_zh_hant_tw
         artist_introduction_en_us
         events {
+          id
           directus {
             id
             status
@@ -332,7 +333,7 @@ const ProjectQ = props => {
         </div>
 
         <div className="artistSec mt80">
-          <div className="secName">artist</div>
+          <div className="secNameArtist">artist</div>
           <div className="titleBlock fr_m">
             <span
               className="titleTW"
@@ -388,6 +389,8 @@ const ProjectQ = props => {
         </div>
 
         <div className="eventSec mt80">
+          {events.length > 0 && <div className="secName">event</div>}
+
           {events && (
             <div>
               <div className="topMinus20">
@@ -473,7 +476,8 @@ const ProjectQ = props => {
           )}
         </div>
 
-        <div className="reviewSec mt80 mb80">
+        <div className="reviewSec mt40 mb80">
+          {reviews.length > 0 && <div className="secNameReview">review</div>}
           {reviews && (
             <div>
               {reviews.map(review => (
