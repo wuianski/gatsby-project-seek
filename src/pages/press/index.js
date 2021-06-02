@@ -12,8 +12,8 @@ import { graphql, Link } from "gatsby"
 import Layout from "../../components/Layout/Layout"
 import { Content } from "../../components/Layout/Content.styles"
 import Img from "gatsby-image"
-import DownloadBtn from "../../images/download.png"
-import PressGoTo from "../../images/pressGoto.png"
+import DownloadBtn from "../../images/download.svg"
+import PressGoTo from "../../images/goTo.svg"
 import Header from "../../components/Header/Header"
 
 export const query = graphql`

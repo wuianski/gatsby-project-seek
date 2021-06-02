@@ -388,7 +388,7 @@ module.exports.createPages = async ({ graphql, actions }) => {
   const numCPages = Math.ceil(cartworklistQuery.totalCount / postsCPerPage)
   Array.from({ length: numCPages }).forEach((_, i) => {
     createPage({
-      path: i === 0 ? `/canopy` : `/canopy/${i + 1}`,
+      path: i === 0 ? `/canopy/list` : `/canopy/list/${i + 1}`,
       component: path.resolve("./src/templates/artworkListCTemplate.js"),
       context: {
         limit: postsCPerPage,
@@ -404,7 +404,8 @@ module.exports.createPages = async ({ graphql, actions }) => {
   const numHPages = Math.ceil(hartworklistQuery.totalCount / postsHPerPage)
   Array.from({ length: numHPages }).forEach((_, j) => {
     createPage({
-      path: j === 0 ? `/hong-x-panasonic` : `/hong-x-panasonic/${j + 1}`,
+      path:
+        j === 0 ? `/hong-x-panasonic/list` : `/hong-x-panasonic/list/${j + 1}`,
       component: path.resolve("./src/templates/artworkListHTemplate.js"),
       context: {
         limit: postsHPerPage,
@@ -420,7 +421,7 @@ module.exports.createPages = async ({ graphql, actions }) => {
   const numQPages = Math.ceil(qprojectlistQuery.totalCount / postsQPerPage)
   Array.from({ length: numQPages }).forEach((_, k) => {
     createPage({
-      path: k === 0 ? `/the-question` : `/the-question/${k + 1}`,
+      path: k === 0 ? `/the-question/list` : `/the-question/list/${k + 1}`,
       component: path.resolve("./src/templates/projectListQTemplate.js"),
       context: {
         limit: postsQPerPage,
@@ -436,7 +437,7 @@ module.exports.createPages = async ({ graphql, actions }) => {
   const numTPages = Math.ceil(tprojectlistQuery.totalCount / postsTPerPage)
   Array.from({ length: numTPages }).forEach((_, l) => {
     createPage({
-      path: l === 0 ? `/tcaa` : `/tcaa/${l + 1}`,
+      path: l === 0 ? `/tcaa/list` : `/tcaa/list/${l + 1}`,
       component: path.resolve("./src/templates/projectListTTemplate.js"),
       context: {
         limit: postsTPerPage,
@@ -452,7 +453,7 @@ module.exports.createPages = async ({ graphql, actions }) => {
   const numEPages = Math.ceil(eprojectlistQuery.totalCount / postsEPerPage)
   Array.from({ length: numEPages }).forEach((_, m) => {
     createPage({
-      path: m === 0 ? `/extension` : `/extension/${m + 1}`,
+      path: m === 0 ? `/extension/list` : `/extension/list/${m + 1}`,
       component: path.resolve("./src/templates/projectListETemplate.js"),
       context: {
         limit: postsEPerPage,

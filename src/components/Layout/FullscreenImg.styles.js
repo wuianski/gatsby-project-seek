@@ -23,7 +23,7 @@ export const FullscreenImg = styled.div`
     left: 50%;
     transform: translate(-50%, -50%);
     //mix-blend-mode: difference;
-    filter: drop-shadow(0.05em 0.05em black);
+    text-shadow: 0.05em 0.05em #000;
   }
   .blcCtrTitle {
     color: #ffffff;
@@ -32,17 +32,17 @@ export const FullscreenImg = styled.div`
     top: 38%;
     left: 50%;
     transform: translate(-50%, -50%);
-    filter: drop-shadow(0.03em 0.03em black);
+    text-shadow: 0.03em 0.03em #000;
   }
   .blcCtrIntro {
     color: #ffffff;
-    width: 73vw;
+    width: 780px;
     position: absolute;
     top: 65%;
     left: 50%;
     transform: translate(-50%, -50%);
     min-height: 210px;
-    filter: drop-shadow(0.03em 0.03em black);
+    text-shadow: 0.03em 0.03em #000;
   }
   .txtCtr {
     text-align: center;
@@ -54,7 +54,7 @@ export const FullscreenImg = styled.div`
     left: 50%;
     transform: translate(-90%, -50%);
     cursor: pointer;
-    filter: drop-shadow(0em 0.03em #fff);
+    //filter: drop-shadow(0em 0.03em #fff);
   }
   .arrowUp {
     position: absolute;
@@ -73,21 +73,23 @@ export const FullscreenImg = styled.div`
     //margin-top: 65px;
   }
   .pageIntroTW {
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 600;
-    line-height: 27px;
-    letter-spacing: 0.05em;
+    line-height: 24px;
+    letter-spacing: 0.06em;
     text-align: justify;
     text-justify: distribute;
+    //text-align: center;
   }
   .pageIntroEN {
-    font-size: 15px;
+    font-size: 14px;
     font-weight: 600;
     line-height: 20px;
     letter-spacing: 0.02em;
     margin-top: 14px;
     text-align: justify;
     text-justify: distribute;
+    //text-align: center;
   }
   .projectTag {
     color: #e77832;
@@ -104,7 +106,7 @@ export const FullscreenImg = styled.div`
     top: 68px;
     width: 150px;
     height: 100px;
-    filter: drop-shadow(0.03em 0.03em #e77832);
+    text-shadow: 0.03em 0.03em #e77832;
   }
   .arrowUp {
     position: absolute;

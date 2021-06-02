@@ -73,7 +73,7 @@ export const ArtworkList = styled.div`
       cursor: pointer;
     }
     .hyperlinkBtnImg {
-      width: 14px;
+      width: 15px;
     }
   }
   /* phones tablets */

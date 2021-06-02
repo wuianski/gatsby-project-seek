@@ -7,8 +7,7 @@ import React from "react"
 import Layout from "../components/Layout/Layout"
 import { Content } from "../components/Layout/Content.styles"
 import ArrowUp from "../images/ArrowUp.svg"
-import scrollTo from "gatsby-plugin-smoothscroll"
-import ProjectQInfo from "../components/projectQInfo.js"
+
 import { ProjectList } from "../components/projectList.styles"
 import Footer from "../components/Footer/Footer"
 import Header from "../components/Header/Header"
@@ -41,17 +40,13 @@ export default class projectListQ extends React.Component {
   render() {
     const postsQ = this.props.data.allProjects.edges
     const { numQPages } = this.props.pageContext
-    const activeStyles = {
-      background: "green",
-    }
 
     return (
       <Layout>
-        <ProjectQInfo />
         <Content id="pageTopQ">
           <Header />
           <ProjectList>
-            <Fade bottom big>
+            <Fade bottom>
               <div id="pQList">
                 {postsQ.map(({ node }) => (
                   <div key={node.directus.id}>
@@ -86,33 +81,24 @@ export default class projectListQ extends React.Component {
                   </div>
                 ))}
               </div>
-
-              <div className="paginationNum">
-                {Array.from({ length: numQPages }, (_, k) => (
-                  <Link
-                    key={`pagination-number${k + 1}`}
-                    to={`/the-question/${k === 0 ? "" : k + 1}#pageTopQ`}
-                    activeStyle={activeStyles}
-                  >
-                    {k + 1}
-                  </Link>
-                ))}
-              </div>
             </Fade>
+            <div className="paginationNum">
+              {Array.from({ length: numQPages }, (_, k) => (
+                <Link
+                  key={`pagination-number${k + 1}`}
+                  to={`/the-question/list/${k === 0 ? "" : k + 1}`}
+                >
+                  {k + 1}
+                </Link>
+              ))}
+            </div>
           </ProjectList>
-          <div className="">
-            <div
-              className="arrowUp mt-30"
-              onClick={() => {
-                scrollTo("#bgQ")
-              }}
-              onKeyDown={() => scrollTo("#bgQ")}
-              role="button"
-              tabIndex="0"
-            >
+
+          <Link to={`/the-question/`}>
+            <div className="arrowUp mt-30" role="button" tabIndex="0">
               <img src={ArrowUp} alt="arrow-up" />
             </div>
-          </div>
+          </Link>
           <Footer />
         </Content>
       </Layout>

@@ -7,9 +7,9 @@ import React from "react"
 import Layout from "../components/Layout/Layout"
 import { Content } from "../components/Layout/Content.styles"
 import Img from "gatsby-image"
-import Back from "../images/back.png"
+import Back from "../images/back.svg"
 import Header from "../components/Header/Header"
-import DownloadBtn from "../images/download.png"
+import DownloadBtn from "../images/download.svg"
 
 // A static query, the results from which
 // will be passed to our component. Uses the 'id' property

@@ -1,61 +1,65 @@
 /**
- * query pages' introduction, which pages_id equal 4 (hong-x-panasonic).
+ * query pages' introduction, which pages_id equal 3 (canopy).
  */
 
 import React from "react"
-import { StaticQuery, graphql } from "gatsby"
+import { graphql, Link } from "gatsby"
 
+import Layout from "../../components/Layout/Layout"
+import { Content } from "../../components/Layout/Content.styles"
+import Header from "../../components/Header/Header"
 import Img from "gatsby-image"
-//import { GatsbyImage } from "gatsby-plugin-image"
-import ArrowDownBlk from "../images/ArrowDownBlk.png"
-import scrollTo from "gatsby-plugin-smoothscroll"
-import DownloadBtn from "../images/download.png"
+import ArrowDownBlk from "../../images/ArrowDownBlk.svg"
+import DownloadBtn from "../../images/download.svg"
 import Fade from "react-reveal/Fade"
 
-export default function hongList() {
-  return (
-    <StaticQuery
-      query={graphql`
-        query artworkHPageQuery {
-          allPages(filter: { directus: { id: { eq: 4 } } }) {
-            edges {
-              node {
-                directus {
-                  title_en_us
-                  cover {
-                    publicURL
-                    childImageSharp {
-                      fluid(quality: 90, maxWidth: 1920, maxHeight: 568) {
-                        ...GatsbyImageSharpFluid_withWebp
-                      }
-                    }
-                  }
-                  content_zh_hant_tw
-                  content_en_us
-                  equipment {
-                    directus {
-                      id
-                      name_zh_hant_tw
-                      name_en_us
-                      detial
-                      document {
-                        publicURL
-                      }
-                      status
-                    }
-                  }
-                  apply_for {
-                    publicURL
-                  }
+export const query = graphql`
+  query {
+    hxfInfoquery: allPages(filter: { directus: { id: { eq: 4 } } }) {
+      edges {
+        node {
+          directus {
+            title_en_us
+            cover {
+              publicURL
+              childImageSharp {
+                fluid(quality: 90, maxWidth: 1920, maxHeight: 568) {
+                  ...GatsbyImageSharpFluid_withWebp
                 }
               }
             }
+            content_zh_hant_tw
+            content_en_us
+            equipment {
+              directus {
+                id
+                name_zh_hant_tw
+                name_en_us
+                detial
+                document {
+                  publicURL
+                }
+                status
+              }
+            }
+            apply_for {
+              publicURL
+            }
           }
         }
-      `}
-      render={data => (
-        <div>
-          {data.allPages.edges.map(({ node }) => (
+      }
+    }
+  }
+`
+
+// The component we'll render for a given page
+const HxFInfo = ({ data }) => {
+  return (
+    <div>
+      <Layout>
+        <Content>
+          <Header />
+          {data.hxfInfoquery.edges.map(({ node }) => (
             <div key={node.directus.id} className="aHInfo">
               <div className="projectTagFixed">sponsorship</div>
               <Fade top>
@@ -68,10 +72,12 @@ export default function hongList() {
               </div>
               <div className="twoGrid73 mt40">
                 <div>
-                  <div className="textTW">
+                  <div className="artworks_textTW">
                     {node.directus.content_zh_hant_tw}
                   </div>
-                  <div className="textEN">{node.directus.content_en_us}</div>
+                  <div className="artworks_textEN">
+                    {node.directus.content_en_us}
+                  </div>
                 </div>
 
                 <div>
@@ -153,24 +159,22 @@ export default function hongList() {
                 </a>
               </div>
 
-              <div
-                className="pdTB80"
-                onClick={() => scrollTo("#aHList")}
-                onKeyDown={() => scrollTo("#aHList")}
-                role="button"
-                tabIndex="0"
-              >
-                <img
-                  className="arrowDown"
-                  src={ArrowDownBlk}
-                  alt="arrow-down"
-                  height="37px"
-                />
-              </div>
+              <Link to={`/hong-x-panasonic/list/`}>
+                <div className="pdTB80" role="button" tabIndex="0">
+                  <img
+                    className="arrowDown"
+                    src={ArrowDownBlk}
+                    alt="arrow-down"
+                    height="37px"
+                  />
+                </div>
+              </Link>
             </div>
           ))}
-        </div>
-      )}
-    />
+        </Content>
+      </Layout>
+    </div>
   )
 }
+
+export default HxFInfo

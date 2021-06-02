@@ -373,13 +373,13 @@ const ProjectT = props => {
           {isVisibleA && (
             <div className="textBlockArtist fr">
               <div
-                className="textTW fr"
+                className="artist_textTW fr"
                 dangerouslySetInnerHTML={{
                   __html: artist_introduction_zh_hant_tw,
                 }}
               />
               <div
-                className="textEN fr"
+                className="artist_textEN fr"
                 dangerouslySetInnerHTML={{
                   __html: artist_introduction_en_us,
                 }}

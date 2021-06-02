@@ -24,6 +24,7 @@ export const Review = styled.div`
     line-height: 20px;
     text-decoration: underline;
     margin-left: 8px;
+    vertical-align: text-bottom;
   }
   .fr {
     float: right;

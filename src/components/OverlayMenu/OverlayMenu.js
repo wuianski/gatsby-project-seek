@@ -1,7 +1,7 @@
 import React from "react"
 import { Link } from "gatsby"
 import InvertedLogo from "../../images/logo-dark.png"
-import CloseButton from "../../images/menu-close.png"
+import CloseButton from "../../images/menu-close.svg"
 import { useMenuQuery } from "../../hooks/useMenuQuery"
 import { Overlay } from "./OverlayMenu.styles"
 //import { css } from "@emotion/react"

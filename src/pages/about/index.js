@@ -11,7 +11,7 @@ import { FullscreenImg } from "../../components/Layout/FullscreenImg.styles"
 import BackgroundImage from "gatsby-background-image"
 import { About } from "../../components/Layout/About.styles"
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs"
-import GoTo from "../../images/goTo.png"
+import GoTo from "../../images/goTo.svg"
 import Headerw from "../../components/Headerw/Headerw"
 
 export const query = graphql`

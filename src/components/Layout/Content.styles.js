@@ -139,6 +139,42 @@ export const Content = styled.div`
   .textBlockArtist {
     padding-bottom: 80px;
   }
+  .artworks_textTW {
+    font-size: 13px;
+    text-align: justify;
+    text-justify: distribute;
+    line-height: 21px;
+    letter-spacing: 0.05em;
+    color: #4f4f4f;
+  }
+  .artworks_textEN {
+    font-size: 15px;
+    text-align: justify;
+    text-justify: distribute;
+    line-height: 21px;
+    letter-spacing: 0.005em;
+    color: #4f4f4f;
+    margin: 15px 0px;
+  }
+  .artist_textTW {
+    font-size: 13px;
+    text-align: justify;
+    text-justify: distribute;
+    line-height: 21px;
+    letter-spacing: 0.05em;
+    color: #4f4f4f;
+    margin-left: 20%;
+  }
+  .artist_textEN {
+    font-size: 15px;
+    text-align: justify;
+    text-justify: distribute;
+    line-height: 21px;
+    letter-spacing: 0.005em;
+    color: #4f4f4f;
+    margin: 15px 0px;
+    margin-left: 20%;
+  }
   .textTW {
     font-size: 13px;
     text-align: justify;
@@ -146,7 +182,7 @@ export const Content = styled.div`
     line-height: 21px;
     letter-spacing: 0.05em;
     color: #4f4f4f;
-    margin-left: 130px;
+    //margin-left: 130px;
   }
   .textEN {
     font-size: 15px;
@@ -156,7 +192,7 @@ export const Content = styled.div`
     letter-spacing: 0.005em;
     color: #4f4f4f;
     margin: 15px 0px;
-    margin-left: 130px;
+    //margin-left: 130px;
   }
   .apply {
     display: block;
@@ -408,8 +444,9 @@ export const Content = styled.div`
     font-weight: 500;
     line-height: 21px;
     letter-spacing: 0.1em;
-    text-decoration-line: underline;
+    text-decoration-line: none;
     margin-left: 20px;
+    color: #000;
   }
   .downloadBtnImg {
     margin-bottom: 0px;
@@ -459,7 +496,7 @@ export const Content = styled.div`
     top: 68px;
     width: 150px;
     height: 100px;
-    filter: drop-shadow(0.03em 0.03em #e77832);
+    text-shadow: 0.03em 0.03em #e77832;
   }
   .projectTagFixed {
     color: #e77832;
@@ -476,7 +513,7 @@ export const Content = styled.div`
     top: 68px;
     width: 150px;
     height: 100px;
-    filter: drop-shadow(0.03em 0.03em #e77832);
+    text-shadow: 0.03em 0.03em #e77832;
   }
   @media (max-width: 768px) {
     .projectTagFixed {
@@ -511,11 +548,11 @@ export const Content = styled.div`
     color: #e77832;
   }
   #aCList {
-    padding-top: 44px;
+    padding-top: 10px;
     min-height: 78vh;
   }
   #aHList {
-    padding-top: 44px;
+    padding-top: 10px;
     min-height: 78vh;
   }
 
@@ -585,7 +622,7 @@ export const Content = styled.div`
     cursor: pointer;
   }
   .arrowGoTo img {
-    margin-bottom: 0;
+    margin-bottom: -2px;
   }
 
   //press images
@@ -681,6 +718,7 @@ export const Content = styled.div`
     text-decoration: underline;
     margin-left: 8px;
     text-transform: lowercase;
+    vertical-align: text-bottom;
   }
 
   /* phones tablets */

@@ -7,14 +7,12 @@ import React from "react"
 import Layout from "../components/Layout/Layout"
 import { Content } from "../components/Layout/Content.styles"
 import ArrowUp from "../images/ArrowUp.svg"
-import scrollTo from "gatsby-plugin-smoothscroll"
 
 import { ArtworkList } from "../components/artworkList.styles"
 import Hyperlink from "../images/hyperlink.png"
-import ArtworkCInfo from "../components/artworkCInfo.js"
 import Header from "../components/Header/Header"
 import Footer from "../components/Footer/Footer"
-
+import Fade from "react-reveal/Fade"
 
 export const artworksListCQuery = graphql`
   query artworksListCQuery($skip: Int!, $limit: Int!) {
@@ -48,78 +46,76 @@ export default class ArtworkListC extends React.Component {
       <Layout>
         <Content id="pageTopC">
           <Header />
-          <ArtworkCInfo />
           <ArtworkList>
-            <div id="aCList">
-              {postsC.map(({ node }) => (
-                <div
-                  key={node.directus.id}
-                  className="aList"
-                  ref={this.myRef}
-                  onScroll={this.onScroll}
-                >
-                  <div className="aList_title">
-                    <div className="aList_titleTW">
-                      {node.directus.title_zh_hant_tw}
-                    </div>
-                    <div className="aList_titleEN">
-                      {node.directus.title_en_us}
-                    </div>
-                  </div>
-                  <div className="aList_yearBlk">
-                    <div className="aList_year">{node.directus.year}</div>
-                  </div>
-                  <div className="aList_aName">
-                    <div className="aList_aNameTW">
-                      {node.directus.artist_name_zh_hant_tw}
-                    </div>
-                    <div className="aList_aNameEN">
-                      {node.directus.artist_name_en_us}
-                    </div>
-                  </div>
-                  <div className="aList_linkBlk">
-                    {node.directus.website && (
-                      <div className="aList_linkBtn">
-                        <a
-                          href={node.directus.website}
-                          target="_blank"
-                          rel="noreferrer"
-                        >
-                          <img
-                            className="hyperlinkBtnImg"
-                            src={Hyperlink}
-                            alt="link to artwork"
-                          />
-                        </a>
+            <Fade bottom>
+              <div id="aCList">
+                {postsC.map(({ node }) => (
+                  <div
+                    key={node.directus.id}
+                    className="aList"
+                    ref={this.myRef}
+                    onScroll={this.onScroll}
+                  >
+                    <div className="aList_title">
+                      <div className="aList_titleTW">
+                        {node.directus.title_zh_hant_tw}
                       </div>
-                    )}
+                      <div className="aList_titleEN">
+                        {node.directus.title_en_us}
+                      </div>
+                    </div>
+                    <div className="aList_yearBlk">
+                      <div className="aList_year">{node.directus.year}</div>
+                    </div>
+                    <div className="aList_aName">
+                      <div className="aList_aNameTW">
+                        {node.directus.artist_name_zh_hant_tw}
+                      </div>
+                      <div className="aList_aNameEN">
+                        {node.directus.artist_name_en_us}
+                      </div>
+                    </div>
+                    <div className="aList_linkBlk">
+                      {node.directus.website && (
+                        <div className="aList_linkBtn">
+                          <a
+                            href={node.directus.website}
+                            target="_blank"
+                            rel="noreferrer"
+                          >
+                            <img
+                              className="hyperlinkBtnImg"
+                              src={Hyperlink}
+                              alt="link to artwork"
+                            />
+                          </a>
+                        </div>
+                      )}
+                    </div>
+                    <div className="aList_yearBlk_m">
+                      <div className="aList_year">{node.directus.year}</div>
+                    </div>
                   </div>
-                  <div className="aList_yearBlk_m">
-                    <div className="aList_year">{node.directus.year}</div>
-                  </div>
-                </div>
-              ))}
-            </div>
+                ))}
+              </div>
+            </Fade>
             <div className="paginationNum">
               {Array.from({ length: numCPages }, (_, i) => (
                 <Link
                   key={`pagination-number${i + 1}`}
-                  to={`/canopy/${i === 0 ? "" : i + 1}#aCList`}
+                  to={`/canopy/list/${i === 0 ? "" : i + 1}`}
                 >
                   {i + 1}
                 </Link>
               ))}
             </div>
           </ArtworkList>
-          <div
-            className="arrowUp mt-30"
-            onClick={() => scrollTo("#pageTopC")}
-            onKeyDown={() => scrollTo("#pageTopC")}
-            role="button"
-            tabIndex="0"
-          >
-            <img src={ArrowUp} alt="arrow-up" />
-          </div>
+
+          <Link to={`/canopy/`}>
+            <div className="arrowUp mt-30" role="button" tabIndex="0">
+              <img src={ArrowUp} alt="arrow-up" />
+            </div>
+          </Link>
           <Footer />
         </Content>
       </Layout>
