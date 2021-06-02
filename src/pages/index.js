@@ -107,32 +107,36 @@ export default function Home({ data }) {
                 <div>
                   {data.allPages.edges.map(({ node }) => (
                     <div
-                      key={node.directus.id}
+                      key={node.directus.id + 10}
                       id={"item" + node.directus.sort}
                     >
                       <SwiperSlide>
                         <div>
                           <Link to={node.directus.slug}>
-                            <BackgroundImage
-                              Tag="section"
-                              className="bgCoverImg"
-                              fluid={node.directus.cover.childImageSharp.fluid}
-                              backgroundColor={`#040e18`}
-                            >
-                              <p className="tagName">
-                                {node.directus.tag_name}
-                              </p>
-                              <div className="blcCtr">
-                                <Zoom cascade>
-                                  <p className="txtCtr fullPName">
-                                    {node.directus.title_en_us}
-                                  </p>
-                                  <p className="txtCtr fullPNameTW">
-                                    {node.directus.title_zh_hant_tw}
-                                  </p>
-                                </Zoom>
-                              </div>
-                            </BackgroundImage>
+                            {node.directus.cover && (
+                              <BackgroundImage
+                                Tag="section"
+                                className="bgCoverImg"
+                                fluid={
+                                  node.directus.cover.childImageSharp.fluid
+                                }
+                                backgroundColor={`#040e18`}
+                              >
+                                <p className="tagName">
+                                  {node.directus.tag_name}
+                                </p>
+                                <div className="blcCtr">
+                                  <Zoom cascade>
+                                    <p className="txtCtr fullPName">
+                                      {node.directus.title_en_us}
+                                    </p>
+                                    <p className="txtCtr fullPNameTW">
+                                      {node.directus.title_zh_hant_tw}
+                                    </p>
+                                  </Zoom>
+                                </div>
+                              </BackgroundImage>
+                            )}
                           </Link>
                         </div>
                       </SwiperSlide>

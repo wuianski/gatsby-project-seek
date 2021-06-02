@@ -10,7 +10,7 @@ export const Content = styled.div`
     color: #e77832;
     width: 200px;
     height: 100%;
-    display: grid;
+    display: inline-block;
     transform: rotate(90deg);
     vertical-align: middle;
     text-align: center;
@@ -146,6 +146,7 @@ export const Content = styled.div`
     line-height: 21px;
     letter-spacing: 0.05em;
     color: #4f4f4f;
+    margin-left: 130px;
   }
   .textEN {
     font-size: 15px;
@@ -155,6 +156,7 @@ export const Content = styled.div`
     letter-spacing: 0.005em;
     color: #4f4f4f;
     margin: 15px 0px;
+    margin-left: 130px;
   }
   .apply {
     display: block;
@@ -688,6 +690,7 @@ export const Content = styled.div`
       font-size: 18px;
       line-height: 29px;
       letter-spacing: 0.015em;
+      margin-left: 0px;
     }
     .textEN {
       font-size: 17px;

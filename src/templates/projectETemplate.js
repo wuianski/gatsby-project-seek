@@ -377,31 +377,33 @@ const ProjectE = props => {
             </div>
           </div>
           {isVisibleA && (
-            <div className="textBlockArtist w80 fr">
-              <div
-                className="textTW"
-                dangerouslySetInnerHTML={{
-                  __html: artist_introduction_zh_hant_tw,
-                }}
-              />
-              <div
-                className="textEN"
-                dangerouslySetInnerHTML={{
-                  __html: artist_introduction_en_us,
-                }}
-              />
-              <div
-                className="closeBlock"
-                onClick={toggleVisibilityA}
-                onKeyDown={toggleVisibilityA}
-                role="button"
-                tabIndex="0"
-              >
-                <img
-                  className="closeImg"
-                  src={minus}
-                  alt="close content block"
+            <div>
+              <div className="textBlockArtist fr">
+                <div
+                  className="textTW fr"
+                  dangerouslySetInnerHTML={{
+                    __html: artist_introduction_zh_hant_tw,
+                  }}
                 />
+                <div
+                  className="textEN fr"
+                  dangerouslySetInnerHTML={{
+                    __html: artist_introduction_en_us,
+                  }}
+                />
+                <div
+                  className="closeBlock"
+                  onClick={toggleVisibilityA}
+                  onKeyDown={toggleVisibilityA}
+                  role="button"
+                  tabIndex="0"
+                >
+                  <img
+                    className="closeImg"
+                    src={minus}
+                    alt="close content block"
+                  />
+                </div>
               </div>
             </div>
           )}

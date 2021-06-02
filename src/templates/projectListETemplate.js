@@ -40,7 +40,7 @@ export const projectListEQuery = graphql`
 export default class projectListE extends React.Component {
   render() {
     const postsE = this.props.data.allProjects.edges
-    const { currentPage, numEPages } = this.props.pageContext
+    const { numEPages } = this.props.pageContext
     return (
       <Layout>
         <ProjectEInfo />

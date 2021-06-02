@@ -20,7 +20,6 @@ import Header from "../components/Header/Header"
 import Footer from "../components/Footer/Footer"
 
 import Zoom from "react-reveal/Zoom"
-import Fade from "react-reveal/Fade"
 
 import SwiperCore, { Pagination } from "swiper"
 import { Swiper, SwiperSlide } from "swiper/react"
@@ -358,15 +357,15 @@ const ProjectQ = props => {
             </div>
           </div>
           {isVisibleA && (
-            <div className="textBlockArtist w80 fr">
+            <div className="textBlockArtist">
               <div
-                className="textTW"
+                className="textTW fr"
                 dangerouslySetInnerHTML={{
                   __html: artist_introduction_zh_hant_tw,
                 }}
               />
               <div
-                className="textEN"
+                className="textEN fr"
                 dangerouslySetInnerHTML={{
                   __html: artist_introduction_en_us,
                 }}

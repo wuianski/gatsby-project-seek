@@ -67,7 +67,6 @@ export default function hongList() {
                 <Img fluid={node.directus.cover_inside.childImageSharp.fluid} />
               </div>
               <div className="imageInfo_c">
-                <span>{node.directus.cover_inside.directus.title}</span>
                 <span>{node.directus.cover_inside.directus.description}</span>
               </div>
               <div className="twoGrid73 mt20">
