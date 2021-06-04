@@ -29,7 +29,7 @@ export const FullscreenImg = styled.div`
     color: #ffffff;
     width: 73vw;
     position: absolute;
-    top: 42%; //38
+    top: calc(50% - 120px);
     left: 50%;
     transform: translate(-50%, -50%);
     text-shadow: 0.03em 0.03em #000;
