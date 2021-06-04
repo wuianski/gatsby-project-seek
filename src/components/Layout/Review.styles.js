@@ -32,7 +32,7 @@ export const Review = styled.div`
   @media (max-width: 768px) {
     padding: 39px 27px 0px 66px;
     .backBtn {
-      margin-top: -17px;
+      margin-top: -16px;
       float: left;
     }
   }

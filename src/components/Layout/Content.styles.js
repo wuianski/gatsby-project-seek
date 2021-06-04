@@ -1,7 +1,7 @@
 import styled from "styled-components"
 
 export const Content = styled.div`
-  padding: 38px 32px 38px 200px;
+  padding: 38px 32px 0px 200px;
   text-align: justify;
   text-justify: distribute;
   line-height: 1.6;
@@ -118,6 +118,7 @@ export const Content = styled.div`
   }
   .titleBlock {
     color: #000;
+    margin-bottom: 20px;
   }
   .fr_m {
     float: right;
@@ -251,7 +252,9 @@ export const Content = styled.div`
     padding-bottom: 40px;
   }
   .eventCover {
-    height: 24vw;
+    height: unset;
+    margin-bottom: 13px;
+    //height: 300px;
   }
   .eventCoverImg div {
     padding-bottom: 56.25% !important;
@@ -478,6 +481,17 @@ export const Content = styled.div`
     letter-spacing: 0.1em;
     margin-bottom: 10px;
   }
+  .pdTB60 {
+    padding: 60px 0px;
+  }
+  .pdTB60_C {
+    padding: 60px 0px;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 30px;
+    bottom: -60px;
+  }
   .pdTB80 {
     padding: 80px 0px;
   }
@@ -532,7 +546,7 @@ export const Content = styled.div`
     margin-right: 8px;
   }
   .paginationNum {
-    padding-top: 30px;
+    padding-top: 15px;
     font-size: 13px;
     font-weight: 400;
     line-height: 19px;
@@ -549,11 +563,11 @@ export const Content = styled.div`
   }
   #aCList {
     padding-top: 10px;
-    min-height: 78vh;
+    //min-height: 78vh;
   }
   #aHList {
     padding-top: 10px;
-    min-height: 78vh;
+    //min-height: 78vh;
   }
 
   //press
@@ -723,18 +737,26 @@ export const Content = styled.div`
 
   /* phones tablets */
   @media (max-width: 768px) {
-    padding: 49px 0px 38px 0px;
+    padding: 69px 0px 38px 0px;
     .textTW {
-      font-size: 18px;
-      line-height: 29px;
+      font-size: 14px;
+      line-height: 21px;
       letter-spacing: 0.015em;
       margin-left: 0px;
     }
     .textEN {
-      font-size: 17px;
-      line-height: 24px;
+      font-size: 14px;
+      line-height: 21px;
       letter-spacing: 0.005em;
       margin: 15px 0px;
+    }
+    .artist_textTW {
+      font-size: 14px;
+      margin-left: 0px;
+    }
+    .artist_textEN {
+      font-size: 14px;
+      margin-left: 0px;
     }
     .apply {
       display: none;
@@ -755,7 +777,7 @@ export const Content = styled.div`
     }
     #aHList,
     #aCList {
-      padding-top: 58px;
+      //padding-top: 58px;
     }
     .aHInfo,
     .aCInfo {
@@ -778,10 +800,22 @@ export const Content = styled.div`
       height: 183px !important;
       object-fit: cover;
     }
-    .imageInfo_c {
+    .pdTB60 {
+      padding-top: 120px;
+      padding-bottom: 30px;
+    }
+    .pdTB60_C {
+      position: relative;
+      left: calc(50% - 15px);
+      width: 30px;
+      padding-top: 130px;
+      padding-bottom: 15px;
+    }
+    .paginationNum {
+      padding-top: 60px;
     }
     .press_m {
-      padding: 0 27px 120px 66px;
+      padding: 0px 27px 120px 66px;
       overflow-x: hidden;
     }
     .twoGrid37_press {
@@ -821,8 +855,8 @@ export const Content = styled.div`
     /* press images */
     .backBtn {
       position: absolute;
-      left: 14px;
-      top: 14px;
+      left: 15px;
+      top: 21px;
     }
     .pressImgTitleBlk {
       display: block;
@@ -904,11 +938,12 @@ export const Content = styled.div`
       padding: 60px 27px 0px 66px;
     }
     .eventCover {
+      //height: 24vw;
       height: unset;
       padding-bottom: 20px;
     }
     .openBlock {
-      padding-bottom: 60px;
+      padding-bottom: 45px;
     }
 
     .reviewSec {
@@ -932,4 +967,9 @@ export const Content = styled.div`
       top: 115px;
     }
   }
+  /*@media (min-width: 1280px) {
+    width: 1280px;
+    max-width: 1280px;
+    margin: 0 auto;
+  }*/
 `

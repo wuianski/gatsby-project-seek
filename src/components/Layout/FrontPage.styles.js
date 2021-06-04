@@ -49,24 +49,75 @@ export const FrontPage = styled.div`
     left: 50%;
     transform: translate(-50%, -50%);
     //mix-blend-mode: difference;
-    text-shadow: 0.03em 0.03em #000;
+    //text-shadow: 0.03em 0.03em #000;
   }
   .txtCtr {
     text-align: center;
     text-transform: uppercase;
     width: max-content;
   }
-  .fullPName {
+  .fullPName1 {
+    text-align: center;
+    text-transform: uppercase;
+    width: max-content;
     font-size: 24px;
     font-weight: 600;
     letter-spacing: 0.1em;
     margin: 0;
     margin-bottom: 10px;
   }
-  .fullPNameTW {
+  .fullPName2 {
+    text-align: center;
+    text-transform: uppercase;
+    width: max-content;
+    font-size: 24px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    margin: 0;
+    margin-bottom: 10px;
+  }
+  .fullPName3 {
+    text-align: center;
+    text-transform: uppercase;
+    width: max-content;
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    margin: 0;
+    margin-bottom: 10px;
+  }
+  .fullPName4 {
+    text-align: center;
+    text-transform: uppercase;
+    width: max-content;
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    margin: 0;
+    margin-bottom: 10px;
+  }
+  .fullPNameTW1 {
     font-size: 23px;
     font-weight: 600;
     letter-spacing: 0.19em;
+    margin: auto;
+  }
+  .fullPNameTW2 {
+    font-size: 23px;
+    font-weight: 600;
+    letter-spacing: 0.19em;
+    margin: auto;
+  }
+  .fullPNameTW3 {
+    font-size: 21px;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    margin: auto;
+  }
+  .fullPNameTW4 {
+    font-size: 21px;
+    font-weight: 600;
+    letter-spacing: 0.15em;
     margin: auto;
   }
 
@@ -98,6 +149,10 @@ export const FrontPage = styled.div`
   #project_container div:nth-of-type(2) {
     flex-grow: 1;
   }
+  #project_container div:nth-of-type(3) {
+    order: 1;
+  }
+
   .grid-container {
     display: grid;
     grid-template-columns: auto auto auto auto auto;
@@ -126,20 +181,20 @@ export const FrontPage = styled.div`
   #item3 {
     //grid-row: 2 / 4;
     position: relative; /*make ele can center vertically inside itself*/
-    border-bottom: #fff 1px solid;
+    border-right: #fff 1px solid;
   }
   #item4 {
     //grid-row: 2 / 4;
     position: relative; /*make ele can center vertically inside itself*/
-    border-right: #fff 1px solid;
+    border-bottom: #fff 1px solid;
   }
 
   /*** grid item ***/
 
   #pTag_1 {
     position: absolute;
-    width: 130px;
-    left: -65px;
+    width: 80px;
+    left: -41px;
     bottom: 50%;
     transform: rotate(90deg);
     background-color: #000;
@@ -154,7 +209,7 @@ export const FrontPage = styled.div`
     background-color: #000;
     z-index: 99;
   }
-  #pTag_3 {
+  #pTag_4 {
     position: absolute;
     width: 110px;
     bottom: -9px;
@@ -163,7 +218,7 @@ export const FrontPage = styled.div`
     background-color: #000;
     z-index: 99;
   }
-  #pTag_4 {
+  #pTag_3 {
     position: absolute;
     width: 130px;
     right: -65px;
@@ -385,12 +440,22 @@ export const FrontPage = styled.div`
       line-height: 100%;
     }
     .fullPName {
+      font-weight: 600;
       line-height: 45px;
       letter-spacing: 0.13em;
       font-size: 24.5px;
       width: 80vw;
       height: 45px;
     }
+    .fullPNameTW {
+      font-weight: 600;
+      line-height: 45px;
+      letter-spacing: 0.13em;
+      font-size: 23px;
+      width: 80vw;
+      height: 45px;
+    }
+
     .tagName {
       color: #e77832;
       font-size: 15px;
@@ -399,7 +464,7 @@ export const FrontPage = styled.div`
       text-align: center;
       text-transform: uppercase;
       position: absolute;
-      top: 39%;
+      top: calc(50% - 80px);
     }
     .logoFrontPage {
       max-width: 50px;

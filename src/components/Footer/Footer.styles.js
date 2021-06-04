@@ -10,6 +10,11 @@ export const FooterCC = styled.div`
     letter-spacing: 0.1em;
     color: #c4c4c4;
     text-transform: uppercase;
-    //padding-bottom: 30px;
+    padding-bottom: 30px;
+  }
+  @media (max-width: 768px) {
+    .cc {
+      padding-bottom: 0px;
+    }
   }
 `

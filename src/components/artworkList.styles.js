@@ -2,8 +2,8 @@ import styled from "styled-components"
 
 export const ArtworkList = styled.div`
   padding: 0;
-  min-height: calc(100vh - 38px);
-  padding-bottom: 30px;
+  min-height: calc(100vh - 68px);
+  //padding-bottom: 30px;
   .aList {
     display: block;
     height: 10vh;

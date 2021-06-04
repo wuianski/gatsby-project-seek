@@ -49,51 +49,51 @@ export default class projectListT extends React.Component {
             <Fade bottom>
               <div id="pTList">
                 {postsT.map(({ node }) => (
-                    <div key={node.directus.id}>
-                      <Link
-                        to={`/tcaa/${node.directus.year}`}
-                        className="pList_link"
-                      >
-                        <div className="pList">
-                          <div className="pList_year">{node.directus.year}</div>
-                          <div className="pList_title">
-                            <div
-                              className="pList_titleTW_T_m"
-                              dangerouslySetInnerHTML={{
-                                __html: node.directus.title_zh_hant_tw.replace(
-                                  "與",
-                                  "與<br />"
-                                ),
-                              }}
-                            />
-                            <div
-                              className="pList_titleTW_T"
-                              dangerouslySetInnerHTML={{
-                                __html: node.directus.title_zh_hant_tw,
-                              }}
-                            ></div>
-                            <div className="pList_titleEN">
-                              {node.directus.title_en_us}
-                            </div>
-                          </div>
-                          <div className="line"></div>
-                          <div className="pList_aName">
-                            <div
-                              className="pList_aNameTW"
-                              dangerouslySetInnerHTML={{
-                                __html: node.directus.artist_name_zh_hant_tw,
-                              }}
-                            />
-                            <div
-                              className="pList_aNameEN"
-                              dangerouslySetInnerHTML={{
-                                __html: node.directus.artist_name_en_us,
-                              }}
-                            />
+                  <div key={node.directus.id}>
+                    <Link
+                      to={`/tung-chung-prize/${node.directus.year}`}
+                      className="pList_link"
+                    >
+                      <div className="pList">
+                        <div className="pList_year">{node.directus.year}</div>
+                        <div className="pList_title">
+                          <div
+                            className="pList_titleTW_T_m"
+                            dangerouslySetInnerHTML={{
+                              __html: node.directus.title_zh_hant_tw.replace(
+                                "與",
+                                "與<br />"
+                              ),
+                            }}
+                          />
+                          <div
+                            className="pList_titleTW_T"
+                            dangerouslySetInnerHTML={{
+                              __html: node.directus.title_zh_hant_tw,
+                            }}
+                          ></div>
+                          <div className="pList_titleEN">
+                            {node.directus.title_en_us}
                           </div>
                         </div>
-                      </Link>
-                    </div>
+                        <div className="line"></div>
+                        <div className="pList_aName">
+                          <div
+                            className="pList_aNameTW"
+                            dangerouslySetInnerHTML={{
+                              __html: node.directus.artist_name_zh_hant_tw,
+                            }}
+                          />
+                          <div
+                            className="pList_aNameEN"
+                            dangerouslySetInnerHTML={{
+                              __html: node.directus.artist_name_en_us,
+                            }}
+                          />
+                        </div>
+                      </div>
+                    </Link>
+                  </div>
                 ))}
               </div>
             </Fade>
@@ -101,7 +101,7 @@ export default class projectListT extends React.Component {
               {Array.from({ length: numTPages }, (_, l) => (
                 <Link
                   key={`pagination-number${l + 1}`}
-                  to={`/tcaa/list/${l === 0 ? "" : l + 1}`}
+                  to={`/tung-chung-prize/list/${l === 0 ? "" : l + 1}`}
                 >
                   {l + 1}
                 </Link>
@@ -109,7 +109,7 @@ export default class projectListT extends React.Component {
             </div>
           </ProjectList>
 
-          <Link to={`/tcaa/`}>
+          <Link to={`/tung-chung-prize/`}>
             <div className="arrowUp mt-30" role="button" tabIndex="0">
               <img src={ArrowUp} alt="arrow-up" />
             </div>

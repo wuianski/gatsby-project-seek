@@ -9,7 +9,7 @@ import { Content } from "../components/Layout/Content.styles"
 import ArrowUp from "../images/ArrowUp.svg"
 
 import { ArtworkList } from "../components/artworkList.styles"
-import Hyperlink from "../images/hyperlink.png"
+import Hyperlink from "../images/hyperlink.svg"
 import Header from "../components/Header/Header"
 import Footer from "../components/Footer/Footer"
 import Fade from "react-reveal/Fade"

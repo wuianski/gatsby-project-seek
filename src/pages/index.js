@@ -10,7 +10,7 @@ import Layout from "../components/Layout/Layout"
 import { FrontPage } from "../components/Layout/FrontPage.styles"
 import BackgroundImage from "gatsby-background-image"
 import { HeaderLogo } from "../components/Header/Header.styles"
-import LogoLight from "../images/logo-light.png"
+import LogoLight from "../images/logo-light.svg"
 import Zoom from "react-reveal/Zoom"
 
 import SwiperCore, { Pagination } from "swiper"
@@ -86,10 +86,14 @@ export default function Home({ data }) {
                           >
                             <div className="blcCtr">
                               <Zoom cascade>
-                                <p className="txtCtr fullPName">
+                                <p className={"fullPName" + node.directus.sort}>
                                   {node.directus.title_en_us}
                                 </p>
-                                <p className="txtCtr fullPNameTW">
+                                <p
+                                 
+                                  className={"fullPNameTW" + node.directus.sort}
+                                
+                                >
                                   {node.directus.title_zh_hant_tw}
                                 </p>
                               </Zoom>

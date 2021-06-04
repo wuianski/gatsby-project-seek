@@ -75,7 +75,7 @@ const ProjectQInfo = ({ data }) => {
                   </Fade>
                 </div>
 
-                <div className="blcCtrIntro">
+                <div className="blcCtrIntro_Q">
                   <Fade cascade>
                     <div className="pageIntro">
                       <p className="pageIntroTW">

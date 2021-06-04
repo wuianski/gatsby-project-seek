@@ -62,13 +62,13 @@ const ProjectTInfo = ({ data }) => {
                 id="bgT"
                 style={{ overflow: "hidden" }}
               >
-                <div className="projectTag">award</div>
+                <div className="projectTag">prize</div>
                 <div className="blcCtrTitle">
                   <Fade top>
-                    <p className="txtCtr fullPName">
+                    <p className="txtCtr fullPName_T">
                       {node.directus.title_en_us}
                     </p>
-                    <p className="txtCtr fullPName">
+                    <p className="txtCtr fullPName_T">
                       {node.directus.title_zh_hant_tw}
                     </p>
                   </Fade>
@@ -86,7 +86,7 @@ const ProjectTInfo = ({ data }) => {
                     </div>
                   </Fade>
                 </div>
-                <Link to={`/tcaa/list/`}>
+                <Link to={`/tung-chung-prize/list/`}>
                   <div className="pdTB80" role="button" tabIndex="0">
                     <img
                       className="arrowDown"

@@ -29,7 +29,7 @@ export const FullscreenImg = styled.div`
     color: #ffffff;
     width: 73vw;
     position: absolute;
-    top: 38%;
+    top: 42%; //38
     left: 50%;
     transform: translate(-50%, -50%);
     text-shadow: 0.03em 0.03em #000;
@@ -37,6 +37,26 @@ export const FullscreenImg = styled.div`
   .blcCtrIntro {
     color: #ffffff;
     width: 780px;
+    position: absolute;
+    top: 65%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    min-height: 210px;
+    text-shadow: 0.03em 0.03em #000;
+  }
+  .blcCtrIntro_E {
+    color: #ffffff;
+    width: 595px;
+    position: absolute;
+    top: 65%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    min-height: 210px;
+    text-shadow: 0.03em 0.03em #000;
+  }
+  .blcCtrIntro_Q {
+    color: #ffffff;
+    width: 751px;
     position: absolute;
     top: 65%;
     left: 50%;
@@ -69,6 +89,12 @@ export const FullscreenImg = styled.div`
     letter-spacing: 0.1em;
     margin: 32px 0;
   }
+  .fullPName_T {
+    font-size: 32px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    margin: 32px 0;
+  }
   .pageIntro {
     //margin-top: 65px;
   }
@@ -76,7 +102,7 @@ export const FullscreenImg = styled.div`
     font-size: 15px;
     font-weight: 600;
     line-height: 24px;
-    letter-spacing: 0.06em;
+    letter-spacing: 0.059em;
     text-align: justify;
     text-justify: distribute;
     //text-align: center;
@@ -194,6 +220,18 @@ export const FullscreenImg = styled.div`
       height: 52vh;
       overflow-y: scroll;
     }
+    .blcCtrIntro_E {
+      top: 60%;
+      width: 84vw;
+      height: 52vh;
+      overflow-y: scroll;
+    }
+    .blcCtrIntro_Q {
+      top: 60%;
+      width: 84vw;
+      height: 52vh;
+      overflow-y: scroll;
+    }
     .projectTag {
       transform: none;
       top: 80px;
@@ -203,6 +241,12 @@ export const FullscreenImg = styled.div`
     .fullPName {
       font-size: 24.5px;
       line-height: 45px;
+      letter-spacing: 0.13em;
+      margin: 0px;
+    }
+    .fullPName_T {
+      font-size: 24.5px;
+      line-height: 35px;
       letter-spacing: 0.13em;
       margin: 0px;
     }
@@ -221,6 +265,7 @@ export const FullscreenImg = styled.div`
     }
     .arrowDown {
       top: 93%;
+      left: calc(50% + 5px);
     }
     .fullPTitleTW {
       font-size: 30px;

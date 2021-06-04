@@ -66,7 +66,7 @@ const ProjectQreview = ({ data }) => {
                     <span>THE QUESTION</span>
                   )}
                   {data.pquery.directus.pages_id === 5 && (
-                    <span>TUNG CHUNG ART AWARD</span>
+                    <span>TUNG CHUNG ART PRIZE</span>
                   )}
                 </span>
                 <span className="pressImgText">

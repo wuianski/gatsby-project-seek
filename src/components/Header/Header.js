@@ -1,7 +1,7 @@
 import React from "react"
 import { Link } from "gatsby"
 import { HeaderLogo } from "./Header.styles"
-import LogoDark from "../../images/logo-dark.png"
+import LogoDark from "../../images/logo-dark.svg"
 
 const Header = () => (
   <HeaderLogo>

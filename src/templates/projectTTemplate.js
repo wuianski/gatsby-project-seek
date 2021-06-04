@@ -8,13 +8,14 @@ import Layout from "../components/Layout/Layout"
 import Video from "../components/video"
 import Img from "gatsby-image"
 import { Content } from "../components/Layout/Content.styles"
+import { Content1280 } from "../components/Layout/Content1280.styles"
 import BackgroundImage from "gatsby-background-image"
 import { FullscreenImg } from "../components/Layout/FullscreenImg.styles"
 import ArrowDown from "../images/ArrowDown.svg"
 import ArrowUp from "../images/ArrowUp.svg"
 import scrollTo from "gatsby-plugin-smoothscroll"
-import plus from "../images/plus.png"
-import minus from "../images/minus.png"
+import plus from "../images/plus.svg"
+import minus from "../images/minus.svg"
 import Headerw from "../components/Headerw/Headerw"
 import Header from "../components/Header/Header"
 import Footer from "../components/Footer/Footer"
@@ -197,29 +198,178 @@ const ProjectT = props => {
       </FullscreenImg>
 
       <Content id="content">
-        <Header />
-        <div className="firstSec">
-          <div className="secName">essay</div>
-          <div className="summaryBlock">
-            <div
-              dangerouslySetInnerHTML={{ __html: summary_zh_hant_tw }}
-              className="summaryTW"
-            />
-            <div
-              dangerouslySetInnerHTML={{ __html: summary_en_us }}
-              className="summaryEN"
-            />
+        <Content1280>
+          <Header />
+          <div className="firstSec">
+            <div className="secName">essay</div>
+            <div className="summaryBlock">
+              <div
+                dangerouslySetInnerHTML={{ __html: summary_zh_hant_tw }}
+                className="summaryTW"
+              />
+              <div
+                dangerouslySetInnerHTML={{ __html: summary_en_us }}
+                className="summaryEN"
+              />
+            </div>
+            <div className="mt20">
+              <div className="openBlock">
+                <div
+                  className="fr"
+                  onClick={toggleVisibility}
+                  onKeyDown={toggleVisibility}
+                  role="button"
+                  tabIndex="0"
+                >
+                  {!isVisible && (
+                    <img
+                      className="openImg"
+                      src={plus}
+                      alt="open content block"
+                    />
+                  )}
+                </div>
+              </div>
+            </div>
+            {isVisible && (
+              <div>
+                <div className="contentBlock fr">
+                  <div
+                    className="contentTW"
+                    dangerouslySetInnerHTML={{ __html: content_zh_hant_tw }}
+                  />
+                  <div
+                    className="contentEN"
+                    dangerouslySetInnerHTML={{ __html: content_en_us }}
+                  />
+                </div>
+                <div
+                  className="closeBlock"
+                  onClick={toggleVisibility}
+                  onKeyDown={toggleVisibility}
+                  role="button"
+                  tabIndex="0"
+                >
+                  <img
+                    className="closeImg"
+                    src={minus}
+                    alt="close content block"
+                  />
+                </div>
+              </div>
+            )}
           </div>
-          <div className="mt20">
-            <div className="openBlock">
+
+          <div className="vidSec mt80">
+            {main_video_url && (
+              <div>
+                <div>
+                  <Video
+                    videoSrcURL={main_video_url}
+                    videoTitle={main_video_title_en_us}
+                  />
+                  <div className="vidText_m">
+                    <div className="mainVidInfo">{main_video_info}</div>
+                    <div className="titleBlock">
+                      <div className="titleTW">
+                        {main_video_title_zh_hant_tw}
+                      </div>
+                      <div className="titleEN">{main_video_title_en_us}</div>
+                    </div>
+                    {main_video_description_zh_hant_tw && (
+                      <div className="openBlock">
+                        <div
+                          className="fr"
+                          onClick={toggleVisibilityV}
+                          onKeyDown={toggleVisibilityV}
+                          role="button"
+                          tabIndex="0"
+                        >
+                          {!isVisibleV && (
+                            <img
+                              className="openImg"
+                              src={plus}
+                              alt="open content block"
+                            />
+                          )}
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                </div>
+                <div>
+                  {isVisibleV && (
+                    <div className="vidText_m">
+                      <div className="textBlock">
+                        <div className="textTW">
+                          {main_video_description_zh_hant_tw}
+                        </div>
+                        <div className="textEN">
+                          {main_video_description_en_us}
+                        </div>
+                      </div>
+                      <div
+                        className="closeBlock"
+                        onClick={toggleVisibilityV}
+                        onKeyDown={toggleVisibilityV}
+                        role="button"
+                        tabIndex="0"
+                      >
+                        <img
+                          className="closeImg"
+                          src={minus}
+                          alt="close content block"
+                        />
+                      </div>
+                    </div>
+                  )}
+                </div>
+              </div>
+            )}
+          </div>
+
+          <div className="imgSec mt80">
+            <div>
+              {images && (
+                <Swiper pagination={{ clickable: true }}>
+                  <div>
+                    {images.map(image => (
+                      <SwiperSlide>
+                        <div>
+                          <Img
+                            fluid={image.childImageSharp.fluid}
+                            key={image.childImageSharp.id}
+                          />
+                        </div>
+                      </SwiperSlide>
+                    ))}
+                  </div>
+                </Swiper>
+              )}
+            </div>
+          </div>
+
+          <div className="artistSec mt80">
+            <div className="secNameArtist">artist</div>
+            <div className="titleBlock fr_m">
+              <span
+                className="titleTW"
+                dangerouslySetInnerHTML={{ __html: artist_name_zh_hant_tw }}
+              />
+              <span
+                className="titleTW"
+                dangerouslySetInnerHTML={{ __html: artist_name_en_us }}
+              />
+            </div>
+            <div className="mt20">
               <div
                 className="fr"
-                onClick={toggleVisibility}
-                onKeyDown={toggleVisibility}
+                onClick={toggleVisibilityA}
+                onKeyDown={toggleVisibilityA}
                 role="button"
                 tabIndex="0"
               >
-                {!isVisible && (
+                {!isVisibleA && (
                   <img
                     className="openImg"
                     src={plus}
@@ -228,241 +378,75 @@ const ProjectT = props => {
                 )}
               </div>
             </div>
-          </div>
-          {isVisible && (
-            <div>
-              <div className="contentBlock fr">
+            {isVisibleA && (
+              <div className="textBlockArtist fr">
                 <div
-                  className="contentTW"
-                  dangerouslySetInnerHTML={{ __html: content_zh_hant_tw }}
+                  className="artist_textTW fr"
+                  dangerouslySetInnerHTML={{
+                    __html: artist_introduction_zh_hant_tw,
+                  }}
                 />
                 <div
-                  className="contentEN"
-                  dangerouslySetInnerHTML={{ __html: content_en_us }}
+                  className="artist_textEN fr"
+                  dangerouslySetInnerHTML={{
+                    __html: artist_introduction_en_us,
+                  }}
                 />
-              </div>
-              <div
-                className="closeBlock"
-                onClick={toggleVisibility}
-                onKeyDown={toggleVisibility}
-                role="button"
-                tabIndex="0"
-              >
-                <img
-                  className="closeImg"
-                  src={minus}
-                  alt="close content block"
-                />
-              </div>
-            </div>
-          )}
-        </div>
-
-        <div className="vidSec mt80">
-          {main_video_url && (
-            <div>
-              <div>
-                <Video
-                  videoSrcURL={main_video_url}
-                  videoTitle={main_video_title_en_us}
-                />
-                <div className="vidText_m">
-                  <div className="mainVidInfo">{main_video_info}</div>
-                  <div className="titleBlock">
-                    <div className="titleTW">{main_video_title_zh_hant_tw}</div>
-                    <div className="titleEN">{main_video_title_en_us}</div>
-                  </div>
-                  {main_video_description_zh_hant_tw && (
-                    <div className="openBlock">
-                      <div
-                        className="fr"
-                        onClick={toggleVisibilityV}
-                        onKeyDown={toggleVisibilityV}
-                        role="button"
-                        tabIndex="0"
-                      >
-                        {!isVisibleV && (
-                          <img
-                            className="openImg"
-                            src={plus}
-                            alt="open content block"
-                          />
-                        )}
-                      </div>
-                    </div>
-                  )}
+                <div
+                  className="closeBlock"
+                  onClick={toggleVisibilityA}
+                  onKeyDown={toggleVisibilityA}
+                  role="button"
+                  tabIndex="0"
+                >
+                  <img
+                    className="closeImg"
+                    src={minus}
+                    alt="close content block"
+                  />
                 </div>
               </div>
-              <div>
-                {isVisibleV && (
-                  <div className="vidText_m">
-                    <div className="textBlock">
-                      <div className="textTW">
-                        {main_video_description_zh_hant_tw}
-                      </div>
-                      <div className="textEN">
-                        {main_video_description_en_us}
-                      </div>
-                    </div>
-                    <div
-                      className="closeBlock"
-                      onClick={toggleVisibilityV}
-                      onKeyDown={toggleVisibilityV}
-                      role="button"
-                      tabIndex="0"
-                    >
-                      <img
-                        className="closeImg"
-                        src={minus}
-                        alt="close content block"
-                      />
-                    </div>
-                  </div>
-                )}
-              </div>
-            </div>
-          )}
-        </div>
-
-        <div className="imgSec mt80">
-          <div>
-            {images && (
-              <Swiper pagination={{ clickable: true }}>
-                <div>
-                  {images.map(image => (
-                    <SwiperSlide>
-                      <div>
-                        <Img
-                          fluid={image.childImageSharp.fluid}
-                          key={image.childImageSharp.id}
-                        />
-                      </div>
-                    </SwiperSlide>
-                  ))}
-                </div>
-              </Swiper>
             )}
           </div>
-        </div>
 
-        <div className="artistSec mt80">
-          <div className="secNameArtist">artist</div>
-          <div className="titleBlock fr_m">
-            <span
-              className="titleTW"
-              dangerouslySetInnerHTML={{ __html: artist_name_zh_hant_tw }}
-            />
-            <span
-              className="titleTW"
-              dangerouslySetInnerHTML={{ __html: artist_name_en_us }}
-            />
-          </div>
-          <div className="mt20">
-            <div
-              className="fr"
-              onClick={toggleVisibilityA}
-              onKeyDown={toggleVisibilityA}
-              role="button"
-              tabIndex="0"
-            >
-              {!isVisibleA && (
-                <img className="openImg" src={plus} alt="open content block" />
-              )}
-            </div>
-          </div>
-          {isVisibleA && (
-            <div className="textBlockArtist fr">
-              <div
-                className="artist_textTW fr"
-                dangerouslySetInnerHTML={{
-                  __html: artist_introduction_zh_hant_tw,
-                }}
-              />
-              <div
-                className="artist_textEN fr"
-                dangerouslySetInnerHTML={{
-                  __html: artist_introduction_en_us,
-                }}
-              />
-              <div
-                className="closeBlock"
-                onClick={toggleVisibilityA}
-                onKeyDown={toggleVisibilityA}
-                role="button"
-                tabIndex="0"
-              >
-                <img
-                  className="closeImg"
-                  src={minus}
-                  alt="close content block"
-                />
-              </div>
-            </div>
-          )}
-        </div>
-
-        <div className="eventSec mt80">
-          {events.length > 0 && <div className="secName">event</div>}
-          {events && (
-            <div>
-              <div className="topMinus20">
-                <div className="twoGrid55">
-                  {events.map(event => (
-                    <div key={event.directus.id}>
-                      {event.directus.status === "draft" && <span></span>}
-                      {event.directus.status === "published" && (
-                        <div>
-                          <div className="eventCover">
-                            {event.directus.video_url && (
-                              <Video
-                                videoSrcURL={event.directus.video_url}
-                                videoTitle={event.directus.title_en_us}
-                              />
-                            )}
-                            {event.directus.image && (
-                              <Img
-                                className="eventCoverImg"
-                                fluid={
-                                  event.directus.image.childImageSharp.fluid
-                                }
-                              />
-                            )}
-                          </div>
-                          <div className="titleBlock mb20">
-                            <div className="titleTW">
-                              {event.directus.title_zh_hant_tw}
-                            </div>
-                            <div className="titleEN">
-                              {event.directus.title_en_us}
-                            </div>
-                          </div>
-                          <div className="openBlock">
-                            <div
-                              className="fr"
-                              onClick={() => toggleComment(event.directus.id)}
-                              onKeyDown={() => toggleComment(event.directus.id)}
-                              role="button"
-                              tabIndex="0"
-                            >
-                              {!shownComments[event.directus.id] ? (
-                                <img
-                                  className="openImg"
-                                  src={plus}
-                                  alt="open content block"
+          <div className="eventSec mt80">
+            {events.length > 0 && <div className="secName">event</div>}
+            {events && (
+              <div>
+                <div className="topMinus20">
+                  <div className="twoGrid55">
+                    {events.map(event => (
+                      <div key={event.directus.id}>
+                        {event.directus.status === "draft" && <span></span>}
+                        {event.directus.status === "published" && (
+                          <div>
+                            <div className="eventCover">
+                              {event.directus.video_url && (
+                                <Video
+                                  videoSrcURL={event.directus.video_url}
+                                  videoTitle={event.directus.title_en_us}
                                 />
-                              ) : null}
+                              )}
+                              {event.directus.image && (
+                                <Img
+                                  className="eventCoverImg"
+                                  fluid={
+                                    event.directus.image.childImageSharp.fluid
+                                  }
+                                />
+                              )}
                             </div>
-                          </div>
-                          {shownComments[event.directus.id] ? (
-                            <div className="textBlock">
-                              <div className="textTW">
-                                {event.directus.introduction_zh_hant_tw}
+                            <div className="titleBlock mb20">
+                              <div className="titleTW">
+                                {event.directus.title_zh_hant_tw}
                               </div>
-                              <div className="textEN">
-                                {event.directus.introduction_en_us}
+                              <div className="titleEN">
+                                {event.directus.title_en_us}
                               </div>
+                            </div>
+                            <div className="openBlock">
                               <div
-                                className="closeBlock"
+                                className="fr"
                                 onClick={() => toggleComment(event.directus.id)}
                                 onKeyDown={() =>
                                   toggleComment(event.directus.id)
@@ -470,66 +454,99 @@ const ProjectT = props => {
                                 role="button"
                                 tabIndex="0"
                               >
-                                <img
-                                  className="closeImg"
-                                  src={minus}
-                                  alt="close content block"
-                                />
+                                {!shownComments[event.directus.id] ? (
+                                  <img
+                                    className="openImg"
+                                    src={plus}
+                                    alt="open content block"
+                                  />
+                                ) : null}
                               </div>
                             </div>
-                          ) : null}
-                        </div>
-                      )}
-                    </div>
-                  ))}
+                            {shownComments[event.directus.id] ? (
+                              <div className="textBlock">
+                                <div className="textTW">
+                                  {event.directus.introduction_zh_hant_tw}
+                                </div>
+                                <div className="textEN">
+                                  {event.directus.introduction_en_us}
+                                </div>
+                                <div
+                                  className="closeBlock"
+                                  onClick={() =>
+                                    toggleComment(event.directus.id)
+                                  }
+                                  onKeyDown={() =>
+                                    toggleComment(event.directus.id)
+                                  }
+                                  role="button"
+                                  tabIndex="0"
+                                >
+                                  <img
+                                    className="closeImg"
+                                    src={minus}
+                                    alt="close content block"
+                                  />
+                                </div>
+                              </div>
+                            ) : null}
+                          </div>
+                        )}
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </div>
-            </div>
-          )}
-        </div>
-
-        <div className="reviewSec mt40 mb80">
-          {reviews.length > 0 && <div className="secNameReview">review</div>}
-          {reviews && (
-            <div>
-              {reviews.map(review => (
-                <div key={review.directus.id}>
-                  {review.directus.status === "draft" && <span></span>}
-                  {review.directus.status === "published" && (
-                    <Link
-                      to={`/tcaa/${data.cat.directus.year}/reviews/${review.directus.date}`}
-                    >
-                      <div className="twoGrid37">
-                        <div className="reviewDate">{review.directus.date}</div>
-                        <div>
-                          <div
-                            className="reviewTW"
-                            dangerouslySetInnerHTML={{
-                              __html: review.directus.title,
-                            }}
-                          />
-                          <div className="reviewEN">{review.directus.from}</div>
-                        </div>
-                      </div>
-                    </Link>
-                  )}
-                </div>
-              ))}
-            </div>
-          )}
-        </div>
-        <div className="mt120">
-          <div
-            className="arrowUp mt-30"
-            onClick={() => scrollTo("#top")}
-            onKeyDown={() => scrollTo("#top")}
-            role="button"
-            tabIndex="0"
-          >
-            <img src={ArrowUp} alt="arrow-up" />
+            )}
           </div>
-        </div>
-        <Footer />
+
+          <div className="reviewSec mt40 mb80">
+            {reviews.length > 0 && <div className="secNameReview">review</div>}
+            {reviews && (
+              <div>
+                {reviews.map(review => (
+                  <div key={review.directus.id}>
+                    {review.directus.status === "draft" && <span></span>}
+                    {review.directus.status === "published" && (
+                      <Link
+                        to={`/tung-chung-prize/${data.cat.directus.year}/reviews/${review.directus.date}`}
+                      >
+                        <div className="twoGrid37">
+                          <div className="reviewDate">
+                            {review.directus.date}
+                          </div>
+                          <div>
+                            <div
+                              className="reviewTW"
+                              dangerouslySetInnerHTML={{
+                                __html: review.directus.title,
+                              }}
+                            />
+                            <div className="reviewEN">
+                              {review.directus.from}
+                            </div>
+                          </div>
+                        </div>
+                      </Link>
+                    )}
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+          <div className="mt120">
+            <div
+              className="arrowUp mt-30"
+              onClick={() => scrollTo("#top")}
+              onKeyDown={() => scrollTo("#top")}
+              role="button"
+              tabIndex="0"
+            >
+              <img src={ArrowUp} alt="arrow-up" />
+            </div>
+          </div>
+          <Footer />
+        </Content1280>
       </Content>
     </Layout>
   )

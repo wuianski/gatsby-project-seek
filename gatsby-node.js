@@ -326,7 +326,7 @@ module.exports.createPages = async ({ graphql, actions }) => {
   // Create the content page of TCAA
   projectTs.forEach(({ node: projectT }) => {
     createPage({
-      path: `/tcaa/${projectT.directus.year}`,
+      path: `/tung-chung-prize/${projectT.directus.year}`,
       component: path.resolve("./src/templates/projectTTemplate.js"),
       context: projectT.directus,
     })
@@ -336,7 +336,7 @@ module.exports.createPages = async ({ graphql, actions }) => {
   projectTreviews.forEach(({ node: projectTreview }) => {
     projectTreview.directus.reviews.forEach(({ directus: reviewT }) => {
       createPage({
-        path: `/tcaa/${projectTreview.directus.year}/reviews/${reviewT.date}`,
+        path: `/tung-chung-prize/${projectTreview.directus.year}/reviews/${reviewT.date}`,
         component: path.resolve("./src/templates/projectTTemplateReview.js"),
         context: reviewT,
       })
@@ -437,7 +437,8 @@ module.exports.createPages = async ({ graphql, actions }) => {
   const numTPages = Math.ceil(tprojectlistQuery.totalCount / postsTPerPage)
   Array.from({ length: numTPages }).forEach((_, l) => {
     createPage({
-      path: l === 0 ? `/tcaa/list` : `/tcaa/list/${l + 1}`,
+      path:
+        l === 0 ? `/tung-chung-prize/list` : `/tung-chung-prize/list/${l + 1}`,
       component: path.resolve("./src/templates/projectListTTemplate.js"),
       context: {
         limit: postsTPerPage,
