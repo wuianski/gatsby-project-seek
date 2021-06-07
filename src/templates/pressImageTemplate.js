@@ -6,6 +6,7 @@ import { graphql } from "gatsby"
 import React from "react"
 import Layout from "../components/Layout/Layout"
 import { Content } from "../components/Layout/Content.styles"
+import { Content1280 } from "../components/Layout/Content1280.styles"
 import Img from "gatsby-image"
 import Back from "../images/back.svg"
 import Header from "../components/Header/Header"
@@ -99,78 +100,80 @@ const ProjectQreview = ({ data }) => {
             {data.pquery.directus.images && (
               <div>
                 {data.pquery.directus.images.map(image => (
-                  <div className="twoGrid64_pressImg mt20">
-                    <div className="pressSingleImg_m">
-                      <Img
-                        className=""
-                        fluid={image.childImageSharp.fluid}
-                        key={image.childImageSharp.id}
-                      />
-                    </div>
-                    <div>
-                      <div
-                        className="pressImgContentTxt"
-                        dangerouslySetInnerHTML={{
-                          __html: data.pquery.directus.artist_name_zh_hant_tw,
-                        }}
-                      />
-                      <div
-                        className="pressImgContentTxt"
-                        dangerouslySetInnerHTML={{
-                          __html: data.pquery.directus.artist_name_en_us,
-                        }}
-                      />
-                      <div>
-                        {data.iquery.nodes.map(node => (
-                          <div className="pressImgContentTxt">
-                            {image.name === node.directus.fileId && (
-                              <span>{node.directus.title}</span>
-                            )}
-                          </div>
-                        ))}
-                      </div>
-                      <div className="pressImgContentTxt">
-                        {data.pquery.directus.year}
+                  <Content1280>
+                    <div className="twoGrid64_pressImg mt20">
+                      <div className="pressSingleImg_m">
+                        <Img
+                          className=""
+                          fluid={image.childImageSharp.fluid}
+                          key={image.childImageSharp.id}
+                        />
                       </div>
                       <div>
-                        {data.iquery.nodes.map(node => (
-                          <div className="pressImgContentTxt">
-                            {image.name === node.directus.fileId && (
-                              <span>{node.directus.description}</span>
-                            )}
-                          </div>
-                        ))}
-                      </div>
-                      <div className="pressImgContentTxtDownload">
-                        <a
-                          href={image.publicURL}
-                          target="_blank"
-                          rel="noreferrer"
-                          download
-                        >
-                          <span className="">download</span>
-                          <span
-                            className="downloadBtn pressLink"
-                            role="button"
-                            tabIndex="0"
+                        <div
+                          className="pressImgContentTxt"
+                          dangerouslySetInnerHTML={{
+                            __html: data.pquery.directus.artist_name_zh_hant_tw,
+                          }}
+                        />
+                        <div
+                          className="pressImgContentTxt"
+                          dangerouslySetInnerHTML={{
+                            __html: data.pquery.directus.artist_name_en_us,
+                          }}
+                        />
+                        <div>
+                          {data.iquery.nodes.map(node => (
+                            <div className="pressImgContentTxt">
+                              {image.name === node.directus.fileId && (
+                                <span>{node.directus.title}</span>
+                              )}
+                            </div>
+                          ))}
+                        </div>
+                        <div className="pressImgContentTxt">
+                          {data.pquery.directus.year}
+                        </div>
+                        <div>
+                          {data.iquery.nodes.map(node => (
+                            <div className="pressImgContentTxt">
+                              {image.name === node.directus.fileId && (
+                                <span>{node.directus.description}</span>
+                              )}
+                            </div>
+                          ))}
+                        </div>
+                        <div className="pressImgContentTxtDownload">
+                          <a
+                            href={image.publicURL}
+                            target="_blank"
+                            rel="noreferrer"
+                            download
                           >
-                            <img
-                              className="downloadBtnImg"
-                              src={DownloadBtn}
-                              alt="download button"
-                            />
-                          </span>
-                        </a>
+                            <span className="">download</span>
+                            <span
+                              className="downloadBtn pressLink"
+                              role="button"
+                              tabIndex="0"
+                            >
+                              <img
+                                className="downloadBtnImg"
+                                src={DownloadBtn}
+                                alt="download button"
+                              />
+                            </span>
+                          </a>
+                        </div>
+                      </div>
+                      <div className="pressSingleImg">
+                        <Img
+                          className="pressSingleImg_d"
+                          fluid={image.childImageSharp.fluid}
+                          key={image.childImageSharp.id}
+                        />
                       </div>
                     </div>
-                    <div className="pressSingleImg">
-                      <Img
-                        className="pressSingleImg_d"
-                        fluid={image.childImageSharp.fluid}
-                        key={image.childImageSharp.id}
-                      />
-                    </div>
-                  </div>
+                  </Content1280>
                 ))}
               </div>
             )}
