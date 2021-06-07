@@ -62,7 +62,7 @@ const ProjectEInfo = ({ data }) => {
                 id="bgE"
                 style={{ overflow: "hidden" }}
               >
-                <div className="projectTag">commission</div>
+                <div className="projectTag">sponsorship</div>
 
                 <div className="blcCtrTitle">
                   <Fade top>
