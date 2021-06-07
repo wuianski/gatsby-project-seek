@@ -9,7 +9,7 @@ export const HeaderLogow = styled.div`
     top: 44px;
     z-index: 999;
     cursor: pointer;
-    text-shadow: 0.02em 0.02em #000;
+    //text-shadow: 0.03em 0.03em #000;
     /* phones tablets */
     @media (max-width: 768px) {
       display: none;

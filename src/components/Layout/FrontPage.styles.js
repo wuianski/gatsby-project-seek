@@ -23,10 +23,9 @@ export const FrontPage = styled.div`
     color: #ffffff;
     font-size: 10px;
     position: absolute;
-    font-size: 9px;
     font-weight: 600;
-    letter-spacing: 0.15em;
-    line-height: 9px;
+    letter-spacing: 0.25em;
+    line-height: 10px;
     text-transform: uppercase;
     width: 100%;
     height: 100%;
@@ -49,7 +48,7 @@ export const FrontPage = styled.div`
     left: 50%;
     transform: translate(-50%, -50%);
     //mix-blend-mode: difference;
-    //text-shadow: 0.03em 0.03em #000;
+    text-shadow: 0.01em 0.01em #000;
   }
   .txtCtr {
     text-align: center;
@@ -127,8 +126,8 @@ export const FrontPage = styled.div`
     position: absolute;
     left: 0;
     display: inline-block;
-    height: 1.1em;
-    width: 97%;
+    height: 1.2em;
+    width: 99%;
     border-bottom: 1px solid #fff;
     margin-top: 0px;
     opacity: 0;
@@ -147,8 +146,8 @@ export const FrontPage = styled.div`
     position: absolute;
     left: 0;
     display: inline-block;
-    height: 1.1em;
-    width: 97%;
+    height: 1.2em;
+    width: 99%;
     border-bottom: 1px solid #fff;
     margin-top: 0px;
     opacity: 0;
@@ -167,8 +166,8 @@ export const FrontPage = styled.div`
     position: absolute;
     left: 0;
     display: inline-block;
-    height: 1.1em;
-    width: 97%;
+    height: 1.4em;
+    width: 99%;
     border-bottom: 1px solid #fff;
     margin-top: 0px;
     opacity: 0;
@@ -187,8 +186,8 @@ export const FrontPage = styled.div`
     position: absolute;
     left: 0;
     display: inline-block;
-    height: 1.1em;
-    width: 97%;
+    height: 1.4em;
+    width: 99%;
     border-bottom: 1px solid #fff;
     margin-top: 0px;
     opacity: 0;
@@ -272,7 +271,7 @@ export const FrontPage = styled.div`
   #pTag_4 {
     position: absolute;
     width: 110px;
-    bottom: -9px;
+    bottom: -10px;
     left: calc(50% - 55px);
     transform: translate(0, -50%);
     background-color: #000;
@@ -295,7 +294,7 @@ export const FrontPage = styled.div`
     position: absolute;
     left: 0;
     display: inline-block;
-    height: 1em;
+    height: 1.2em;
     width: 100%;
     border-bottom: 1px solid #fff;
     margin-top: 0px;

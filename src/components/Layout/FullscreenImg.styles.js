@@ -23,7 +23,7 @@ export const FullscreenImg = styled.div`
     left: 50%;
     transform: translate(-50%, -50%);
     //mix-blend-mode: difference;
-    text-shadow: 0.05em 0.05em #000;
+    text-shadow: 0.02em 0.02em #000; //0.05
   }
   .blcCtrTitle {
     color: #ffffff;
@@ -32,37 +32,37 @@ export const FullscreenImg = styled.div`
     top: calc(50% - 120px);
     left: 50%;
     transform: translate(-50%, -50%);
-    text-shadow: 0.03em 0.03em #000;
+    text-shadow: 0.02em 0.02em #000;
   }
   .blcCtrIntro {
     color: #ffffff;
-    width: 780px;
+    width: 800px;
     position: absolute;
     top: 65%;
     left: 50%;
     transform: translate(-50%, -50%);
     min-height: 210px;
-    text-shadow: 0.03em 0.03em #000;
+    text-shadow: 0.02em 0.02em #000;
   }
   .blcCtrIntro_E {
     color: #ffffff;
-    width: 595px;
+    width: 630px;
     position: absolute;
     top: 65%;
     left: 50%;
     transform: translate(-50%, -50%);
     min-height: 210px;
-    text-shadow: 0.03em 0.03em #000;
+    text-shadow: 0.02em 0.02em #000;
   }
   .blcCtrIntro_Q {
     color: #ffffff;
-    width: 751px;
+    width: 800px;
     position: absolute;
     top: 65%;
     left: 50%;
     transform: translate(-50%, -50%);
     min-height: 210px;
-    text-shadow: 0.03em 0.03em #000;
+    text-shadow: 0.02em 0.02em #000;
   }
   .txtCtr {
     text-align: center;
@@ -86,29 +86,29 @@ export const FullscreenImg = styled.div`
   .fullPName {
     font-size: 32px;
     font-weight: 600;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.19em;
     margin: 32px 0;
   }
   .fullPName_T {
     font-size: 32px;
     font-weight: 600;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.19em;
     margin: 32px 0;
   }
   .pageIntro {
     //margin-top: 65px;
   }
   .pageIntroTW {
-    font-size: 15px;
+    font-size: 16px; //15
     font-weight: 600;
-    line-height: 24px;
-    letter-spacing: 0.059em;
+    line-height: 26px; //24
+    letter-spacing: 0.06em;
     text-align: justify;
     text-justify: distribute;
     //text-align: center;
   }
   .pageIntroEN {
-    font-size: 14px;
+    font-size: 15px; //14
     font-weight: 600;
     line-height: 20px;
     letter-spacing: 0.02em;
@@ -116,6 +116,25 @@ export const FullscreenImg = styled.div`
     text-align: justify;
     text-justify: distribute;
     //text-align: center;
+  }
+  .pageIntroTW_E {
+    font-size: 16px; //15
+    font-weight: 600;
+    line-height: 26px; //24
+    letter-spacing: 0.06em;
+    //text-align: justify;
+    text-justify: distribute;
+    text-align: center;
+  }
+  .pageIntroEN_E {
+    font-size: 15px; //14
+    font-weight: 600;
+    line-height: 20px;
+    letter-spacing: 0.02em;
+    margin-top: 14px;
+    //text-align: justify;
+    text-justify: distribute;
+    text-align: center;
   }
   .projectTag {
     color: #e77832;
@@ -132,7 +151,7 @@ export const FullscreenImg = styled.div`
     top: 68px;
     width: 150px;
     height: 100px;
-    text-shadow: 0.03em 0.03em #e77832;
+    text-shadow: 0.02em 0.02em #e77832;
   }
   .arrowUp {
     position: absolute;
@@ -189,15 +208,16 @@ export const FullscreenImg = styled.div`
   }
   .fullPNameTW {
     font-size: 18px;
-    font-weight: 500;
+    font-weight: 600;
     line-height: 27px;
     letter-spacing: 0.2em;
     margin-top: 120px;
   }
   .fullPNameEN {
-    font-size: 13px;
+    font-size: 14px;
     font-weight: 600;
     letter-spacing: 0.1em;
+    margin-top: 5px;
   }
 
   /* phones tablets */

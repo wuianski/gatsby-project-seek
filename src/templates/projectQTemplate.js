@@ -373,7 +373,7 @@ const ProjectQ = props => {
                   }}
                 />
                 <div
-                  className="artist_textTW fr"
+                  className="artist_textEN fr"
                   dangerouslySetInnerHTML={{
                     __html: artist_introduction_en_us,
                   }}

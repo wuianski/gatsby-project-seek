@@ -28,7 +28,7 @@ export const ProjectList = styled.div`
       font-size: 11px;
       font-weight: bold;
       letter-spacing: 8px;
-      text-shadow: 0.03em 0.03em #e77832;
+      text-shadow: 0.02em 0.02em #e77832;
     }
     .pList_title {
       width: 65%;
@@ -49,13 +49,13 @@ export const ProjectList = styled.div`
       font-size: 20px;
       font-weight: 700;
       letter-spacing: 0.2rem;
-      line-height: 40px;
+      line-height: 30px;
     }
     .pList_titleTW_T {
       font-size: 20px;
       font-weight: 700;
       letter-spacing: 0.2rem;
-      line-height: 40px;
+      line-height: 30px;
       display: block;
     }
     .pList_titleTW_T_m {
@@ -68,8 +68,8 @@ export const ProjectList = styled.div`
     .pList_titleEN {
       font-size: 13px;
       font-weight: 600;
-      letter-spacing: 0.2rem;
-      line-height: 20px;
+      letter-spacing: 0.1em;
+      line-height: 30px;
       text-transform: uppercase;
     }
     .line {

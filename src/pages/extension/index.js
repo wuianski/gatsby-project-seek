@@ -78,10 +78,10 @@ const ProjectEInfo = ({ data }) => {
                 <div className="blcCtrIntro_E">
                   <Fade cascade>
                     <div className="pageIntro">
-                      <p className="pageIntroTW">
+                      <p className="pageIntroTW_E">
                         {node.directus.content_zh_hant_tw}
                       </p>
-                      <p className="pageIntroEN">
+                      <p className="pageIntroEN_E">
                         {node.directus.content_en_us}
                       </p>
                     </div>

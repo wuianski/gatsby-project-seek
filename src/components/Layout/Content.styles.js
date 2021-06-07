@@ -141,7 +141,7 @@ export const Content = styled.div`
     padding-bottom: 80px;
   }
   .artworks_textTW {
-    font-size: 13px;
+    font-size: 14px;
     text-align: justify;
     text-justify: distribute;
     line-height: 21px;
@@ -510,7 +510,7 @@ export const Content = styled.div`
     top: 68px;
     width: 150px;
     height: 100px;
-    text-shadow: 0.03em 0.03em #e77832;
+    text-shadow: 0.02em 0.02em #e77832;
   }
   .projectTagFixed {
     color: #e77832;
@@ -527,7 +527,7 @@ export const Content = styled.div`
     top: 68px;
     width: 150px;
     height: 100px;
-    text-shadow: 0.03em 0.03em #e77832;
+    text-shadow: 0.02em 0.02em #e77832;
   }
   @media (max-width: 768px) {
     .projectTagFixed {
@@ -537,7 +537,7 @@ export const Content = styled.div`
   }
   .imageInfo_c {
     font-weight: 300;
-    font-size: 10px;
+    font-size: 11px;
     line-height: 18px;
     letter-spacing: 0.05em;
     margin: 10px 0px;
@@ -595,13 +595,13 @@ export const Content = styled.div`
     font-size: 14px;
     font-weight: 600;
     line-height: 18px;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.2em;
     text-transform: uppercase;
     height: 36px;
   }
   .pressTextEN span {
     margin-right: 20%;
-    max-width: 124px;
+    max-width: 140px;
     display: inline-flex;
     text-align: initial;
   }
