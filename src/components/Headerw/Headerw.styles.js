@@ -4,7 +4,7 @@ export const HeaderLogow = styled.div`
   img {
     position: absolute;
     display: block;
-    max-width: 50px;
+    max-width: 60px;
     left: 32px;
     top: 44px;
     z-index: 999;

@@ -11,6 +11,7 @@ export const FooterCC = styled.div`
     color: #c4c4c4;
     text-transform: uppercase;
     padding-bottom: 30px;
+    font-weight: 800;
   }
   @media (max-width: 768px) {
     .cc {

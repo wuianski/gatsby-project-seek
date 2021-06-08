@@ -21,11 +21,11 @@ export const FrontPage = styled.div`
   }
   .tagName {
     color: #ffffff;
-    font-size: 10px;
+    font-size: 11px;
     position: absolute;
-    font-weight: 600;
+    font-weight: 800;
     letter-spacing: 0.25em;
-    line-height: 10px;
+    line-height: 11px;
     text-transform: uppercase;
     width: 100%;
     height: 100%;
@@ -48,7 +48,7 @@ export const FrontPage = styled.div`
     left: 50%;
     transform: translate(-50%, -50%);
     //mix-blend-mode: difference;
-    text-shadow: 0.01em 0.01em #000;
+    text-shadow: 0.03em 0.03em #000;
   }
   .txtCtr {
     text-align: center;
@@ -59,8 +59,8 @@ export const FrontPage = styled.div`
     text-align: center;
     text-transform: uppercase;
     width: max-content;
-    font-size: 24px;
-    font-weight: 600;
+    font-size: 25px;
+    font-weight: 800;
     letter-spacing: 0.1em;
     margin: 0;
     margin-bottom: 10px;
@@ -69,8 +69,8 @@ export const FrontPage = styled.div`
     text-align: center;
     text-transform: uppercase;
     width: max-content;
-    font-size: 24px;
-    font-weight: 600;
+    font-size: 25px;
+    font-weight: 800;
     letter-spacing: 0.1em;
     margin: 0;
     margin-bottom: 10px;
@@ -79,8 +79,8 @@ export const FrontPage = styled.div`
     text-align: center;
     text-transform: uppercase;
     width: max-content;
-    font-size: 20px;
-    font-weight: 600;
+    font-size: 23px;
+    font-weight: 800;
     letter-spacing: 0.1em;
     margin: 0;
     margin-bottom: 10px;
@@ -89,32 +89,32 @@ export const FrontPage = styled.div`
     text-align: center;
     text-transform: uppercase;
     width: max-content;
-    font-size: 20px;
-    font-weight: 600;
+    font-size: 23px;
+    font-weight: 800;
     letter-spacing: 0.1em;
     margin: 0;
     margin-bottom: 10px;
   }
   .fullPNameTW1 {
-    font-size: 23px;
+    font-size: 24px;
     font-weight: 600;
     letter-spacing: 0.19em;
     margin: auto;
   }
   .fullPNameTW2 {
-    font-size: 23px;
+    font-size: 24px;
     font-weight: 600;
     letter-spacing: 0.19em;
     margin: auto;
   }
   .fullPNameTW3 {
-    font-size: 21px;
+    font-size: 22px;
     font-weight: 600;
     letter-spacing: 0.15em;
     margin: auto;
   }
   .fullPNameTW4 {
-    font-size: 21px;
+    font-size: 22px;
     font-weight: 600;
     letter-spacing: 0.15em;
     margin: auto;

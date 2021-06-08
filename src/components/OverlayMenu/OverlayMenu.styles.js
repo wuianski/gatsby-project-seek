@@ -25,7 +25,7 @@ export const Overlay = styled.div`
     color: #000;
     padding: 0px;
     .invertedLogo {
-      max-width: 50px;
+      max-width: 60px;
       position: absolute;
       left: 32px;
       top: 44px;
@@ -60,7 +60,7 @@ export const Overlay = styled.div`
   }
   .closeButton {
     position: absolute;
-    right: 32px;
+    right: 22px;
     top: calc(50vh - 20px);
     width: 40px;
     height: 40px;
@@ -78,13 +78,13 @@ export const Overlay = styled.div`
     margin-top: 36px;
   }
   .menuTitle {
-    font-size: 14px;
+    font-size: 15px;
     font-weight: 700;
     letter-spacing: 0.2em;
     line-height: 24px;
   }
   .menuTitle2 {
-    font-size: 14px;
+    font-size: 15px;
     font-weight: 700;
     letter-spacing: 0.2em;
     line-height: 52px;

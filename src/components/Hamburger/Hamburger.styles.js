@@ -7,11 +7,12 @@ export const HamburgerButton = styled.div`
     z-index: 100000;
     left: 30px;
     top: calc(50vh - 20px);
-    width: 40px;
-    height: 40px;
+    width: 30px;
+    height: 30px;
     cursor: pointer;
     transition: all 0.2s ease;
     :hover {
+      transform: scale(1.2);
     }
     /* phones tablets */
     @media (max-width: 768px) {

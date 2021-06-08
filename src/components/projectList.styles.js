@@ -28,7 +28,7 @@ export const ProjectList = styled.div`
       font-size: 11px;
       font-weight: bold;
       letter-spacing: 8px;
-      text-shadow: 0.02em 0.02em #e77832;
+      //text-shadow: 0.06em 0.06em #e77832;
     }
     .pList_title {
       width: 65%;

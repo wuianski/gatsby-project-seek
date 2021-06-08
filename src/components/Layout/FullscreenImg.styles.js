@@ -23,7 +23,7 @@ export const FullscreenImg = styled.div`
     left: 50%;
     transform: translate(-50%, -50%);
     //mix-blend-mode: difference;
-    text-shadow: 0.02em 0.02em #000; //0.05
+    text-shadow: 0.06em 0.06em #000;
   }
   .blcCtrTitle {
     color: #ffffff;
@@ -32,37 +32,37 @@ export const FullscreenImg = styled.div`
     top: calc(50% - 120px);
     left: 50%;
     transform: translate(-50%, -50%);
-    text-shadow: 0.02em 0.02em #000;
+    text-shadow: 0.06em 0.06em #000;
   }
   .blcCtrIntro {
     color: #ffffff;
-    width: 800px;
+    width: 850px;
     position: absolute;
     top: 65%;
     left: 50%;
     transform: translate(-50%, -50%);
     min-height: 210px;
-    text-shadow: 0.02em 0.02em #000;
+    text-shadow: 0.06em 0.06em #000;
   }
   .blcCtrIntro_E {
     color: #ffffff;
-    width: 630px;
+    width: 680px;
     position: absolute;
     top: 65%;
     left: 50%;
     transform: translate(-50%, -50%);
     min-height: 210px;
-    text-shadow: 0.02em 0.02em #000;
+    text-shadow: 0.06em 0.06em #000;
   }
   .blcCtrIntro_Q {
     color: #ffffff;
-    width: 800px;
+    width: 830px;
     position: absolute;
     top: 65%;
     left: 50%;
     transform: translate(-50%, -50%);
     min-height: 210px;
-    text-shadow: 0.02em 0.02em #000;
+    text-shadow: 0.06em 0.06em #000;
   }
   .txtCtr {
     text-align: center;
@@ -85,30 +85,32 @@ export const FullscreenImg = styled.div`
   //project's index.js
   .fullPName {
     font-size: 32px;
-    font-weight: 600;
-    letter-spacing: 0.19em;
-    margin: 32px 0;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    margin: 16px 0;
+    line-height: initial;
   }
   .fullPName_T {
     font-size: 32px;
-    font-weight: 600;
-    letter-spacing: 0.19em;
-    margin: 32px 0;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    margin: 16px 0;
+    line-height: initial;
   }
   .pageIntro {
     //margin-top: 65px;
   }
   .pageIntroTW {
-    font-size: 16px; //15
+    font-size: 17px; 
     font-weight: 600;
     line-height: 26px; //24
-    letter-spacing: 0.06em;
+    letter-spacing: 0.05em;
     text-align: justify;
     text-justify: distribute;
     //text-align: center;
   }
   .pageIntroEN {
-    font-size: 15px; //14
+    font-size: 16px; 
     font-weight: 600;
     line-height: 20px;
     letter-spacing: 0.02em;
@@ -118,7 +120,7 @@ export const FullscreenImg = styled.div`
     //text-align: center;
   }
   .pageIntroTW_E {
-    font-size: 16px; //15
+    font-size: 17px; 
     font-weight: 600;
     line-height: 26px; //24
     letter-spacing: 0.06em;
@@ -127,7 +129,7 @@ export const FullscreenImg = styled.div`
     text-align: center;
   }
   .pageIntroEN_E {
-    font-size: 15px; //14
+    font-size: 16px; 
     font-weight: 600;
     line-height: 20px;
     letter-spacing: 0.02em;
@@ -148,10 +150,10 @@ export const FullscreenImg = styled.div`
     text-transform: uppercase;
     position: absolute;
     //left: 60px;
-    top: 68px;
-    width: 150px;
+    top: 73px;
+    width: 160px;
     height: 100px;
-    text-shadow: 0.02em 0.02em #e77832;
+    //text-shadow: 0.06em 0.06em #e77832;
   }
   .arrowUp {
     position: absolute;

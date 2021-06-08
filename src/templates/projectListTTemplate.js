@@ -110,7 +110,7 @@ export default class projectListT extends React.Component {
           </ProjectList>
 
           <Link to={`/tung-chung-prize/`}>
-            <div className="arrowUp mt-30" role="button" tabIndex="0">
+            <div className="arrowUp mt-45" role="button" tabIndex="0">
               <img src={ArrowUp} alt="arrow-up" />
             </div>
           </Link>

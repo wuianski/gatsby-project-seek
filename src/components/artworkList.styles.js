@@ -34,13 +34,13 @@ export const ArtworkList = styled.div`
       //vertical-align: middle;
     }
     .aList_titleTW {
-      font-size: 14px;
+      font-size: 15px;
       font-weight: 500;
       letter-spacing: 0.1rem;
       line-height: 30px;
     }
     .aList_titleEN {
-      font-size: 13px;
+      font-size: 14px;
       font-weight: 600;
       letter-spacing: 0.1rem;
       line-height: 20px;
@@ -56,13 +56,13 @@ export const ArtworkList = styled.div`
     }
     .aList_aNameTW {
       line-height: 30px; //26.64px
-      font-size: 14px;
+      font-size: 15px;
       font-weight: 300;
       letter-spacing: 0.1rem;
     }
     .aList_aNameEN {
       line-height: 20px; //17.76px
-      font-size: 13px;
+      font-size: 14px;
       font-weight: 400;
       letter-spacing: 0.1rem;
       text-transform: capitalize;
@@ -73,7 +73,7 @@ export const ArtworkList = styled.div`
       cursor: pointer;
     }
     .hyperlinkBtnImg {
-      width: 15px;
+      width: 16px;
     }
   }
   /* phones tablets */

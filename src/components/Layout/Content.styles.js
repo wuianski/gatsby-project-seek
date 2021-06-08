@@ -62,11 +62,11 @@ export const Content = styled.div`
     margin-top: -24px;
   }
   .summaryTW {
-    font-size: 16px;
+    font-size: 17px;
     font-weight: 500;
   }
   .summaryEN {
-    font-size: 15px;
+    font-size: 16px;
     font-weight: 500;
     margin-top: 28px;
   }
@@ -97,7 +97,7 @@ export const Content = styled.div`
   }
   .contentBlock {
     color: #4f4f4f;
-    font-size: 14px;
+    font-size: 15px;
     width: 80%;
     display: flex;
     margin-bottom: 30px;
@@ -141,7 +141,7 @@ export const Content = styled.div`
     padding-bottom: 80px;
   }
   .artworks_textTW {
-    font-size: 14px;
+    font-size: 15px;
     text-align: justify;
     text-justify: distribute;
     line-height: 21px;
@@ -158,11 +158,11 @@ export const Content = styled.div`
     margin: 15px 0px;
   }
   .artist_textTW {
-    font-size: 13px;
+    font-size: 15px;
     text-align: justify;
     text-justify: distribute;
     line-height: 21px;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.1em;
     color: #4f4f4f;
     margin-left: 20%;
   }
@@ -177,7 +177,7 @@ export const Content = styled.div`
     margin-left: 20%;
   }
   .textTW {
-    font-size: 13px;
+    font-size: 15px;
     text-align: justify;
     text-justify: distribute;
     line-height: 21px;
@@ -293,6 +293,7 @@ export const Content = styled.div`
     line-height: 14.3px;
     letter-spacing: 0.1em;
     color: #c4c4c4;
+    font-weight: 800;
     //margin: 30px 0px;
   }
   .fr {
@@ -346,6 +347,9 @@ export const Content = styled.div`
   .mt-30 {
     margin-top: -30px;
   }
+  .mt-45 {
+    margin-top: -45px;
+  }
 
   // reviews
   .reviewTag {
@@ -371,10 +375,10 @@ export const Content = styled.div`
     padding-top: 10px;
   }
   .reviewPostSideInfo div {
-    font-size: 12px;
+    font-size: 13px;
     font-weight: 500;
     //line-height: 13px;
-    letter-spacing: 0.03em;
+    letter-spacing: 0.05em;
     text-transform: uppercase;
   }
   .reviewPostTitle {
@@ -408,6 +412,9 @@ export const Content = styled.div`
     text-transform: uppercase;
     margin-top: -4px;
   }
+  .pageTitle span{
+    margin-right: 13px;
+  } 
   @media (max-width: 768px) {
     .pageTitle {
       letter-spacing: 0.08em;
@@ -443,7 +450,7 @@ export const Content = styled.div`
     }
   }
   .downloadBtnText {
-    font-size: 13px;
+    font-size: 15px;
     font-weight: 500;
     line-height: 21px;
     letter-spacing: 0.1em;
@@ -453,29 +460,29 @@ export const Content = styled.div`
   }
   .downloadBtnImg {
     margin-bottom: 0px;
-    width: 15px;
-    margin: -2px 2px;
+    width: 16px;
+    margin: -3px 2px;
   }
   .equipBlk {
     margin: 30px 0px;
     color: #000000;
   }
   .equipNameTW {
-    font-size: 13px;
+    font-size: 14px;
     font-weight: 500;
     line-height: 21px;
     letter-spacing: 0.065em;
     text-decoration-line: underline;
   }
   .equipNameEN {
-    font-size: 13px;
+    font-size: 14px;
     font-weight: 500;
     line-height: 21px;
     letter-spacing: 0.065em;
     text-decoration-line: underline;
   }
   .equipDetailText {
-    font-size: 10px;
+    font-size: 12px;
     font-weight: 400;
     line-height: 18px;
     letter-spacing: 0.1em;
@@ -510,7 +517,7 @@ export const Content = styled.div`
     top: 68px;
     width: 150px;
     height: 100px;
-    text-shadow: 0.02em 0.02em #e77832;
+    //text-shadow: 0.03em 0.03em #e77832;
   }
   .projectTagFixed {
     color: #e77832;
@@ -527,7 +534,7 @@ export const Content = styled.div`
     top: 68px;
     width: 150px;
     height: 100px;
-    text-shadow: 0.02em 0.02em #e77832;
+    //text-shadow: 0.03em 0.03em #e77832;
   }
   @media (max-width: 768px) {
     .projectTagFixed {
@@ -536,8 +543,8 @@ export const Content = styled.div`
     }
   }
   .imageInfo_c {
-    font-weight: 300;
-    font-size: 11px;
+    font-weight: 400;
+    font-size: 12px;
     line-height: 18px;
     letter-spacing: 0.05em;
     margin: 10px 0px;
@@ -547,8 +554,8 @@ export const Content = styled.div`
   }
   .paginationNum {
     padding-top: 15px;
-    font-size: 13px;
-    font-weight: 400;
+    font-size: 14px;
+    font-weight: 600;
     line-height: 19px;
     letter-spacing: 0.2em;
   }
@@ -592,7 +599,7 @@ export const Content = styled.div`
     border-top: 1px #e77832 solid;
   }
   .pressTextBlk {
-    font-size: 14px;
+    font-size: 15px;
     font-weight: 600;
     line-height: 18px;
     letter-spacing: 0.2em;
@@ -601,7 +608,7 @@ export const Content = styled.div`
   }
   .pressTextEN span {
     margin-right: 20%;
-    max-width: 140px;
+    max-width: 135px;
     display: inline-flex;
     text-align: initial;
   }
@@ -618,10 +625,10 @@ export const Content = styled.div`
     text-align: initial;
   }
   .pressLinkBlk {
-    font-size: 12px;
+    font-size: 13px;
     font-weight: 400;
     line-height: 20px;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.08em;
     text-decoration-line: underline;
     text-transform: capitalize;
     position: relative;
@@ -637,6 +644,7 @@ export const Content = styled.div`
   }
   .arrowGoTo img {
     margin-bottom: -2px;
+    width:25px;
   }
 
   //press images
@@ -660,7 +668,7 @@ export const Content = styled.div`
     min-width: 220px;
   }
   .pressImgTextBlk {
-    font-size: 13px;
+    font-size: 15px;
     font-weight: 600;
     line-height: 18px;
     letter-spacing: 0.1em;
@@ -685,28 +693,28 @@ export const Content = styled.div`
   }
   .pressImgContentTxt {
     color: #4f4f4f;
-    font-size: 13px;
+    font-size: 15px;
     font-weight: 400;
-    line-height: 21px;
-    letter-spacing: 0.05em;
+    line-height: 23px;
+    letter-spacing: 0.08em;
   }
   .pressImgContentTxtCC {
     color: #4f4f4f;
-    font-size: 13px;
+    font-size: 15px;
     font-weight: 400;
-    line-height: 21px;
-    letter-spacing: 0.05em;
-    margin-top: 21px;
+    line-height: 22px;
+    letter-spacing: 0.08em;
+    margin-top: 30px;
   }
   .pressImgContentTxtDownload {
     color: #000000;
-    font-size: 12px;
+    font-size: 15px;
     font-weight: 400;
     line-height: 20px;
     letter-spacing: 0.05em;
     text-decoration-line: underline;
     position: relative;
-    top: 30%;
+    top: 2%;
   }
   .pressSingleImg {
     display: block;

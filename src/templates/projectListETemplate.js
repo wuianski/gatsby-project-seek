@@ -49,44 +49,44 @@ export default class projectListE extends React.Component {
             <Fade bottom>
               <div id="pEList">
                 {postsE.map(({ node }) => (
-                    <div key={node.directus.id}>
-                      <Link
-                        to={`/extension/${node.directus.id}`}
-                        className="pList_link"
-                      >
-                        <div className="pList">
-                          <div className="pList_year">{node.directus.year}</div>
-                          <div className="pList_title">
-                            <div
-                              className="pList_titleTW"
-                              dangerouslySetInnerHTML={{
-                                __html: node.directus.title_zh_hant_tw,
-                              }}
-                            ></div>
-                            <div className="pList_titleEN">
-                              {node.directus.title_en_us}
-                            </div>
-                          </div>
-                          <div className="line"></div>
-                          <div className="pList_aName">
-                            <div
-                              className="pList_aNameTW"
-                              dangerouslySetInnerHTML={{
-                                __html: node.directus.artist_name_zh_hant_tw,
-                              }}
-                            />
-                            {node.directus.artist_name_en_us && (
-                              <div
-                                className="pList_aNameEN"
-                                dangerouslySetInnerHTML={{
-                                  __html: node.directus.artist_name_en_us,
-                                }}
-                              />
-                            )}
+                  <div key={node.directus.id}>
+                    <Link
+                      to={`/extension/${node.directus.id}`}
+                      className="pList_link"
+                    >
+                      <div className="pList">
+                        <div className="pList_year">{node.directus.year}</div>
+                        <div className="pList_title">
+                          <div
+                            className="pList_titleTW"
+                            dangerouslySetInnerHTML={{
+                              __html: node.directus.title_zh_hant_tw,
+                            }}
+                          ></div>
+                          <div className="pList_titleEN">
+                            {node.directus.title_en_us}
                           </div>
                         </div>
-                      </Link>
-                    </div>
+                        <div className="line"></div>
+                        <div className="pList_aName">
+                          <div
+                            className="pList_aNameTW"
+                            dangerouslySetInnerHTML={{
+                              __html: node.directus.artist_name_zh_hant_tw,
+                            }}
+                          />
+                          {node.directus.artist_name_en_us && (
+                            <div
+                              className="pList_aNameEN"
+                              dangerouslySetInnerHTML={{
+                                __html: node.directus.artist_name_en_us,
+                              }}
+                            />
+                          )}
+                        </div>
+                      </div>
+                    </Link>
+                  </div>
                 ))}
               </div>
             </Fade>
@@ -102,7 +102,7 @@ export default class projectListE extends React.Component {
             </div>
           </ProjectList>
           <Link to={`/extension/`}>
-            <div className="arrowUp mt-30" role="button" tabIndex="0">
+            <div className="arrowUp mt-45" role="button" tabIndex="0">
               <img src={ArrowUp} alt="arrow-up" />
             </div>
           </Link>

@@ -136,7 +136,7 @@ const ProjectQreview = ({ data }) => {
                         </div>
                         <div>
                           {data.iquery.nodes.map(node => (
-                            <div className="pressImgContentTxt">
+                            <div className="pressImgContentTxtCC">
                               {image.name === node.directus.fileId && (
                                 <span>{node.directus.description}</span>
                               )}

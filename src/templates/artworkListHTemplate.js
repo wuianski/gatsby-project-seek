@@ -106,7 +106,7 @@ export default class ArtworkListH extends React.Component {
             </Fade>
           </ArtworkList>
           <Link to={`/hong-x-panasonic/`}>
-            <div className="arrowUp mt-30" role="button" tabIndex="0">
+            <div className="arrowUp mt-45" role="button" tabIndex="0">
               <img src={ArrowUp} alt="arrow-up" />
             </div>
           </Link>

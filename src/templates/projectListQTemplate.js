@@ -95,7 +95,7 @@ export default class projectListQ extends React.Component {
           </ProjectList>
 
           <Link to={`/the-question/`}>
-            <div className="arrowUp mt-30" role="button" tabIndex="0">
+            <div className="arrowUp mt-45" role="button" tabIndex="0">
               <img src={ArrowUp} alt="arrow-up" />
             </div>
           </Link>

@@ -523,7 +523,7 @@ const ProjectQ = props => {
           </div>
           <div className="mt120">
             <div
-              className="arrowUp mt-30"
+              className="arrowUp mt-45"
               onClick={() => scrollTo("#top")}
               onKeyDown={() => scrollTo("#top")}
               role="button"

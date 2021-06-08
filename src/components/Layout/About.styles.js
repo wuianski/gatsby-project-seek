@@ -11,10 +11,10 @@ export const About = styled.div`
     //width: 20%;
     margin-right: 12%;
     color: #e77832;
-    font-size: 15px;
+    font-size: 16px;
     font-weight: 700;
     line-height: 25px;
-    letter-spacing: 0.2em;
+    letter-spacing: 0.16em;
     text-transform: uppercase;
     cursor: pointer;
   }
@@ -29,9 +29,9 @@ export const About = styled.div`
   }
   .aboutTitle {
     font-weight: 600;
-    font-size: 18px;
-    line-height: 29px;
-    letter-spacing: 0.05em;
+    font-size: 20px;
+    line-height: 30px;
+    letter-spacing: 0.08em;
   }
   .aboutTitle p {
     margin-bottom: 0px;
@@ -42,9 +42,9 @@ export const About = styled.div`
   .aboutContent p,
   .aboutContent div {
     font-weight: 300;
-    font-size: 13px;
-    line-height: 21px;
-    letter-spacing: 0.05em;
+    font-size: 15px;
+    line-height: 22px;
+    letter-spacing: 0.08em;
     text-align: justify;
     text-justify: distribute;
   }
@@ -55,9 +55,9 @@ export const About = styled.div`
   }
   .timelineYear {
     font-weight: 600;
-    font-size: 21px;
-    line-height: 21px;
-    letter-spacing: 0.05em;
+    font-size: 22px;
+    line-height: 30px;
+    letter-spacing: 0.08em;
     width: 120px;
     display: inline-block;
     top: 5px;
@@ -70,28 +70,28 @@ export const About = styled.div`
   }
   .timelineContentTW p {
     font-weight: 300;
-    font-size: 13px;
+    font-size: 15px;
     line-height: 21px;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.08em;
     margin-bottom: 0;
   }
   .timelineContentEN p {
     font-weight: 400;
     font-size: 15px;
     line-height: 21px;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.08em;
     margin-bottom: 0;
   }
   .reviewTitle {
-    font-weight: normal;
-    font-size: 16px;
-    line-height: 25px;
-    letter-spacing: 0.05em;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 30px;
+    letter-spacing: 0.08em;
     color: #fff;
   }
   .reviewFD {
-    font-weight: 300;
-    font-size: 14px;
+    font-weight: 400;
+    font-size: 15px;
     line-height: 28px;
     letter-spacing: 0.05em;
     color: #fff;
@@ -102,7 +102,7 @@ export const About = styled.div`
   }
   .infoContent {
     font-weight: 300;
-    font-size: 13px;
+    font-size: 15px;
     line-height: 21px;
     letter-spacing: 0.05em;
     margin-bottom: 0;
