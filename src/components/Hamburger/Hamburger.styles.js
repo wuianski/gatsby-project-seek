@@ -12,6 +12,8 @@ export const HamburgerButton = styled.div`
     cursor: pointer;
     transition: all 0.2s ease;
     //mix-blend-mode: difference;
+    color: #e77832;
+    text-shadow: 0.06em 0.06em 0.12em #000;
     :hover {
       transform: scale(1.2);
     }
