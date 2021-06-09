@@ -48,7 +48,7 @@ export const FrontPage = styled.div`
     left: 50%;
     transform: translate(-50%, -50%);
     //text-shadow: 0.03em 0.03em #000;
-    text-shadow: 0.06em 0.06em 0.12em #000;
+    text-shadow: 0.06em 0.06em 0.24em #000;
   }
   .txtCtr {
     text-align: center;
