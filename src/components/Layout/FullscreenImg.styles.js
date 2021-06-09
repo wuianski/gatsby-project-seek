@@ -63,6 +63,7 @@ export const FullscreenImg = styled.div`
     transform: translate(-50%, -50%);
     min-height: 210px;
     text-shadow: 0.06em 0.06em #000;
+    //mix-blend-mode: difference;
   }
   .txtCtr {
     text-align: center;
@@ -71,10 +72,10 @@ export const FullscreenImg = styled.div`
   .arrowDown {
     position: absolute;
     top: 90%;
-    left: 50%;
+    left: calc(50% + 12px);
     transform: translate(-90%, -50%);
     cursor: pointer;
-    //filter: drop-shadow(0em 0.03em #fff);
+    //filter: drop-shadow(0em 0.06em #000);
   }
   .arrowUp {
     position: absolute;
@@ -101,7 +102,7 @@ export const FullscreenImg = styled.div`
     //margin-top: 65px;
   }
   .pageIntroTW {
-    font-size: 17px; 
+    font-size: 17px;
     font-weight: 600;
     line-height: 26px; //24
     letter-spacing: 0.05em;
@@ -110,7 +111,7 @@ export const FullscreenImg = styled.div`
     //text-align: center;
   }
   .pageIntroEN {
-    font-size: 16px; 
+    font-size: 16px;
     font-weight: 600;
     line-height: 20px;
     letter-spacing: 0.02em;
@@ -120,7 +121,7 @@ export const FullscreenImg = styled.div`
     //text-align: center;
   }
   .pageIntroTW_E {
-    font-size: 17px; 
+    font-size: 17px;
     font-weight: 600;
     line-height: 26px; //24
     letter-spacing: 0.06em;
@@ -129,7 +130,7 @@ export const FullscreenImg = styled.div`
     text-align: center;
   }
   .pageIntroEN_E {
-    font-size: 16px; 
+    font-size: 16px;
     font-weight: 600;
     line-height: 20px;
     letter-spacing: 0.02em;

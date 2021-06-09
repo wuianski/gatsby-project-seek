@@ -266,7 +266,7 @@ const ProjectE = props => {
             )}
           </div>
 
-          <div className="vidSec mt80">
+          <div className="vidSec mt60">
             {main_video_url && (
               <div>
                 <div>
@@ -283,58 +283,58 @@ const ProjectE = props => {
                       <div className="titleEN">{main_video_title_en_us}</div>
                     </div>
                     {main_video_description_zh_hant_tw && (
-                      <div className="openBlock">
-                        <div
-                          className="fr"
-                          onClick={toggleVisibilityV}
-                          onKeyDown={toggleVisibilityV}
-                          role="button"
-                          tabIndex="0"
-                        >
-                          {!isVisibleV && (
-                            <img
-                              className="openImg"
-                              src={plus}
-                              alt="open content block"
-                            />
-                          )}
+                      <div className="vidDes">
+                        <div className="openBlock">
+                          <div
+                            className="fr"
+                            onClick={toggleVisibilityV}
+                            onKeyDown={toggleVisibilityV}
+                            role="button"
+                            tabIndex="0"
+                          >
+                            {!isVisibleV && (
+                              <img
+                                className="openImg"
+                                src={plus}
+                                alt="open content block"
+                              />
+                            )}
+                          </div>
                         </div>
+                        {isVisibleV && (
+                          <div className="vidText_m">
+                            <div className="textBlock">
+                              <div className="textTW">
+                                {main_video_description_zh_hant_tw}
+                              </div>
+                              <div className="textEN">
+                                {main_video_description_en_us}
+                              </div>
+                            </div>
+                            <div
+                              className="closeBlock"
+                              onClick={toggleVisibilityV}
+                              onKeyDown={toggleVisibilityV}
+                              role="button"
+                              tabIndex="0"
+                            >
+                              <img
+                                className="closeImg"
+                                src={minus}
+                                alt="close content block"
+                              />
+                            </div>
+                          </div>
+                        )}
                       </div>
                     )}
                   </div>
-                </div>
-                <div>
-                  {isVisibleV && (
-                    <div className="vidText_m">
-                      <div className="textBlock">
-                        <div className="textTW">
-                          {main_video_description_zh_hant_tw}
-                        </div>
-                        <div className="textEN">
-                          {main_video_description_en_us}
-                        </div>
-                      </div>
-                      <div
-                        className="closeBlock"
-                        onClick={toggleVisibilityV}
-                        onKeyDown={toggleVisibilityV}
-                        role="button"
-                        tabIndex="0"
-                      >
-                        <img
-                          className="closeImg"
-                          src={minus}
-                          alt="close content block"
-                        />
-                      </div>
-                    </div>
-                  )}
                 </div>
               </div>
             )}
           </div>
 
-          <div className="imgSec mt80">
+          <div className="imgSec mt40">
             <div>
               {images && (
                 <Swiper pagination={{ clickable: true }}>
@@ -417,7 +417,7 @@ const ProjectE = props => {
             )}
           </div>
 
-          <div className="eventSec mt80">
+          <div className="eventSec mt60">
             {events.length > 0 && <div className="secName">event</div>}
 
             {events && (
@@ -509,7 +509,7 @@ const ProjectE = props => {
             )}
           </div>
 
-          <div className="reviewSec mt40 mb80">
+          <div className="reviewSec mb80">
             {reviews.length > 0 && <div className="secNameReview">review</div>}
             {reviews && (
               <div>

@@ -16,7 +16,8 @@ export const Review = styled.div`
     float: right;
   }
   .backBtn img {
-    margin-bottom: 0px;
+    margin-bottom: -2px;
+    height: 16px;
   }
   .backText {
     font-size: 12px;

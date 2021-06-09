@@ -6,6 +6,8 @@ export const Content = styled.div`
   text-justify: distribute;
   line-height: 1.6;
   letter-spacing: 0.05em;
+  //max-width: 1088px;
+  //width: 1088px;
   .secName {
     color: #e77832;
     width: 200px;
@@ -56,6 +58,7 @@ export const Content = styled.div`
   }
   .firstSec {
     display: inline-block;
+    max-width: 888px;
   }
   .summaryBlock {
     color: #000;
@@ -77,6 +80,7 @@ export const Content = styled.div`
     height: 30px;
     width: 100%;
     float: right;
+    margin-bottom: 30px;
   }
   .openImg {
     width: 20px;
@@ -98,7 +102,7 @@ export const Content = styled.div`
   .contentBlock {
     color: #4f4f4f;
     font-size: 15px;
-    width: 80%;
+    width: 74%;
     display: flex;
     margin-bottom: 30px;
   }
@@ -115,6 +119,9 @@ export const Content = styled.div`
     line-height: 13px;
     letter-spacing: 0.03em;
     margin: 13px 0px;
+  }
+  .vidDes {
+    max-width: 888px;
   }
   .titleBlock {
     color: #000;
@@ -164,7 +171,7 @@ export const Content = styled.div`
     line-height: 21px;
     letter-spacing: 0.1em;
     color: #4f4f4f;
-    margin-left: 20%;
+    margin-left: 26%;
   }
   .artist_textEN {
     font-size: 15px;
@@ -174,7 +181,7 @@ export const Content = styled.div`
     letter-spacing: 0.005em;
     color: #4f4f4f;
     margin: 15px 0px;
-    margin-left: 20%;
+    margin-left: 26%;
   }
   .textTW {
     font-size: 15px;
@@ -207,6 +214,7 @@ export const Content = styled.div`
     background: var(--swiper-pagination-color, #e77832) !important;
   }
   .swiper-container {
+    width: 100%;
     padding: 30px 0 !important;
   }
   .swiper-pagination-fraction,
@@ -273,7 +281,7 @@ export const Content = styled.div`
   .twoGrid37 {
     width: 100%;
     display: inline-grid;
-    grid-template-columns: 27% 67%;
+    grid-template-columns: 20% 74%;
     column-gap: 6%;
     margin: 30px 0;
     padding-top: 10px;
@@ -412,9 +420,9 @@ export const Content = styled.div`
     text-transform: uppercase;
     margin-top: -4px;
   }
-  .pageTitle span{
+  .pageTitle span {
     margin-right: 13px;
-  } 
+  }
   @media (max-width: 768px) {
     .pageTitle {
       letter-spacing: 0.08em;
@@ -460,8 +468,8 @@ export const Content = styled.div`
   }
   .downloadBtnImg {
     margin-bottom: 0px;
-    width: 16px;
-    margin: -3px 2px;
+    width: 21px;
+    margin: -4px 2px;
   }
   .equipBlk {
     margin: 30px 0px;
@@ -625,7 +633,7 @@ export const Content = styled.div`
     text-align: initial;
   }
   .pressLinkBlk {
-    font-size: 13px;
+    font-size: 15px;
     font-weight: 400;
     line-height: 20px;
     letter-spacing: 0.08em;
@@ -644,7 +652,7 @@ export const Content = styled.div`
   }
   .arrowGoTo img {
     margin-bottom: -2px;
-    width:25px;
+    height: 16px;
   }
 
   //press images
@@ -665,7 +673,7 @@ export const Content = styled.div`
     margin-top: -5px;
     margin-right: 100px;
     display: inline-block;
-    min-width: 220px;
+    width: 240px;
   }
   .pressImgTextBlk {
     font-size: 15px;
@@ -731,7 +739,8 @@ export const Content = styled.div`
     cursor: pointer;
   }
   .backBtn img {
-    margin-bottom: 0;
+    margin-bottom: -2px;
+    height: 16px;
   }
   .backText {
     font-size: 12px;
@@ -900,6 +909,7 @@ export const Content = styled.div`
     }
     .firstSec {
       padding: 0px 27px 0px 66px;
+      max-width: unset;
     }
     .contentBlock {
       display: block;

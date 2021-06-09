@@ -72,7 +72,7 @@ export const Overlay = styled.div`
     }
   }
   .menuTitleBlock {
-    margin-bottom: 16px;
+    margin-bottom: 18px;
   }
   .menuTitleBlock2 {
     margin-top: 36px;
@@ -87,7 +87,7 @@ export const Overlay = styled.div`
     font-size: 15px;
     font-weight: 700;
     letter-spacing: 0.2em;
-    line-height: 52px;
+    line-height: 54px;
   }
   /* phones tablets */
   @media (max-width: 768px) {

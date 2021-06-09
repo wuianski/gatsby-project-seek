@@ -11,6 +11,7 @@ export const HamburgerButton = styled.div`
     height: 30px;
     cursor: pointer;
     transition: all 0.2s ease;
+    //mix-blend-mode: difference;
     :hover {
       transform: scale(1.2);
     }
