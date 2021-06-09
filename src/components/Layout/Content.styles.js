@@ -792,9 +792,13 @@ export const Content = styled.div`
     .equipNameTW {
       font-size: 16px;
     }
+    .equipBlk {
+      text-align: initial;
+    }
     #aHList,
     #aCList {
       //padding-top: 58px;
+      text-align: initial;
     }
     .aHInfo,
     .aCInfo {

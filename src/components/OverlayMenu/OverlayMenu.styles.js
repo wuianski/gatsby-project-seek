@@ -94,8 +94,8 @@ export const Overlay = styled.div`
     width: 100%;
     max-width: unset;
     .closeButton {
-      right: 28px;
-      top: 14px;
+      right: 14px;
+      top: 23px;
     }
     .inner {
       .invertedLogo {

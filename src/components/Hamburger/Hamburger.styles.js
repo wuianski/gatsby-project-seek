@@ -20,8 +20,8 @@ export const HamburgerButton = styled.div`
     /* phones tablets */
     @media (max-width: 768px) {
       left: unset;
-      right: 14px;
-      top: 14px;
+      right: 24px;
+      top: 18px;
     }
   }
 `
