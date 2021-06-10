@@ -206,6 +206,7 @@ export const Content = styled.div`
     display: block;
     color: #000;
   }
+
   .apply_m {
     display: none;
     color: #000;
@@ -470,6 +471,10 @@ export const Content = styled.div`
     margin-bottom: 0px;
     width: 21px;
     margin: -4px 2px;
+  }
+  .download_c {
+    display: inline-flex;
+    margin-top: 30px;
   }
   .equipBlk {
     margin: 30px 0px;

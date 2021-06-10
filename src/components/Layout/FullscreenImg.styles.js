@@ -59,7 +59,7 @@ export const FullscreenImg = styled.div`
   }
   .blcCtrIntro_Q {
     color: #ffffff;
-    width: 830px;
+    width: 835px;
     position: absolute;
     top: 65%;
     left: 50%;
@@ -108,8 +108,8 @@ export const FullscreenImg = styled.div`
   .pageIntroTW {
     font-size: 17px;
     font-weight: 600;
-    line-height: 26px; //24
-    letter-spacing: 0.05em;
+    line-height: 26px;
+    letter-spacing: 0.06em;
     text-align: justify;
     text-justify: distribute;
     //text-align: center;
@@ -127,7 +127,7 @@ export const FullscreenImg = styled.div`
   .pageIntroTW_E {
     font-size: 17px;
     font-weight: 600;
-    line-height: 26px; //24
+    line-height: 26px;
     letter-spacing: 0.06em;
     //text-align: justify;
     text-justify: distribute;
@@ -225,6 +225,20 @@ export const FullscreenImg = styled.div`
     font-weight: 600;
     letter-spacing: 0.1em;
     margin-top: 5px;
+  }
+
+  .pageDownloadC {
+    margin-top: 30px;
+  }
+  .downloadBtnImgC {
+    margin-bottom: 0px;
+    margin-left: 6px;
+  }
+  .downloadBtnTextC {
+    color: #fff;
+  }
+  .secondDownloadC {
+    margin-left: 18px;
   }
 
   /* phones tablets */

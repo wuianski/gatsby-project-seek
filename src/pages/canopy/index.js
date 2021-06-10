@@ -6,13 +6,12 @@ import React from "react"
 import { graphql, Link } from "gatsby"
 
 import Layout from "../../components/Layout/Layout"
-import { Content } from "../../components/Layout/Content.styles"
-import { Content1280 } from "../../components/Layout/Content1280.styles"
-import Header from "../../components/Header/Header"
-import Img from "gatsby-image"
-import ArrowDownBlk from "../../images/ArrowDownBlk.svg"
-import DownloadBtn from "../../images/download.svg"
+import BackgroundImage from "gatsby-background-image"
+import { FullscreenImg } from "../../components/Layout/FullscreenImg.styles"
+import ArrowDown from "../../images/ArrowDown.svg"
+import Headerw from "../../components/Headerw/Headerw"
 import Fade from "react-reveal/Fade"
+import DownloadBtn from "../../images/download.svg"
 
 export const query = graphql`
   query {
@@ -54,100 +53,96 @@ export const query = graphql`
 const CanopyInfo = ({ data }) => {
   return (
     <div>
-      <Layout>
-        <Content>
-          <Header />
-          <div>
-            {data.canopyInfoquery.edges.map(({ node }) => (
-              <div key={node.directus.id} className="aCInfo">
-                <div className="projectTagFixed">open call</div>
-                <Fade top>
-                  <div className="pageTitle">
-                    <span>{node.directus.title_en_us}</span>
-                    <span>{node.directus.title_zh_hant_tw}</span>
-                  </div>
-                </Fade>
-                <div className="mt20 artworkCover">
-                  <Img
-                    fluid={node.directus.cover_inside.childImageSharp.fluid}
-                  />
-                </div>
-                <div className="imageInfo_c">
-                  <span>{node.directus.cover_inside.directus.description}</span>
-                </div>
-                <Content1280>
-                  <div>
-                    <div className="twoGrid73 mt20">
-                      <div>
-                        <div className="artworks_textTW">
-                          {node.directus.content_zh_hant_tw}
-                        </div>
-                        <div className="artworks_textEN">
-                          {node.directus.content_en_us}
-                        </div>
-                      </div>
+      {data.canopyInfoquery.edges.map(({ node }) => (
+        <div key={node.directus.id}>
+          <Layout>
+            <FullscreenImg>
+              <Headerw />
 
-                      <div>
-                        <div className="fr">
-                          <span>
-                            <a
-                              href={node.directus.planimetric_map.publicURL}
-                              download="平面圖"
-                            >
-                              <span className="downloadBtnText">平面圖</span>
-                              <span
-                                className="downloadBtn"
-                                role="button"
-                                tabIndex="0"
-                              >
-                                <img
-                                  className="downloadBtnImg"
-                                  src={DownloadBtn}
-                                  alt="download button"
-                                />
-                              </span>
-                            </a>
+              <BackgroundImage
+                Tag="section"
+                className="bgSection"
+                fluid={node.directus.cover_inside.childImageSharp.fluid}
+                backgroundColor={`#040e18`}
+                id="bgE"
+                style={{ overflow: "hidden" }}
+              >
+                <div className="projectTag">open call</div>
+
+                <div className="blcCtrTitle">
+                  <Fade top>
+                    <p className="txtCtr fullPName">
+                      {node.directus.title_en_us}
+                    </p>
+                    <p className="txtCtr fullPName">
+                      {node.directus.title_zh_hant_tw}
+                    </p>
+                  </Fade>
+                </div>
+
+                <div className="blcCtrIntro_Q">
+                  <div className="pageIntro">
+                    <p className="pageIntroTW">
+                      {node.directus.content_zh_hant_tw}
+                    </p>
+                    <p className="pageIntroEN">{node.directus.content_en_us}</p>
+                    <div className="pageDownloadC">
+                      <span>
+                        <a
+                          href={node.directus.planimetric_map.publicURL}
+                          download="平面圖"
+                        >
+                          <span className="downloadBtnTextC">平面圖</span>
+                          <span
+                            className="downloadBtn"
+                            role="button"
+                            tabIndex="0"
+                          >
+                            <img
+                              className="downloadBtnImgC"
+                              src={DownloadBtn}
+                              alt="download button"
+                            />
                           </span>
-                          <span>
-                            <a
-                              href={node.directus.apply_for.publicURL}
-                              download="申請辦法"
-                              className="downloadBtnText"
-                            >
-                              <span>申請辦法</span>
-                              <span
-                                className="downloadBtn"
-                                role="button"
-                                tabIndex="0"
-                              >
-                                <img
-                                  className="downloadBtnImg"
-                                  src={DownloadBtn}
-                                  alt="download button"
-                                />
-                              </span>
-                            </a>
+                        </a>
+                      </span>
+                      <span className="secondDownloadC">
+                        <a
+                          href={node.directus.apply_for.publicURL}
+                          download="申請辦法"
+                        >
+                          <span className="downloadBtnTextC">申請辦法</span>
+                          <span
+                            className="downloadBtn"
+                            role="button"
+                            tabIndex="0"
+                          >
+                            <img
+                              className="downloadBtnImgC"
+                              src={DownloadBtn}
+                              alt="download button"
+                            />
                           </span>
-                        </div>
-                      </div>
+                        </a>
+                      </span>
                     </div>
-                    <Link to={`/canopy/list/`}>
-                      <div className="pdTB60_C" role="button" tabIndex="0">
-                        <img
-                          className="arrowDown"
-                          src={ArrowDownBlk}
-                          alt="arrow-down"
-                          height="37px"
-                        />
-                      </div>
-                    </Link>
                   </div>
-                </Content1280>
-              </div>
-            ))}
-          </div>
-        </Content>
-      </Layout>
+                </div>
+                <Link to={`/canopy/list/`}>
+                  <div className="pdTB80" role="button" tabIndex="0">
+                    <img
+                      className="arrowDown"
+                      src={ArrowDown}
+                      alt="arrow-down"
+                      height="37px"
+                    />
+                  </div>
+                </Link>
+              </BackgroundImage>
+            </FullscreenImg>
+          </Layout>
+        </div>
+      ))}
     </div>
   )
 }
