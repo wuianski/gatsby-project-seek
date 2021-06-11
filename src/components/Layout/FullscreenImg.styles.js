@@ -231,11 +231,16 @@ export const FullscreenImg = styled.div`
     margin-top: 30px;
   }
   .downloadBtnImgC {
-    margin-bottom: 0px;
-    margin-left: 6px;
+    margin-bottom: -3px;
+    margin-left: 8px;
+    width: 26px;
   }
   .downloadBtnTextC {
     color: #fff;
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 21px;
+    letter-spacing: 0.1em;
   }
   .secondDownloadC {
     margin-left: 18px;
