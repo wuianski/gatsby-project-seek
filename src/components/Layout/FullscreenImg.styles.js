@@ -23,7 +23,7 @@ export const FullscreenImg = styled.div`
     left: 50%;
     transform: translate(-50%, -50%);
     //text-shadow: 0.06em 0.06em 0.24em #000;
-    text-shadow: 0.1em 0.1em 0.8em #000;
+    text-shadow: 0.2em 0.2em 0.8em #000;
   }
   .blcCtrTitle {
     color: #ffffff;
@@ -33,7 +33,7 @@ export const FullscreenImg = styled.div`
     left: 50%;
     transform: translate(-50%, -50%);
     //text-shadow: 0.06em 0.06em #000;
-    text-shadow: 0.1em 0.1em 0.8em #000;
+    text-shadow: 0.2em 0.2em 0.8em #000;
   }
   .blcCtrIntro {
     color: #ffffff;
@@ -44,7 +44,7 @@ export const FullscreenImg = styled.div`
     transform: translate(-50%, -50%);
     min-height: 210px;
     //text-shadow: 0.06em 0.06em #000;
-    text-shadow: 0.1em 0.1em 0.8em #000;
+    text-shadow: 0.2em 0.2em 0.8em #000;
   }
   .blcCtrIntro_E {
     color: #ffffff;
@@ -55,7 +55,7 @@ export const FullscreenImg = styled.div`
     transform: translate(-50%, -50%);
     min-height: 210px;
     //text-shadow: 0.06em 0.06em #000;
-    text-shadow: 0.1em 0.1em 0.8em #000;
+    text-shadow: 0.2em 0.2em 0.8em #000;
   }
   .blcCtrIntro_Q {
     color: #ffffff;
@@ -66,7 +66,7 @@ export const FullscreenImg = styled.div`
     transform: translate(-50%, -50%);
     min-height: 210px;
     //text-shadow: 2em 2em 8em #000;
-    text-shadow: 0.1em 0.1em 0.8em #000;
+    text-shadow: 0.2em 0.2em 0.8em #000;
   }
   .txtCtr {
     text-align: center;
@@ -79,7 +79,7 @@ export const FullscreenImg = styled.div`
     transform: translate(-90%, -50%);
     cursor: pointer;
     color: #fff;
-    text-shadow: 0.1em 0.1em 0.8em #000;
+    text-shadow: 0.2em 0.2em 0.8em #000;
   }
   .arrowUp {
     position: absolute;
