@@ -37,6 +37,8 @@ export const query = graphql`
                 year
               }
             }
+            menu_text_en_us
+            menu_text_zh_hant_tw
           }
         }
       }
@@ -67,10 +69,10 @@ const ProjectEInfo = ({ data }) => {
                 <div className="blcCtrTitle">
                   <Fade top>
                     <p className="txtCtr fullPName">
-                      {node.directus.title_en_us}
+                      {node.directus.menu_text_en_us}
                     </p>
                     <p className="txtCtr fullPName">
-                      {node.directus.title_zh_hant_tw}
+                      {node.directus.menu_text_zh_hant_tw}
                     </p>
                   </Fade>
                 </div>

@@ -259,7 +259,7 @@ export const FullscreenImg = styled.div`
     }
     .blcCtrTitle {
       top: 150px;
-      width: 84vw;
+      width: 100vw;
     }
     .blcCtrIntro {
       top: 60%;
@@ -286,29 +286,57 @@ export const FullscreenImg = styled.div`
       text-align: center;
     }
     .fullPName {
-      font-size: 24.5px;
-      line-height: 45px;
-      letter-spacing: 0.13em;
+      font-size: 24px;
+      line-height: 40px;
+      letter-spacing: 0.1em;
       margin: 0px;
     }
     .fullPName_T {
-      font-size: 24.5px;
-      line-height: 35px;
-      letter-spacing: 0.13em;
+      font-size: 24px;
+      line-height: 40px;
+      letter-spacing: 0.1em;
       margin: 0px;
     }
     .pageIntro {
       margin-top: 00px;
     }
     .pageIntroTW {
-      font-size: 18px;
-      line-height: 29px;
-      letter-spacing: 0.015em;
+      font-size: 17px;
+      font-weight: 600;
+      line-height: 26px;
+      letter-spacing: 0.05em;
+      text-align: justify;
+      text-justify: distribute;
+      //text-align: center;
     }
     .pageIntroEN {
       font-size: 16px;
-      line-height: 23px;
-      letter-spacing: 0.005em;
+      font-weight: 600;
+      line-height: 20px;
+      letter-spacing: 0.02em;
+      margin-top: 14px;
+      text-align: justify;
+      text-justify: distribute;
+      //text-align: center;
+    }
+    .pageIntroTW_E {
+      font-size: 17px;
+      font-weight: 600;
+      line-height: 26px;
+      letter-spacing: 0.05em;
+      //text-align: justify;
+      text-justify: distribute;
+      text-align: center;
+    }
+    .pageIntroEN_E {
+      font-size: 16px;
+      font-weight: 600;
+      line-height: 20px;
+      letter-spacing: 0.02em;
+      margin-top: 14px;
+      //text-align: justify;
+      text-justify: distribute;
+      text-align: center;
     }
     .arrowDown {
       top: 93%;
