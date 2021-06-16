@@ -12,6 +12,10 @@ import BackgroundImage from "gatsby-background-image"
 import { About } from "../../components/Layout/About.styles"
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs"
 import GoTo from "../../images/goTo.svg"
+import FB from "../../images/fb.svg"
+import YT from "../../images/yt.svg"
+import IG from "../../images/ig.svg"
+
 import Headerw from "../../components/Headerw/Headerw"
 
 export const query = graphql`
@@ -223,6 +227,47 @@ const PageAbout = ({ data }) => {
                           __html: data.aboutquery.directus.info,
                         }}
                       />
+                      <div className="socialMediaBlk">
+                        <span
+                          className="socialMedia FB"
+                          role="button"
+                          tabIndex="0"
+                        >
+                          <a
+                            href="https://www.facebook.com/HongFoundation/"
+                            target="_blank"
+                            rel="noreferrer"
+                          >
+                            <img src={FB} alt="link to FB" />
+                          </a>
+                        </span>
+                        <span
+                          className="socialMedia YT"
+                          role="button"
+                          tabIndex="0"
+                        >
+                          <a
+                            href="https://www.youtube.com/channel/UCoU7nZDpNvSncKinwbJ0T7A/featured"
+                            target="_blank"
+                            rel="noreferrer"
+                          >
+                            <img src={YT} alt="link to YT" />
+                          </a>
+                        </span>
+                        <span
+                          className="socialMedia IG"
+                          role="button"
+                          tabIndex="0"
+                        >
+                          <a
+                            href="https://www.instagram.com/hong.foundation/?fbclid=IwAR0fPaBRnxrwJyiNaWzf"
+                            target="_blank"
+                            rel="noreferrer"
+                          >
+                            <img src={IG} alt="link to IG" />
+                          </a>
+                        </span>
+                      </div>
                     </div>
                   </TabPanel>
                 </Tabs>
@@ -365,6 +410,47 @@ const PageAbout = ({ data }) => {
                           __html: data.aboutquery.directus.info,
                         }}
                       />
+                      <div className="socialMediaBlk">
+                        <span
+                          className="socialMedia FB"
+                          role="button"
+                          tabIndex="0"
+                        >
+                          <a
+                            href="https://www.facebook.com/HongFoundation/"
+                            target="_blank"
+                            rel="noreferrer"
+                          >
+                            <img src={FB} alt="link to FB" />
+                          </a>
+                        </span>
+                        <span
+                          className="socialMedia YT"
+                          role="button"
+                          tabIndex="0"
+                        >
+                          <a
+                            href="https://www.youtube.com/channel/UCoU7nZDpNvSncKinwbJ0T7A/featured"
+                            target="_blank"
+                            rel="noreferrer"
+                          >
+                            <img src={YT} alt="link to YT" />
+                          </a>
+                        </span>
+                        <span
+                          className="socialMedia IG"
+                          role="button"
+                          tabIndex="0"
+                        >
+                          <a
+                            href="https://www.instagram.com/hong.foundation/?fbclid=IwAR0fPaBRnxrwJyiNaWzf"
+                            target="_blank"
+                            rel="noreferrer"
+                          >
+                            <img src={IG} alt="link to IG" />
+                          </a>
+                        </span>
+                      </div>
                     </div>
                   </TabPanel>
                 </Tabs>

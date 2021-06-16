@@ -110,6 +110,21 @@ export const About = styled.div`
   .hyperlink {
     margin-top: 10px;
   }
+  .socialMediaBlk {
+    margin-top: 30px;
+  }
+  .socialMedia {
+    padding-right: 30px;
+  }
+  .FB img {
+    height: 24px;
+  }
+  .YT img {
+    height: 17px;
+  }
+  .IG img {
+    height: 19px;
+  }
 
   //react-tabs
 
@@ -191,8 +206,6 @@ export const About = styled.div`
   }
   ::-webkit-scrollbar-thumb:window-inactive {
     background: rgba(255, 0, 0, 1);
-  }
-  @media (max-width: 768px) {
   }
 
   @media (max-width: 768px) {
