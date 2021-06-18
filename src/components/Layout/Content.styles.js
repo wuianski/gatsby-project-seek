@@ -855,7 +855,7 @@ export const Content = styled.div`
     .pressTextEN span {
       max-width: unset;
       display: inline-block;
-      width: 80%;
+      width:  78%;
       margin-right: 4%;
       font-size: 13px;
       line-height: 23px;
@@ -863,7 +863,7 @@ export const Content = styled.div`
     .pressTextYear span {
       display: inline-block;
       text-align: right;
-      width: 16%;
+      width: 17%;
       margin-right: unset;
       font-size: 13px;
     }

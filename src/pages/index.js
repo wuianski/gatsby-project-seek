@@ -43,6 +43,8 @@ export const query = graphql`
                 }
               }
             }
+            menu_text_en_us
+            menu_text_zh_hant_tw
           }
         }
       }
@@ -87,14 +89,12 @@ export default function Home({ data }) {
                             <div className="blcCtr">
                               <Zoom cascade>
                                 <p className={"fullPName" + node.directus.sort}>
-                                  {node.directus.title_en_us}
+                                  {node.directus.menu_text_en_us}
                                 </p>
                                 <p
-                                 
                                   className={"fullPNameTW" + node.directus.sort}
-                                
                                 >
-                                  {node.directus.title_zh_hant_tw}
+                                  {node.directus.menu_text_zh_hant_tw}
                                 </p>
                               </Zoom>
                             </div>
@@ -132,10 +132,10 @@ export default function Home({ data }) {
                                 <div className="blcCtr">
                                   <Zoom cascade>
                                     <p className="txtCtr fullPName">
-                                      {node.directus.title_en_us}
+                                      {node.directus.menu_text_en_us}
                                     </p>
                                     <p className="txtCtr fullPNameTW">
-                                      {node.directus.title_zh_hant_tw}
+                                      {node.directus.menu_text_zh_hant_tw}
                                     </p>
                                   </Zoom>
                                 </div>

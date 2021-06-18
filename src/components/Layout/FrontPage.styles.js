@@ -59,41 +59,45 @@ export const FrontPage = styled.div`
     text-align: center;
     text-transform: uppercase;
     width: max-content;
-    font-size: 25px;
+    font-size: 1.6vw;
     font-weight: 800;
     letter-spacing: 0.1em;
     margin: 0;
-    margin-bottom: 10px;
+    margin-bottom: 13px;
+    line-height: 1.6vw;
   }
   .fullPName2 {
     text-align: center;
     text-transform: uppercase;
     width: max-content;
-    font-size: 25px;
+    font-size: 1.6vw;
     font-weight: 800;
     letter-spacing: 0.1em;
     margin: 0;
-    margin-bottom: 10px;
+    margin-bottom: 13px;
+    line-height: 1.6vw;
   }
   .fullPName3 {
     text-align: center;
     text-transform: uppercase;
     width: max-content;
-    font-size: 23px;
+    font-size: 1.1vw;
     font-weight: 800;
     letter-spacing: 0.1em;
     margin: 0;
-    margin-bottom: 10px;
+    margin-bottom: 13px;
+    line-height: 1.1vw;
   }
   .fullPName4 {
     text-align: center;
     text-transform: uppercase;
     width: max-content;
-    font-size: 23px;
+    font-size: 1.1vw;
     font-weight: 800;
     letter-spacing: 0.1em;
     margin: 0;
-    margin-bottom: 10px;
+    margin-bottom: 13px;
+    line-height: 1.1vw;
   }
   .fullPNameTW1 {
     font-size: 24px;
@@ -502,8 +506,8 @@ export const FrontPage = styled.div`
       font-weight: 600;
       line-height: 45px;
       letter-spacing: 0.13em;
-      font-size: 24.5px;
-      width: 80vw;
+      font-size: 5.7vw;
+      width: 90vw;
       height: 45px;
     }
     .fullPNameTW {
@@ -511,7 +515,7 @@ export const FrontPage = styled.div`
       line-height: 45px;
       letter-spacing: 0.13em;
       font-size: 23px;
-      width: 80vw;
+      width: 90vw;
       height: 45px;
     }
 
