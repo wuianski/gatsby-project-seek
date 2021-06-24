@@ -335,6 +335,9 @@ export const Content = styled.div`
   .mt20 {
     margin-top: 20px;
   }
+  .mt30 {
+    margin-top: 30px;
+  }
   .mt40 {
     margin-top: 40px;
   }
@@ -481,14 +484,14 @@ export const Content = styled.div`
     color: #000000;
   }
   .equipNameTW {
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 500;
     line-height: 21px;
     letter-spacing: 0.065em;
     text-decoration-line: underline;
   }
   .equipNameEN {
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 500;
     line-height: 21px;
     letter-spacing: 0.065em;
@@ -500,6 +503,7 @@ export const Content = styled.div`
     line-height: 18px;
     letter-spacing: 0.1em;
     margin-bottom: 10px;
+    text-justify: auto;
   }
   .pdTB60 {
     padding: 60px 0px;
@@ -756,6 +760,43 @@ export const Content = styled.div`
     text-transform: lowercase;
     vertical-align: text-bottom;
   }
+  .panasonicLogoBlk {
+    position: relative;
+  }
+  .panasonicLogo {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+  }
+  .applyHBlk {
+    position: relative;
+  }
+  .applyH {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+  }
+  .downloadBtnTextH {
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 21px;
+    letter-spacing: 0.1em;
+    text-decoration-line: none;
+    margin-left: 0px;
+    color: #000;
+  }
+  .twoGrid64 {
+    width: 100%;
+    display: inline-grid;
+    grid-template-columns: 57% 37%;
+    column-gap: 6%;
+  }
 
   /* phones tablets */
   @media (max-width: 768px) {
@@ -855,7 +896,7 @@ export const Content = styled.div`
     .pressTextEN span {
       max-width: unset;
       display: inline-block;
-      width:  78%;
+      width: 78%;
       margin-right: 4%;
       font-size: 13px;
       line-height: 23px;
@@ -992,6 +1033,14 @@ export const Content = styled.div`
     .reviewTag {
       left: -80px;
       top: 115px;
+    }
+    .applyHBlk {
+      padding-top: 60px;
+      padding-bottom: 60px;
+    }
+    .panasonicLogoBlk {
+      margin-top: 130px;
+      margin-left: -33px;
     }
   }
   /*@media (min-width: 1280px) {

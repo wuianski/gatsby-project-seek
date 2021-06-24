@@ -22,11 +22,12 @@ import Footer from "../components/Footer/Footer"
 
 import Zoom from "react-reveal/Zoom"
 
-import SwiperCore, { Pagination } from "swiper"
+import SwiperCore, { Navigation, Pagination } from "swiper"
 import { Swiper, SwiperSlide } from "swiper/react"
-import "swiper/swiper.scss"
-import "swiper/components/pagination/pagination.scss"
-SwiperCore.use(Pagination)
+import "../swiper_scss/swiper.scss"
+import "../swiper_scss/pagination.scss"
+import "../swiper_scss/navigation.scss"
+SwiperCore.use(Navigation, Pagination)
 
 // A static query, the results from which
 // will be passed to our component. Uses the 'id' property
@@ -331,7 +332,7 @@ const ProjectT = props => {
           <div className="imgSec mt40">
             <div>
               {images && (
-                <Swiper pagination={{ clickable: true }}>
+                <Swiper navigation pagination={{ clickable: true }}>
                   <div>
                     {images.map(image => (
                       <SwiperSlide>

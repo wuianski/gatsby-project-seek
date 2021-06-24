@@ -13,6 +13,7 @@ import Img from "gatsby-image"
 import ArrowDownBlk from "../../images/ArrowDownBlk.svg"
 import DownloadBtn from "../../images/download.svg"
 import Fade from "react-reveal/Fade"
+import PanasonicLogo from "../../images/panasonic.jpg"
 
 export const query = graphql`
   query {
@@ -71,7 +72,7 @@ const HxFInfo = ({ data }) => {
               <div className="mt20 artworkCover">
                 <Img fluid={node.directus.cover.childImageSharp.fluid} />
               </div>
-              <Content1280>
+              <div>
                 <div>
                   <div className="twoGrid73 mt40">
                     <div>
@@ -83,13 +84,13 @@ const HxFInfo = ({ data }) => {
                       </div>
                     </div>
 
-                    <div>
-                      <div className="apply fr">
+                    <div className="applyHBlk">
+                      <div className="applyH">
                         <a
                           href={node.directus.apply_for.publicURL}
                           download="申請辦法"
                         >
-                          <span className="downloadBtnText">申請辦法</span>
+                          <span className="downloadBtnTextH">申請辦法</span>
                           <span
                             className="downloadBtn"
                             role="button"
@@ -105,9 +106,9 @@ const HxFInfo = ({ data }) => {
                       </div>
                     </div>
                   </div>
-                  <div className="w70">
-                    {node.directus.equipment && (
-                      <div>
+                  <div className="twoGrid73 mt30">
+                    <div>
+                      {node.directus.equipment && (
                         <div className="twoGrid55">
                           {node.directus.equipment.map(myEquipment => (
                             <div
@@ -155,24 +156,15 @@ const HxFInfo = ({ data }) => {
                             </div>
                           ))}
                         </div>
+                      )}
+                    </div>
+                    <div className="panasonicLogoBlk">
+                      <div className="panasonicLogo">
+                        <img src={PanasonicLogo} alt="Panasonic logo" />
                       </div>
-                    )}
+                    </div>
                   </div>
-                  <div className="apply_m fr">
-                    <a
-                      href={node.directus.apply_for.publicURL}
-                      download="申請辦法"
-                    >
-                      <span className="downloadBtnText">申請辦法</span>
-                      <span className="downloadBtn" role="button" tabIndex="0">
-                        <img
-                          className="downloadBtnImg"
-                          src={DownloadBtn}
-                          alt="download button"
-                        />
-                      </span>
-                    </a>
-                  </div>
+
                   <Link to={`/hong-x-panasonic/list/`}>
                     <div className="pdTB60" role="button" tabIndex="0">
                       <img
@@ -184,7 +176,7 @@ const HxFInfo = ({ data }) => {
                     </div>
                   </Link>
                 </div>
-              </Content1280>
+              </div>
             </div>
           ))}
         </Content>

@@ -22,11 +22,12 @@ import Footer from "../components/Footer/Footer"
 
 import Zoom from "react-reveal/Zoom"
 
-import SwiperCore, { Pagination } from "swiper"
+import SwiperCore, { Navigation, Pagination } from "swiper"
 import { Swiper, SwiperSlide } from "swiper/react"
 import "../swiper_scss/swiper.scss"
 import "../swiper_scss/pagination.scss"
-SwiperCore.use(Pagination)
+import "../swiper_scss/navigation.scss"
+SwiperCore.use(Navigation, Pagination)
 
 // A static query, the results from which
 // will be passed to our component. Uses the 'id' property
@@ -310,7 +311,6 @@ const ProjectQ = props => {
                     )}
                   </div>
                 </div>
-                
               </div>
             )}
           </div>
@@ -318,7 +318,7 @@ const ProjectQ = props => {
           <div className="imgSec mt40">
             <div>
               {images && (
-                <Swiper pagination={{ clickable: true }}>
+                <Swiper navigation pagination={{ clickable: true }}>
                   <div>
                     {images.map(image => (
                       <SwiperSlide>
@@ -367,33 +367,33 @@ const ProjectQ = props => {
             </div>
             {isVisibleA && (
               <div>
-              <div className="textBlockArtist">
-                <div
-                  className="artist_textTW fr"
-                  dangerouslySetInnerHTML={{
-                    __html: artist_introduction_zh_hant_tw,
-                  }}
-                />
-                <div
-                  className="artist_textEN fr"
-                  dangerouslySetInnerHTML={{
-                    __html: artist_introduction_en_us,
-                  }}
-                />
-                <div
-                  className="closeBlock"
-                  onClick={toggleVisibilityA}
-                  onKeyDown={toggleVisibilityA}
-                  role="button"
-                  tabIndex="0"
-                >
-                  <img
-                    className="closeImg"
-                    src={minus}
-                    alt="close content block"
+                <div className="textBlockArtist">
+                  <div
+                    className="artist_textTW fr"
+                    dangerouslySetInnerHTML={{
+                      __html: artist_introduction_zh_hant_tw,
+                    }}
                   />
+                  <div
+                    className="artist_textEN fr"
+                    dangerouslySetInnerHTML={{
+                      __html: artist_introduction_en_us,
+                    }}
+                  />
+                  <div
+                    className="closeBlock"
+                    onClick={toggleVisibilityA}
+                    onKeyDown={toggleVisibilityA}
+                    role="button"
+                    tabIndex="0"
+                  >
+                    <img
+                      className="closeImg"
+                      src={minus}
+                      alt="close content block"
+                    />
+                  </div>
                 </div>
-              </div>
               </div>
             )}
           </div>
