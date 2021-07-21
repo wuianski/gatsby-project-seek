@@ -74,6 +74,7 @@ export const About = styled.div`
     line-height: 21px;
     letter-spacing: 0.08em;
     margin-bottom: 0;
+    max-width: 400px;
   }
   .timelineContentEN p {
     font-weight: 400;
@@ -81,6 +82,9 @@ export const About = styled.div`
     line-height: 21px;
     letter-spacing: 0.08em;
     margin-bottom: 0;
+    max-width: 400px;
+    text-align: justify;
+    text-justify: distribute;
   }
   .reviewTitle {
     font-weight: 600;
@@ -185,7 +189,7 @@ export const About = styled.div`
 
   .react-tabs__tab-panel--selected {
     display: block;
-    padding-right: 20%;
+    padding-right: 10%;
   }
   .tabContainer {
     scrollbar-width: thin;

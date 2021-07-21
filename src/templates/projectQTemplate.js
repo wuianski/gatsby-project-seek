@@ -48,6 +48,8 @@ export const query = graphql`
         }
         year
         title_en_us
+        begin_exhibition(formatString: "YYYY.MM.DD")
+        end_exhibition(formatString: "MM.DD")
         artist_name_zh_hant_tw
         artist_name_en_us
         summary_zh_hant_tw
@@ -113,6 +115,8 @@ const ProjectQ = props => {
     cover,
     year,
     title_en_us,
+    begin_exhibition,
+    end_exhibition,
     artist_name_zh_hant_tw,
     artist_name_en_us,
     summary_zh_hant_tw,
@@ -162,6 +166,10 @@ const ProjectQ = props => {
             <Zoom cascade>
               <div className="txtCtr fullPYear">{year}</div>
               <div className="txtCtr fullPTitleTW">{title_en_us}</div>
+              <div className="txtCtr fullPDate">
+                <span>{begin_exhibition}</span>
+                <span> - {end_exhibition}</span>
+              </div>
               <div
                 className="txtCtr fullPNameTW"
                 dangerouslySetInnerHTML={{ __html: artist_name_zh_hant_tw }}

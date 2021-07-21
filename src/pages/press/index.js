@@ -78,10 +78,10 @@ export default function Press({ data }) {
                     <div className="pressTextBlk">
                       <span className="pressTextEN">
                         {node.directus.pages_id === 1 && (
-                          <span>THE QUESTION</span>
+                          <span>THE QUESTION PROJECT</span>
                         )}
                         {node.directus.pages_id === 5 && (
-                          <span>TUNG CHUNG ART PRIZE</span>
+                          <span>TUNG CHUNG PRIZE</span>
                         )}
                       </span>
                       <span className="pressTextYear">
