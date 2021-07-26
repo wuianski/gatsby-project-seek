@@ -245,5 +245,11 @@ export const About = styled.div`
     .aboutTitle p {
       margin-bottom: 12px;
     }
+    .aboutMenu {
+      margin-right: 8%;
+    }
+    .aboutContent {
+      margin-top: 0px;
+    }
   }
 `

@@ -110,5 +110,8 @@ export const Overlay = styled.div`
         padding-left: 24px;
       }
     }
+    .menuTitle2 {
+      line-height: 30px;
+    }
   }
 `

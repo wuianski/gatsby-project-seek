@@ -7,18 +7,15 @@ export const Primary = styled.main`
 export const GlobalStyles = createGlobalStyle`
 {
   html {
-    font-family:'arial', sans-serif;
+    font-family: Arial, sans-serif;
     -ms-text-size-adjust: 100%;
     -webkit-text-size-adjust: 100%;
-    height: -webkit-fill-available;
   }
   body {
     margin: 0;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     position:static;
-    min-height: 100vh;
-    min-height: -webkit-fill-available;
   }
   .whiteText {
     color: #fff;
@@ -208,6 +205,7 @@ export const GlobalStyles = createGlobalStyle`
     font: 112.5%/1.45em arial, georgia, serif;
     box-sizing: border-box;
     overflow-y: scroll;
+    height: -webkit-fill-available;
   }
   * {
     box-sizing: inherit;
@@ -228,6 +226,8 @@ export const GlobalStyles = createGlobalStyle`
     -ms-font-feature-settings: 'kern', 'liga', 'clig', 'calt';
     -webkit-font-feature-settings: 'kern', 'liga', 'clig', 'calt';
     font-feature-settings: 'kern', 'liga', 'clig', 'calt';
+    min-height: 100vh;
+    min-height: -webkit-fill-available;
   }
   img {
     max-width: 100%;
