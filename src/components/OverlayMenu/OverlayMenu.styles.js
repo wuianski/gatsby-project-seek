@@ -14,6 +14,8 @@ export const Overlay = styled.div`
   left: 0px;
   padding: 0px;
   transition: all 0.3s ease;
+  min-height: 100vh;
+  min-height: -webkit-fill-available;
   .inner {
     display: flex;
     flex-direction: column;

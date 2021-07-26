@@ -7,7 +7,7 @@ export const Primary = styled.main`
 export const GlobalStyles = createGlobalStyle`
 {
   html {
-    font-family: "Metropolis", "Noto Sans JP", 'arial', sans-serif;
+    font-family:'arial', sans-serif;
     -ms-text-size-adjust: 100%;
     -webkit-text-size-adjust: 100%;
     height: -webkit-fill-available;
