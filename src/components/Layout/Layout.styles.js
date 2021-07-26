@@ -7,15 +7,18 @@ export const Primary = styled.main`
 export const GlobalStyles = createGlobalStyle`
 {
   html {
-    font-family: 'arial', sans-serif;
+    font-family: "Metropolis", "Noto Sans JP", 'arial', sans-serif;
     -ms-text-size-adjust: 100%;
     -webkit-text-size-adjust: 100%;
+    height: -webkit-fill-available;
   }
   body {
     margin: 0;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     position:static;
+    min-height: 100vh;
+    min-height: -webkit-fill-available;
   }
   .whiteText {
     color: #fff;
