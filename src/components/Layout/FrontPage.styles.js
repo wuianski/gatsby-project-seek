@@ -7,6 +7,8 @@ export const FrontPage = styled.div`
     background-color: #000000;
     width: 100vw;
     height: 100vh;
+    min-height: 100vh;
+    min-height: -webkit-fill-available;
   }
   #project_container {
     background-color: #000000;

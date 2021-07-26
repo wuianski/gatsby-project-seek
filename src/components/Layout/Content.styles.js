@@ -915,9 +915,10 @@ export const Content = styled.div`
       line-height: 23px;
     }
     .pressLinkBlk {
-      width: 120px;
+      width: 150px;
       text-align: left;
       margin-top: 30px;
+      line-height: 23px;
     }
     /* press images */
     .backBtn {
@@ -945,6 +946,10 @@ export const Content = styled.div`
     }
     .pressImgContentTxtCC {
       margin-bottom: 50px;
+    }
+    .arrowGoTo img {
+      margin-bottom: -2px;
+      width: 21px;
     }
     /* project Template */
     .secName {
