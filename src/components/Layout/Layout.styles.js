@@ -205,7 +205,6 @@ export const GlobalStyles = createGlobalStyle`
     font: 112.5%/1.45em arial, georgia, serif;
     box-sizing: border-box;
     overflow-y: scroll;
-    height: -webkit-fill-available;
   }
   * {
     box-sizing: inherit;
@@ -226,8 +225,6 @@ export const GlobalStyles = createGlobalStyle`
     -ms-font-feature-settings: 'kern', 'liga', 'clig', 'calt';
     -webkit-font-feature-settings: 'kern', 'liga', 'clig', 'calt';
     font-feature-settings: 'kern', 'liga', 'clig', 'calt';
-    min-height: 100vh;
-    min-height: -webkit-fill-available;
   }
   img {
     max-width: 100%;

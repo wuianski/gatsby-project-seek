@@ -7,8 +7,6 @@ export const FrontPage = styled.div`
     background-color: #000000;
     width: 100vw;
     height: 100vh;
-    min-height: 100vh;
-    min-height: -webkit-fill-available;
   }
   #project_container {
     background-color: #000000;
@@ -490,6 +488,10 @@ export const FrontPage = styled.div`
 
   /* phones tablets */
   @media (max-width: 768px) {
+    #fullpage_container {
+      height: 100%;
+    }
+
     #project_container {
       display: none;
     }
