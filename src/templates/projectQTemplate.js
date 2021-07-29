@@ -291,7 +291,7 @@ const ProjectQ = props => {
                           </div>
                         </div>
                         {isVisibleV && (
-                          <div className="vidText_m">
+                          <div className="vidTextBlock">
                             <div className="textBlock">
                               <div className="textTW">
                                 {main_video_description_zh_hant_tw}
@@ -414,7 +414,7 @@ const ProjectQ = props => {
                 <div className="topMinus20">
                   <div className="twoGrid55">
                     {events.map(event => (
-                      <div key={event.directus.id}>
+                      <div key={event.directus.id} className="m_inlineBlock">
                         {event.directus.status === "draft" && <span></span>}
                         {event.directus.status === "published" && (
                           <div>

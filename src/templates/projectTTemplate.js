@@ -417,7 +417,7 @@ const ProjectT = props => {
                 <div className="topMinus20">
                   <div className="twoGrid55">
                     {events.map(event => (
-                      <div key={event.directus.id}>
+                      <div key={event.directus.id} className="m_inlineBlock">
                         {event.directus.status === "draft" && <span></span>}
                         {event.directus.status === "published" && (
                           <div>

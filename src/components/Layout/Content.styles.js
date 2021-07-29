@@ -74,7 +74,7 @@ export const Content = styled.div`
     margin-top: 28px;
   }
   .openBlock {
-    height: 30px;
+    /*height: 30px;*/
   }
   .closeBlock {
     height: 30px;
@@ -123,6 +123,9 @@ export const Content = styled.div`
   .vidDes {
     max-width: 888px;
   }
+  /*.vidTextBlock {
+    margin-top: -30px;
+  }*/
   .titleBlock {
     color: #000;
     margin-bottom: 20px;
@@ -173,6 +176,11 @@ export const Content = styled.div`
     color: #4f4f4f;
     margin-left: 26%;
   }
+  .artist_textTW p a {
+    position: relative;
+    z-index: 99;
+  }
+
   .artist_textEN {
     font-size: 15px;
     text-align: justify;
@@ -259,6 +267,11 @@ export const Content = styled.div`
   }
   .artistSec {
     padding-bottom: 40px;
+  }
+  .m_inlineBlock {
+    display: inline-block;
+    width: inherit;
+    padding-bottom: 30px;
   }
   .eventCover {
     height: unset;
@@ -1011,17 +1024,17 @@ export const Content = styled.div`
       padding: 60px 27px 0px 66px;
     }
     .eventCover {
-      //height: 24vw;
       height: unset;
       padding-bottom: 20px;
     }
     .openBlock {
-      padding-bottom: 45px;
+      /*padding-bottom: 45px;*/
     }
 
     .reviewSec {
       padding: 0px 27px 0px 66px;
       margin-top: -20px;
+      display: flex;
     }
     .twoGrid37 {
       display: inline-block;
