@@ -4,8 +4,8 @@
 
 import React from "react"
 import { graphql, Link } from "gatsby"
-
 import Layout from "../../components/Layout/Layout"
+import SEO from "../../components/seo"
 import BackgroundImage from "gatsby-background-image"
 import { FullscreenImg } from "../../components/Layout/FullscreenImg.styles"
 import ArrowDown from "../../images/ArrowDown.svg"
@@ -58,6 +58,10 @@ const CanopyInfo = ({ data }) => {
       {data.canopyInfoquery.edges.map(({ node }) => (
         <div key={node.directus.id}>
           <Layout>
+            <SEO
+              title="Project Seek 覓計畫 | CANOPY"
+              description="尋覓創變基因，在當代思維中實踐創藝不設限。"
+            />
             <FullscreenImg>
               <Headerw />
 

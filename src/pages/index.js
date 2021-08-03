@@ -7,6 +7,7 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
 import Layout from "../components/Layout/Layout"
+import SEO from "../components/seo"
 import { FrontPage } from "../components/Layout/FrontPage.styles"
 import BackgroundImage from "gatsby-background-image"
 import { HeaderLogo } from "../components/Header/Header.styles"
@@ -57,6 +58,10 @@ export default function Home({ data }) {
   return (
     <div>
       <Layout>
+        <SEO
+          title="Project Seek 覓計畫"
+          description="尋覓創變基因，在當代思維中實踐創藝不設限。"
+        />
         <FrontPage>
           <div id="fullpage_container">
             <HeaderLogo>

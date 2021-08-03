@@ -7,6 +7,7 @@ import React from "react"
 import { graphql, Link } from "gatsby"
 //import { rhythm } from "../utils/typography"
 import Layout from "../../components/Layout/Layout"
+import SEO from "../../components/seo"
 import { FullscreenImg } from "../../components/Layout/FullscreenImg.styles"
 import BackgroundImage from "gatsby-background-image"
 import { About } from "../../components/Layout/About.styles"
@@ -82,6 +83,10 @@ const PageAbout = ({ data }) => {
   return (
     <div>
       <Layout>
+        <SEO
+          title="Project Seek 覓計畫 | ABOUT"
+          description="尋覓創變基因，在當代思維中實踐創藝不設限。"
+        />
         <About>
           <FullscreenImg>
             <Headerw />

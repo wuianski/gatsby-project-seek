@@ -4,8 +4,8 @@
 
 import React from "react"
 import { graphql, Link } from "gatsby"
-
 import Layout from "../../components/Layout/Layout"
+import SEO from "../../components/seo"
 import { Content } from "../../components/Layout/Content.styles"
 import { Content1280 } from "../../components/Layout/Content1280.styles"
 import Header from "../../components/Header/Header"
@@ -59,6 +59,10 @@ const HxFInfo = ({ data }) => {
   return (
     <div>
       <Layout>
+        <SEO
+          title="Project Seek 覓計畫 | HONG x PANASONIC"
+          description="尋覓創變基因，在當代思維中實踐創藝不設限。"
+        />
         <Content>
           <Header />
           {data.hxfInfoquery.edges.map(({ node }) => (

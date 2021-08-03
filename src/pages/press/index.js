@@ -10,6 +10,7 @@ import { graphql, Link } from "gatsby"
 //import { rhythm } from "../utils/typography"
 //import Layout from "../../components/layout"
 import Layout from "../../components/Layout/Layout"
+import SEO from "../../components/seo"
 import { Content } from "../../components/Layout/Content.styles"
 import Img from "gatsby-image"
 import DownloadBtn from "../../images/download.svg"
@@ -36,7 +37,7 @@ export const query = graphql`
             cover {
               publicURL
               childImageSharp {
-                fluid(quality:  95, maxWidth: 672, maxHeight: 425) {
+                fluid(quality: 95, maxWidth: 672, maxHeight: 425) {
                   ...GatsbyImageSharpFluid
                 }
               }
@@ -60,6 +61,10 @@ export const query = graphql`
 export default function Press({ data }) {
   return (
     <Layout>
+      <SEO
+        title="Project Seek 覓計畫 | PRESS"
+        description="尋覓創變基因，在當代思維中實踐創藝不設限。"
+      />
       <Content>
         <Header />
         <div className="press_m">
