@@ -54,8 +54,8 @@ const ProjectTInfo = ({ data }) => {
         <div key={node.directus.id}>
           <Layout>
             <SEO
-              title="Project Seek 覓計畫 | TUNG CHUNG PRIZE"
-              description="尋覓創變基因，在當代思維中實踐創藝不設限。"
+              title="TUNG CHUNG PRIZE 銅鐘藝術賞 | Project Seek 覓計畫"
+              description="銅鐘藝術賞是簡靜惠女士為紀念父親簡銅鐘因文學、藝術與電影養分豐富生命而設立，每年捐贈100萬元，2015年開始以文學獎勵傑出文學家，2018年起延伸為藝術賞，延續洪建全文教基金會「播種」精神，由副董事長張淑征負責策劃，以文化創投的前瞻概念出發，遴選一位具獨特視野及國際觀的台灣當代藝術家，基於對藝術家創作理念的信任，在概念階段即給予肯定，並支持其藝術的實踐。"
             />
             <FullscreenImg>
               <Headerw />

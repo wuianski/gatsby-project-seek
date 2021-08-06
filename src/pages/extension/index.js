@@ -54,8 +54,8 @@ const ProjectEInfo = ({ data }) => {
         <div key={node.directus.id}>
           <Layout>
             <SEO
-              title="Project Seek 覓計畫 | EXTENSION"
-              description="尋覓創變基因，在當代思維中實踐創藝不設限。"
+              title="EXTENSION 認養計畫 | Project Seek 覓計畫"
+              description="「認養計畫」支持具獨創特色及國際潛力的藝術家，贊助其創作實踐。"
             />
             <FullscreenImg>
               <Headerw />

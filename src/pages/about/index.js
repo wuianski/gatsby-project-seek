@@ -84,8 +84,8 @@ const PageAbout = ({ data }) => {
     <div>
       <Layout>
         <SEO
-          title="Project Seek 覓計畫 | ABOUT"
-          description="尋覓創變基因，在當代思維中實踐創藝不設限。"
+          title="ABOUT | Project Seek 覓計畫"
+          description="有限空間的無限自由 - 尋找創意DNA"
         />
         <About>
           <FullscreenImg>

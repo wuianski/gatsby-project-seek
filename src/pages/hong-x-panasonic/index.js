@@ -60,8 +60,8 @@ const HxFInfo = ({ data }) => {
     <div>
       <Layout>
         <SEO
-          title="Project Seek 覓計畫 | HONG x PANASONIC"
-          description="尋覓創變基因，在當代思維中實踐創藝不設限。"
+          title="HONG x PANASONIC | Project Seek 覓計畫"
+          description="洪建全基金會秉持對文化播種與散佈的開創精神，作為一個表演與視覺藝術的開放平台，明瞭創作與技術是相輔相成，延續過去「洪建全視聽圖書館」(1975-1989) 對台灣藝文發展的支持，啟動不同尺度的藝術贊助並引入最尖端的科技設備，2018年起特別與台灣松下公司Panasonic共同合作，提供贊助使用先進的多媒體設備器材，以科技結合藝術的方式，鼓勵激發各類型創作人才及作品讓世界看見。"
         />
         <Content>
           <Header />
