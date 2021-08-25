@@ -59,8 +59,8 @@ const CanopyInfo = ({ data }) => {
         <div key={node.directus.id}>
           <Layout>
             <SEO
-              title="CANOPY 雨棚計畫 | Project Seek 覓計畫"
-              description="自由發揮創作展演的徵選舞台，每年對外公開徵選，為剛起步藝術家提供一個嶄露頭角的平台，鼓勵各種類型當代藝術文化的提案，以不局限的創作呈現方式，帶來更多的的實驗性。"
+              title="CANOPY 雨棚計畫"
+              description={node.directus.content_zh_hant_tw}
             />
             <FullscreenImg>
               <Headerw />

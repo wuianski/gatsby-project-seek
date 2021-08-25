@@ -62,7 +62,7 @@ export default function Press({ data }) {
   return (
     <Layout>
       <SEO
-        title="PRESS | Project Seek 覓計畫"
+        title="PRESS"
         description="尋覓創變基因，在當代思維中實踐創藝不設限。"
       />
       <Content>

@@ -78,15 +78,15 @@ export const query = graphql`
   }
 `
 
+
 // The component we'll render for a given page
 const PageAbout = ({ data }) => {
+  const myDescription = data.aboutquery.directus.content_zh_hant_tw
+  const myDescription2 = myDescription.replace("<p>", "").replace("</p>", "")
   return (
     <div>
       <Layout>
-        <SEO
-          title="ABOUT | Project Seek 覓計畫"
-          description="有限空間的無限自由 - 尋找創意DNA"
-        />
+        <SEO title="ABOUT" description={myDescription2} />
         <About>
           <FullscreenImg>
             <Headerw />

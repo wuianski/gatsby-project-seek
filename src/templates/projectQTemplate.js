@@ -19,6 +19,7 @@ import minus from "../images/minus.svg"
 import Headerw from "../components/Headerw/Headerw"
 import Header from "../components/Header/Header"
 import Footer from "../components/Footer/Footer"
+import SEO from "../components/seo"
 
 import Zoom from "react-reveal/Zoom"
 
@@ -151,9 +152,13 @@ const ProjectQ = props => {
     }))
   }
 
+  const myDescription = data.cat.directus.summary_zh_hant_tw
+  const myDescription2 = myDescription.replace("<p>", "").replace("</p>", "")
+
   return (
     <Layout>
       {!data.cat && <p>No category data</p>}
+      <SEO title={title_en_us} description={myDescription2} />
       <FullscreenImg id="top">
         <Headerw />
         <BackgroundImage

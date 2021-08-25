@@ -54,8 +54,8 @@ const ProjectQInfo = ({ data }) => {
         <div key={node.directus.id}>
           <Layout>
             <SEO
-              title="THE QUESTION 問問題計畫 | Project Seek 覓計畫"
-              description="「問問題計畫」每年提出一個單純的問題，探討社會、文化與生命內涵。 透過藝術家的新創作回應問題，挑戰當前既定觀點，啟發你我更多提問。"
+              title="THE QUESTION 問問題計畫"
+              description={node.directus.content_zh_hant_tw}
             />
             <FullscreenImg>
               <Headerw />
