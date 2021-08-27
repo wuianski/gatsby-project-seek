@@ -154,11 +154,24 @@ const ProjectT = props => {
     }))
   }
 
+  ////for meta title and description
   const myTitle = data.cat.directus.title_zh_hant_tw
   const myTitle2 = myTitle.replace("<p>", "").replace("</p>", "")
   //console.log(myTitle2)
   const myDescription = data.cat.directus.summary_zh_hant_tw
   const myDescription2 = myDescription.replace("<p>", "").replace("</p>", "")
+
+  ////for year befor 2018
+  const myYear = data.cat.directus.year
+  let tMode
+  if (myYear < 2018) {
+    tMode = 1
+    console.log(tMode)
+  } else if (myYear >= 2018) {
+    tMode = 2
+    console.log(tMode)
+  }
+  //console.log(myYear)
 
   return (
     <Layout>
@@ -181,8 +194,8 @@ const ProjectT = props => {
               />
               <div className="txtCtr fullPTitleEN">{title_en_us}</div>
               <div className="txtCtr fullPDate">
-                <span>{begin_exhibition}</span>
-                <span> - {end_exhibition}</span>
+                {begin_exhibition && <span>{begin_exhibition}</span>}
+                {begin_exhibition && <span> - {end_exhibition}</span>}
               </div>
               <div
                 className="txtCtr fullPNameTW"
@@ -339,7 +352,7 @@ const ProjectT = props => {
 
           <div className="imgSec mt40">
             <div>
-              {images && (
+              {images && tMode === 2 && (
                 <Swiper navigation pagination={{ clickable: true }}>
                   <div>
                     {images.map(image => (
@@ -414,6 +427,25 @@ const ProjectT = props => {
                     alt="close content block"
                   />
                 </div>
+              </div>
+            )}
+          </div>
+
+          <div className="selectedWorksSec mt80">
+            {images && tMode === 1 && (
+              <div className="secNameWorks">selected Works</div>
+            )}
+            {images && tMode === 1 && (
+              <div className="imgsBlock">
+                {images.map(image => (
+                  <div className="imgSelectedDiv">
+                    <Img
+                      className="imgSelected"
+                      fluid={image.childImageSharp.fluid}
+                      key={image.childImageSharp.id}
+                    />
+                  </div>
+                ))}
               </div>
             )}
           </div>

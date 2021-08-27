@@ -237,6 +237,59 @@ export const Content = styled.div`
   .eventSec {
     display: block;
   }
+  .secNameWorks {
+    color: #e77832;
+    width: 200px;
+    height: 24px;
+    display: inline-block;
+    transform: rotate(90deg);
+    vertical-align: middle;
+    text-align: center;
+    margin-left: -180px;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    position: relative;
+    top: 82px;
+  }
+  .selectedWorksSec {
+    height: 10px;
+    padding-right: 0px;
+  }
+  .imgsBlock {
+    display: inline-flex;
+    float: right;
+  }
+  .imgSelectedDiv {
+    //display: inline-block;
+    //width: 33%;
+    width: 146px;
+    height: 196px;
+    margin-left: 24px;
+    margin-bottom: 180px;
+  }
+  @media (max-width: 768px) {
+    .secNameWorks {
+      margin-left: -123px;
+    }
+    .selectedWorksSec {
+      display: inline-block;
+      height: 100px;
+      padding-left: 54px;
+      margin-right: 27px;
+    }
+    .imgSelectedDiv {
+      width: 73px;
+      height: 98px;
+      margin-left: 12px;
+      margin-top: -22px;
+    }
+  }
+  .imgSelected {
+    width: 100%;
+    height: 100%;
+  }
   .topMinus20 {
     position: relative;
     top: -20px;
