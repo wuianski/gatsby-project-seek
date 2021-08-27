@@ -75,7 +75,7 @@ export const FullscreenImg = styled.div`
   .arrowDown {
     position: absolute;
     top: 90%;
-    left: calc(50% + 12px);
+    left: calc(50% + 10px);
     transform: translate(-90%, -50%);
     cursor: pointer;
     color: #fff;
@@ -340,7 +340,7 @@ export const FullscreenImg = styled.div`
     }
     .arrowDown {
       top: 93%;
-      left: calc(50% + 5px);
+      left: calc(50% + 10px);
     }
     .fullPTitleTW {
       font-size: 30px;
