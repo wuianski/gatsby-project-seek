@@ -74,6 +74,16 @@ export const query = graphql`
             }
           }
         }
+        images {
+          id
+          publicURL
+          name
+          childImageSharp {
+            fixed(quality: 95, height: 196) {
+              ...GatsbyImageSharpFixed
+            }
+          }
+        }
         artist_introduction_zh_hant_tw
         artist_introduction_en_us
         events {
@@ -441,7 +451,7 @@ const ProjectT = props => {
                   <div className="imgSelectedDiv">
                     <Img
                       className="imgSelected"
-                      fluid={image.childImageSharp.fluid}
+                      fixed={image.childImageSharp.fixed}
                       key={image.childImageSharp.id}
                     />
                   </div>

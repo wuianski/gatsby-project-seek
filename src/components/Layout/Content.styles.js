@@ -270,20 +270,24 @@ export const Content = styled.div`
     margin-bottom: 180px;
   }
   @media (max-width: 768px) {
+    .imgsBlock {
+      display: block;
+      float: right;
+      right: 24px;
+      position: absolute;
+      margin-top: -24px;
+    }
     .secNameWorks {
       margin-left: -123px;
     }
     .selectedWorksSec {
       display: inline-block;
-      height: 100px;
+      height: 600px;
       padding-left: 54px;
       margin-right: 27px;
     }
     .imgSelectedDiv {
-      width: 73px;
-      height: 98px;
-      margin-left: 12px;
-      margin-top: -22px;
+      margin-bottom: 24px;
     }
   }
   .imgSelected {
