@@ -59,6 +59,7 @@ export const query = graphql`
               publicURL
               name
               childImageSharp {
+                id
                 fluid(quality: 95, maxWidth: 1920, maxHeight: 1080) {
                   ...GatsbyImageSharpFluid
                 }
@@ -99,7 +100,7 @@ const HxFInfo = ({ data }) => {
                       <div>
                         {node.directus.images.map(image => (
                           <SwiperSlide>
-                            <div>
+                            <div key={image.childImageSharp.id}>
                               <Img
                                 fluid={image.childImageSharp.fluid}
                                 key={image.childImageSharp.id}
