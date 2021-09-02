@@ -50,7 +50,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.createAllNodes = void 0;
 var gatsby_source_filesystem_1 = require("gatsby-source-filesystem");
 var createNodesByObject = function (directus, table, dataset, relations, fieldInfos, fileInfos, additionalCollections, gatsbyNodesArgs) { return __awaiter(void 0, void 0, void 0, function () {
-    var actions, store, cache, createNodeId, createContentDigest, reporter, createNode, thisNodeId, fileFields, _loop_1, i, manyFileFields, projectsDirectusFiles2, i, element, arrayFileId, idSet, _loop_2, k, o2mFieldInfos, _loop_3, i;
+    var actions, store, cache, createNodeId, createContentDigest, reporter, createNode, thisNodeId, fileFields, _loop_1, i, manyFileFields, collectionNames, index, collectionName, targetTableName, collectionFiles, i, element, arrayFileId, idSet, _loop_2, k, o2mFieldInfos, _loop_3, i;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
@@ -126,28 +126,38 @@ var createNodesByObject = function (directus, table, dataset, relations, fieldIn
                 return [3 /*break*/, 1];
             case 4:
                 manyFileFields = fieldInfos.filter(function (x) { return x.type === 'files'; });
-                projectsDirectusFiles2 = additionalCollections['projects_directus_files_2'];
-                i = 0;
+                collectionNames = Object.keys(additionalCollections);
+                index = 0;
                 _a.label = 5;
             case 5:
-                if (!(i < manyFileFields.length)) return [3 /*break*/, 11];
+                if (!(index < collectionNames.length)) return [3 /*break*/, 13];
+                collectionName = collectionNames[index];
+                targetTableName = collectionName.split('_')[0];
+                if (!targetTableName || targetTableName !== table) {
+                    return [3 /*break*/, 12];
+                }
+                collectionFiles = additionalCollections[collectionName];
+                i = 0;
+                _a.label = 6;
+            case 6:
+                if (!(i < manyFileFields.length)) return [3 /*break*/, 12];
                 element = manyFileFields[i];
                 arrayFileId = dataset[element.field];
                 if (!arrayFileId || arrayFileId.length === 0) {
-                    return [3 /*break*/, 10];
+                    return [3 /*break*/, 11];
                 }
                 idSet = [];
                 _loop_2 = function (k) {
-                    var o2mId, pdf2, fileId, fileInfo, url, fileInfoNodeId, fileNode, error_2;
+                    var m2mId, m2mData, fileId, fileInfo, url, fileInfoNodeId, fileNode, error_2;
                     return __generator(this, function (_c) {
                         switch (_c.label) {
                             case 0:
-                                o2mId = arrayFileId[k];
-                                pdf2 = projectsDirectusFiles2.find(function (x) { return x.id == o2mId; });
-                                if (!pdf2) {
+                                m2mId = arrayFileId[k];
+                                m2mData = collectionFiles.find(function (x) { return x.id == m2mId; });
+                                if (!m2mData) {
                                     return [2 /*return*/, "continue"];
                                 }
-                                fileId = pdf2['directus_files_id'];
+                                fileId = m2mData['directus_files_id'];
                                 fileInfo = fileInfos.find(function (f) { return f.fileId == fileId; });
                                 if (!fileInfo) {
                                     return [2 /*return*/, "continue"];
@@ -190,24 +200,27 @@ var createNodesByObject = function (directus, table, dataset, relations, fieldIn
                     });
                 };
                 k = 0;
-                _a.label = 6;
-            case 6:
-                if (!(k < arrayFileId.length)) return [3 /*break*/, 9];
-                return [5 /*yield**/, _loop_2(k)];
+                _a.label = 7;
             case 7:
-                _a.sent();
-                _a.label = 8;
+                if (!(k < arrayFileId.length)) return [3 /*break*/, 10];
+                return [5 /*yield**/, _loop_2(k)];
             case 8:
-                k++;
-                return [3 /*break*/, 6];
+                _a.sent();
+                _a.label = 9;
             case 9:
+                k++;
+                return [3 /*break*/, 7];
+            case 10:
                 dataset[element.field + "___NODE"] = idSet;
                 delete dataset[element.field];
-                _a.label = 10;
-            case 10:
-                i++;
-                return [3 /*break*/, 5];
+                _a.label = 11;
             case 11:
+                i++;
+                return [3 /*break*/, 6];
+            case 12:
+                index++;
+                return [3 /*break*/, 5];
+            case 13:
                 o2mFieldInfos = fieldInfos.filter(function (x) { return x.type === 'o2m'; });
                 _loop_3 = function (i) {
                     var o2mFieldInfo = o2mFieldInfos[i];

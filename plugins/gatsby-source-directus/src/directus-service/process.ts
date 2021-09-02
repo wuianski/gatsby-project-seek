@@ -92,72 +92,87 @@ const createNodesByObject = async (directus: DirectusService, table: string, dat
 
     // Process files
     let manyFileFields = fieldInfos.filter(x => x.type === 'files');
-    let projectsDirectusFiles2 = additionalCollections['projects_directus_files_2'] as Array<any>;
-    for (let i = 0; i < manyFileFields.length; i++) {
-        const element = manyFileFields[i];
-        let arrayFileId = dataset[element.field] as Array<any>;
-        if (!arrayFileId || arrayFileId.length === 0) {
+    var collectionNames = Object.keys(additionalCollections);
+    for (let index = 0; index < collectionNames.length; index++) {
+        const collectionName = collectionNames[index];
+
+        let targetTableName = collectionName.split('_')[0];
+        if (!targetTableName || targetTableName !== table) {
             continue;
         }
 
-        let idSet: Array<string> = [];
-        for (let k = 0; k < arrayFileId.length; k++) {
-            const o2mId = arrayFileId[k];
-            let pdf2 = projectsDirectusFiles2.find(x => x.id == o2mId);
-            if (!pdf2) {
-                continue;
-            }
-            let fileId = pdf2['directus_files_id'];
+        const collectionFiles = additionalCollections[collectionName] as Array<any>;
+        for (let i = 0; i < manyFileFields.length; i++) {
+            const element = manyFileFields[i];
 
-            let fileInfo = fileInfos.find(f => f.fileId == fileId);
-            if (!fileInfo) {
+            // reporter.log(`${table}::${collectionName}::${element.field}`);
+            let arrayFileId = dataset[element.field] as Array<any>;
+            if (!arrayFileId || arrayFileId.length === 0) {
                 continue;
             }
 
-            // if (createdFileNodes.includes(fileInfo.fileId)) {
-            //     continue;
-            // }
-            // createdFileNodes.push(fileInfo.fileId);
+            let idSet: Array<any> = [];
+            for (let k = 0; k < arrayFileId.length; k++) {
+                const m2mId = arrayFileId[k];
+                // reporter.log(`${table}::${collectionName}::${m2mId}`);
+                let m2mData = collectionFiles.find(x => x.id == m2mId);
+                if (!m2mData) {
+                    continue;
+                }
 
-            let url = directus.getAssetUrl(fileId);
-            try {
+                let fileId = m2mData['directus_files_id'];
+                let fileInfo = fileInfos.find(f => f.fileId == fileId);
+                if (!fileInfo) {
+                    continue;
+                }
 
-                let fileInfoNodeId = createNodeId(`fileInfo-${fileInfo.fileId}`)
+                // reporter.log(`${table}::${collectionName}::${fileInfo.fileId}`);
 
-                let fileNode = await createRemoteFileNode({
-                    url: url,
-                    store: store,
-                    cache: cache,
-                    parentNodeId: thisNodeId,
-                    createNode: createNode,
-                    createNodeId: createNodeId,
-                    reporter: reporter,
-                });
-                fileNode['directus'] = {
-                    fileInfoId: fileInfoNodeId,
-                    ...fileInfo
-                };
+                // if (createdFileNodes.includes(fileInfo.fileId)) {
+                //     continue;
+                // }
+                // createdFileNodes.push(fileInfo.fileId);
+
+                let url = directus.getAssetUrl(fileId);
+                try {
+
+                    let fileInfoNodeId = createNodeId(`fileInfo-${fileInfo.fileId}`)
+
+                    let fileNode = await createRemoteFileNode({
+                        url: url,
+                        store: store,
+                        cache: cache,
+                        parentNodeId: thisNodeId,
+                        createNode: createNode,
+                        createNodeId: createNodeId,
+                        reporter: reporter,
+                    });
+                    fileNode['directus'] = {
+                        fileInfoId: fileInfoNodeId,
+                        ...fileInfo
+                    };
 
 
-                createNode({
-                    directus: { ...fileInfo },
-                    id: fileInfoNodeId,
-                    parent: thisNodeId,
-                    children: [],
-                    internal: {
-                        type: 'fileInfo',
-                        contentDigest: createContentDigest(fileInfo)
-                    }
-                });
+                    createNode({
+                        directus: { ...fileInfo },
+                        id: fileInfoNodeId,
+                        parent: thisNodeId,
+                        children: [],
+                        internal: {
+                            type: 'fileInfo',
+                            contentDigest: createContentDigest(fileInfo)
+                        }
+                    });
 
-                idSet.push(fileNode.id);
-            } catch (error) {
-                reporter.error(error);
+                    idSet.push(fileNode.id);
+                } catch (error) {
+                    reporter.error(error);
+                }
             }
+
+            dataset[`${element.field}___NODE`] = idSet;
+            delete dataset[element.field];
         }
-
-        dataset[`${element.field}___NODE`] = idSet;
-        delete dataset[element.field];
     }
 
     // Process for id to node
