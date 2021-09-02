@@ -15,6 +15,13 @@ import DownloadBtn from "../../images/download.svg"
 import Fade from "react-reveal/Fade"
 import PanasonicLogo from "../../images/panasonic.jpg"
 
+import SwiperCore, { Navigation, Pagination } from "swiper"
+import { Swiper, SwiperSlide } from "swiper/react"
+import "../../swiper_scss/swiper.scss"
+import "../../swiper_scss/pagination.scss"
+import "../../swiper_scss/navigation.scss"
+SwiperCore.use(Navigation, Pagination)
+
 export const query = graphql`
   query {
     hxfInfoquery: allPages(filter: { directus: { id: { eq: 4 } } }) {
@@ -47,6 +54,16 @@ export const query = graphql`
             apply_for {
               publicURL
             }
+            images {
+              id
+              publicURL
+              name
+              childImageSharp {
+                fluid(quality: 95, maxWidth: 1920, maxHeight: 1080) {
+                  ...GatsbyImageSharpFluid
+                }
+              }
+            }
           }
         }
       }
@@ -74,9 +91,28 @@ const HxFInfo = ({ data }) => {
                   <p>{node.directus.title_en_us}</p>
                 </div>
               </Fade>
-              <div className="mt20 artworkCover">
-                <Img fluid={node.directus.cover.childImageSharp.fluid} />
+
+              <div className="imgSec">
+                <div>
+                  {node.directus.images && (
+                    <Swiper navigation pagination={{ clickable: true }}>
+                      <div>
+                        {node.directus.images.map(image => (
+                          <SwiperSlide>
+                            <div>
+                              <Img
+                                fluid={image.childImageSharp.fluid}
+                                key={image.childImageSharp.id}
+                              />
+                            </div>
+                          </SwiperSlide>
+                        ))}
+                      </div>
+                    </Swiper>
+                  )}
+                </div>
               </div>
+
               <div>
                 <div>
                   <div className="twoGrid73 mt40">
