@@ -11,7 +11,7 @@ import SEO from "../components/seo"
 import { FrontPage } from "../components/Layout/FrontPage.styles"
 import BackgroundImage from "gatsby-background-image"
 import { HeaderLogo } from "../components/Header/Header.styles"
-import LogoLight from "../images/logo-light.svg"
+import LogoLight from "../images/logo_light_new.svg"
 import Zoom from "react-reveal/Zoom"
 
 import SwiperCore, { Pagination } from "swiper"

@@ -1,6 +1,6 @@
 import React from "react"
 import { Link } from "gatsby"
-import InvertedLogo from "../../images/logo-dark.svg"
+import InvertedLogo from "../../images/logo_dark_new.svg"
 import CloseButton from "../../images/menu-close.svg"
 import { useMenuQuery } from "../../hooks/useMenuQuery"
 import { Overlay } from "./OverlayMenu.styles"
