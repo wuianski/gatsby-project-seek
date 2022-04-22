@@ -18,7 +18,7 @@ export const artworksListCQuery = graphql`
   query artworksListCQuery($skip: Int!, $limit: Int!) {
     allArtworksList(
       filter: { directus: { pages_id: { eq: 3 } } }
-      sort: { fields: directus___year, order: DESC }
+      sort: { fields: [directus___year, directus___sort], order: [DESC, DESC] }
       limit: $limit
       skip: $skip
     ) {
@@ -32,6 +32,7 @@ export const artworksListCQuery = graphql`
             artist_name_en_us
             year
             website
+            sort
           }
         }
       }

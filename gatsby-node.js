@@ -193,7 +193,10 @@ module.exports.createPages = async ({ graphql, actions }) => {
         filter: {
           directus: { pages_id: { eq: 3 }, status: { eq: "published" } }
         }
-        sort: { fields: directus___year, order: DESC }
+        sort: {
+          fields: [directus___year, directus___sort]
+          order: [DESC, DESC]
+        }
         limit: 1000
       ) {
         totalCount
@@ -202,6 +205,7 @@ module.exports.createPages = async ({ graphql, actions }) => {
             directus {
               id
               year
+              sort
             }
           }
         }
