@@ -1,6 +1,6 @@
 /**
- * Manually create index page, render query data. 
- * 
+ * Manually create index page, render query data.
+ *
  * Add link to pages, which created by gatsby-node.js
  */
 
@@ -11,7 +11,9 @@ import SEO from "../components/seo"
 import { FrontPage } from "../components/Layout/FrontPage.styles"
 import BackgroundImage from "gatsby-background-image"
 import { HeaderLogo } from "../components/Header/Header.styles"
-import LogoLight from "../images/logo_light_new.svg"
+// import LogoLight from "../images/logo_light_new.svg"
+import LogoHf from "../images/logo_hf.svg"
+import LogoPs from "../images/logo_ps.svg"
 import Zoom from "react-reveal/Zoom"
 
 import SwiperCore, { Pagination } from "swiper"
@@ -65,10 +67,21 @@ export default function Home({ data }) {
         <FrontPage>
           <div id="fullpage_container">
             <HeaderLogo>
+              <a
+                href="https://hongfoundation.org.tw/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <img
+                  className="logoFrontPageHF"
+                  src={LogoHf}
+                  alt="logo-light"
+                />
+              </a>
               <Link to="/">
                 <img
-                  className="logoFrontPage"
-                  src={LogoLight}
+                  className="logoFrontPagePS"
+                  src={LogoPs}
                   alt="logo-light"
                 />
               </Link>
@@ -160,5 +173,3 @@ export default function Home({ data }) {
     </div>
   )
 }
-
-

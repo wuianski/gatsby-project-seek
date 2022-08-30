@@ -1,15 +1,39 @@
 import styled from "styled-components"
 
 export const HeaderLogow = styled.div`
-  img {
+  img.logoFrontPageHF {
     position: absolute;
     display: block;
-    max-width: 60px;
-    left: 32px;
-    top: 44px;
+    width: 120px;
+    // max-width: 100px;
+    left: 0px;
+    top: 14px;
     z-index: 999;
     cursor: pointer;
-    //text-shadow: 0.03em 0.03em #000;
+    //filter: drop-shadow(0.02em 0.02em black);
+    /* desktop */
+    @media (max-width: 992px) {
+      display: block;
+    }
+    /* phones tablets */
+    @media (max-width: 768px) {
+      display: none;
+    }
+  }
+  img.logoFrontPagePS {
+    position: absolute;
+    display: block;
+    width: 120px;
+    // max-width: 100px;
+    left: 0px;
+    top: 200px;
+    z-index: 999;
+    cursor: pointer;
+    //filter: drop-shadow(0.02em 0.02em black);
+    /* desktop */
+    @media (max-width: 992px) {
+      display: block;
+    }
     /* phones tablets */
     @media (max-width: 768px) {
       display: none;

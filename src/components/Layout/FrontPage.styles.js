@@ -533,11 +533,18 @@ export const FrontPage = styled.div`
       position: absolute;
       top: calc(50% - 80px);
     }
-    .logoFrontPage {
+    .logoFrontPageHF {
       max-width: 50px;
       position: absolute;
-      left: 24px;
-      top: 23px;
+      left: 0px;
+      top: 14px;
+      display: block;
+    }
+    .logoFrontPagePS {
+      max-width: 50px;
+      position: absolute;
+      left: 0px;
+      top: 103px;
       display: block;
     }
     .swiper-pagination-bullet {

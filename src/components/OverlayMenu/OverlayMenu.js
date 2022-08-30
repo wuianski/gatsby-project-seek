@@ -1,6 +1,8 @@
 import React from "react"
 import { Link } from "gatsby"
-import InvertedLogo from "../../images/logo_dark_new.svg"
+// import InvertedLogo from "../../images/logo_dark_new.svg"
+import InvertedLogoHF from "../../images/logo_hf_dark.svg"
+import InvertedLogoPS from "../../images/logo_ps_dark.svg"
 import CloseButton from "../../images/menu-close.svg"
 import { useMenuQuery } from "../../hooks/useMenuQuery"
 import { Overlay } from "./OverlayMenu.styles"
@@ -13,9 +15,27 @@ const OverlayMenu = ({ menuOpen, callback }) => {
   return (
     <Overlay menuOpen={menuOpen}>
       <div className="inner">
+        <a
+          href="https://hongfoundation.org.tw/"
+          target="_blank"
+          rel="noreferrer"
+        >
+          <img
+            className="invertedLogoHF"
+            src={InvertedLogoHF}
+            alt="logo-light"
+          />
+        </a>
         <Link to="/">
-          <img className="invertedLogo" src={InvertedLogo} alt="white-logo" />
+          <img
+            className="invertedLogoPS"
+            src={InvertedLogoPS}
+            alt="logo-light"
+          />
         </Link>
+        {/* <Link to="/">
+          <img className="invertedLogo" src={InvertedLogo} alt="white-logo" />
+        </Link> */}
 
         <div className="overlayMenu">
           {menu.nodes.map(item => (

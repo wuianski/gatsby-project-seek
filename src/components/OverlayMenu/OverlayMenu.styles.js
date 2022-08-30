@@ -24,11 +24,23 @@ export const Overlay = styled.div`
     height: 100%;
     color: #000;
     padding: 0px;
-    .invertedLogo {
-      max-width: 60px;
+    // .invertedLogo {
+    //   max-width: 60px;
+    //   position: absolute;
+    //   left: 32px;
+    //   top: 44px;
+    // }
+    .invertedLogoHF {
+      width: 120px;
       position: absolute;
-      left: 32px;
-      top: 44px;
+      left: 0px;
+      top: 14px;
+    }
+    .invertedLogoPS {
+      width: 120px;
+      position: absolute;
+      left: 100px;
+      top: 14px;
     }
     .overlayMenu {
       //width: 100%;
