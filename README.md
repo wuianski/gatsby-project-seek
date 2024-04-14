@@ -1,5 +1,10 @@
 # Seek
 
+## Prerequisites 
+
+- npm = 7.7.6
+- node = 15.4.0
+
 ## Compile gatsby-source-directus with TypeScript
 
 ```sh
@@ -74,3 +79,13 @@ Add below object to `plugins: [ ]` in `gatsby-config.js`
   }
 }
 ```
+
+## cache problem 
+
+如果有頁面loading問題，可能是cache要清除。
+
+1. pm2 stop build-bot
+2. sudo npm run clean
+3. sudo npm run build
+4. cp -rv /path/from/public /path/to/website
+5. pm2 restart build-bot
