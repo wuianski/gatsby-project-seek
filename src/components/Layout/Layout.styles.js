@@ -205,6 +205,10 @@ export const GlobalStyles = createGlobalStyle`
     font: 112.5%/1.45em arial, georgia, serif;
     box-sizing: border-box;
     overflow-y: scroll;
+    scrollbar-width: none; 
+  }
+  html::-webkit-scrollbar {
+    display: none;
   }
   * {
     box-sizing: inherit;
