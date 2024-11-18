@@ -26,16 +26,14 @@ const OverlayMenu = ({ menuOpen, callback }) => {
             alt="logo-light"
           />
         </a>
-        <Link to="/">
+        {/* <Link to="/">
           <img
             className="invertedLogoPS"
             src={InvertedLogoPS}
             alt="logo-light"
           />
-        </Link>
-        {/* <Link to="/">
-          <img className="invertedLogo" src={InvertedLogo} alt="white-logo" />
         </Link> */}
+
 
         <div className="overlayMenu">
           {menu.nodes.map(item => (

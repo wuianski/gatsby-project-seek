@@ -10,9 +10,9 @@ const Header = () => (
     <a href="https://hongfoundation.org.tw/" target="_blank" rel="noreferrer">
       <img className="logoFrontPageHF" src={LogoHfDark} alt="logo-light" />
     </a>
-    <Link to="/">
+    {/* <Link to="/">
       <img className="logoFrontPagePS" src={LogoPsDark} alt="logo-light" />
-    </Link>
+    </Link> */}
   </HeaderLogo>
 )
 

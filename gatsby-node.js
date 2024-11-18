@@ -334,7 +334,7 @@ module.exports.createPages = async ({ graphql, actions }) => {
   // Create the content page of TCAA
   projectTs.forEach(({ node: projectT }) => {
     createPage({
-      path: `/tung-chung-prize/${projectT.directus.year}`,
+      path: `/tung-chung-prize/${projectT.directus.year}/${projectT.directus.id}`,
       component: path.resolve("./src/templates/projectTTemplate.js"),
       context: projectT.directus,
     })
