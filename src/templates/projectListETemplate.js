@@ -17,7 +17,7 @@ export const projectListEQuery = graphql`
   query projectListEQuery($skip: Int!, $limit: Int!) {
     allProjects(
       filter: { directus: { pages_id: { eq: 2 }, status: { eq: "published" } } }
-      sort: { fields: directus___year, order: DESC }
+      sort: { fields: [directus___year, directus___sort], order: [DESC, DESC] }
       limit: $limit
       skip: $skip
     ) {
@@ -30,6 +30,7 @@ export const projectListEQuery = graphql`
             artist_name_zh_hant_tw
             artist_name_en_us
             year
+            sort
           }
         }
       }
@@ -40,6 +41,7 @@ export default class projectListE extends React.Component {
   render() {
     const postsE = this.props.data.allProjects.edges
     const { numEPages } = this.props.pageContext
+    console.log(postsE)
 
     return (
       <Layout>

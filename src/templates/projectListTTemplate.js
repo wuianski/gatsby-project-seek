@@ -17,7 +17,7 @@ export const projectListTQuery = graphql`
   query projectListTQuery($skip: Int!, $limit: Int!) {
     allProjects(
       filter: { directus: { pages_id: { eq: 5 }, status: { eq: "published" } } }
-      sort: { fields: directus___year, order: DESC }
+      sort: { fields: [directus___year, directus___sort], order: [DESC, DESC] }
       limit: $limit
       skip: $skip
     ) {
@@ -30,6 +30,7 @@ export const projectListTQuery = graphql`
             artist_name_zh_hant_tw
             artist_name_en_us
             year
+            sort
           }
         }
       }
