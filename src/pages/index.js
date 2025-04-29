@@ -78,13 +78,13 @@ export default function Home({ data }) {
                   alt="logo-light"
                 />
               </a>
-              <Link to="/">
+              {/* <Link to="/">
                 <img
                   className="logoFrontPagePS"
                   src={LogoPs}
                   alt="logo-light"
                 />
-              </Link>
+              </Link> */}
             </HeaderLogo>
             <div id="project_container">
               <div className="grid-container">

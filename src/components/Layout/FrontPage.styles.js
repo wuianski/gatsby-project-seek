@@ -7,6 +7,10 @@ export const FrontPage = styled.div`
     background-color: #000000;
     width: 100vw;
     height: 100vh;
+    scrollbar-width: none; 
+  }
+  #fullpage_container::-webkit-scrollbar {
+    display: none;
   }
   #project_container {
     background-color: #000000;

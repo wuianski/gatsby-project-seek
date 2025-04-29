@@ -54,17 +54,7 @@ export const query = graphql`
             apply_for {
               publicURL
             }
-            images {
-              id
-              publicURL
-              name
-              childImageSharp {
-                id
-                fluid(quality: 95, maxWidth: 1920, maxHeight: 1080) {
-                  ...GatsbyImageSharpFluid
-                }
-              }
-            }
+           
           }
         }
       }
@@ -94,7 +84,7 @@ const HxFInfo = ({ data }) => {
               </Fade>
 
               <div className="imgSec">
-                <div>
+                {/* <div>
                   {node.directus.images && (
                     <Swiper navigation pagination={{ clickable: true }}>
                       <div>
@@ -111,7 +101,7 @@ const HxFInfo = ({ data }) => {
                       </div>
                     </Swiper>
                   )}
-                </div>
+                </div> */}
               </div>
 
               <div>

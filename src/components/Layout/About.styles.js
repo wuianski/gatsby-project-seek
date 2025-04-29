@@ -26,6 +26,7 @@ export const About = styled.div`
     top: 18vh;
     overflow: scroll;
     color: #fff;
+    scrollbar-width: none;
   }
   .aboutTitle {
     font-weight: 600;
@@ -192,11 +193,16 @@ export const About = styled.div`
     padding-right: 10%;
   }
   .tabContainer {
-    scrollbar-width: thin;
+    // scrollbar-width: thin;
     scrollbar-color: blue orange;
+    scrollbar-width: none;
+  }
+  .tabContainer::-webkit-scrollbar {
+    display: none;
   }
   ::-webkit-scrollbar {
     width: 120px; /* width of the entire scrollbar */
+    display: none;
   }
 
   ::-webkit-scrollbar-track {

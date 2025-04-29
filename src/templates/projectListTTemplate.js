@@ -52,7 +52,7 @@ export default class projectListT extends React.Component {
                 {postsT.map(({ node }) => (
                   <div key={node.directus.id}>
                     <Link
-                      to={`/tung-chung-prize/${node.directus.year}`}
+                      to={`/tung-chung-prize/${node.directus.year}/${node.directus.id}`}
                       className="pList_link"
                     >
                       <div className="pList">
